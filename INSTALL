@@ -1,0 +1,12 @@
+Installation
+============
+
+From Source (All Platform)
+Install Python 3.X
+Install Sympy
+Install Pyqt
+
+execute python pythoncad_qt.py (under the pythoncad Folder)
+
+
+
