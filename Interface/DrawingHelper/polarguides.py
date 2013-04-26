@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3871: * @file polarguides.py
 #
 # Copyright (c) 2010 Matteo Boscolo, Carlo Pavan
 #
@@ -22,10 +24,19 @@
 # 
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3872: ** <<declarations>> (polarguides)
 import math
 
 from PyQt4 import QtCore, QtGui
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3873: ** getPolarMenu
 def getPolarMenu():
     '''
     returns a menu to operate with guide objects STILL TO BE IMPLEMENTED
@@ -33,12 +44,14 @@ def getPolarMenu():
     menu=QtGui.QMenu()
     
     return menu
-        
+#@+node:1.20130426141258.3874: ** class GuideHandler
 class GuideHandler(QtGui.QGraphicsItem):
     '''
     This class provide management of a guide Handler to be instanced by the scene
     on startup, and to be placed by iCommand when a point is succesfully added to a command
     '''
+    #@+others
+    #@+node:1.20130426141258.3875: *3* __init__
     def __init__(self, parent, x, y, a):
         super(GuideHandler, self).__init__()
         self.scene=parent
@@ -50,35 +63,35 @@ class GuideHandler(QtGui.QGraphicsItem):
         self.guides=[]
         
         self.addGuidesByIncrement(math.pi/6)
-
+    #@+node:1.20130426141258.3876: *3* collidesWithItem
     def collidesWithItem(self,other,mode):
         return False
-            
+    #@+node:1.20130426141258.3877: *3* setForceDirection
     def setForceDirection(self, a):
         '''
         set scene.forceDirection to a angle
         '''
         self.scene.forceDirection=a
-        
+    #@+node:1.20130426141258.3878: *3* setIsGuided
     def setIsGuided(self, bool):
         '''
         set scene.isGuided to bool value
         '''
         self.scene.isGuided=bool
-        
+    #@+node:1.20130426141258.3879: *3* setIsGuidLocked
     def setIsGuidLocked(self, bool):
         '''
         set scene.isGuideLocked to bool value
         '''
         self.scene.isGuideLocked=bool
-    
+    #@+node:1.20130426141258.3880: *3* addGuideByAngle
     def addGuideByAngle(self, a):
         '''
         add guide by a angle
         '''
         Guide(self, a)
         self.guides.append(a)
-        
+    #@+node:1.20130426141258.3881: *3* addGuidesByIncrement
     def addGuidesByIncrement(self, a=math.pi/2):
         '''
         add guides by a increment angle
@@ -91,20 +104,20 @@ class GuideHandler(QtGui.QGraphicsItem):
             self.guides.append(g)
             i=i+a
         return
-    
+    #@+node:1.20130426141258.3882: *3* clearGuides
     def clearGuides(self):
         '''
         delete all guides   STILL DOESN'T WORK HELPPPPPPPPPPPPPPPPPPPPP
         '''
         for i in self.childItems():
             i.kill()
-            
+    #@+node:1.20130426141258.3883: *3* place
     def place(self, x, y):
         '''
         set position of the handler (called by icommand)
         '''
         self.setPos(x, y*-1)
-    
+    #@+node:1.20130426141258.3884: *3* reset
     def reset(self):
         '''
         reset position of the handler and hides it
@@ -115,25 +128,28 @@ class GuideHandler(QtGui.QGraphicsItem):
             self.hide()
         except:
             return
-    
+    #@+node:1.20130426141258.3885: *3* hideGuides
     def hideGuides(self):
         '''
         hides every guide children
         '''
         for i in self.childItems():
             i.hide()
-        
+    #@+node:1.20130426141258.3886: *3* boundingRect
     def boundingRect(self):
         return self.childrenBoundingRect()
-    
+    #@+node:1.20130426141258.3887: *3* paint
     def paint(self, painte, option, widget):
         return
-        
+    #@-others
+#@+node:1.20130426141258.3888: ** class Guide
 class Guide(QtGui.QGraphicsLineItem):
     '''
     This class provide a guide object and it's management
     it's added to the GuideHandler object
     '''
+    #@+others
+    #@+node:1.20130426141258.3889: *3* __init__
     def __init__(self, parent=None, a=0.0):
         super(Guide, self).__init__(parent)
         self.handler=parent
@@ -153,18 +169,19 @@ class Guide(QtGui.QGraphicsLineItem):
         
         self.setPen(self.hidePen)
         self.hide()
+    #@+node:1.20130426141258.3890: *3* collidesWithItem
     def collidesWithItem(self,other,mode):
         return False
-    
+    #@+node:1.20130426141258.3891: *3* hide
     def hide(self):
         self.setPen(self.hidePen)
         self.handler.setForceDirection(None)
         self.handler.setIsGuided(None)
-        
+    #@+node:1.20130426141258.3892: *3* kill
     def kill(self):
         
         del self
-        
+    #@+node:1.20130426141258.3893: *3* shape
     def shape(self):
         x=self.pos().x()
         y=self.pos().y()
@@ -179,7 +196,7 @@ class Guide(QtGui.QGraphicsLineItem):
         return shp
         
         return shp
-        
+    #@+node:1.20130426141258.3894: *3* hoverEnterEvent
     def hoverEnterEvent(self, event):
         if self.handler.scene.isGuideLocked==None:
             self.handler.hideGuides()
@@ -188,9 +205,12 @@ class Guide(QtGui.QGraphicsLineItem):
             self.handler.setIsGuided(True)
         super(Guide, self).hoverEnterEvent(event)
         return
-        
+    #@+node:1.20130426141258.3895: *3* hoverLeaveEvent
     def hoverLeaveEvent(self, event):
         if self.handler.scene.isGuideLocked==None:
             self.hide()
             #self.update(self.boundingRect())
         super(Guide, self).hoverLeaveEvent(event)
+    #@-others
+#@-others
+#@-leo

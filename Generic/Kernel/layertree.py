@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.2734: * @file layertree.py
+#@@first
+
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -23,15 +27,28 @@
 #
 #TODO : REPAIR THE LOGGER FOR THIS CLASS
 
+
+
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.2735: ** <<declarations>> (layertree)
 from Kernel.layer               import Layer
 from Kernel.exception           import *
 from Kernel.initsetting         import MAIN_LAYER
 from Kernel.pycadevent          import PyCadEvent
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.2736: ** class LayerTree
 class LayerTree(object):
     """
         this class represents the layer tree structure
     """
+    #@+others
+    #@+node:1.20130426141258.2737: *3* __init__
     def __init__(self,kernel):
         self.__kr=kernel
         try:
@@ -46,7 +63,7 @@ class LayerTree(object):
         self.deleteEvent=PyCadEvent()
         self.insertEvent=PyCadEvent()
         self.update=PyCadEvent()
-        
+    #@+node:1.20130426141258.2738: *3* setActiveLayer
     def setActiveLayer(self, layerId):
         """
             set the active layer
@@ -57,13 +74,13 @@ class LayerTree(object):
             self.setCurrentEvent(activeLayer)
         else:
             raise EntityMissing("Unable to find the layer %s"%str(layerName))
-
+    #@+node:1.20130426141258.2739: *3* getActiveLater
     def getActiveLater(self):
         """
             get the active layer
         """
         return self.__activeLayer
-
+    #@+node:1.20130426141258.2740: *3* insert
     def insert(self, layer, parentLayer):
         """
             Insert a new object in the class and set it as active
@@ -78,7 +95,7 @@ class LayerTree(object):
             self.__kr.getRelatioObject().saveRelation(parentEntDb, childEndDb)
         self.__activeLayer=childEndDb
         self.insertEvent(childEndDb) #Fire Event
-        
+    #@+node:1.20130426141258.2741: *3* _getLayerConstructionElement
     def _getLayerConstructionElement(self, pyCadEnt):
         """
             Retrive the ConstructionElement in the pyCadEnt
@@ -87,13 +104,13 @@ class LayerTree(object):
         for key in unpickleLayers:
             return unpickleLayers[key]
         return None
-
+    #@+node:1.20130426141258.2742: *3* getLayerChildrenLayer
     def getLayerChildrenLayer(self,layer):
         """
             get the layer children
         """
         return self.__kr.getAllChildrenType(layer, 'LAYER')
-
+    #@+node:1.20130426141258.2743: *3* getLayerChildIds
     #************************************************************************
     #*************************layer managment********************************
     #************************************************************************
@@ -105,14 +122,14 @@ class LayerTree(object):
         _layerId=self.__kr.getEntLayerDb(layerName).getId()
         _childIds=self.__kr.__pyCadRelDb.getChildrenIds(_layerId)
         return _childIds
-
+    #@+node:1.20130426141258.2744: *3* getLayerChildren
     def getLayerChildren(self,layer,entityType=None):
         """
             get all dbEnt from layer of type entityType
         """
         _children=self.__kr.getAllChildrenType(layer,entityType)
         return _children
-
+    #@+node:1.20130426141258.2745: *3* getEntLayerDb
     def getEntLayerDb(self,layerName):
         """
             get the pycadent  layer by giving a name
@@ -127,7 +144,7 @@ class LayerTree(object):
                     return layersEnt
         else:
             raise EntityMissing("Layer name %s missing"%str(layerName))
-
+    #@+node:1.20130426141258.2746: *3* getLayerTree
     def getLayerTree(self):
         """
             create a dictionary with all the layer nested
@@ -145,7 +162,7 @@ class LayerTree(object):
         exitDb={}
         exitDb[rootDbEnt.getId()]=(c,createNode(rootDbEnt) )
         return exitDb
-    
+    #@+node:1.20130426141258.2747: *3* getLayerdbTree
     def getLayerdbTree(self):
         """
             create a dictionary with all the layer nested as db entity
@@ -160,14 +177,14 @@ class LayerTree(object):
         exitDb={}
         exitDb[rootDbEnt.getId()]=(rootDbEnt,createNode(rootDbEnt) )
         return exitDb
-        
+    #@+node:1.20130426141258.2748: *3* getParentLayer
     def getParentLayer(self,layer):
         """
             get the parent layer
             ToDo: to be tested
         """
         return self.__kr.getRelatioObject().getParentEnt(layer)
-
+    #@+node:1.20130426141258.2749: *3* delete
     def delete(self,layerId):
         """
             delete the current layer an all the entity releted to it
@@ -189,14 +206,14 @@ class LayerTree(object):
             self.deleteEvent(layerId) # Fire Event
         recursiveDelete(deleteLayer)    
         self.__kr.stopMassiveCreation()
-        
+    #@+node:1.20130426141258.2750: *3* deleteLayerEntity
     def deleteLayerEntity(self, layer):
         """
             delete all layer entity
         """
         for ent in self.getLayerChildren(layer):
                 self.__kr.deleteEntity(ent.getId())
-                
+    #@+node:1.20130426141258.2751: *3* rename
     def rename(self, layerId, newName):
         """
             rename the layer
@@ -204,7 +221,7 @@ class LayerTree(object):
         layer=self.__kr.getEntity(layerId)
         self._rename(layer, newName)
         self.update(layerId) # fire update event
-        
+    #@+node:1.20130426141258.2752: *3* _rename
     def _rename(self, layer, newName):
         """
             rename the layer internal use
@@ -212,7 +229,7 @@ class LayerTree(object):
         layer.getConstructionElements()['LAYER'].name=newName
         self.__kr.saveEntity(layer)
         self.update(layer)
-        
+    #@+node:1.20130426141258.2753: *3* _Hide
     def _Hide(self, layer, hide=True):
         """
             inner function for hiding the layer
@@ -223,7 +240,7 @@ class LayerTree(object):
         layer.getConstructionElements()['LAYER'].Visible=not hide
         self.__kr.saveEntity(layer)
         self.update(layer)
-        
+    #@+node:1.20130426141258.2754: *3* isMainLayer
     def isMainLayer(self, layer):
         """
             check if the layer is the main layer
@@ -231,7 +248,7 @@ class LayerTree(object):
         if layer.getConstructionElements()['LAYER'].name==MAIN_LAYER:
             return True
         return False
-        
+    #@+node:1.20130426141258.2755: *3* Hide
     def Hide(self, layerId, hide=True):
         self.__kr.startMassiveCreation()
         topLayer=self.__kr.getEntity(layerId)  
@@ -248,7 +265,7 @@ class LayerTree(object):
            
         recursiveHide(topLayer)    
         self.__kr.stopMassiveCreation()
-    
+    #@+node:1.20130426141258.2756: *3* hideLayerEntity
     def hideLayerEntity(self, layer, hide=True):    
         """
             hide all the entity of the layer
@@ -259,3 +276,6 @@ class LayerTree(object):
         else:
             for ent in self.getLayerChildren(layer):
                 self.__kr.unHideEntity(entity=ent)
+    #@-others
+#@-others
+#@-leo

@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3405: * @file style.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -21,9 +23,18 @@
 # This class provide all the style operation for the pythoncadDB
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3406: ** <<declarations>> (style)
 from Kernel.GeoEntity.geometricalentity       import GeometricalEntity
 from Kernel.GeoUtil.util                      import getRandomString
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3407: ** class Style
 class Style(GeometricalEntity):
         """
             This class rappresent the style in pythoncad
@@ -91,3 +102,5 @@ class Style(GeometricalEntity):
         @property 
         def props(self):
             return  self['STYLE_1']
+#@-others
+#@-leo

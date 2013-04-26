@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3522: * @file cadscene.py
 #
 #
 # Copyright (c) 2010 Matteo Boscolo, Gertwin Groen
@@ -23,6 +25,12 @@
 #
 #
 
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3523: ** <<declarations>> (cadscene)
 import math, time
 
 from PyQt4 import QtCore, QtGui
@@ -48,8 +56,12 @@ from Kernel.pycadevent              import PyCadEvent
 from Kernel.GeoEntity.point         import Point
 from Kernel.exception               import *
 from Kernel.entity                  import Entity
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3524: ** class CadScene
 class CadScene(QtGui.QGraphicsScene):
+    #@+others
+    #@+node:1.20130426141258.3525: *3* __init__
     def __init__(self, document, parent=None):
         super(CadScene, self).__init__(parent)
         # drawing limits
@@ -98,38 +110,39 @@ class CadScene(QtGui.QGraphicsScene):
         # scene aspect
         r, g, b=BACKGROUND_COLOR #defined in cadinitsetting
         self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(r, g, b), QtCore.Qt.SolidPattern))
-
+    #@+node:1.20130426141258.3526: *3* initSnap
     def initSnap(self):
         # Init loading of snap marks
         self.snappingPoint=SnapPoint(self)
         self.endMark=SnapEndMark(0.0, 0.0)
         self.addItem(self.endMark)
-
+    #@+node:1.20130426141258.3527: *3* initGuides
     def initGuides(self):
         self.GuideHandler=GuideHandler(self, 0.0, 0.0,0.0 )
         self.addItem(self.GuideHandler)
         self.GuideHandler.reset()
-
+    #@+node:1.20130426141258.3528: *3* activeKernelCommand
     @property
     def activeKernelCommand(self):
         """
             return the active command
         """
         return self.__activeKernelCommand
+    #@+node:1.20130426141258.3529: *3* activeKernelCommand
     @activeKernelCommand.setter
     def activeKernelCommand(self, value):
         self.__activeKernelCommand=value
-
+    #@+node:1.20130426141258.3530: *3* setActiveSnap
     def setActiveSnap(self, value):
         if self.activeICommand!=None:
             self.activeICommand.activeSnap=value
             self.snappingPoint.activeSnap=value
-
+    #@+node:1.20130426141258.3531: *3* _qtInputPopUpReturnPressed
     def _qtInputPopUpReturnPressed(self):
         self.forceDirection="F"+self.qtInputPopUp.text
-
-# ###############################################MOUSE EVENTS
-# ##########################################################
+    #@+node:1.20130426141258.3532: *3* mouseMoveEvent
+    # ###############################################MOUSE EVENTS
+    # ##########################################################
 
     def mouseMoveEvent(self, event):
         scenePos=event.scenePos()
@@ -169,9 +182,7 @@ class CadScene(QtGui.QGraphicsScene):
             self.activeICommand.updateMauseEvent(ps, qtItem)
         super(CadScene, self).mouseMoveEvent(event)
         return
-
-
-        
+    #@+node:1.20130426141258.3533: *3* mousePressEvent
     def mousePressEvent(self, event):
         if event.button()==QtCore.Qt.MidButton:
             self.isInPan=True
@@ -184,7 +195,7 @@ class CadScene(QtGui.QGraphicsScene):
                 if event.button()==QtCore.Qt.RightButton:
                     self.showContextMenu(qtItem, event)
         super(CadScene, self).mousePressEvent(event)
-
+    #@+node:1.20130426141258.3534: *3* mouseReleaseEvent
     def mouseReleaseEvent(self, event):
         if event.button()==QtCore.Qt.MidButton:
             self.isInPan=False
@@ -220,7 +231,7 @@ class CadScene(QtGui.QGraphicsScene):
 
         super(CadScene, self).mouseReleaseEvent(event)
         return
-
+    #@+node:1.20130426141258.3535: *3* showContextMenu
     def showContextMenu(self, selectedQtItems, event):
         """
             show a context menu
@@ -240,7 +251,7 @@ class CadScene(QtGui.QGraphicsScene):
         QtCore.QObject.connect(propertyAction, QtCore.SIGNAL('triggered()'), property)
         contexMenu.exec_(event.screenPos())
         del(contexMenu)
-
+    #@+node:1.20130426141258.3536: *3* hanhlerDoubleClick
     def hanhlerDoubleClick(self):
         """
             event add from the handler
@@ -250,26 +261,26 @@ class CadScene(QtGui.QGraphicsScene):
                                             distance=self.posHandler.distance,
                                             angle=self.posHandler.angle)
         self.hideHandler()
-
+    #@+node:1.20130426141258.3537: *3* hideHandler
     def hideHandler(self):
         """
             this function is used to hide the handler
         """
         if self.posHandler!=None:
             self.posHandler.hide()
-
+    #@+node:1.20130426141258.3538: *3* hideSnapMarks
     def hideSnapMarks(self):
         """
             this function is used to hide the handler
         """
         self.endMark.hide()
-
+    #@+node:1.20130426141258.3539: *3* mouseDoubleClickEvent
     def mouseDoubleClickEvent(self, event):
         if event.button()==QtCore.Qt.MidButton:
             self.fireZoomFit()
         else:
             return QtGui.QGraphicsScene.mouseDoubleClickEvent(self, event)
-
+    #@+node:1.20130426141258.3540: *3* cancelCommand
     def cancelCommand(self):
         """
             cancel the active command
@@ -284,9 +295,9 @@ class CadScene(QtGui.QGraphicsScene):
         self.hideSnapMarks()
         self.fromPoint=None
         self.GuideHandler.reset()
-
-# ################################################# KEY EVENTS
-# ##########################################################
+    #@+node:1.20130426141258.3541: *3* keyPressEvent
+    # ################################################# KEY EVENTS
+    # ##########################################################
 
     def keyPressEvent(self, event):
         if event.key()==QtCore.Qt.Key_Return:
@@ -322,7 +333,7 @@ class CadScene(QtGui.QGraphicsScene):
                     #exec(KEY_MAP[event.key()])
                     self.fireKeyShortcut(KEY_MAP[event.key()])
         super(CadScene, self).keyPressEvent(event)
-
+    #@+node:1.20130426141258.3542: *3* keyReleaseEvent
     def keyReleaseEvent(self, event):
         if event.key()==QtCore.Qt.Key_Shift:
 #            if self.activeICommand!=None:
@@ -335,7 +346,7 @@ class CadScene(QtGui.QGraphicsScene):
                 self.selectionAddMode=False
         else:
             pass
-
+    #@+node:1.20130426141258.3543: *3* textInput
     def textInput(self, value):
         """
             someone give some test imput at the scene
@@ -345,14 +356,14 @@ class CadScene(QtGui.QGraphicsScene):
             self.updateSelected()
             self.activeICommand.addTextEvent(value)
         return
-
+    #@+node:1.20130426141258.3544: *3* updateSelected
     def updateSelected(self):
         """
             update all the selected items
         """
         for item in self.selectedItems():
             item.updateSelected()
-
+    #@+node:1.20130426141258.3545: *3* clearPreview
     def clearPreview(self):
         """
             remove the preview items from the scene
@@ -360,7 +371,7 @@ class CadScene(QtGui.QGraphicsScene):
         entitys=[item for item in list(self.items()) if isinstance(item, PreviewBase)]
         for ent in entitys:
             self.removeItem(ent)
-
+    #@+node:1.20130426141258.3546: *3* initDocumentEvents
     def initDocumentEvents(self):
         """
             Initialize the document events.
@@ -372,7 +383,7 @@ class CadScene(QtGui.QGraphicsScene):
             self.__document.massiveDeleteEvent  += self.eventMassiveDelete
             self.__document.undoRedoEvent       += self.eventUndoRedo
             self.__document.hideEntEvent        += self.eventDelete
-
+    #@+node:1.20130426141258.3547: *3* populateScene
     def populateScene(self, document):
         """
             Traverse all entities in the document and add these to the scene.
@@ -380,7 +391,7 @@ class CadScene(QtGui.QGraphicsScene):
         entities = self.__document.getEntityFromType(SCENE_SUPPORTED_TYPE)
         for entity in entities:
             self.addGraficalObject(entity)
-
+    #@+node:1.20130426141258.3548: *3* addGraficalObject
     def addGraficalObject(self, entity):
         """
             Add the single object
@@ -390,14 +401,14 @@ class CadScene(QtGui.QGraphicsScene):
         if entityType in SCENE_SUPPORTED_TYPE:
             newQtEnt=SCANE_OBJECT_TYPE[entityType](entity)
             self.addGraficalItem(newQtEnt)
-
+    #@+node:1.20130426141258.3549: *3* addGraficalItem
     def addGraficalItem(self, qtItem):
         """
             add item to the scene
         """
         if qtItem!=None:
             self.addItem(qtItem)
-
+    #@+node:1.20130426141258.3550: *3* eventUndoRedo
     def eventUndoRedo(self, document, entity):
         """
             Manage the undo redo event
@@ -406,22 +417,19 @@ class CadScene(QtGui.QGraphicsScene):
         self.populateScene(document)
         self.initSnap()
         self.initGuides()
-
-
+    #@+node:1.20130426141258.3551: *3* eventShow
     def eventShow(self, document, entity):
         """
             Manage the show entity event
         """
         self.addGraficalObject(entity)
-
-
+    #@+node:1.20130426141258.3552: *3* eventUpdate
     def eventUpdate(self, document, entity):
         """
             Manage the Update entity event
         """
         self.updateItemsFromID([entity])
-
-
+    #@+node:1.20130426141258.3553: *3* eventDelete
     def eventDelete(self, document, entity):
         """
             Manage the Delete entity event
@@ -431,7 +439,7 @@ class CadScene(QtGui.QGraphicsScene):
         self.deleteEntity([entity])
         #endTime=time.clock()-startTime
         #print "eventDelete in %s"%str(endTime)
-
+    #@+node:1.20130426141258.3554: *3* eventMassiveDelete
     def eventMassiveDelete(self, document,  entitys):
         """
             Massive delete of all entity event
@@ -441,7 +449,7 @@ class CadScene(QtGui.QGraphicsScene):
         self.deleteEntity(entitys)
         #endTime=time.clock()-startTime
         #print "eventDelete in %s"%str(endTime)
-
+    #@+node:1.20130426141258.3555: *3* deleteEntity
     def deleteEntity(self, entitys):
         """
             delete the entity from the scene
@@ -452,7 +460,7 @@ class CadScene(QtGui.QGraphicsScene):
                 itemId=ent.getId()
                 if itemId in dicItems:
                     self.removeItem(dicItems[itemId])
-
+    #@+node:1.20130426141258.3556: *3* getEntFromId
     def getEntFromId(self, id):
         """
             get the grafical entity from an id
@@ -461,7 +469,7 @@ class CadScene(QtGui.QGraphicsScene):
         if len(dicItems)>0:
             return dicItems[0][1]
         return None
-
+    #@+node:1.20130426141258.3557: *3* updateItemsFromID
     def updateItemsFromID(self,entitys):
         """
             Update the scene from the Entity []
@@ -471,13 +479,13 @@ class CadScene(QtGui.QGraphicsScene):
             if ent.getId() in dicItems:
                 self.removeItem(dicItems[ent.getId()])
                 self.addGraficalObject(ent)
-
+    #@+node:1.20130426141258.3558: *3* getAllBaseEntity
     def getAllBaseEntity(self):
         """
             get all the base entity from the scene
         """
         return dict([( item.ID, item)for item in list(self.items()) if isinstance(item, BaseEntity)])
-
+    #@+node:1.20130426141258.3559: *3* updateItemsFromID_2
     def updateItemsFromID_2(self,entities):
         """
             update the scene from the Entity []
@@ -488,3 +496,6 @@ class CadScene(QtGui.QGraphicsScene):
                 self.removeItem(item)
         for ent in entities:
                 self.addGraficalObject(ent)
+    #@-others
+#@-others
+#@-leo

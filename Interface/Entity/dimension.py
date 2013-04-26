@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.4025: * @file dimension.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -21,13 +23,24 @@
 # qt text class
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.4026: ** <<declarations>> (dimension)
 from math import degrees
 
 from Kernel.GeoUtil.geolib                 import Vector
 
 from Interface.Entity.base import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.4027: ** class Dimension
 class Dimension(BaseEntity):
+    #@+others
+    #@+node:1.20130426141258.4028: *3* __init__
     def __init__(self, entity):
         super(Dimension, self).__init__(entity)
         self.updateInfo()
@@ -36,7 +49,7 @@ class Dimension(BaseEntity):
         self.font=QtGui.QFont(stileFont) # This have to be derived from the geoent as son is implemented       return
         #self.setPos(QtCore.QPointF(self.firstPoint.x, self.firstPoint.y) )
         #self.rotate(self.angle)
-
+    #@+node:1.20130426141258.4029: *3* updateInfo
     def updateInfo(self):
         geoEnt=self.geoItem
         self.firstPoint=geoEnt.firstPoint
@@ -46,7 +59,7 @@ class Dimension(BaseEntity):
         self.text=str(geoEnt.distance)  # TODO : take care of style in case of
                                         #        additional info at the text
         self.segments=self.getDimensioLines()
-
+    #@+node:1.20130426141258.4030: *3* calculateTextPoint
     def calculateTextPoint(self):       # TODO : test if the position is ok
         """
             calculate the text position
@@ -59,8 +72,7 @@ class Dimension(BaseEntity):
         vm.mult(v.norm/2)
         pe=p1+vm.point
         return QtCore.QPointF(pe.x, pe.y)
-
-
+    #@+node:1.20130426141258.4031: *3* getDimensioLines
     def getDimensioLines(self):
         """
             compute all the segment needed for the dimension
@@ -79,7 +91,7 @@ class Dimension(BaseEntity):
         sp1=QtCore.QPointF(self.secondPoint.x, self.secondPoint.y*-1.0)
         #
         return [(fp, sp), (fp, fp1), (sp, sp1)]
-
+    #@+node:1.20130426141258.4032: *3* drawShape
     def drawShape(self, painterPath):
         """
             overloading of the shape method
@@ -89,10 +101,12 @@ class Dimension(BaseEntity):
             painterPath.moveTo(p1)
             painterPath.lineTo(p2)
         return
-
+    #@+node:1.20130426141258.4033: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         # Create Text
         painter.drawText(self.location,  self.text)
         for p1, p2 in self.segments:
             painter.drawLine(p1, p2)
-
+    #@-others
+#@-others
+#@-leo

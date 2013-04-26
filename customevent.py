@@ -1,18 +1,29 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.2396: * @file customevent.py
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.2397: ** <<declarations>> (customevent)
 from PyQt4 import QtCore, QtGui
 from Kernel.document     import *
 from Kernel.exception    import *
 from Kernel.GeoEntity.point         import Point
 from Kernel.Command.basecommand     import BaseCommand
-from .Interface.pycadapp             import PyCadApp
-
+from Interface.pycadapp             import PyCadApp
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.2398: ** class testCmdLine
 class testCmdLine(object):
+    #@+others
+    #@+node:1.20130426141258.2399: *3* __init__
     def __init__(self, dialog, scene):
         self.dialog=dialog
         self.scene=scene
         self._addCustomEvent()
         self._inizializeCommand()
         self.activeCommand=None
-
+    #@+node:1.20130426141258.2400: *3* _inizializeCommand
     def _inizializeCommand(self):    
         """
             inizialize all the command class
@@ -37,7 +48,7 @@ class testCmdLine(object):
         for command in self.__pyCadApplication.getCommandList():
             self.__applicationCommand[command]=self.__pyCadApplication.getCommand(command)
         self.__applicationCommand['?']=PrintHelp(self.__applicationCommand, self.outputMsg)    
-        
+    #@+node:1.20130426141258.2401: *3* _addCustomEvent
     def _addCustomEvent(self):
         """
             add custom event at the user interface
@@ -45,7 +56,7 @@ class testCmdLine(object):
         QtCore.QObject.connect(self.dialog.ImputCmd, QtCore.SIGNAL("returnPressed()"),self.imputCommand)
         #QtCore.QObject.connect(self.dialog.uiTextEditor, QtCore.SIGNAL("textChanged()"),self.imputCommand)
         #QtCore.QObject.connect(self.uiTextEditor, QtCore.SIGNAL("textChanged()"), self.uiTextEditor.update)
-        
+    #@+node:1.20130426141258.2402: *3* imputCommand
     def imputCommand(self):
         """
             imput dialog
@@ -72,7 +83,7 @@ class testCmdLine(object):
                 self.outputMsg('Command not avaiable write ? for command list')
             self.activeCommand=cmdObject
         self.dialog.ImputCmd.setText("")
-    
+    #@+node:1.20130426141258.2403: *3* performCommand
     def performCommand(self,cObject, text):
         """
             Perform a Command
@@ -108,7 +119,7 @@ class testCmdLine(object):
             return None
         except PyCadWrongCommand:
             self.outputMsg("Wrong Command")
-    
+    #@+node:1.20130426141258.2404: *3* convertToBool
     def convertToBool(self, msg):   
         """
             return an int from user
@@ -117,7 +128,7 @@ class testCmdLine(object):
             return True
         else:
             return False
-
+    #@+node:1.20130426141258.2405: *3* convertToInt
     def convertToInt(self, msg):   
         """
             return an int from user
@@ -125,7 +136,7 @@ class testCmdLine(object):
         if msg:
             return int(msg)
         return None
-        
+    #@+node:1.20130426141258.2406: *3* convertToFloat
     def convertToFloat(self, msg):
         """
             return a float number
@@ -133,7 +144,7 @@ class testCmdLine(object):
         if msg:
             return float(msg)
         return None
-        
+    #@+node:1.20130426141258.2407: *3* convertToPoint
     def convertToPoint(self, msg):
         """
             ask at the user to imput a point 
@@ -144,8 +155,7 @@ class testCmdLine(object):
             y=float(coords[1])
             return Point(x, y)
         return None
-
-            
+    #@+node:1.20130426141258.2408: *3* outputMsg
     def outputMsg(self, msg):   
         """
             print a message in to the self.dialog.uiTextEditor 
@@ -153,7 +163,8 @@ class testCmdLine(object):
         #self.dialog.uiTextEditor.moveCursor(QtGui.QTextCursor.Down)
         msg="\r<PythonCAD> : "+msg
         self.dialog.uiTextEditor.insertPlainText(msg)
-
+    #@-others
+#@+node:1.20130426141258.2409: ** printEntity
 def printEntity(ents, msgFucntion):
         """
             print a query result
@@ -165,14 +176,17 @@ def printEntity(ents, msgFucntion):
                 msgFucntion("There are more then 100 entitys in the select so i stop printing")
                 break
             i+=1
-            
+#@+node:1.20130426141258.2410: ** class GetEnts
 class GetEnts(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2411: *3* __init__
     def __init__(self, document, msgFucntion):
         BaseCommand.__init__(self, document)
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
         self.outputMsg=msgFucntion
         self.exception=[ExcText]
         self.message=["Give Me the Document Type Enter for All"]
+    #@+node:1.20130426141258.2412: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -185,9 +199,11 @@ class GetEnts(BaseCommand):
         printEntity(ents,self.outputMsg )
         self.outputMsg("Exec query get %s ent in %s s"%(str(len(ents)), str(endTime)))
         self.outputMsg("********************************")
-
-
+    #@-others
+#@+node:1.20130426141258.2413: ** class UnDo
 class UnDo(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2414: *3* __init__
     def __init__(self, application, msgFunction):
         BaseCommand.__init__(self, None)
         self.__application=application
@@ -195,13 +211,17 @@ class UnDo(BaseCommand):
         self.exception=[]
         self.message=["Press enter to perform the Undo command"]
         self.outputMsg=msgFunction
+    #@+node:1.20130426141258.2415: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=0:
             raise PyCadWrongImputData("Wrong number of imput parameter")
         doc=self.__application.ActiveDocument
         doc.unDo()
-
+    #@-others
+#@+node:1.20130426141258.2416: ** class ReDo
 class ReDo(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2417: *3* __init__
     def __init__(self, application, msgFunction):
         BaseCommand.__init__(self, None)
         self.__application=application
@@ -209,13 +229,17 @@ class ReDo(BaseCommand):
         self.exception=[]
         self.message=["Press enter to perform the ReDo command"]
         self.outputMsg=msgFunction
+    #@+node:1.20130426141258.2418: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=0:
             raise PyCadWrongImputData("Wrong number of imput parameter")
         doc=self.__application.ActiveDocument
         doc.reDo()
-
+    #@-others
+#@+node:1.20130426141258.2419: ** class GetActiveDoc
 class GetActiveDoc(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2420: *3* __init__
     def __init__(self, application, msgFunction):
         BaseCommand.__init__(self, None)
         self.__application=application
@@ -223,6 +247,7 @@ class GetActiveDoc(BaseCommand):
         self.exception=[]
         self.message=["Press enter to perform the command"]
         self.outputMsg=msgFunction
+    #@+node:1.20130426141258.2421: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=0:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -230,21 +255,28 @@ class GetActiveDoc(BaseCommand):
         self.__application.ActiveDocument=docName
         doc=self.__application.ActiveDocument
         self.outputMsg("Active Document is %s"%str(doc.dbPath))
-        
+    #@-others
+#@+node:1.20130426141258.2422: ** class SetActiveDoc
 class SetActiveDoc(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2423: *3* __init__
     def __init__(self, application):
         BaseCommand.__init__(self, None)
         self.__application=application
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
         self.exception=[ExcText]
         self.message=["Give Me the Document Name"]
+    #@+node:1.20130426141258.2424: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
         docName=self.value[0]
         self.__application.ActiveDocument=docName
-        
+    #@-others
+#@+node:1.20130426141258.2425: ** class GetDocuments
 class GetDocuments(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2426: *3* __init__
     def __init__(self, documents, msgFunction):
         BaseCommand.__init__(self, None)
         self.__docuemnts=documents
@@ -252,11 +284,12 @@ class GetDocuments(BaseCommand):
         self.exception=[]
         self.message=["Press enter to perform the command"]
         self.outputMsg=msgFunction
+    #@+node:1.20130426141258.2427: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=0:
             raise PyCadWrongImputData("Wrong number of imput parameter")
         self.showDocuments()
-        
+    #@+node:1.20130426141258.2428: *3* showDocuments
     def showDocuments(self):
         """
             show The list of documents
@@ -270,13 +303,17 @@ class GetDocuments(BaseCommand):
             self.outputMsg("***********************************")
         except:
             self.outputMsg("Unable To Perform the GetDocuments") 
-            
+    #@-others
+#@+node:1.20130426141258.2429: ** class CreateStyle
 class CreateStyle(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2430: *3* __init__
     def __init__(self, document):
         BaseCommand.__init__(self, document)
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
         self.exception=[ExcText]
         self.message=["Give Me the Style Name"]
+    #@+node:1.20130426141258.2431: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -284,14 +321,18 @@ class CreateStyle(BaseCommand):
         #self.inputMsg("Write style name")
         stl=Style(styleName)
         self.document.saveEntity(stl)
-        
+    #@-others
+#@+node:1.20130426141258.2432: ** class EntityExsist
 class EntityExsist(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2433: *3* __init__
     def __init__(self, document, msgFunction ):
         BaseCommand.__init__(self, document)
         self.outputMsg=msgFunction
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
         self.exception=[ExcText]
         self.message=["Give me the entity id"]
+    #@+node:1.20130426141258.2434: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -301,14 +342,18 @@ class EntityExsist(BaseCommand):
             self.outputMsg("Entity Found in the db")
         else:
             self.outputMsg("Entity Not Found")
-            
+    #@-others
+#@+node:1.20130426141258.2435: ** class DeleteEntity
 class DeleteEntity(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2436: *3* __init__
     def __init__(self, document, msgFunction ):
         BaseCommand.__init__(self, document)
         self.outputMsg=msgFunction
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
         self.exception=[ExcText]
         self.message=["Give me the entity id"]
+    #@+node:1.20130426141258.2437: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -316,13 +361,17 @@ class DeleteEntity(BaseCommand):
         #self.inputMsg("Write style name")
         if self.document.entityExsist(entId):
             self.document.deleteEntity(entId)
-
+    #@-others
+#@+node:1.20130426141258.2438: ** class EntityInfo
 class EntityInfo(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2439: *3* __init__
     def __init__(self, document, msgFunction ):
         BaseCommand.__init__(self, document)
         self.outputMsg=msgFunction
         self.exception=[ExcText]
         self.message=["Give me the entity id"]
+    #@+node:1.20130426141258.2440: *3* applyCommand
     def applyCommand(self):
         if len(self.value)!=1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
@@ -333,9 +382,11 @@ class EntityInfo(BaseCommand):
             self.outputMsg("Entity %s"%str(geoEnt))
         else:
             self.outputMsg("Wrong id Number")
-
-            
+    #@-others
+#@+node:1.20130426141258.2441: ** class PrintHelp
 class PrintHelp(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2442: *3* __init__
     def __init__(self, commandArray, msgFunction):
         BaseCommand.__init__(self, None)
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
@@ -343,17 +394,20 @@ class PrintHelp(BaseCommand):
         self.outputMsg=msgFunction
         self.message=["Print the help Press enter to ally the command "]
         self.commandNames=list(commandArray.keys())
-
+    #@+node:1.20130426141258.2443: *3* __next__
     def __next__(self):    
         raise StopIteration
-
+    #@+node:1.20130426141258.2444: *3* applyCommand
     def applyCommand(self):
         self.outputMsg("***********Command List******************")
         self.commandNames.sort()
         for s in self.commandNames:
             self.outputMsg(s)
-            
+    #@-others
+#@+node:1.20130426141258.2445: ** class TestKernel
 class TestKernel(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2446: *3* __init__
     def __init__(self, application, msgFunction):
         BaseCommand.__init__(self, None)
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
@@ -361,15 +415,15 @@ class TestKernel(BaseCommand):
         self.outputMsg=msgFunction
         self.message=["Press enter to start the test"]
         self.__pyCadApplication=application
-
+    #@+node:1.20130426141258.2447: *3* __next__
     def __next__(self):    
         raise StopIteration
-
+    #@+node:1.20130426141258.2448: *3* applyCommand
     def applyCommand(self):
         self.outputMsg("*********** Start Test ******************")
         self.featureTest()
         self.outputMsg("*********** End   Test ******************")
-            
+    #@+node:1.20130426141258.2449: *3* featureTest
     def featureTest(self):
             """
                 this function make a basic test
@@ -440,7 +494,7 @@ class TestKernel(BaseCommand):
             self.GeotestChamfer()
             # Test Chamfer Command 
             self.testChamferCommand()
-            
+    #@+node:1.20130426141258.2450: *3* testGeoChamfer
     def testGeoChamfer(self):    
         self.outputMsg("Test Chamfer")
         p1=Point(0.0, 0.0)
@@ -460,7 +514,7 @@ class TestKernel(BaseCommand):
                 self.outputMsg("P1 Cords %s,%s"%(str(x), str(y)))
         else:
             self.outputMsg("Chamfer segment in None")
-
+    #@+node:1.20130426141258.2451: *3* testChamferCommand
     def testChamferCommand(self):
         """
             this function is usefoul for short test
@@ -484,7 +538,7 @@ class TestKernel(BaseCommand):
         cObject[keys[4]]=None
         cObject[keys[5]]=None
         cObject.applyCommand()
-
+    #@+node:1.20130426141258.2452: *3* getRandomPoint
     def getRandomPoint(self):
         """
             get e random point
@@ -492,7 +546,7 @@ class TestKernel(BaseCommand):
         x=random()*1000
         y=random()*1000
         return Point(x, y)
-
+    #@+node:1.20130426141258.2453: *3* performCommandRandomly
     def performCommandRandomly(self, commandName, andLoop=10):
         """
             set some random Value at the command imput
@@ -520,8 +574,11 @@ class TestKernel(BaseCommand):
         else:
             self.outputMsg("Apply Command")
             cObject.applyCommand()
-            
+    #@-others
+#@+node:1.20130426141258.2454: ** class EasyTest
 class EasyTest(BaseCommand):
+    #@+others
+    #@+node:1.20130426141258.2455: *3* __init__
     def __init__(self, application, msgFunction):
         BaseCommand.__init__(self, None)
         #PyCadBaseCommand.__exception=[ExcPoint, ExcPoint]
@@ -529,16 +586,17 @@ class EasyTest(BaseCommand):
         self.outputMsg=msgFunction
         self.message=["Press enter to start the test"]
         self.__pyCadApplication=application
-
+    #@+node:1.20130426141258.2456: *3* __next__
     def __next__(self):    
         raise StopIteration
-
+    #@+node:1.20130426141258.2457: *3* applyCommand
     def applyCommand(self):
         self.outputMsg("*********** Start Test ******************")
         self.easyTest()
         
         #self.MassiveDelete()
         self.outputMsg("*********** End   Test ******************")    
+    #@+node:1.20130426141258.2458: *3* MassiveDelete
     def MassiveDelete(self):
         try:
             import time 
@@ -562,7 +620,7 @@ class EasyTest(BaseCommand):
             newDoc.massiveDelete(ids)
             endTime=time.clock()-startTime
             print("Delete 1000 entity in %s"%str(endTime))    
-            
+    #@+node:1.20130426141258.2459: *3* easyTest
     def easyTest(self):
         """
             this function is usefoul for short test
@@ -579,6 +637,7 @@ class EasyTest(BaseCommand):
         #self.rotate()
         self.trim()
         newDoc.stopMassiveCreation()
+    #@+node:1.20130426141258.2460: *3* trim
     def trim(self):    
         """
             test the trim command
@@ -601,7 +660,7 @@ class EasyTest(BaseCommand):
         trimCmd[keys[3]]=Point(210, 1)
         trimCmd[keys[4]]="B"
         trimCmd.applyCommand() 
-        
+    #@+node:1.20130426141258.2461: *3* rotate
     def rotate(self):
         """
             perform a rotate operation
@@ -636,7 +695,7 @@ class EasyTest(BaseCommand):
         newE=newDoc.saveEntity(_e)
         _e.rotate(cp, ang)
         newDoc.saveEntity(_e)
-        
+    #@+node:1.20130426141258.2462: *3* testMove
     def testMove(self):
         """
             perform a move operation
@@ -670,8 +729,7 @@ class EasyTest(BaseCommand):
         newE=newDoc.saveEntity(_e)
         _e.move(sp, ep)
         newDoc.saveEntity(_e)
-        
-        
+    #@+node:1.20130426141258.2463: *3* testMirror
     def testMirror(self):    
         """
             perform a mirror operation of all the entity
@@ -707,8 +765,7 @@ class EasyTest(BaseCommand):
         newE=newDoc.saveEntity(_e)
         _e.mirror(_s)
         newDoc.saveEntity(_e)
-        
-        
+    #@+node:1.20130426141258.2464: *3* testFillet
     def testFillet(self, p1, p2, p3, pp1, pp2, R=100):
         newDoc=self.__pyCadApplication.ActiveDocument
         args={"SEGMENT_0":p1, "SEGMENT_1":p2}
@@ -728,7 +785,7 @@ class EasyTest(BaseCommand):
         cObject[keys[4]]="BOTH"
         cObject[keys[5]]=R
         cObject.applyCommand() 
-        
+    #@+node:1.20130426141258.2465: *3* testBisector
     def testBisector(self, p1, p2, p3, pp1, pp2, L=100):
         newDoc=self.__pyCadApplication.ActiveDocument
         args={"SEGMENT_0":p1, "SEGMENT_1":p2}
@@ -747,7 +804,7 @@ class EasyTest(BaseCommand):
         cObject[keys[3]]=pp2
         cObject[keys[4]]=L
         cObject.applyCommand()
-    
+    #@+node:1.20130426141258.2466: *3* multitest
     def multitest(self):    
         p1=Point(0, 0)
         p2=Point(10, 0)
@@ -788,7 +845,7 @@ class EasyTest(BaseCommand):
         pp2=Point(112, 30)
         self.testBisector(p1, p2, p3, pp1, pp2)   
         self.testFillet(p1, p2, p3, pp1, pp2)
-   
+
         p1=Point(100, 100)
         p2=Point(200, 0)
         p3=Point(200, 100)
@@ -796,7 +853,7 @@ class EasyTest(BaseCommand):
         pp2=Point(112, 30)
         self.testBisector(p1, p2, p3, pp1, pp2, 30) 
         self.testFillet(p1, p2, p3, pp1, pp2, 30)   
-
+    #@+node:1.20130426141258.2467: *3* testFillet1
     def testFillet1(self):
         newDoc=self.__pyCadApplication.ActiveDocument
         intPoint=Point(0.0, 0.0)
@@ -817,8 +874,7 @@ class EasyTest(BaseCommand):
         cObject[keys[4]]="BOTH"
         cObject[keys[5]]=4
         cObject.applyCommand()
-        
-        
+    #@+node:1.20130426141258.2468: *3* testFillet2
     def testFillet2(self):    
         newDoc=self.__pyCadApplication.ActiveDocument
         intPoint=Point(0, 0)
@@ -858,7 +914,7 @@ class EasyTest(BaseCommand):
         cObject[keys[3]]=Point(0, 103)
         cObject[keys[4]]=1000
         cObject.applyCommand()
-        
+    #@+node:1.20130426141258.2469: *3* testChamfer
     def testChamfer(self):
         newDoc=self.__pyCadApplication.ActiveDocument
         intPoint=Point(2.0, 2.0)
@@ -881,3 +937,6 @@ class EasyTest(BaseCommand):
         cObject[keys[6]]=2
 
         cObject.applyCommand()
+    #@-others
+#@-others
+#@-leo

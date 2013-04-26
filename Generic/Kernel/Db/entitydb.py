@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.2964: * @file entitydb.py
 #encoding: UTF-8
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -22,17 +24,28 @@
 # This module provide basic operation for the entity in the pythoncad database
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.2965: ** <<declarations>> (entitydb)
 import pickle as pickle
 
 from Kernel.entity              import *
 from Kernel.Db.basedb           import BaseDb
 from Kernel.initsetting         import *
 from Kernel.exception           import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.2966: ** class EntityDb
 class EntityDb(BaseDb):
     """
         this class provide the besic operation for the entity
     """
+    #@+others
+    #@+node:1.20130426141258.2967: *3* __init__
     def __init__(self,dbConnection):
         BaseDb.__init__(self)
         self._entFields={
@@ -82,7 +95,7 @@ class EntityDb(BaseDb):
                 if not classColumn in dbColumns:
                     addTableField(classColumn,self._entFields[classColumn])
             self.__revisionIndex=self.getRevisionIndex()
-            
+    #@+node:1.20130426141258.2968: *3* getRevisionIndex
     def getRevisionIndex(self):
         """
             get the revision index from the database
@@ -91,19 +104,19 @@ class EntityDb(BaseDb):
         index=self.fetchOneRow(_sql)
         if index is None: return 0
         return index
-        
+    #@+node:1.20130426141258.2969: *3* increaseRevisionIndex
     def increaseRevisionIndex(self):
         """
             increase the relesed index
         """
         self.__revisionIndex+=1
-
+    #@+node:1.20130426141258.2970: *3* decreseRevisionIndex
     def decreseRevisionIndex(self):
         """
             decrese the revision index
         """
         self.__revisionIndex-=1
-
+    #@+node:1.20130426141258.2971: *3* saveEntity
     def saveEntity(self,entityObj,undoId):
         """
             this method save the entity in the db
@@ -150,7 +163,7 @@ class EntityDb(BaseDb):
                     _entityVisible,
                     _property)
         self.makeUpdateInsert(_sqlInsert, tupleArg)
-        
+    #@+node:1.20130426141258.2972: *3* getEntityFromTableId
     def getEntityFromTableId(self,entityTableId):
         """
             Get the entity object from the database Univoc id
@@ -180,7 +193,7 @@ class EntityDb(BaseDb):
                     _outObj.addPropertie(name, value)
                 _outObj.updateBBox()
         return _outObj
-    
+    #@+node:1.20130426141258.2973: *3* getEntityEntityId
     def getEntityEntityId(self,entityId):
         """
             get all the entity with the entity id
@@ -210,7 +223,7 @@ class EntityDb(BaseDb):
                 _entObj.addPropertie(name, value)
             _entObj.updateBBox()
         return _entObj
-
+    #@+node:1.20130426141258.2974: *3* getEntitysFromStyle
     def getEntitysFromStyle(self,styleId):
         """
             return all the entity that match the styleId
@@ -250,7 +263,7 @@ class EntityDb(BaseDb):
             _objEnt.updateBBox()            
             _outObj.append(_objEnt)
         return _outObj
-    
+    #@+node:1.20130426141258.2975: *3* _getEntInVersion
     def _getEntInVersion(self, versionIndex):
         """
             get entity in version
@@ -275,7 +288,7 @@ class EntityDb(BaseDb):
                     AND pycad_index = %s
                     """%str(versionIndex)
         return self.makeSelect(_sqlGet)
-        
+    #@+node:1.20130426141258.2976: *3* getMultiFilteredEntity
     def getMultiFilteredEntity(self, visible=1, entityType='ALL', entityTypeArray=None):
         """
             get all visible entity
@@ -318,7 +331,7 @@ class EntityDb(BaseDb):
                     %s
                     """%(str(visible), str(entityTypes))
         return self.makeSelect(_sqlGet)   
-        
+    #@+node:1.20130426141258.2977: *3* getEntityFromType
     def getEntityFromType(self,entityType):
         """
             get all the entity from a given type 
@@ -338,7 +351,7 @@ class EntityDb(BaseDb):
                 _objEnt.updateBBox()            
             _outObj.append(_objEnt)
         return _outObj            
-    
+    #@+node:1.20130426141258.2978: *3* getEntityFromTypeArray
     def getEntityFromTypeArray(self, typeArray):
         """
             get entitys from an array of type
@@ -349,7 +362,7 @@ class EntityDb(BaseDb):
             _objEnt=self.convertRowToDbEnt(_row)            
             _outObj.append(_objEnt)
         return _outObj  
-        
+    #@+node:1.20130426141258.2979: *3* convertRowToDbEnt
     def convertRowToDbEnt(self, row):
         """
             this function convert a single db row in a dbEnt Object
@@ -376,7 +389,7 @@ class EntityDb(BaseDb):
                     _objEnt.addPropertie(name, value)
         _objEnt.updateBBox()  
         return _objEnt
-        
+    #@+node:1.20130426141258.2980: *3* exsisting
     def exsisting(self, id):    
         """
             check id the entity is new or is olready in the database
@@ -390,7 +403,7 @@ class EntityDb(BaseDb):
             if _row is not None:
                 return True
         return False
-        
+    #@+node:1.20130426141258.2981: *3* haveDrwEntitys
     def haveDrwEntitys(self, drwEntArray):
         """
             check if there is some drawing entity in the db
@@ -410,7 +423,7 @@ class EntityDb(BaseDb):
                 return 0
             return self.fetchOneRow(sqlSelect)>0
         return 0
-        
+    #@+node:1.20130426141258.2982: *3* getNewEntId
     def getNewEntId(self):
         """
             get the last id entity 
@@ -424,7 +437,7 @@ class EntityDb(BaseDb):
                 if _dbEntRow[0] is not None:
                     _outObj=int(_dbEntRow[0])
         return _outObj
-
+    #@+node:1.20130426141258.2983: *3* markUndoVisibility
     def markUndoVisibility(self,undoId,visible):
         """
             set as undo visible all the entity with undoId
@@ -432,7 +445,7 @@ class EntityDb(BaseDb):
         _sqlVisible="""UPDATE pycadent SET pycad_undo_visible=%s
                     WHERE pycad_undo_id=%s"""%(str(visible),str(undoId))
         self.makeUpdateInsert(_sqlVisible)
-    
+    #@+node:1.20130426141258.2984: *3* markUndoVisibilityFromEntId
     def markUndoVisibilityFromEntId(self, entityId, visible):
         """
             set the undo visibility to for all the entity
@@ -444,7 +457,7 @@ class EntityDb(BaseDb):
         except:
             # may be the update culd fail in case we create the first entity
             return
-
+    #@+node:1.20130426141258.2985: *3* markEntVisibility
     def markEntVisibility(self,entId,visible):
         """
             mark the visibility of the entity
@@ -458,7 +471,7 @@ class EntityDb(BaseDb):
         _sqlVisible="""UPDATE pycadent SET pycad_undo_visible=%s
                     WHERE pycad_id=%s"""%(str(visible),str(_entId))
         self.makeUpdateInsert(_sqlVisible) 
-             
+    #@+node:1.20130426141258.2986: *3* hideAllEntityIstance
     def hideAllEntityIstance(self,entId,visible):
         """
             hide all the row with entId
@@ -466,7 +479,7 @@ class EntityDb(BaseDb):
         _sqlVisible="""UPDATE pycadent SET pycad_undo_visible=%s
                     WHERE pycad_entity_id=%s"""%(str(visible),str(entId))
         self.makeUpdateInsert(_sqlVisible)      
-        
+    #@+node:1.20130426141258.2987: *3* delete
     def delete(self,tableId):
         """
             delete the entity from db
@@ -474,7 +487,7 @@ class EntityDb(BaseDb):
         _sqlDelete="""DELETE FROM pycadent 
                         WHERE pycad_id=%s"""%str(tableId)
         self.makeUpdateInsert(_sqlDelete)
-    
+    #@+node:1.20130426141258.2988: *3* uptateEntity
     def uptateEntity(self, entityObj):
         """
             Update an exsisting entity in the database 
@@ -532,7 +545,7 @@ class EntityDb(BaseDb):
         #if dose not work conver it with ? insted of %s
         #and use the  self.makeUpdateInsert(_sqlInsert,tupleargs)
         self.makeUpdateInsert(_sqlInsert)
-        
+    #@+node:1.20130426141258.2989: *3* clearEnt
     def clearEnt(self):
         """
             perform the clear of all the entity that are not in the release state
@@ -545,4 +558,6 @@ class EntityDb(BaseDb):
         _rows=self.makeSelect(_sql)   
         for _row in _rows: 
             self.delete(_row[0])
-
+    #@-others
+#@-others
+#@-leo

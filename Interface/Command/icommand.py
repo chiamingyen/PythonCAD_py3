@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3754: * @file icommand.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -23,6 +25,13 @@
 #
 # How it works:
 #
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3755: ** <<declarations>> (icommand)
 import logging
 #
 #Kernel Import
@@ -38,7 +47,9 @@ from Interface.cadinitsetting       import RESTART_COMMAND_OPTION
 from Interface.Dialogs.property     import Property
 from Interface.Preview.factory      import *
 from Interface.DrawingHelper.snap   import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3756: ** class ICommand
 class ICommand(object):
     """
         this class provide base command operation
@@ -46,6 +57,8 @@ class ICommand(object):
     #self.scene.snappingPoint.activeSnap=SNAP_POINT_ARRAY["LIST"]  # Define the active snap system
     drawPreview=True                    # Enable the preview system
     automaticApply=True                 # Apply the command at the last insert value
+    #@+others
+    #@+node:1.20130426141258.3757: *3* __init__
     #restartCommandOption=False         # moved to Interface.cadinitsetting  > RESTART_COMMAND_OPTION
 
     def __init__(self, scene):
@@ -60,28 +73,32 @@ class ICommand(object):
         self._index=-1
         self.updateInput=PyCadEvent()
         #self.scene.snappingPoint.activeSnap=#SNAP_POINT_ARRAY["LIST"]  # Define the active snap system
+    #@+node:1.20130426141258.3758: *3* forceDirection
     @property
     def forceDirection(self):
         """
             get scene force direction
         """
         return self.scene.forceDirection
+    #@+node:1.20130426141258.3759: *3* kernelCommand
     @property
     def kernelCommand(self):
         """
             get scene the kernel command
         """
         return self.scene.activeKernelCommand
+    #@+node:1.20130426141258.3760: *3* scene
     @property
     def scene(self):
         """
             get scene
         """
         return self._scene
+    #@+node:1.20130426141258.3761: *3* index
     @property
     def index(self):
         return self._index
-
+    #@+node:1.20130426141258.3762: *3* restartCommand
     def restartCommand(self):
         """
             reuse the command
@@ -96,7 +113,7 @@ class ICommand(object):
         self._forceSnap={}
         self._index=-1
         self.removePreviewItemToTheScene()
-
+    #@+node:1.20130426141258.3763: *3* addMauseEvent
     def addMauseEvent(self, point, entity,distance=None,angle=None , text=None, force=None, correct=True):
         """
             add value to a new slot of the command
@@ -159,7 +176,7 @@ class ICommand(object):
                 self.applyCommand()
             else:
                 self.restartCommand()
-    
+    #@+node:1.20130426141258.3764: *3* addTextEvent
     def addTextEvent(self, value):
         """
             compute imput from text
@@ -183,7 +200,7 @@ class ICommand(object):
                 self.updateInput(msg)
                 self.updateInput(self.kernelCommand.activeMessage)
                 return
-            
+    #@+node:1.20130426141258.3765: *3* applyDefault
     def applyDefault(self):
         """
             apply the default value command
@@ -197,7 +214,7 @@ class ICommand(object):
         except StopIteration:
                 self.applyCommand()
                 return
-
+    #@+node:1.20130426141258.3766: *3* applyCommand
     def applyCommand(self):
         """
             apply the command
@@ -226,8 +243,7 @@ class ICommand(object):
             print(type(e))     # the exception instance
             print("ICommand applyCommand Errore ", str(e))
             self.restartCommand()
-
-
+    #@+node:1.20130426141258.3767: *3* getEntity
     def getEntity(self, position):
         """
             get the entity nearest at the mouse position
@@ -244,7 +260,7 @@ class ICommand(object):
             if isinstance(e, BaseEntity):
                 return e
         return None
-
+    #@+node:1.20130426141258.3768: *3* updateMauseEvent
     def updateMauseEvent(self, point, entity, distance=None, force=None):
         """
             update value to the active slot of the command
@@ -261,7 +277,7 @@ class ICommand(object):
             self._snap[updIndex]=point
             self._forceSnap[updIndex]=force
         self.updatePreview(point, distance, entity) #   mange preview
-
+    #@+node:1.20130426141258.3769: *3* getDistance
     def getDistance(self, point):
         """
             Get The distance from 2 points
@@ -272,7 +288,7 @@ class ICommand(object):
             return d
         else:
             return None
-
+    #@+node:1.20130426141258.3770: *3* calculateAngle
     def calculateAngle(self, snap):
         """
             calculate the angle betwin the point clicked
@@ -288,7 +304,7 @@ class ICommand(object):
                 return None
         except EntityMissing:
             return None
-        
+    #@+node:1.20130426141258.3771: *3* decodeText
     def decodeText(self, value):
         """
             encode the text given from the user
@@ -364,13 +380,13 @@ class ICommand(object):
         except:
             raise PyCadWrongImputData("BaseCommand : Wrong imput parameter for the command")
         return niceReturn()
-
+    #@+node:1.20130426141258.3772: *3* getIdsString
     def getIdsString(self, value):
         """
             return the entity from a string value (id)
         """
         return self.scene.getEntFromId(value)
-
+    #@+node:1.20130426141258.3773: *3* updatePreview
     def updatePreview(self, point, distance, entity):
         """
             make update of the preview
@@ -383,13 +399,14 @@ class ICommand(object):
                 self._previewItem.updatePreview(point,
                                                 distance,
                                                     self.kernelCommand)
+    #@+node:1.20130426141258.3774: *3* addPreviewItemToTheScene
     def addPreviewItemToTheScene(self):
         """
             add the preview item at the scene
         """
         if self._previewItem!=None:
             self._scene.addItem(self._previewItem)
-            
+    #@+node:1.20130426141258.3775: *3* removePreviewItemToTheScene
     def removePreviewItemToTheScene(self):
         """
             Remove all the preview items from the scene
@@ -397,37 +414,37 @@ class ICommand(object):
         if self._previewItem!=None:
             self._scene.clearPreview()
             self._previewItem=None
-        
+    #@+node:1.20130426141258.3776: *3* getPointClick
     def getPointClick(self, index):
         """
             return the index clicked entity
         """
         return self.getDummyElement(self._point, index)
-
+    #@+node:1.20130426141258.3777: *3* getEntityClick
     def getEntityClick(self, index):
         """
             return the index clicked entity
         """
         return self.getDummyElement(self._entity, index)
-
+    #@+node:1.20130426141258.3778: *3* getDistanceClick
     def getDistanceClick(self, index):
         """
             return the index clicked entity
         """
         return self.getDummyElement(self._distance, index)
-
+    #@+node:1.20130426141258.3779: *3* getSnapClick
     def getSnapClick(self, index):
         """
             return the index clicked entity
         """
         return self.getDummyElement(self._snap, index)
-
+    #@+node:1.20130426141258.3780: *3* getForceSnap
     def getForceSnap(self, index):
         """
             return the index clicked entity
         """
         return self.getDummyElement(self._forceSnap, index)
-
+    #@+node:1.20130426141258.3781: *3* getDummyElement
     def getDummyElement(self, array, index):
         """
             generic function to get an item from a generic array
@@ -435,8 +452,7 @@ class ICommand(object):
         if len(array)>=0 and index<=self.index:
             return array[index]
         raise IndexError
-
-
+    #@+node:1.20130426141258.3782: *3* getDummyActive
     def getDummyActive(self, func):
         """
             parametric function to return an element of an array
@@ -444,19 +460,19 @@ class ICommand(object):
         if self.index>=0:
             return func(self.index)
         return None
-
+    #@+node:1.20130426141258.3783: *3* getActiveSnapClick
     def getActiveSnapClick(self):
         """
             get the clicked snap point
         """
         return self.getDummyActive(self.getSnapClick)
-
+    #@+node:1.20130426141258.3784: *3* getActiveDistanceClick
     def getActiveDistanceClick(self):
         """
             get the clicked distance
         """
         return self.getDummyActive(self.getDistanceClick)
-
+    #@+node:1.20130426141258.3785: *3* getDummyBefore
     def getDummyBefore(self, func):
         """
             parametric function to return a previews element of an array
@@ -464,25 +480,25 @@ class ICommand(object):
         if self.index>0:
             return func(self.index-1)
         return None
-
+    #@+node:1.20130426141258.3786: *3* getBeforeEntity
     def getBeforeEntity(self):
         """
             get the before clicked entity
         """
         return self.getDummyBefore(self.getEntityClick)
-
+    #@+node:1.20130426141258.3787: *3* getBeforeSnapClick
     def getBeforeSnapClick(self):
         """
             get the before clicked snap point
         """
         return self.getDummyBefore(self.getSnapClick)
-
+    #@+node:1.20130426141258.3788: *3* getLastForceSnap
     def getLastForceSnap(self):
         """
             get the before forced snap type
         """
         return self.getDummyBefore(self.getForceSnap)
-
+    #@+node:1.20130426141258.3789: *3* correctPositionForcedDirection
     def correctPositionForcedDirection(self, point, force):
         """
             correct the POINT coords
@@ -510,7 +526,7 @@ class ICommand(object):
 #                x=lastSnap.x
 
         return pF #Point(x, y)
-
+    #@+node:1.20130426141258.3790: *3* getIntersection
     def getIntersection(self, entity, point):
         """
             this function compute the  snap intersection point
@@ -533,3 +549,6 @@ class ICommand(object):
                             distance=spoolDist
                             returnVal=iPoint
         return returnVal
+    #@-others
+#@-others
+#@-leo

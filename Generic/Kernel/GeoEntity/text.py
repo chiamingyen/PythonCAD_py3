@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3408: * @file text.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -23,11 +25,21 @@
 # basic text functionality
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3409: ** <<declarations>> (text)
 from .geometricalentity      import GeometricalEntity
 
 
 from Kernel.GeoUtil.util import *
 from Kernel.GeoEntity.point import Point
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3410: ** class Text
 #
 # Text
 #
@@ -36,6 +48,8 @@ class Text(GeometricalEntity):
         A class representing text in a drawing.
         A Text instance has the following attributes:
     """
+    #@+others
+    #@+node:1.20130426141258.3411: *3* __init__
     def __init__(self,kw):
         """
             Initialize a Arc/Circle.
@@ -65,7 +79,7 @@ class Text(GeometricalEntity):
                 #    raise TypeError, "Argument for TEXT_3 not supported"
 
         GeometricalEntity.__init__(self,kw, argDescription)
-        
+    #@+node:1.20130426141258.3412: *3* __eq__
     def __eq__(self, objTest):
         if isistance(objTest,Text):
             if(self.text== objTest.text and
@@ -77,15 +91,18 @@ class Text(GeometricalEntity):
                 return False
         else:
             raise TypeError("obj must be of type Text")
+    #@+node:1.20130426141258.3413: *3* info
     @property
     def info(self):
         return "Text: %s"%str(self.location) 
+    #@+node:1.20130426141258.3414: *3* text
     @property            
     def text(self):
         """
             Get the current text within the Text.
         """
         return self['TEXT_1']
+    #@+node:1.20130426141258.3415: *3* text
     @text.setter
     def text(self, text):
         """
@@ -94,12 +111,14 @@ class Text(GeometricalEntity):
         if not isinstance(text, str):
             raise TypeError("Invalid text data: " + str(text))
         self['TEXT_1'] = text
+    #@+node:1.20130426141258.3416: *3* location
     @property
     def location(self):
         """
             Return the Text spatial position.
         """
         return self['TEXT_0']
+    #@+node:1.20130426141258.3417: *3* location
     @location.setter
     def location(self, x, y):
         """
@@ -108,24 +127,28 @@ class Text(GeometricalEntity):
         _x = get_float(x)
         _y = get_float(y)
         self['TEXT_0'] = Point(_x, _y)
+    #@+node:1.20130426141258.3418: *3* angle
     @property
     def angle(self):
         """
             Return the angle at which the text is drawn.
         """
         return self['TEXT_2']
+    #@+node:1.20130426141258.3419: *3* angle
     @angle.setter
     def angle(self, angle=None):
         """
             Set the angle at which the text block should be drawn.
         """
         self['TEXT_2']= get_float(angle)
+    #@+node:1.20130426141258.3420: *3* pointPosition
     @property
     def pointPosition(self):
         """
             return the position of the textrefered to the point 
         """
         return self['TEXT_3']
+    #@+node:1.20130426141258.3421: *3* pointPosition
     @pointPosition.setter
     def pointPosition(self, position):
         """
@@ -136,6 +159,7 @@ class Text(GeometricalEntity):
         if position in TEXT_POSITION:
             self['TEXT_3']=position
         raise TypeError("bad Point position")    
+    #@+node:1.20130426141258.3422: *3* getLineCount
     def getLineCount(self):
         """
             Return the number of lines of text in the Text
@@ -145,7 +169,7 @@ class Text(GeometricalEntity):
         # so the temporary list would not need to be created ...
         #
         return len(self.text.splitlines())
-    
+    #@+node:1.20130426141258.3423: *3* clone
     def clone(self):
         """
             Return an identical copy of a Text.
@@ -156,7 +180,7 @@ class Text(GeometricalEntity):
         _tb.angle = self.getAngle()
         _tb.pointPosition=self.pointPosition
         return _tb
-   
+    #@+node:1.20130426141258.3424: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -169,11 +193,13 @@ class Text(GeometricalEntity):
 
         pl=self.getLocation()
         pl.mirror(mirrorRef)
-    
+    #@+node:1.20130426141258.3425: *3* rotate
     def rotate(self, rotationPoint, angle):
         """
             overloading of the rotate base method 
         """
         GeometricalEntity.rotate(self, rotationPoint, angle)
         self.angle=self.angle-angle
-        
+    #@-others
+#@-others
+#@-leo

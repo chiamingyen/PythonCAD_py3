@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3025: * @file undodb.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -21,16 +23,27 @@
 # This  module provide access to the undo part of the pythoncad database
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3026: ** <<declarations>> (undodb)
 import sys
 
 from Kernel.Db.basedb           import BaseDb
 from Kernel.exception           import UndoDbExc
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3027: ** class UndoDb
 class UndoDb(BaseDb):
     """
         this Class Provide all the basic operation to be made on the
         undo
     """
+    #@+others
+    #@+node:1.20130426141258.3028: *3* __init__
     def __init__(self,dbConnection):
         BaseDb.__init__(self)
         if dbConnection is None:
@@ -50,7 +63,7 @@ class UndoDb(BaseDb):
         else:
             self.__lastUndo=self.getMaxUndoIndex()
         self.__activeUndo=self.getLastUndoIndex()
-
+    #@+node:1.20130426141258.3029: *3* getMaxUndoIndex
     def getMaxUndoIndex(self):
         """
             get the gretest undo index from database
@@ -62,7 +75,7 @@ class UndoDb(BaseDb):
             self.makeUpdateInsert(_sqlInser)
             return 1
         return _row # get the max index of the table
-
+    #@+node:1.20130426141258.3030: *3* getLastUndoIndex
     def getLastUndoIndex(self):
         """
             get the active undo index from database
@@ -74,7 +87,7 @@ class UndoDb(BaseDb):
             self.makeUpdateInsert(_sqlInser)
             return 1
         return _row # get the max index of the table
-
+    #@+node:1.20130426141258.3031: *3* dbUndo
     def dbUndo(self):
         """
             performe the undo operation
@@ -94,7 +107,7 @@ class UndoDb(BaseDb):
             return self.__activeUndo
         else:
             raise UndoDbExc("The undo are finished Unable to perform the undo")
-
+    #@+node:1.20130426141258.3032: *3* dbRedo
     def dbRedo(self):
         """
             perform the redo operation
@@ -114,7 +127,7 @@ class UndoDb(BaseDb):
             return self.__activeUndo
         else:
             raise UndoDbExc("The undo are finished Unable to perform the redo")
-
+    #@+node:1.20130426141258.3033: *3* undoIdExsist
     def undoIdExsist(self,undoId):
         """
             check is the undo id exsist
@@ -122,7 +135,7 @@ class UndoDb(BaseDb):
         _sqlSelect="""SELECT pycad_incremental_id FROM pycadundo
                       WHERE pycad_incremental_id =%s"""%str(undoId)
         return not self.fetchOneRow(_sqlSelect) is None
-
+    #@+node:1.20130426141258.3034: *3* getNewUndo
     def getNewUndo(self):
         """
             get the next undo index pycadundo
@@ -142,14 +155,14 @@ class UndoDb(BaseDb):
             raise
         finally:
             self.reactiveCommit()
-
+    #@+node:1.20130426141258.3035: *3* clearUndoTable
     def clearUndoTable(self):
         """
             Clear all the undo created
         """
         _sqlDelete="""DELETE FROM pycadundo"""
         self.makeUpdateInsert(_sqlDelete)
-
+    #@+node:1.20130426141258.3036: *3* deleteUndo
     def deleteUndo(self,undoId):
         """
             delete the undo index
@@ -157,19 +170,20 @@ class UndoDb(BaseDb):
         _sqlDelete="""DELETE FROM pycadundo WHERE
                     (pycad_incremental_id) VALUES (%s)"""%str(undoId)
         self.makeUpdateInsert(_sqlDelete)
-
+    #@+node:1.20130426141258.3037: *3* getMaxUndoId
     def getMaxUndoId(self):
         """
             return the undo id
         """
         return self.__lastUndo
-
+    #@+node:1.20130426141258.3038: *3* getActiveUndoId
     def getActiveUndoId(self):
         """
             return the active undo id
         """
         return self.__activeUndo
-
+    #@-others
+#@+node:1.20130426141258.3039: ** test
 def test():
     print("*"*10)
     _undo=PyCadUndoDb(None)
@@ -183,3 +197,5 @@ def test():
         _undo.dbUndo()
     print("redo")
     _undo.dbRedo()
+#@-others
+#@-leo

@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3864: * @file evaluator.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -20,19 +22,30 @@
 #
 # evaluator Class to manage  command computation
 #
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3865: ** <<declarations>> (evaluator)
 from math import *
 from Interface.pycadapp import PyCadApp
 from sympy.physics import units as u
 
 RESERVED_WORK=['self._print', 'self._error', 'self._ok','self._cadApplication','self.evaluate', 'self._eval', 'self._exec'  ]
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3866: ** class Evaluator
 class Evaluator(object):
+    #@+others
+    #@+node:1.20130426141258.3867: *3* __init__
     def __init__(self, printFunction):
         self._print=printFunction
         self._error='*error*'
         self._ok='*Ok*'
         self._cadApplication=PyCadApp
-
+    #@+node:1.20130426141258.3868: *3* evaluate
     def evaluate(self, value):
         """
             evaluate the string
@@ -48,7 +61,7 @@ class Evaluator(object):
             return self._exec(value[1:])
         else:
             return value
-
+    #@+node:1.20130426141258.3869: *3* _eval
     def _eval(self, value):
         """
             evaluate the evaluated value
@@ -57,7 +70,7 @@ class Evaluator(object):
             return eval(value)
         except:
             return self._error
-
+    #@+node:1.20130426141258.3870: *3* _exec
     def _exec(self, value):
         """
             exec value
@@ -69,4 +82,6 @@ class Evaluator(object):
             return self._ok
         except:
             return self._error
-
+    #@-others
+#@-others
+#@-leo

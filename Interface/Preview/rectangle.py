@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.4170: * @file rectangle.py
+#@@first
+
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -20,22 +24,35 @@
 #
 # SegmentPreview object
 #
+
+
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.4171: ** <<declarations>> (rectangle)
 import math
 
 from Interface.Preview.base         import *
 from Kernel.GeoEntity.segment       import Segment as geoSegment
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.4172: ** class QtRectangleItem
 class QtRectangleItem(PreviewBase):
+    #@+others
+    #@+node:1.20130426141258.4173: *3* __init__
     def __init__(self,command):
         super(QtRectangleItem, self).__init__(command)
-        
+    #@+node:1.20130426141258.4174: *3* drawGeometry
     def drawGeometry(self, painter,option,widget):
         """
             Overloading of the paint method
         """
         if self.value[0]!=None and self.value[1]!=None:
             painter.drawRect(self.getRectangle())
-        
+    #@+node:1.20130426141258.4175: *3* boundingRect
     def boundingRect(self):
         """
             Overloading of the qt bounding rectangle
@@ -43,7 +60,7 @@ class QtRectangleItem(PreviewBase):
         if self.value[0]!=None and self.value[1]!=None :
             return self.getRectangle()
         return QtCore.QRectF(0.0,0.0 ,0.1,0.1)
-        
+    #@+node:1.20130426141258.4176: *3* getRectangle
     def getRectangle(self):
         """
             Create the rectangle
@@ -53,3 +70,6 @@ class QtRectangleItem(PreviewBase):
         d1=abs(self.value[0].x()-self.value[1].x())
         d2=abs(self.value[0].y()-self.value[1].y())
         return QtCore.QRectF(x,y ,d1,d2)
+    #@-others
+#@-others
+#@-leo

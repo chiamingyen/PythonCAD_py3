@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3896: * @file snap.py
 #
 # Copyright (c) 2010 Matteo Boscolo, Carlo Pavan
 #
@@ -22,6 +24,13 @@
 #
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3897: ** <<declarations>> (snap)
 from PyQt4 import QtCore, QtGui
 
 from Kernel.initsetting             import SNAP_POINT_ARRAY, ACTIVE_SNAP_POINT, ACTIVE_SNAP_LIST
@@ -29,12 +38,16 @@ from Kernel.GeoEntity.point         import Point
 from Kernel.GeoUtil.intersection    import *
 
 from Interface.Entity.base          import BaseEntity
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3898: ** class SnapPoint
 class SnapPoint():
+    #@+others
+    #@+node:1.20130426141258.3899: *3* __init__
     def __init__(self, scene):
         self.activeSnap=ACTIVE_SNAP_POINT
         self._scene=scene
-
+    #@+node:1.20130426141258.3900: *3* getSnapPoint
     def getSnapPoint(self,  point, entity):
         """
             Get snapPoints
@@ -107,8 +120,7 @@ class SnapPoint():
                     if outPoint[0]!=None:
                         snapPoint=outPoint[0]
             return pointReturn(snapPoint,point)
-
-
+    #@+node:1.20130426141258.3901: *3* getSnapOrtoPoint
     def getSnapOrtoPoint(self, entity, point):
         """
             this function compute the orto to point snap constraint
@@ -124,7 +136,7 @@ class SnapPoint():
                 return pT
         else:
             return None
-
+    #@+node:1.20130426141258.3902: *3* getSnapTangentPoint
     def getSnapTangentPoint(self, point):
         """
             this function compute the Tangent to point snap constraint
@@ -135,7 +147,7 @@ class SnapPoint():
         #   1) get the Tangent point from the previews entity
         #   2) update the previews snap point
         return returnVal
-
+    #@+node:1.20130426141258.3903: *3* getSnapMiddlePoint
     def getSnapMiddlePoint(self, entity):
         """
             this function compute midpoint snap constraint to the entity argument
@@ -145,7 +157,7 @@ class SnapPoint():
             if getattr(entity.geoItem, 'getMiddlePoint', None):
                 returnVal=entity.geoItem.getMiddlePoint()
         return returnVal
-
+    #@+node:1.20130426141258.3904: *3* getSnapEndPoint
     def getSnapEndPoint(self, entity, point):
         """
             this function compute the  snap endpoint
@@ -165,7 +177,7 @@ class SnapPoint():
                 
         else:
             return None
-
+    #@+node:1.20130426141258.3905: *3* getSnapCenterPoint
     def getSnapCenterPoint(self, entity):
         """
             this function compute the  snap from the center of an entity
@@ -178,7 +190,7 @@ class SnapPoint():
             else:
                 returnVal=None
         return returnVal
-
+    #@+node:1.20130426141258.3906: *3* getIntersection
     def getIntersection(self, entity, point):
         """
             this function compute the  snap intersection point
@@ -204,7 +216,7 @@ class SnapPoint():
                                 distance=spoolDist
                                 returnVal=iPoint
         return returnVal
-
+    #@+node:1.20130426141258.3907: *3* getSnapQuadrantPoint
     def getSnapQuadrantPoint(self, entity, point):
         """
             this function compute the  snap from the quadrant
@@ -225,64 +237,65 @@ class SnapPoint():
                             dist=newDist
                             returnVal=p
         return returnVal
-
-
-
-
-
-
-
-
+    #@-others
+#@+node:1.20130426141258.3908: ** class SnapMark
 class SnapMark(QtGui.QGraphicsItem):
+    #@+others
+    #@+node:1.20130426141258.3909: *3* __init__
     def __init__(self):
         super(SnapMark, self).__init__()
         self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
         self.setFlag(QtGui.QGraphicsItem.ItemIgnoresTransformations, True)
         self.hide()
-    
+    #@+node:1.20130426141258.3910: *3* collidesWithItem
     def collidesWithItem(self,other,mode):
         return False
-    
+    #@+node:1.20130426141258.3911: *3* shape
     def shape(self):
         """
             overloading of the shape method
         """
         return self.definePath()
-
+    #@+node:1.20130426141258.3912: *3* boundingRect
     def boundingRect(self):
         """
             overloading of the qt bounding rectangle
         """
         return self.shape().boundingRect()
-
+    #@+node:1.20130426141258.3913: *3* paint
     def paint(self, painter,option,widget):
         """
             overloading of the paint method
         """
         painter.setPen(QtGui.QPen(QtGui.QColor(255, 50, 50), 2, join=QtCore.Qt.MiterJoin))
         painter.drawPath(self.definePath())
-
+    #@+node:1.20130426141258.3914: *3* move
     def move(self, x, y):
         """
             show the previously added mark and place it in snap position
         """
         self.show()
         self.setPos(x, y)
-
+    #@-others
+#@+node:1.20130426141258.3915: ** class SnapEndMark
 class SnapEndMark(SnapMark):
+    #@+others
+    #@+node:1.20130426141258.3916: *3* __init__
     def __init__(self, x, y):
         super(SnapEndMark, self).__init__()
         self.setToolTip("EndPoint")
         self.x=x
         self.y=y
-    
+    #@+node:1.20130426141258.3917: *3* collidesWithItem
     def collidesWithItem(self,other,mode):
         print("collidesWithItem")
         return False
-    
+    #@+node:1.20130426141258.3918: *3* definePath
     def definePath(self):
         rect=QtCore.QRectF(self.x-5.0, self.y-5.0, 10.0, 10.0)
         path=QtGui.QPainterPath()
         path.addRect(rect)
         return path
-
+    #@-others
+#@-others
+#@-leo

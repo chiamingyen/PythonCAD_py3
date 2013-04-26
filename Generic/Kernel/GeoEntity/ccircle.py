@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3187: * @file ccircle.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -25,6 +27,13 @@
 
 
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3188: ** <<declarations>> (ccircle)
 import math
 
 from Kernel.GeoUtil.tolerance              import *
@@ -34,7 +43,9 @@ from Kernel.GeoEntity.point                import Point
 from Kernel.GeoEntity.segment              import Segment
 from Kernel.GeoEntity.cline                import CLine
 from Kernel.GeoUtil.geolib                 import Vector
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3189: ** class CCircle
 class CCircle(GeometricalEntity):
     """
         A class for contruction circles
@@ -42,6 +53,8 @@ class CCircle(GeometricalEntity):
         center: A Point object
         radius: The CCircle's radius
     """
+    #@+others
+    #@+node:1.20130426141258.3190: *3* __init__
     def __init__(self,kw):
         """
             Initialize a CCircle.
@@ -56,9 +69,11 @@ class CCircle(GeometricalEntity):
         
         if not get_float(self.radius) > 0.0:
             raise ValueError("Invalid radius") 
+    #@+node:1.20130426141258.3191: *3* info
     @property
     def info(self):
         return "CCircle: Center: %s, Radius:%ss"%(str(self.center), str(self.radius))
+    #@+node:1.20130426141258.3192: *3* __eq__
     def __eq__(self, obj):
         """
             Compare a CCircle to another for equality.
@@ -72,7 +87,7 @@ class CCircle(GeometricalEntity):
             if abs(self.radius - obj.radius) < 1e-10:
                 _val = True
         return _val
-
+    #@+node:1.20130426141258.3193: *3* __ne__
     def __ne__(self, obj):
         """
             Compare a CCircle to another for inequality.
@@ -86,19 +101,19 @@ class CCircle(GeometricalEntity):
             if abs(self.radius - obj.radius) < 1e-10:
                 _val = False
         return _val
-        
+    #@+node:1.20130426141258.3194: *3* getConstructionElements
     def getConstructionElements(self):
         """
             get construction elements
         """
         return (self.center, self.radius)
-        
+    #@+node:1.20130426141258.3195: *3* getCenter
     def getCenter(self):
         """
             Return the center Point of the CCircle.
         """
         return self['CCIRCLE_0']
-
+    #@+node:1.20130426141258.3196: *3* setCenter
     def setCenter(self, point):
         """
             Set the center Point of the CCircle.
@@ -109,7 +124,7 @@ class CCircle(GeometricalEntity):
             raise TypeError("Invalid center point: " + repr(type(point)))
        
         self['CCIRCLE_0'] = point
-
+    #@+node:1.20130426141258.3197: *3* getRadius
     center = property(getCenter, setCenter, None, "CCircle center")
 
     def getRadius(self):
@@ -117,7 +132,7 @@ class CCircle(GeometricalEntity):
             Return the radius of the the CCircle.
         """
         return self['CCIRCLE_1']
-
+    #@+node:1.20130426141258.3198: *3* setRadius
     def setRadius(self, radius):
         """
             Set the radius of the CCircle.
@@ -127,7 +142,7 @@ class CCircle(GeometricalEntity):
         if not _r > 0.0:
             raise ValueError("Invalid radius: %g" % _r)
         self['CCIRCLE_1'] = _r
-
+    #@+node:1.20130426141258.3199: *3* circumference
     radius = property(getRadius, setRadius, None, "CCircle radius")
 
     def circumference(self):
@@ -135,13 +150,13 @@ class CCircle(GeometricalEntity):
             Return the circumference of the CCircle.
         """
         return 2.0 * math.pi * self.radius
-
+    #@+node:1.20130426141258.3200: *3* area
     def area(self):
         """
             Return the area enclosed by the CCircle.
         """
         return math.pi * pow(self.radius, 2)
-
+    #@+node:1.20130426141258.3201: *3* mapCoords
     def mapCoords(self, x, y, tol=TOL):
         """
             Return the nearest Point on the CCircle to a coordinate pair.
@@ -171,7 +186,7 @@ class CCircle(GeometricalEntity):
             _yoff = _r * math.sin(_angle)
             return (_cx + _xoff), (_cy + _yoff)
         return None
-    
+    #@+node:1.20130426141258.3202: *3* GetTangentPoint
     def GetTangentPoint(self,x,y,outx,outy):
         """
             Get the tangent from an axternal point
@@ -219,7 +234,7 @@ class CCircle(GeometricalEntity):
             return posPoint.getCoords()     
         else:
             return negPoint.getCoords() 
-           
+    #@+node:1.20130426141258.3203: *3* GetRadiusPointFromExt
     def GetRadiusPointFromExt(self,x,y):
         """
             get The intersecrion point from the line(x,y,cx,cy) and the circle
@@ -236,6 +251,7 @@ class CCircle(GeometricalEntity):
         newPoint=magVector.Point()
         intPoint=Point(outPoint+newPoint)
         return intPoint.getCoords()  
+    #@+node:1.20130426141258.3204: *3* inRegion
     def inRegion(self, xmin, ymin, xmax, ymax, fully=False):
         """
             Return whether or not an CCircle exists within a region.
@@ -306,27 +322,27 @@ class CCircle(GeometricalEntity):
             if _bits == 0xff or fully:
                 _val = False
         return _val
-
+    #@+node:1.20130426141258.3205: *3* clone
     def clone(self):
         """
             Create an identical copy of a CCircle
         """
         return CCircle(self.getConstructionElements())
-
+    #@+node:1.20130426141258.3206: *3* getSympy
     def getSympy(self):
         """
             get the sympy object in this case a circle
         """
         _cp=self.center.getSympy()
         return geoSympy.Circle(_cp, mainSympy.Rational(self.radius))
-        
+    #@+node:1.20130426141258.3207: *3* setFromSympy
     def setFromSympy(self, sympyCircle):    
         """
             update the points cord from a sympyobject only avaiable for circle
         """
         self.center.setFromSympy(sympyCircle[0])
         self.radius=float(sympyCircle[1])
-    
+    #@+node:1.20130426141258.3208: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -335,4 +351,6 @@ class CCircle(GeometricalEntity):
             raise TypeError("mirrorObject must be Cline Segment or a tuple of points")
         #
         self.center.mirror(mirrorRef)
-        
+    #@-others
+#@-others
+#@-leo

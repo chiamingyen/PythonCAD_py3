@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3813: * @file preferences.py
 ##############################################################################
 #
 #    OmniaSolutions, Your own solutions
@@ -24,37 +26,45 @@ Created on 24/apr/2012
 @author: mboscolo
 '''
 
+#@@language python
+#@@tabwidth -4
 
+#@+<<declarations>>
+#@+node:1.20130426141258.3814: ** <<declarations>> (preferences)
 from PyQt4.QtGui    import QDialog,QAbstractItemView
 from PyQt4.QtCore   import pyqtSignature
 
 from .Ui_preferences    import Ui_preferences
 
 from Interface.cadinitsetting import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3815: ** class Preferences
 class Preferences(QDialog, Ui_preferences):
     """
         this class define the entity property dialog
         it automaticaly retrive the style property 
         and show it in the form
     """
+    #@+others
+    #@+node:1.20130426141258.3816: *3* __init__
     def __init__(self, parent = None, entity=None):
         QDialog.__init__(self, parent)
         self.setupUi(self)
- 
+    #@+node:1.20130426141258.3817: *3* on_buttonBox_accepted
     @pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
             implements the accept button
         """
         self.close()
-        
+    #@+node:1.20130426141258.3818: *3* on_buttonBox_rejected
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
         """
             implements the accept button
         """
         self.close()
-
-
-
+    #@-others
+#@-others
+#@-leo

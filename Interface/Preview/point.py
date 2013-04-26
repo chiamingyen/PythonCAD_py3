@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.4143: * @file point.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -21,6 +23,13 @@
 # qt pythoncad Point class
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.4144: ** <<declarations>> (point)
 import math
 #
 from Interface.Preview.base         import *
@@ -28,15 +37,19 @@ from Kernel.GeoEntity.segment       import Segment as geoSegment
 from Kernel.initsetting             import PYTHONCAD_PREVIEW_COLOR
 #
 from PyQt4 import QtCore, QtGui
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.4145: ** class PreviewPoint
 class PreviewPoint(PreviewBase):
     """
         this class define the arcQT object
     """
+    #@+others
+    #@+node:1.20130426141258.4146: *3* __init__
     def __init__(self, command):
 
         super(PreviewPoint, self).__init__(command)
-
+    #@+node:1.20130426141258.4147: *3* drawShape
     def drawShape(self, painterPath):
         """
             overloading of the shape method
@@ -45,7 +58,7 @@ class PreviewPoint(PreviewBase):
             return
         qtPoinfF = self.value[0]
         painterPath.addRect(QtCore.QRectF(qtPoinfF.x()-self.shapeSize/2,qtPoinfF.y()-self.shapeSize/2 ,self.shapeSize ,self.shapeSize))
-
+    #@+node:1.20130426141258.4148: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             overloading of the paint method
@@ -55,17 +68,12 @@ class PreviewPoint(PreviewBase):
         qtPoinfF = self.value[0]
         painter.drawRect(QtCore.QRectF(qtPoinfF.x()-self.shapeSize/2,qtPoinfF.y()-self.shapeSize/2 ,self.shapeSize ,self.shapeSize))
         painter.drawPoint(qtPoinfF)
-
+    #@+node:1.20130426141258.4149: *3* boundingRect
     def boundingRect(self):
         if len(self.value)<0:
             return QtCore.QRectF(0, 0, 0, 0)
         qtPoinfF = self.value[0]
         return QtCore.QRectF(qtPoinfF.x()-self.shapeSize/2,qtPoinfF.y()-self.shapeSize/2 ,self.shapeSize ,self.shapeSize)
-
-
-
-
-
-
-
-
+    #@-others
+#@-others
+#@-leo

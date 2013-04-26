@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3520: * @file cadinitsetting.py
+#@@first
+
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -21,6 +25,13 @@
 #
 # This  module PROVIDE ALL GLOBAL VARIABLE NEEDE TO THE SCENE
 #
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3521: ** <<declarations>> (cadinitsetting)
 from Interface.Entity.point         import Point
 from Interface.Entity.segment       import Segment
 from Interface.Entity.arc           import Arc
@@ -88,3 +99,7 @@ PYTHONCAD_STYLE_DESCRIPTION={'entity_color':'Color',
                         'text_font':'Font', 
                         'text_height':'Text Height', 
                         }
+#@-<<declarations>>
+#@+others
+#@-others
+#@-leo

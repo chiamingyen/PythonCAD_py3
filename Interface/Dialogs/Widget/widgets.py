@@ -1,34 +1,51 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3844: * @file widgets.py
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3845: ** <<declarations>> (widgets)
 from PyQt4 import QtCore, QtGui
 
 IdRole = QtCore.Qt.UserRole
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3846: ** class BaseContainer
 class BaseContainer(QtGui.QHBoxLayout):
+    #@+others
+    #@+node:1.20130426141258.3847: *3* __init__
     def __init__(self, parent=None, label="baseInfo"):
         super(BaseContainer, self).__init__(parent)
         label=QtGui.QLabel(label)
         self.addWidget(label)
         self.activeValue=None
         self._changed=False
+    #@+node:1.20130426141258.3848: *3* value
     @property
     def value(self):
         """
             return the value of the object
         """
         return self.activeValue
+    #@+node:1.20130426141258.3849: *3* changed
     @property
     def changed(self):
         """
             tells if the value is changed
         """
         return self._changed
+    #@+node:1.20130426141258.3850: *3* changed
     @changed.setter  
     def changed(self, value):
         """
             tells if the value is changed
         """
         self._changed=value
-        
+    #@-others
+#@+node:1.20130426141258.3851: ** class PyCadQColor
 class PyCadQColor(BaseContainer):
+    #@+others
+    #@+node:1.20130426141258.3852: *3* __init__
     def __init__(self, parent=None, oldValue='green', label="Color"):
         super(PyCadQColor, self).__init__(parent=parent, label=label)
         r, g, b=oldValue
@@ -44,7 +61,7 @@ class PyCadQColor(BaseContainer):
         self.colorLabel.setAutoFillBackground(True)
         self.addWidget(self.colorLabel)
         self.addWidget(self.pushButton)
-        
+    #@+node:1.20130426141258.3853: *3* click
     def click(self):
         r, g, b=self.activeValue
         sColor=QtGui.QColor.fromRgb(r, g, b)
@@ -58,9 +75,11 @@ class PyCadQColor(BaseContainer):
                               color.blue()
                               )
             self.changed=True
-            
-        
+    #@-others
+#@+node:1.20130426141258.3854: ** class PyCadQLineType
 class PyCadQLineType(BaseContainer):
+    #@+others
+    #@+node:1.20130426141258.3855: *3* __init__
     def __init__(self, parent=None, oldValue=QtCore.Qt.SolidLine, label="&Pen Style"):
         super(PyCadQLineType, self).__init__(parent=parent, label=label)
         self.activeValue=oldValue
@@ -81,7 +100,7 @@ class PyCadQLineType(BaseContainer):
         self.addWidget(self.penStyleComboBox)
                 
         self.penStyleComboBox.activated.connect(self.penChanged)
-        
+    #@+node:1.20130426141258.3856: *3* penChanged
     def penChanged(self):
         """
             change event 
@@ -89,9 +108,11 @@ class PyCadQLineType(BaseContainer):
         value=self.penStyleComboBox.currentIndex()
         self.activeValue = QtCore.Qt.PenStyle(self.penStyleComboBox.itemData(value, IdRole).toInt()[0])
         self.changed=True
-
-
+    #@-others
+#@+node:1.20130426141258.3857: ** class PyCadQDouble
 class PyCadQDouble(BaseContainer):
+    #@+others
+    #@+node:1.20130426141258.3858: *3* __init__
     def __init__(self, parent=None, oldValue='0.0', label="Double"):
         super(PyCadQDouble, self).__init__(parent, label)
         self.activeValue=oldValue
@@ -102,16 +123,20 @@ class PyCadQDouble(BaseContainer):
         self.penWidthSpinBox.valueChanged.connect(self.penChanged)
         
         self.addWidget(self.penWidthSpinBox)
-        
+    #@+node:1.20130426141258.3859: *3* penChanged
     def penChanged(self):
         """
             change event 
         """
         self.activeValue=self.penWidthSpinBox.value()
         self.changed=True
-
+    #@-others
+#@+node:1.20130426141258.3860: ** class PyCadQFont
 class PyCadQFont(BaseContainer ):
+    #@+others
+    #@+node:1.20130426141258.3861: *3* __init__
     def __init__(self, parent=None, oldValue='green', label="Font"):
         super(PyCadQFont, self).__init__(parent, label)
-    
-    
+    #@-others
+#@-others
+#@-leo

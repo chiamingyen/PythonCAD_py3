@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3230: * @file dimension.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -24,16 +26,27 @@
 #
 
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3231: ** <<declarations>> (dimension)
 import math
 
 from Kernel.GeoEntity.geometricalentity     import *
 from Kernel.GeoEntity.point                 import Point
 from Kernel.GeoUtil.util                    import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3232: ** class Dimension
 class Dimension(GeometricalEntity):
     """
         Dimension class object.
     """
+    #@+others
+    #@+node:1.20130426141258.3233: *3* __init__
     def __init__(self,kw):
         """
             Initialize a Segment object.
@@ -50,12 +63,14 @@ class Dimension(GeometricalEntity):
                         "DIMENSION_4":(float, int), 
                         }
         GeometricalEntity.__init__(self,kw, dimDescription)
-        
+    #@+node:1.20130426141258.3234: *3* __str__
     def __str__(self):
         return "Dimension : (%g)" % (self.distance)
+    #@+node:1.20130426141258.3235: *3* info
     @property
     def info(self):
         return "Dimension : (%g)" % (self.distance)
+    #@+node:1.20130426141258.3236: *3* isAngularDimension
     @property
     def isAngularDimension(self):
         """
@@ -65,25 +80,30 @@ class Dimension(GeometricalEntity):
             return True
         else:
             return False
+    #@+node:1.20130426141258.3237: *3* distance
     @property
     def distance(self):
         """
             calculate the distance between the located point
         """
         return self.firstPoint.dist(self.secondPoint)
+    #@+node:1.20130426141258.3238: *3* firstPoint
     @property
     def firstPoint(self):
         return self['DIMENSION_1']
+    #@+node:1.20130426141258.3239: *3* secondPoint
     @property
     def secondPoint(self):
         return self['DIMENSION_2']
+    #@+node:1.20130426141258.3240: *3* thirdPoint
     @property
     def thirdPoint(self):
         return self['DIMENSION_3']
+    #@+node:1.20130426141258.3241: *3* angle
     @property
     def angle(self):
         return self['DIMENSION_4']
-        
+    #@+node:1.20130426141258.3242: *3* getConstructionElements
     def getConstructionElements(self):
         """
             Get the construction element of entity..
@@ -94,6 +114,7 @@ class Dimension(GeometricalEntity):
                 "DIMENSION_3":self.thirdPoint,
                 "DIMENSION_4":self.angle, 
                 }
+    #@+node:1.20130426141258.3243: *3* setConstructionElements
     def setConstructionElements(self, p1, p2, p3, angle):
         """
             Set the construction element of entity..
@@ -102,19 +123,19 @@ class Dimension(GeometricalEntity):
         self['DIMENSION_2']=p2
         self['DIMENSION_3']=p3
         self['DIMENSION_4']=angle
-
+    #@+node:1.20130426141258.3244: *3* clone
     def clone(self):
         """
             Create an identical copy of a Point.
         """
         return Dimension(self._point1, self._point2, self._point3,self._angle )
-
+    #@+node:1.20130426141258.3245: *3* getSympy
     def getSympy(self):
         """
             get the sympy object
         """
         return None
-    
+    #@+node:1.20130426141258.3246: *3* move
     def move(self,fromPoint, toPoint): #TODO : Test It
         """
             perform the move operation
@@ -122,7 +143,7 @@ class Dimension(GeometricalEntity):
         self._point1.move(fromPoint, toPoint)
         self._point2.move(fromPoint, toPoint)
         self._point3.move(fromPoint, toPoint)
-        
+    #@+node:1.20130426141258.3247: *3* rotate
     def rotate(self, rotationPoint, angle): #TODO : Test It
         """
             this method must be defined for rotation
@@ -131,7 +152,7 @@ class Dimension(GeometricalEntity):
         self._point2.rotate(rotationPoint, angle)
         self._point3.rotate(rotationPoint, angle)
         self._angle=self._angle+angle
-        
+    #@+node:1.20130426141258.3248: *3* mirror
     def mirror(self, mirrorRef): #TODO : Test It
         """
             perform the mirror of the line
@@ -140,10 +161,8 @@ class Dimension(GeometricalEntity):
         self._point2.mirror(mirrorRef)
         self._point3.mirror(mirrorRef)
         self._angle=self._angle+math.pi/2.0
-
-
-
-
+    #@-others
+#@-others
 #class DimString(text.TextBlock):
 #    """A class for the visual presentation of the dimensional value.
 #
@@ -4815,3 +4834,4 @@ class Dimension(GeometricalEntity):
 #            return True
 #        return super(AngularDimension, self).sendsMessage(m)
 #
+#@-leo

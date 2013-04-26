@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.4177: * @file segment.py
+#@@first
+
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -20,13 +24,28 @@
 #
 # SegmentPreview object
 #
+
+
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.4178: ** <<declarations>> (segment)
 from Interface.Preview.base         import PreviewBase
 from Interface.Entity.segment       import Segment 
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.4179: ** class PreviewSegment
 #
 
 class PreviewSegment(PreviewBase):
+    #@+others
+    #@+node:1.20130426141258.4180: *3* __init__
     def __init__(self,command):
         super(PreviewSegment, self).__init__(command)
+    #@+node:1.20130426141258.4181: *3* canDraw
     @property
     def canDraw(self):
         if self.value[0]!=None and self.value[1]!=None:
@@ -36,18 +55,20 @@ class PreviewSegment(PreviewBase):
             self.y1=self.value[1].y()
             return True
         return False
-    
+    #@+node:1.20130426141258.4182: *3* drawGeometry
     def drawGeometry(self, painter,option,widget):
         """
             Overloading of the paint method
         """
         if self.canDraw:
             Segment.__dict__['drawGeometry'](self,painter,option,widget)
-
+    #@+node:1.20130426141258.4183: *3* drawShape
     def drawShape(self, painterPath):
         """
             overloading of the shape method
         """
         if self.canDraw:
             Segment.__dict__['drawShape'](self,painterPath)
-
+    #@-others
+#@-others
+#@-leo

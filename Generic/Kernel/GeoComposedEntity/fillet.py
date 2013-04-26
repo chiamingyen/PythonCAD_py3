@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3115: * @file fillet.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -23,13 +25,22 @@
 # code for base for Fillet
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3116: ** <<declarations>> (fillet)
 from Kernel.GeoComposedEntity.objoint import *
 from Kernel.GeoComposedEntity.bisector import Bisector
 from Kernel.exception           import *
 from Kernel.GeoUtil.util import *
 
 _dtr = 180.0/pi
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3117: ** class Fillet
 class Fillet(ObjectJoint):
     """
         A fillet is a curved joining of two Entity Object. For a filleted
@@ -39,6 +50,8 @@ class Fillet(ObjectJoint):
         share a common endpoint.
     """
     DEFAULT_RADIUS=10.0
+    #@+others
+    #@+node:1.20130426141258.3118: *3* __init__
     def __init__(self, kw):
         """
             "OBJECTJOINT_0" obj1             :(Segment ,ACLine,Arc,CCircle)
@@ -51,7 +64,7 @@ class Fillet(ObjectJoint):
         argDes={"OBJECTJOINT_5":(float, int)}
         ObjectJoint.__init__(self, kw, argDes)
         self._UpdateFilletArc()
-
+    #@+node:1.20130426141258.3119: *3* _calculateCenter
     def _calculateCenter(self):
         """
             Calculate the center point of the filler arc
@@ -74,7 +87,7 @@ class Fillet(ObjectJoint):
             self.__center=p1
         else:
             self.__center=p2
-        
+    #@+node:1.20130426141258.3120: *3* _UpdateFilletArc
     def _UpdateFilletArc(self):           
         """
             Recompute the Fillet segment
@@ -95,7 +108,7 @@ class Fillet(ObjectJoint):
         self._UpdateAngle(pc1, pc2)
         arg={"ARC_0":self.center, "ARC_1":self.radius, "ARC_2":self.startAngle, "ARC_3":self.endAngle}
         self.filletArc=Arc(arg)
-    
+    #@+node:1.20130426141258.3121: *3* _UpdateAngle
     def _UpdateAngle(self, pc1, pc2):
         """
             update the Fillet arc angle
@@ -112,8 +125,7 @@ class Fillet(ObjectJoint):
             self.startAngle=ang2
         else:
             raise StructuralError("_UpdateAngle Unable to upgrade the angle")
-
-        
+    #@+node:1.20130426141258.3122: *3* _updateSegment
     def _updateSegment(self,objSegment,objPoint):
         """
             Get the point used for the trim
@@ -139,32 +151,36 @@ class Fillet(ObjectJoint):
         else:
             arg={"SEGMENT_0":objProjection,"SEGMENT_1":_p2}
             return Segment(arg), objProjection  
-        
+    #@+node:1.20130426141258.3123: *3* startAngle
     @property
     def startAngle(self):
         """
             start fillet angle
         """
         return self.__StartAngle
+    #@+node:1.20130426141258.3124: *3* startAngle
     @startAngle.setter
     def startAngle(self, value):
         self.__StartAngle=value
-        
+    #@+node:1.20130426141258.3125: *3* endAngle
     @property
     def endAngle(self):
         """
             start fillet angle
         """
         return self.__EndAngle
+    #@+node:1.20130426141258.3126: *3* endAngle
     @endAngle.setter
     def endAngle(self, value):
         self.__EndAngle=value
+    #@+node:1.20130426141258.3127: *3* radius
     @property
     def radius(self):
         """
             Return the Fillet radius.
         """
         return self['OBJECTJOINT_5']
+    #@+node:1.20130426141258.3128: *3* radius
     @radius.setter
     def radius(self, r):
         """
@@ -183,7 +199,7 @@ class Fillet(ObjectJoint):
             self.radius = _r
             self._calculateCenter()
             self._moveSegmentPoints()
-
+    #@+node:1.20130426141258.3129: *3* center
     @property
     def center(self):
         """
@@ -191,14 +207,16 @@ class Fillet(ObjectJoint):
             return: Point
         """
         return self.__center
-  
+    #@+node:1.20130426141258.3130: *3* clone
     def clone(self):
         return Fillet(self)
-    
+    #@+node:1.20130426141258.3131: *3* getReletedComponent
     def getReletedComponent(self):
         """
             get the releted componet from the fillet
             usually the entity to save
         """
         return self.obj1, self.obj2, self.filletArc
-        
+    #@-others
+#@-others
+#@-leo

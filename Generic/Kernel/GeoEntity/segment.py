@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3378: * @file segment.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 # Copyright (c) 2009,2010 Matteo Boscolo
@@ -24,6 +26,13 @@
 
 
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3379: ** <<declarations>> (segment)
 import math
 
 from Kernel.GeoUtil.util                    import *
@@ -31,12 +40,15 @@ from Kernel.GeoUtil.geolib                  import Vector
 from Kernel.GeoEntity.point                 import Point
 from Kernel.GeoEntity.cline                 import CLine
 from Kernel.GeoEntity.geometricalentity     import *
-
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3380: ** class Segment
 class Segment(GeometricalEntity):
     """
         A class representing a line segment.
     """
+    #@+others
+    #@+node:1.20130426141258.3381: *3* __init__
     def __init__(self,kw):
         """
             Initialize a Segment object.
@@ -51,13 +63,14 @@ class Segment(GeometricalEntity):
         if self.p1.dist(self.p2)<0.000001:
             print("distance =0", self)
             #raise StructuralError("Wrong point imput distance between point mast be >0.000001") 
-                
-    
+    #@+node:1.20130426141258.3382: *3* __str__
     def __str__(self):
         return "Segment: %s to %s l=%s" % (self.p1, self.p2, self.length)
+    #@+node:1.20130426141258.3383: *3* info
     @property
     def info(self):
         return "Segment: %s to %s l=%s" % (self.p1, self.p2, self.length)    
+    #@+node:1.20130426141258.3384: *3* __eq__
     def __eq__(self, obj):
         """
             Compare a Segment to another for equality.
@@ -71,7 +84,7 @@ class Segment(GeometricalEntity):
         _op1, _op2 = obj.getEndpoints()
         return (((_sp1 == _op1) and (_sp2 == _op2)) or
                 ((_sp1 == _op2) and (_sp2 == _op1)))
-
+    #@+node:1.20130426141258.3385: *3* __ne__
     def __ne__(self, obj):
         """
             Compare a Segment to another for inequality.
@@ -85,7 +98,7 @@ class Segment(GeometricalEntity):
         _op1, _op2 = obj.getEndpoints()
         return (((_sp1 != _op1) or (_sp2 != _op2)) and
                 ((_sp1 != _op2) or (_sp2 != _op1)))
-
+    #@+node:1.20130426141258.3386: *3* getEndpoints
     def getEndpoints(self):
         """
             Get the endpoints of the Segment.
@@ -93,19 +106,19 @@ class Segment(GeometricalEntity):
             that are the endpoints of the segment.
         """
         return self.p1, self.p2
-        
+    #@+node:1.20130426141258.3387: *3* getKeypoints
     def getKeypoints(self):
         """
             wrapper function for CLine compatibility
         """
         return self.getEndpoints()
-        
+    #@+node:1.20130426141258.3388: *3* getP1
     def getP1(self):
         """
             Return the first endpoint Point of the Segment.
         """
         return self["SEGMENT_0"]
-
+    #@+node:1.20130426141258.3389: *3* setP1
     def setP1(self, p):
         """
             Set the first endpoint Point of the Segment.
@@ -118,6 +131,7 @@ class Segment(GeometricalEntity):
         if _pt is not p:
             self["SEGMENT_0"] = p
         self.updateSnapPoint()
+    #@+node:1.20130426141258.3390: *3* getP2
     p1 = property(getP1, setP1, None, "First endpoint of the Segment.")
 
     def getP2(self):
@@ -125,7 +139,7 @@ class Segment(GeometricalEntity):
             Return the second endpoint Point of the Segment.
         """
         return self["SEGMENT_1"]
-
+    #@+node:1.20130426141258.3391: *3* setP2
     def setP2(self, p):
         """
             Set the second endpoint Point of the Segment.
@@ -138,15 +152,16 @@ class Segment(GeometricalEntity):
         if _pt is not p:
             self["SEGMENT_1"] = p
         self.updateSnapPoint()
+    #@+node:1.20130426141258.3392: *3* length
     p2 = property(getP2, setP2, None, "Second endpoint of the Segment.")
-    
+
     @property
     def length(self):
         """
             Return the length of the Segment.
         """
         return self.p1 - self.p2
-
+    #@+node:1.20130426141258.3393: *3* getCoefficients
     def getCoefficients(self):
         """
             Express the line segment as a function ax + by + c = 0
@@ -158,7 +173,7 @@ class Segment(GeometricalEntity):
         _b = _x1 - _x2
         _c = (_x2 * _y1) - (_x1 * _y2)
         return _a, _b, _c
-
+    #@+node:1.20130426141258.3394: *3* getMiddlePoint
     def getMiddlePoint(self):
         """
             Return the middle point of the segment
@@ -180,7 +195,7 @@ class Segment(GeometricalEntity):
             retY=_y2+_deltay
         return Point(retX,retY)
         #return Point((_x1+_x2)/2.0,(_y1+_y2)/2.0) <<<<why not like this? it seems to work too
-
+    #@+node:1.20130426141258.3395: *3* getProjection
     def getProjection(self,fromPoint):
         """
             get Projection of the point x,y in the line
@@ -191,7 +206,7 @@ class Segment(GeometricalEntity):
         v1=Vector(p1,fromPoint)
         pjPoint=v.map(v1.point).point
         return p1+pjPoint
-
+    #@+node:1.20130426141258.3396: *3* mapCoords
     def mapCoords(self, x, y, tol=0.001):
         """
             Return the nearest Point on the Segment to a coordinate pair.
@@ -211,7 +226,7 @@ class Segment(GeometricalEntity):
         _x1, _y1 = self.p1.getCoords()
         _x2, _y2 = self.p2.getCoords()
         return map_coords(_x, _y, _x1, _y1, _x2, _y2, _t)
-
+    #@+node:1.20130426141258.3397: *3* inRegion
     def inRegion(self, xmin, ymin, xmax, ymax, fully=False):
         """
             Return whether or not a Segment exists within a region.
@@ -249,7 +264,7 @@ class Segment(GeometricalEntity):
                 return True
             return False
         return in_region(_x1, _y1, _x2, _y2, _xmin, _ymin, _xmax, _ymax)
-
+    #@+node:1.20130426141258.3398: *3* clipToRegion
     def clipToRegion(self, xmin, ymin, xmax, ymax):
         """
             Clip the Segment using the Liang-Barsky Algorithm.
@@ -328,7 +343,7 @@ class Segment(GeometricalEntity):
                            ((_u2 * _dx) + _x1),
                            ((_u2 * _dy) + _y1))
         return _coords
-
+    #@+node:1.20130426141258.3399: *3* clone
     def clone(self):
         """
             Create an identical copy of a Segment.
@@ -337,7 +352,7 @@ class Segment(GeometricalEntity):
         _cp2 = self.p2.clone()
         args={"SEGMENT_0":_cp1, "SEGMENT_1":_cp2}
         return Segment(args)
-
+    #@+node:1.20130426141258.3400: *3* getSympy
     def getSympy(self):
         """
             get the sympy object
@@ -345,7 +360,7 @@ class Segment(GeometricalEntity):
         _sp1=self.p1.getSympy()
         _sp2=self.p2.getSympy()
         return geoSympy.Segment(_sp1, _sp2)
-    
+    #@+node:1.20130426141258.3401: *3* getSympyLine
     def getSympyLine(self):    
         """
             Get The simpy line
@@ -353,7 +368,7 @@ class Segment(GeometricalEntity):
         _sp1=self.p1.getSympy()
         _sp2=self.p2.getSympy()
         return geoSympy.Line(_sp1, _sp2) 
-        
+    #@+node:1.20130426141258.3402: *3* setFromSympy
     def setFromSympy(self, sympySegment):    
         """
             update the points cord from a sympyobject
@@ -363,13 +378,14 @@ class Segment(GeometricalEntity):
         self.p1.setFromSympy(sympySegment.p1)
         #self.p2.setFromSympy(sympySegment[1])
         self.p2.setFromSympy(sympySegment.p2)
+    #@+node:1.20130426141258.3403: *3* vector
     @property
     def vector(self):
         """
             Get The vector of the Segment
         """
         return Vector(self.p1, self.p2)
-        
+    #@+node:1.20130426141258.3404: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -379,3 +395,6 @@ class Segment(GeometricalEntity):
         #
         self.p1.mirror(mirrorRef)
         self.p2.mirror(mirrorRef)
+    #@-others
+#@-others
+#@-leo

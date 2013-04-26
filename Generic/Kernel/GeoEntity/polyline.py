@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3361: * @file polyline.py
 #
 # Copyright (c) 2003, 2004, 2005, 2006 Art Haas
 # Copyright (c) 2010 Matteo Boscolo
@@ -24,6 +26,13 @@
 
 
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3362: ** <<declarations>> (polyline)
 import math
 
 from Kernel.GeoUtil.tolerance              import *
@@ -31,12 +40,16 @@ from Kernel.GeoEntity.point                import Point
 from Kernel.GeoEntity.segment              import Segment
 from Kernel.GeoEntity.cline                import CLine
 from Kernel.GeoEntity.geometricalentity    import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3363: ** class Polyline
 class Polyline(GeometricalEntity):
     """
         A class representing a polyline. A polyline is essentially
         a number of segments that connect end to end.
     """
+    #@+others
+    #@+node:1.20130426141258.3364: *3* __init__
     def __init__(self,kw):
         """
             Initialize a Polyline object.
@@ -48,15 +61,17 @@ class Polyline(GeometricalEntity):
             raise ValueError("Invalid number of imput value ")
         argDescription=dict([(key,Point) for key in kw])
         GeometricalEntity.__init__(self,kw, argDescription)
-
+    #@+node:1.20130426141258.3365: *3* __str__
     #def __len__(self):
     #    return len(self.points)
 
     def __str__(self):
         return "Polyline"
+    #@+node:1.20130426141258.3366: *3* info
     @property
     def info(self):
         return "Polyline"
+    #@+node:1.20130426141258.3367: *3* __eq__
     def __eq__(self, obj):
         """
             Compare two Polyline objects for equality.
@@ -84,7 +99,7 @@ class Polyline(GeometricalEntity):
                         _val = False
                         break
         return _val
-
+    #@+node:1.20130426141258.3368: *3* __ne__
     def __ne__(self, obj):
         """
             Compare two Polyline objects for inequality.
@@ -112,7 +127,7 @@ class Polyline(GeometricalEntity):
                         _val = True
                         break
         return _val
-
+    #@+node:1.20130426141258.3369: *3* getPoints
     def getPoints(self):
         """
             Get the points of the Polyline.
@@ -120,7 +135,7 @@ class Polyline(GeometricalEntity):
             objects that define the Polyline.
         """
         return self.getConstructionElements()
-
+    #@+node:1.20130426141258.3370: *3* addPoint
     def addPoint(self, name, point):
         """
             Add a Point to the Polyline.
@@ -131,8 +146,7 @@ class Polyline(GeometricalEntity):
         if not isinstance(point, Point):
             raise TypeError("Invalid Point for Polyline point: " + repr(type(point)))
         self[name]=point
-
-
+    #@+node:1.20130426141258.3371: *3* delPoint
     def delPoint(self, name):
         """
             Remove a Point from the Polyline.
@@ -143,7 +157,7 @@ class Polyline(GeometricalEntity):
 
         if len(self) > 2:
             del self[name]
-
+    #@+node:1.20130426141258.3372: *3* getBounds
     def getBounds(self):
         """
             Return the bounding rectangle around a Polyline.
@@ -166,7 +180,7 @@ class Polyline(GeometricalEntity):
             if _pymax is None or _py > _pymax:
                 _pymax = _py
         return _pxmin, _pymin, _pxmax, _pymax
-
+    #@+node:1.20130426141258.3373: *3* points
     def points(self):
         """
             return a list of point
@@ -177,7 +191,7 @@ class Polyline(GeometricalEntity):
         for k in kk:
             exit.append(self[k])
         return exit
-
+    #@+node:1.20130426141258.3374: *3* clone
     def clone(self):
         """
             Create an identical copy of a Polyline.
@@ -189,7 +203,7 @@ class Polyline(GeometricalEntity):
             _cpts[name]=_pt.clone()
             i+=1
         return Polyline(_cpts)
-
+    #@+node:1.20130426141258.3375: *3* getSympySegments
     def getSympySegments(self):
         """
             return an array of sympy Segment
@@ -199,7 +213,7 @@ class Polyline(GeometricalEntity):
         for s in self.getSegments():
             out.append(s.getSympy())
         return out
-
+    #@+node:1.20130426141258.3376: *3* getSegments
     def getSegments(self):
         """
             return an array of segments that identifie the polyline
@@ -215,10 +229,13 @@ class Polyline(GeometricalEntity):
         else:
             return exitArray
         return []
-
+    #@+node:1.20130426141258.3377: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror
         """
         for k in self:
             self[k].mirror(mirrorRef)
+    #@-others
+#@-others
+#@-leo

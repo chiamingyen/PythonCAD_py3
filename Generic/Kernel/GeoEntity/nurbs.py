@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3323: * @file nurbs.py
 #
 # Copyright (c) 2003 Art Haas
 # Copyright (c) 2010 Matteo Boscolo
@@ -21,10 +23,21 @@
 # NURBS curves
 
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3324: ** <<declarations>> (nurbs)
 import array
 from Kernel.GeoEntity.geometricalentity  import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3325: ** class Nurb
 class Nurb(GeometricalEntity):
+    #@+others
+    #@+node:1.20130426141258.3326: *3* __init__
     def __init__(self, ctrlpts, knots, order):
         if not isinstance(ctrlpts, list):
             raise TypeError("Invalid control point list: " + str(ctrlpts))
@@ -76,16 +89,16 @@ class Nurb(GeometricalEntity):
         self.__ctrlpts = _ctrlpts
         self.__knots = _knots
         self.__order = order
-
+    #@+node:1.20130426141258.3327: *3* getControlPoints
     def getControlPoints(self):
         return self.__ctrlpts[:]
-
+    #@+node:1.20130426141258.3328: *3* getKnots
     def getKnots(self):
         return self.__knots[:]
-
+    #@+node:1.20130426141258.3329: *3* getOrder
     def getOrder(self):
         return self.__order
-
+    #@+node:1.20130426141258.3330: *3* calculate
     def calculate(self, count):
         if not isinstance(count, int):
             raise TypeError("Invalid count: " + str(count))
@@ -114,7 +127,7 @@ class Nurb(GeometricalEntity):
                 print("zero weight: %f, %f" % (_nx, _ny))
 
         return _pts
-
+    #@+node:1.20130426141258.3331: *3* _N
     def _N(self, i, p, t):
         # print "_N() ..."
         _flag = False
@@ -157,7 +170,7 @@ class Nurb(GeometricalEntity):
         if _flag:
             print("val: %f" % _val)
         return _val
-
+    #@+node:1.20130426141258.3332: *3* writedata
     def writedata(self, count, fname):
         if not isinstance(count, int):
             raise TypeError("Invalid count: " + str(count))
@@ -175,7 +188,7 @@ class Nurb(GeometricalEntity):
         for _knot in self.getKnots():
             _f.write("%f 0.0\n" % _knot)
         _f.close()
-
+    #@+node:1.20130426141258.3333: *3* _NN
     def _NN(self, i, p, t):
         _cpts = self.__ctrlpts
         _cl = len(_cpts)
@@ -214,3 +227,6 @@ class Nurb(GeometricalEntity):
                         if abs(_v2) > 1e-10:
                             _t2 = (_v2/_v1) * _n
                 _val[_i] = _t1 + _t2
+    #@-others
+#@-others
+#@-leo

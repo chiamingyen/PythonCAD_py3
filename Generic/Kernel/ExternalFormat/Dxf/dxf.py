@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3051: * @file dxf.py
 #
 # Copyright (c) 2009,2010,2011 Matteo Boscolo,Yagnesh Desai
 #
@@ -18,6 +20,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3052: ** <<declarations>> (dxf)
 dxfDebug=False
 
 import math         # added to handle arc start and end point defination
@@ -31,24 +40,29 @@ from Kernel.GeoEntity.arc             import Arc
 from Kernel.GeoEntity.text            import Text
 from Kernel.GeoEntity.ellipse         import Ellipse
 from Kernel.GeoEntity.polyline        import Polyline
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3053: ** ChangeColor
 def ChangeColor(x):
     try:
         newcolor = cgcol[x]
     except:
         newcolor = 256
     return newcolor
-
+#@+node:1.20130426141258.3054: ** changeColorFromDxf
 def changeColorFromDxf(col):
     if col == '256':
         newcol = layerColor[col]#Work in progress layerColor captured under readLayer needs to be used
     else:
         newcol = ChangeColor(col)
     return newcol
-
+#@+node:1.20130426141258.3055: ** class DrawingFile
 class DrawingFile(object):
     """
         This Class provide base capability to read write a  file
     """
+    #@+others
+    #@+node:1.20130426141258.3056: *3* __init__
     def __init__(self,fileName):
         """
             Base Constructor
@@ -60,7 +74,7 @@ class DrawingFile(object):
         self.__reading=False
         self.__writing=False
         self.__lineNumber=0
-
+    #@+node:1.20130426141258.3057: *3* readAsci
     def readAsci(self):
         """
             Read a generic file
@@ -69,7 +83,7 @@ class DrawingFile(object):
         self.__fb=open(self.__fn,'r')
         self.__reading=True
         self.__writing=False
-
+    #@+node:1.20130426141258.3058: *3* createAsci
     def createAsci(self):
         """
             create the new file
@@ -77,7 +91,7 @@ class DrawingFile(object):
         self.__fb=open(self.__fn,'w')
         self.__reading=False
         self.__writing=True
-
+    #@+node:1.20130426141258.3059: *3* fileObject
     def fileObject(self):
         """
             Return the file opened
@@ -89,7 +103,7 @@ class DrawingFile(object):
         else:
           dPrint( "Debug: None")
           return None
-
+    #@+node:1.20130426141258.3060: *3* readLine
     def readLine(self):
         """
             read a line and return it
@@ -99,7 +113,7 @@ class DrawingFile(object):
             return self.__fb.readline()
         else:
             raise ("Unable to perfor reading operation")
-
+    #@+node:1.20130426141258.3061: *3* writeLine
     def writeLine(self,line):
         """
             write a line to the file
@@ -108,7 +122,7 @@ class DrawingFile(object):
             self.__fb.write(line)
         else:
             raise ("Unable to perfor writing operation")
-
+    #@+node:1.20130426141258.3062: *3* writeError
     def writeError(self,functionName,msg):
         """
             Add an Error to the Collection
@@ -116,7 +130,7 @@ class DrawingFile(object):
         _msg='Error on line %s function Name: %s Message %s \n'%(
             str(self.__lineNumber, 'ASCII'),functionName,msg)
         self.__errors.append(_msg)
-
+    #@+node:1.20130426141258.3063: *3* getError
     def getError(self):
         """
         get the import export error
@@ -125,23 +139,27 @@ class DrawingFile(object):
             return self.__errors
         else:
             return None
+    #@+node:1.20130426141258.3064: *3* close
     def close(self):
         """
         close the active fileObject
         """
         if not self.__fb is None:
             self.__fb.close()
+    #@+node:1.20130426141258.3065: *3* getFileName
     def getFileName(self):
         """
             Return The active file Name
         """
         return self.__fn
-
-
+    #@-others
+#@+node:1.20130426141258.3066: ** class Dxf
 class Dxf(DrawingFile):
     """
         this class provide dxf reading/writing capability
     """
+    #@+others
+    #@+node:1.20130426141258.3067: *3* __init__
     def __init__(self,kernel,fileName):
         """
             Default Constructor
@@ -150,7 +168,7 @@ class Dxf(DrawingFile):
         DrawingFile.__init__(self,fileName)
         self.__kernel=kernel
         self.__dxfLayer=None
-
+    #@+node:1.20130426141258.3068: *3* exportEntitis
     def exportEntitis(self):
         """
             export The current file in dxf format
@@ -177,7 +195,7 @@ class Dxf(DrawingFile):
                 # go on end implements the other case arc circle ...
         self.writeLine("  0\nENDSEC\n  0\nEOF")#writing End Of File
         self.close()
-
+    #@+node:1.20130426141258.3069: *3* getAllEntitis
     def getAllEntitis(self):
         """
             retrive all the entitys from the drawing
@@ -196,7 +214,7 @@ class Dxf(DrawingFile):
                 populateDxfStructure(childs)
         populateDxfStructure(layerNodes)
         return _outLayers
-
+    #@+node:1.20130426141258.3070: *3* writeSegment
     def writeSegment(self,e, style):
         """
            write segment to the dxf file
@@ -212,7 +230,7 @@ class Dxf(DrawingFile):
         self.writeLine(" 20\n" +str(y1) +"\n 30\n0.0\n")
         self.writeLine(" 11\n" +str(x2) +"\n")
         self.writeLine(" 21\n" +str(y2) +"\n 31\n0.0\n")
-
+    #@+node:1.20130426141258.3071: *3* writeArc
     def writeArc(self,e, style):
         """
            Write Arc to the dxf file
@@ -230,7 +248,7 @@ class Dxf(DrawingFile):
         self.writeLine(" 20\n" +str(y1, 'ASCII') +"\n 30\n0.0\n")
         self.writeLine(" 40\n" +str(r, 'ASCII') +"\n")
         self.writeLine(" 50\n" +str(sa, 'ASCII') +"\n 51\n"+str(ea, 'ASCII')+"\n")
-
+    #@+node:1.20130426141258.3072: *3* writePolyline
     def writePolyline(self,e, style):
         """
            Write Polyline to the dxf file
@@ -251,7 +269,7 @@ class Dxf(DrawingFile):
             self.writeLine(" 10\n" +str(x1, 'ASCII') +"\n")
             self.writeLine(" 20\n" +str(y1, 'ASCII') +"\n")
             c = c + 1
-
+    #@+node:1.20130426141258.3073: *3* writeText
     def writeText(self,e, style):
         """
            Write Text to the dxf file
@@ -270,7 +288,7 @@ class Dxf(DrawingFile):
         self.writeLine(" 20\n" +str(y1, 'ASCII') +"\n 30\n0.0\n")
         self.writeLine(" 40\n" +str(h, 'ASCII') +"\n")
         self.writeLine("  1\n" +str(txt, 'ASCII') +"\n")
-
+    #@+node:1.20130426141258.3074: *3* importEntitis
     def importEntitis(self):
         """
             Open The file and create The entity in pythonCad
@@ -326,6 +344,7 @@ class Dxf(DrawingFile):
             self.__kernel.performCommit()
         finally:
             self.__kernel.stopMassiveCreation()
+    #@+node:1.20130426141258.3075: *3* readLayer
     def readLayer(self):
         """
         Reading the data in the dxf file under TABLE section
@@ -352,7 +371,7 @@ class Dxf(DrawingFile):
                 #print "Debug new dxfColor = ", dxfColor
             layerColor[layerName] = dxfColor
         return layerColor
-
+    #@+node:1.20130426141258.3076: *3* createLineFromDxf
     def createLineFromDxf(self):
         """
             read the line dxf section and create the line
@@ -417,7 +436,7 @@ class Dxf(DrawingFile):
             _msg='Read parameter from file x1: [%s] y1: [%s] x2: [%s] y2: [%s]'%(
                         str(x1, 'ASCII'),str(y1, 'ASCII'),str(x2, 'ASCII'),str(y2, 'ASCII'))
             self.writeError('createLineFromDxf',_msg)
-
+    #@+node:1.20130426141258.3077: *3* createLine
     def createLine(self,x1,y1,x2,y2,c):
         """
           Create the line into the current drawing
@@ -425,7 +444,7 @@ class Dxf(DrawingFile):
         args={"SEGMENT_0":Point(x1, y1), "SEGMENT_1":Point(x2, y2)}
         _seg = Segment(args)
         self.__kernel.saveEntity(_seg)
-
+    #@+node:1.20130426141258.3078: *3* createCircleFromDxf
     def createCircleFromDxf(self):
         """
             Read and create the Circle into drawing
@@ -459,8 +478,7 @@ class Dxf(DrawingFile):
         if c == None:
             c = 7
         self.createArc(x,y,r,c)
-
-
+    #@+node:1.20130426141258.3079: *3* createTextFromDxf
     def createTextFromDxf(self):
         """
             Read and create the Text into drawing
@@ -513,7 +531,7 @@ class Dxf(DrawingFile):
             _msg="Read parameter from file x: [%s] y: [%s] h: [%s] t: [%s]"%(
                         str(x, 'ASCII'),str(y, 'ASCII'),str(h, 'ASCII'),str(_t, 'ASCII'))
             self.writeError("createTextFromDxf",_msg)
-
+    #@+node:1.20130426141258.3080: *3* createArcFromDxf
     def createArcFromDxf(self):
         """
             Read and create the ARC into drawing
@@ -552,7 +570,7 @@ class Dxf(DrawingFile):
         if c == None:
                 c = 7
         self.createArc(x,y,r,c,sa,ea)
-
+    #@+node:1.20130426141258.3081: *3* createArc
     def createArc(self,x,y,r,color=None,sa=None,ea=None):
         """
             Create a Arc entitys into the current drawing
@@ -567,7 +585,7 @@ class Dxf(DrawingFile):
         args={"ARC_0":_center, "ARC_1":r, "ARC_2":sa, "ARC_3":ea}
         _arc = Arc(args)
         self.__kernel.saveEntity(_arc)
-
+    #@+node:1.20130426141258.3082: *3* createText
     def createText(self,x,y,h,t):
         """
             Create a Text entitys into the current drawing
@@ -581,7 +599,7 @@ class Dxf(DrawingFile):
         args={"TEXT_0":_p,"TEXT_1":_text, "TEXT_2":0.0, "TEXT_3":""}
         _tb = Text(args)
         self.__kernel.saveEntity(_tb)
-
+    #@+node:1.20130426141258.3083: *3* createPolylineFromDxf
     def createPolylineFromDxf(self):
         """
         Polyline creation read the line dxf section and create the line
@@ -622,7 +640,7 @@ class Dxf(DrawingFile):
                 c = 7
         if len(points)>1:
             self.createPolyline(points,c)
-
+    #@+node:1.20130426141258.3084: *3* createPolyline
     def createPolyline(self,points,c):
         """
             Crate poliline into Pythoncad
@@ -638,10 +656,13 @@ class Dxf(DrawingFile):
             i+=1
         pline=Polyline(args)
         self.__kernel.saveEntity(pline)
-
+    #@-others
+#@+node:1.20130426141258.3085: ** dPrint
 def dPrint(msg):
     """
         Debug function for the dxf file
     """
     if dxfDebug :
         print("Debug: %s " %str(msg, 'ASCII'))
+#@-others
+#@-leo

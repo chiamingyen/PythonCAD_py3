@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.3132: * @file objoint.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -22,6 +24,13 @@
 #
 # code for base composed object
 #
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.3133: ** <<declarations>> (objoint)
 from math import hypot, pi, sin, cos, tan, atan2
 
 from Kernel.GeoEntity.geometricalentity    import *
@@ -32,8 +41,9 @@ from Kernel.GeoEntity.segment              import Segment
 from Kernel.GeoEntity.arc                  import Arc
 from Kernel.GeoEntity.ccircle              import CCircle
 from Kernel.GeoUtil.geolib                 import Vector
-
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.3134: ** class ObjectJoint
 #ALLOW_CHAMFER_ENTITY=(Segment, ACLine)
 
 class ObjectJoint(GeometricalEntityComposed):
@@ -41,6 +51,8 @@ class ObjectJoint(GeometricalEntityComposed):
         A base class for chamfers and fillets
         A ObjectJoint object has the following methods:
     """
+    #@+others
+    #@+node:1.20130426141258.3135: *3* __init__
     def __init__(self, kw, argDes=None):
         from Kernel.initsetting import DRAWIN_ENTITY
         classNames=tuple(DRAWIN_ENTITY.keys())
@@ -62,6 +74,7 @@ class ObjectJoint(GeometricalEntityComposed):
             spoolIntersection=findSegmentExtendedIntersectionPoint(self.obj1, self.obj2)
             self._externalIntersectio=True
         self._intersectionPoints=spoolIntersection
+    #@+node:1.20130426141258.3136: *3* angle
     @property
     def angle(self):
         """
@@ -71,60 +84,65 @@ class ObjectJoint(GeometricalEntityComposed):
         v2=self.getAngledVector(self.obj2, self.pointClick2)
         ang=v1.ang(v2)
         return ang
-        
+    #@+node:1.20130426141258.3137: *3* trimMode
     @property
     def trimMode(self):
         """
             trim mode for the entity
         """
         return self["OBJECTJOINT_4"]
+    #@+node:1.20130426141258.3138: *3* trimMode
     @trimMode.setter
     def trimMode(self, value):
         if value in self.trimModeKey:
             self["OBJECTJOINT_4"]=value
         else:
             raise AttributeError("Bad trim mode use FIRST SECOND BOTH NO_TRIM") 
-    
+    #@+node:1.20130426141258.3139: *3* obj1
     @property
     def obj1(self):    
         """
             First object
         """
         return self["OBJECTJOINT_0"]
+    #@+node:1.20130426141258.3140: *3* obj1
     @obj1.setter
     def obj1(self, value):
         self["OBJECTJOINT_0"]=value
-        
+    #@+node:1.20130426141258.3141: *3* obj2
     @property
     def obj2(self):    
         """
            second object
         """
         return self["OBJECTJOINT_1"]
+    #@+node:1.20130426141258.3142: *3* obj2
     @obj2.setter
     def obj2(self, value):
         self["OBJECTJOINT_1"]=value
-        
+    #@+node:1.20130426141258.3143: *3* pointClick1
     @property    
     def pointClick1(self):
         """
             get the clicked point
         """
         return self["OBJECTJOINT_2"]
+    #@+node:1.20130426141258.3144: *3* pointClick1
     @pointClick1.setter
     def pointClick1(self, value):
         self["OBJECTJOINT_2"]=value
-
+    #@+node:1.20130426141258.3145: *3* pointClick2
     @property  
     def pointClick2(self):
         """
             get the clicked point
         """
         return self["OBJECTJOINT_3"]
+    #@+node:1.20130426141258.3146: *3* pointClick2
     @pointClick2.setter
     def pointClick2(self, value):
         self["OBJECTJOINT_3"]=value
-        
+    #@+node:1.20130426141258.3147: *3* intersection
     @property    
     def intersection(self):
         """
@@ -134,7 +152,7 @@ class ObjectJoint(GeometricalEntityComposed):
             [] no intersection
         """
         return self._intersectionPoints
-        
+    #@+node:1.20130426141258.3148: *3* getConstructionElements
     def getConstructionElements(self):
         """
             Return the two Entity Object joined by the ObjectJoint.
@@ -142,14 +160,13 @@ class ObjectJoint(GeometricalEntityComposed):
             by the ObjectJoint.
         """
         return self
-
-    
+    #@+node:1.20130426141258.3149: *3* getReletedComponent
     def getReletedComponent(self):
         """
             return the releted compont of the ObjectJoint
         """
         return self.getConstructionElements()
-
+    #@+node:1.20130426141258.3150: *3* getAngledVector
     def getAngledVector(self, segment,  point):
         """
             calculate the vector use
@@ -170,4 +187,6 @@ class ObjectJoint(GeometricalEntityComposed):
                 return Vector(pi, p1)
             else:
                 return Vector(pi, p2)  
-
+    #@-others
+#@-others
+#@-leo

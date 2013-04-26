@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#@+leo-ver=5-thin
+#@+node:1.20130426141258.4163: * @file polyline.py
+#@@first
+
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -20,15 +24,27 @@
 #
 # SegmentPreview object
 #
+
+
+
+
+#@@language python
+#@@tabwidth -4
+
+#@+<<declarations>>
+#@+node:1.20130426141258.4164: ** <<declarations>> (polyline)
 import math
 
 from Interface.Preview.base         import *
-
+#@-<<declarations>>
+#@+others
+#@+node:1.20130426141258.4165: ** class QtPolylineItem
 class QtPolylineItem(PreviewBase):
+    #@+others
+    #@+node:1.20130426141258.4166: *3* __init__
     def __init__(self, command):
         super(QtPolylineItem, self).__init__(command)
-
-        
+    #@+node:1.20130426141258.4167: *3* drawShape
     def drawShape(self, painterPath):    
         """
             overloading of the shape method 
@@ -40,7 +56,7 @@ class QtPolylineItem(PreviewBase):
                 first=false
             elif p:
                 painterPath.lineTo(p)    
-    
+    #@+node:1.20130426141258.4168: *3* boundingRect
     def boundingRect(self):
         """
             overloading of the qt bounding rectangle
@@ -56,7 +72,7 @@ class QtPolylineItem(PreviewBase):
             w=abs(ymin-ymax)
             return QtCore.QRectF(xmin,ymin,h ,w)
         return QtCore.QRectF(0,0 ,0.1,0.1)
-        
+    #@+node:1.20130426141258.4169: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             overloading of the paint method
@@ -71,3 +87,6 @@ class QtPolylineItem(PreviewBase):
             painter.drawPolyline(pol)
         
         #painter.drawRect(self.boundingRect())
+    #@-others
+#@-others
+#@-leo
