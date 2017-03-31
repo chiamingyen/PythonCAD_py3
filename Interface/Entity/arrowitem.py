@@ -14,8 +14,8 @@
 
 
 import math
-from PyQt4 import QtCore, QtGui
-class ArrowItem(QtGui.QGraphicsItem):
+from PyQt5 import QtCore, QtGui, QtWidgets
+class ArrowItem(QtWidgets.QGraphicsItem):
     def definePath(self):
         poligonArrow=QtGui.QPolygonF()
         poligonArrow.append(QtCore.QPointF(0.0, 5.0))

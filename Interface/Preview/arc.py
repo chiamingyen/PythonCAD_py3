@@ -27,7 +27,7 @@
 
 
 import math
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 from Interface.Preview.base         import PreviewBase
 from Interface.Entity.arc           import Arc
 from Kernel.entity                  import Point

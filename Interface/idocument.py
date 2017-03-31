@@ -1,10 +1,10 @@
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from Generic.Kernel.document import *
 from Interface.LayerIntf.layerdock  import LayerDock
 from Interface.cadscene             import CadScene
 from Interface.cadview              import CadView
-class IDocument(QtGui.QMdiSubWindow):
+class IDocument(QtWidgets.QMdiSubWindow):
     sequenceNumber = 1
     def __init__(self, document, cmdInf, parent):
         super(IDocument, self).__init__(parent)
@@ -22,7 +22,7 @@ class IDocument(QtGui.QMdiSubWindow):
         self.__cmdInf.commandLine.evaluatePressed+=self.scene.textInput
         self.__view = CadView(self._scene, self)
         # the graphics view is the main/central component
-        innerWindows = QtGui.QMainWindow()
+        innerWindows = QtWidgets.QMainWindow()
         innerWindows.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.__layer_dock)
         innerWindows.setCentralWidget(self.__view)
         self.setWidget(innerWindows)
@@ -94,13 +94,13 @@ class IDocument(QtGui.QMdiSubWindow):
         """
             popUp a warning mesage
         """
-        ret = QtGui.QMessageBox.warning(self,"Warning",  msg)
+        ret = QtWidgets.QMessageBox.warning(self,"Warning",  msg)
         return
     def popUpInfo(self, msg):
         """
             popUp a Info mesage
         """
-        ret = QtGui.QMessageBox.information(self,"Information",  msg)
+        ret = QtWidgets.QMessageBox.information(self,"Information",  msg)
         return
     def _errorEvent(self, err):
         """
@@ -108,8 +108,8 @@ class IDocument(QtGui.QMdiSubWindow):
             the err is a dictionary like the one below
             _err={'object':, 'error':}
         """
-        msgBox=QtGui.QMessageBox(self)
-        msgBox.setIcon(QtGui.QMessageBox.Critical)
+        msgBox=QtWidgets.QMessageBox(self)
+        msgBox.setIcon(QtWidgets.QMessageBox.Critical)
         msg="Error came from object %s"%(str(err['error']))
         dmsg=msg
         for _e in err['object'].getErrorList():

@@ -9,8 +9,8 @@ Created on May 12, 2010
 #import sip
 #sip.setapi('QString', 2)
 
-from PyQt4 import QtCore, QtGui
-class CmdAction(QtGui.QAction):
+from PyQt5 import QtCore, QtGui, QtWidgets
+class CmdAction(QtWidgets.QAction):
     '''
     Derived action class to hold a command name.
     The FunctionHandler class handles signals emitted by this class.

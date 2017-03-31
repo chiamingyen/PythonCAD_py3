@@ -15,7 +15,7 @@ import sys
 #        pass
     
 #
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 # 
 import os
 import sqlite3 as sqlite
@@ -29,11 +29,11 @@ from Interface.cadwindow    import CadWindowMdi
 #
 def getPythonCAD():
 
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     # splashscreen
     splashPath=os.path.join(os.getcwd(), 'icons', 'splashScreen1.png')
     splash_pix = QtGui.QPixmap(splashPath)
-    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     splash.show()
     

@@ -33,18 +33,19 @@
 
 
 import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info <(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
     
-from PyQt4  import QtCore, QtGui
+from PyQt5  import QtCore, QtGui,  QtWidgets
 
 
 from Interface.pycadapp                         import PyCadApp
 
 from Interface.LayerIntf.layertreeobject        import LayerTreeObject
-class LayerDock(QtGui.QDockWidget):
+class LayerDock(QtWidgets.QDockWidget):
     '''
         A dock able window containing a layer list object.
         The layer list contains all visible layers.

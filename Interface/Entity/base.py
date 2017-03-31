@@ -24,25 +24,26 @@
 
 
 import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info <(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
 
 import math
-from PyQt4  import QtCore, QtGui
+from PyQt5  import QtCore, QtGui,  QtWidgets
 
 from Kernel.initsetting         import PYTHONCAD_HIGLITGT_COLOR, PYTHONCAD_COLOR, MOUSE_GRAPH_DIMENSION
 
 from Kernel.GeoEntity.point     import Point
-class BaseEntity(QtGui.QGraphicsItem):
+class BaseEntity(QtWidgets.QGraphicsItem):
     shapeSize=MOUSE_GRAPH_DIMENSION
     showShape=False #This Flag is used for debug porpoise
     showBBox=False  #This Flag is used for debug porpoise
     def __init__(self, entity):
         super(BaseEntity, self).__init__()
         self.setAcceptsHoverEvents(True)                        #Fire over events
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         #Get the geometry
         self._entity=entity
         self.setToolTip(str(self.toolTipMessage))
@@ -99,10 +100,10 @@ class BaseEntity(QtGui.QGraphicsItem):
         self.update(self.boundingRect())
         return
     def itemChange(self, change, value):
-        if change == QtGui.QGraphicsItem.ItemSelectedChange:
+        if change == QtWidgets.QGraphicsItem.ItemSelectedChange:
             #self.setColor(value==1)
             self.update(self.boundingRect())
-        return QtGui.QGraphicsItem.itemChange(self, change, value)
+        return QtWidgets.QGraphicsItem.itemChange(self, change, value)
     def setColor(self, forceHilight=None):
         if forceHilight==None:
             if self.isSelected() or forceHilight:

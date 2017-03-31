@@ -24,7 +24,7 @@
 
 import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.pycadevent              import PyCadEvent
 class CustomVector(object):
@@ -76,7 +76,7 @@ class CustomVector(object):
           Get The Norm Of the CustomVector
         """
         return math.sqrt(pow(self.X,2)+pow(self.Y,2))
-class PositionHandler(QtGui.QGraphicsItem):
+class PositionHandler(QtWidgets.QGraphicsItem):
     """
         this class provide a custom object for easily moving entity into
         PythonCAD
@@ -86,9 +86,9 @@ class PositionHandler(QtGui.QGraphicsItem):
         self.setAcceptsHoverEvents(True)
         self.circle=CirclePosition(self, QtCore.QPointF(5,5))
         self.circle.setAcceptsHoverEvents(False)
-        self.circle.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
+        self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
         self.circle.setAcceptDrops(False)
-        self.circle.setFlag(QtGui.QGraphicsItem.ItemIsMovable, False)
+        self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
         self.ActionHandler=ActionHandler(self, QtCore.QPointF(0,0))
         self.ActionHandler.fireApply+=self._fireApply
         self.customAction=PyCadEvent()
@@ -162,7 +162,7 @@ class PositionHandler(QtGui.QGraphicsItem):
             get the position from the starting point
         """
         return self.circle.scenePos()-self.ActionHandler.scenePos()
-class ActionHandler(QtGui.QGraphicsItem):
+class ActionHandler(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None, position=None ):
         super(ActionHandler, self).__init__(parent)
         # supported event 
@@ -192,7 +192,7 @@ class ActionHandler(QtGui.QGraphicsItem):
             self.setPos(position)
         self.position=position
         self.setAcceptsHoverEvents(True)
-        self.setFlag(QtGui.QGraphicsItem.ItemIsMovable, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, True)
     def _fireApply(self):   
         print("ActionHandler apply") 
         self.fireApply()
@@ -208,11 +208,11 @@ class ActionHandler(QtGui.QGraphicsItem):
             overloading of the paint method
         """
         self.parentItem().paint(painter,option,widget)
-class ArcAngle(QtGui.QGraphicsItem):
+class ArcAngle(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None , position=None ):
         super(ArcAngle, self).__init__(parent)
         self.setAcceptsHoverEvents(True)                        #Fire over events
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
         if position!=None:
             self.setPos(position)
@@ -277,34 +277,34 @@ class ArcAngle(QtGui.QGraphicsItem):
             r=self.parentItem().rotation()
             self.setRotation(float(text)+r)
             return
-        QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+        QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
     def _apply(self, event):
         self.fireApply()
-class ContextMenu(QtGui.QMenu):
+class ContextMenu(QtWidgets.QMenu):
     def __init__(self, keyPressFunction=None, confermationFunction=None):
         super(ContextMenu, self).__init__()
         #set action QLineEdit
         if keyPressFunction!= None:
-            self.qle=QtGui.QLineEdit()
+            self.qle=QtWidgets.QLineEdit()
             self.qle.keyPressEvent=keyPressFunction
-            wac=QtGui.QWidgetAction(self)
+            wac=QtWidgets.QWidgetAction(self)
             wac.setDefaultWidget(self.qle)
             dummyAction=self.addAction(wac)
         #set apply action 
         if confermationFunction!=None:
-            self.label=QtGui.QLabel()
+            self.label=QtWidgets.QLabel()
             self.label.setText("Apply")
             self.label.mouseReleaseEvent=confermationFunction
-            wac1=QtGui.QWidgetAction(self)
+            wac1=QtWidgets.QWidgetAction(self)
             wac1.setDefaultWidget(self.label)
             dummyAction=self.addAction(wac1);
-class CirclePosition(QtGui.QGraphicsItem):
+class CirclePosition(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None , position=None ):
         super(CirclePosition, self).__init__(parent)
         self.setAcceptsHoverEvents(True)                        #Fire over events
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
-        self.setFlag(QtGui.QGraphicsItem.ItemIsMovable, False)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
         if position!=None:
             self.setPos(position)
         self.customAction=PyCadEvent()
@@ -364,14 +364,14 @@ class CirclePosition(QtGui.QGraphicsItem):
             p=QtCore.QPointF(float(x), float(y))
             self.parentItem().setPos(p)
             return
-        QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+        QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
     def _apply(self, event):
         self.fireApply()
-class ArrowItem(QtGui.QGraphicsItem):
+class ArrowItem(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None, position=None, rotation=None , arrowColor=None):
         super(ArrowItem, self).__init__(parent)
         self.setAcceptsHoverEvents(True)                        #Fire over events
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
         self.arrowColor=QtGui.QPen(QtGui.QColor(79, 106, 25))
         self._angle=0
@@ -448,7 +448,7 @@ class ArrowItem(QtGui.QGraphicsItem):
             text=self.menu.qle.text()
             self.setDistance(float(text))
             return
-        QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+        QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
     def _apply(self, event):
         print("ArrowItem apply")
         self.fireApply()

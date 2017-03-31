@@ -27,9 +27,9 @@
 
 import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from Kernel.pycadevent          import PyCadEvent
-class DinamicEntryLine(QtGui.QLineEdit):
+class DinamicEntryLine(QtWidgets.QLineEdit):
     def __init__(self):
         super(DinamicEntryLine, self).__init__()
         self.hide()

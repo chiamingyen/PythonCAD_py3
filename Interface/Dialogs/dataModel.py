@@ -24,12 +24,16 @@ Created on 23/apr/2012
 '''
 
 
-from  PyQt4.QtCore    import *
-from  PyQt4.QtGui     import *
+from  PyQt5.QtCore    import *
+from PyQt5.QtWidgets import *
+from  PyQt5.QtGui     import *
 class DataModel(QAbstractTableModel): 
     """
         abstract model for manage values
     """
+    layoutChanged = pyqtSignal()
+    dataChanged = pyqtSignal()
+
     def __init__(self, datain, headerdata, parent=None, *args): 
         QAbstractTableModel.__init__(self, parent, *args) 
         self.arraydata = datain
@@ -58,7 +62,7 @@ class DataModel(QAbstractTableModel):
             insert row
         """
         self.insertRows(pos, 1, row)
-        self.emit(SIGNAL('layoutChanged()'))
+        self.layoutChanged.emit()
     def insertRows(self, pos, count, rows):
         """
             insert rows
@@ -67,7 +71,7 @@ class DataModel(QAbstractTableModel):
         for row in rows:
             self.arraydata.append(row)
         self.endInsertRows()
-        self.emit(SIGNAL('layoutChanged()'))
+        self.layoutChanged.emit()
         return True
     def removeRow(self, pos):
         """
@@ -86,7 +90,7 @@ class DataModel(QAbstractTableModel):
             self.beginRemoveRows(QModelIndex(), row, row + count - 1)
             del self.arraydata[row:row + count]
         self.endRemoveRows()
-        self.emit(SIGNAL('layoutChanged()'))
+        self.layoutChanged.emit()
         return True
     def columnCount(self, parent): 
         """
@@ -133,7 +137,7 @@ class DataModel(QAbstractTableModel):
         row = index.row()
         col = index.column()
         self.arraydata[row][col] = str(value.toString())
-        self.emit(SIGNAL('dataChanged()'))
+        self.dataChanged.emit()
         return True
     def getRowData(self,index):
         return self.arraydata[index.row()]

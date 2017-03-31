@@ -25,7 +25,7 @@
 
 
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.initsetting             import SNAP_POINT_ARRAY, ACTIVE_SNAP_POINT, ACTIVE_SNAP_LIST
 from Kernel.GeoEntity.point         import Point
@@ -218,11 +218,11 @@ class SnapPoint():
                             dist=newDist
                             returnVal=p
         return returnVal
-class SnapMark(QtGui.QGraphicsItem):
+class SnapMark(QtWidgets.QGraphicsItem):
     def __init__(self):
         super(SnapMark, self).__init__()
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
-        self.setFlag(QtGui.QGraphicsItem.ItemIgnoresTransformations, True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIgnoresTransformations, True)
         self.hide()
     def collidesWithItem(self,other,mode):
         return False

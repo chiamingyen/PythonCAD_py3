@@ -27,7 +27,7 @@
 
 import math, time
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Generic.application import Application
 
@@ -50,7 +50,7 @@ from Kernel.pycadevent              import PyCadEvent
 from Kernel.GeoEntity.point         import Point
 from Kernel.exception               import *
 from Kernel.entity                  import Entity
-class CadScene(QtGui.QGraphicsScene):
+class CadScene(QtWidgets.QGraphicsScene):
     def __init__(self, document, parent=None):
         super(CadScene, self).__init__(parent)
         # drawing limits
@@ -160,10 +160,11 @@ class CadScene(QtGui.QGraphicsScene):
                         self.endMark.move(ps.getx(), ps.gety()*-1.0)
                 else:
                     self.hideSnapMarks()
-            qtItem=[self.itemAt(scenePos)]
-            self.activeICommand.updateMauseEvent(ps, qtItem)
+            qtItem=self.itemAt(event.scenePos())
+            self.activeICommand.updateMouseEvent(ps, qtItem)
         super(CadScene, self).mouseMoveEvent(event)
         return
+        
     def mousePressEvent(self, event):
         if event.button()==QtCore.Qt.MidButton:
             self.isInPan=True
@@ -221,13 +222,13 @@ class CadScene(QtGui.QGraphicsScene):
         def property():
             self.fireKeyShortcut('PROPERTY')
 
-        contexMenu=QtGui.QMenu()
+        contexMenu=QtWidgets.QMenu()
         # Create Actions
         removeAction=contexMenu.addAction("Delete")
-        QtCore.QObject.connect(removeAction, QtCore.SIGNAL('triggered()'), delete)
+        removeAction.triggered.connect(delete)
 
         propertyAction=contexMenu.addAction("Property")
-        QtCore.QObject.connect(propertyAction, QtCore.SIGNAL('triggered()'), property)
+        propertyAction.triggered.connect(property)
         contexMenu.exec_(event.screenPos())
         del(contexMenu)
     def hanhlerDoubleClick(self):
@@ -254,7 +255,7 @@ class CadScene(QtGui.QGraphicsScene):
         if event.button()==QtCore.Qt.MidButton:
             self.fireZoomFit()
         else:
-            return QtGui.QGraphicsScene.mouseDoubleClickEvent(self, event)
+            return QtWidgets.QGraphicsScene.mouseDoubleClickEvent(self, event)
     def cancelCommand(self):
         """
             cancel the active command

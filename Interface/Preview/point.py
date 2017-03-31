@@ -30,7 +30,7 @@ from Interface.Preview.base         import *
 from Kernel.GeoEntity.segment       import Segment as geoSegment
 from Kernel.initsetting             import PYTHONCAD_PREVIEW_COLOR
 #
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 class PreviewPoint(PreviewBase):
     """
         this class define the arcQT object

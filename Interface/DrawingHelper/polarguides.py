@@ -27,15 +27,15 @@
 
 import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 def getPolarMenu():
     '''
     returns a menu to operate with guide objects STILL TO BE IMPLEMENTED
     '''
-    menu=QtGui.QMenu()
+    menu=QtWidgets.QMenu()
     
     return menu
-class GuideHandler(QtGui.QGraphicsItem):
+class GuideHandler(QtWidgets.QGraphicsItem):
     '''
     This class provide management of a guide Handler to be instanced by the scene
     on startup, and to be placed by iCommand when a point is succesfully added to a command
@@ -117,7 +117,7 @@ class GuideHandler(QtGui.QGraphicsItem):
         return self.childrenBoundingRect()
     def paint(self, painte, option, widget):
         return
-class Guide(QtGui.QGraphicsLineItem):
+class Guide(QtWidgets.QGraphicsLineItem):
     '''
     This class provide a guide object and it's management
     it's added to the GuideHandler object
@@ -126,9 +126,9 @@ class Guide(QtGui.QGraphicsLineItem):
         super(Guide, self).__init__(parent)
         self.handler=parent
         #Flags
-        self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
-        self.setFlag(QtGui.QGraphicsItem.ItemIgnoresTransformations, True)
-        self.setAcceptsHoverEvents(True)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
+        self.setFlag(QtWidgets.QGraphicsItem.ItemIgnoresTransformations, True)
+        self.setAcceptHoverEvents(True)
         #Events
         
         self.a=parent.a+a

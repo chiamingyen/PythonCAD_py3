@@ -38,7 +38,7 @@ from Interface.Dialogs.Widget.widgets import PyCadQLineType
 from Interface.Dialogs.Widget.widgets import PyCadQDouble
 from Interface.Dialogs.Widget.widgets import PyCadQFont
 
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 
 from Interface.Command.distance2point import Distance2Point
 

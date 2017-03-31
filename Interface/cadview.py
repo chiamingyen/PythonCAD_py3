@@ -1,16 +1,16 @@
 
 import math
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Interface.Entity.base import *
 from Interface.Preview.base import *
-class CadView(QtGui.QGraphicsView):
+class CadView(QtWidgets.QGraphicsView):
     def __init__(self, scene, parent=None):
         super(CadView, self).__init__(scene, parent)
         self.scaleFactor=1
         self.controlPress=False
-        self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
-        self.setResizeAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
+        self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
+        self.setResizeAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
 
         #handle mouse midbutton pan and zoom
         scene.fireZoomFit+=self.fit
@@ -19,11 +19,11 @@ class CadView(QtGui.QGraphicsView):
     def Pan(self, panActive, eventPoint):
 
         if panActive==True:
-            self.setDragMode(QtGui.QGraphicsView.ScrollHandDrag)
+            self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
             self.firstPanPoint=eventPoint
         elif panActive==False:
             self.firstPanPoint=None
-            self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
+            self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
         else:
             if self.controlPress==False:
                 c=QtCore.QPoint((self.width()/2-10), (self.height()/2-10))
@@ -39,7 +39,7 @@ class CadView(QtGui.QGraphicsView):
         pOnView=event.pos()
         pOnScene=self.mapToScene(pOnView)
         #old command
-        self.scaleFactor=math.pow(2.0,event.delta() / 240.0)
+        self.scaleFactor=math.pow(2.0,event.angleDelta().y() / 240.0)
         self.scaleView(self.scaleFactor)
 #       self.updateShape()  <<<prova
 
@@ -58,12 +58,12 @@ class CadView(QtGui.QGraphicsView):
         if event.key()==QtCore.Qt.Key_Control:
             self.controlPress=True
             self.scene().isInPan=True
-            self.setDragMode(QtGui.QGraphicsView.ScrollHandDrag)
+            self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
         super(CadView, self).keyPressEvent(event)
     def keyReleaseEvent(self, event):
         self.controlPress=False
         self.scene().isInPan=False
-        self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
+        self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
         super(CadView, self).keyReleaseEvent(event)
     def fit(self):
         """

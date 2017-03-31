@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by Leo: http://leoeditor.com/leo_toc.html -->
-<?xml-stylesheet ekr_test?>
 <leo_file xmlns:leo="http://leoeditor.com/namespaces/leo-python-editor/1.1" >
 <leo_header file_format="2" tnodes="0" max_tnode_index="0" clone_windows="0"/>
 <globals body_outline_ratio="0.5" body_secondary_ratio="0.5">
@@ -14,7 +13,8 @@
 <v t="leo.20170331152739.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="leo.20170331152739.3"><vh>@string initial_split_orientation = horizontal</vh></v>
 </v>
-<v t="1.20130426141258.2394" a="E"><vh>PythonCAD 程式碼</vh>
+<v t="leo.20170331234345.1"><vh>準備改為 PyQt5</vh></v>
+<v t="1.20130426141258.2394"><vh>PythonCAD 程式碼</vh>
 <v t="leo.20170331153122.1"><vh>從 @file 過渡到 @clean</vh></v>
 <v t="amd_yen.20130426011410.8908"><vh>參考資料</vh>
 <v t="amd_yen.20130426011410.8909"><vh>Pyeuclid</vh></v>
@@ -111,7 +111,7 @@
 <v t="1.20130426141258.2469"><vh>testChamfer</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2470" a="E"><vh>@clean pythoncad_qt.py</vh>
+<v t="1.20130426141258.2470"><vh>@clean pythoncad_qt.py</vh>
 <v t="1.20130426141258.2471"><vh>&lt;&lt;declarations&gt;&gt; (pythoncad_qt)</vh></v>
 <v t="1.20130426141258.2472"><vh>getPythonCAD</vh></v>
 </v>
@@ -156,7 +156,7 @@
 <v t="1.20130426141258.2508"><vh>segment_ellipse</vh></v>
 <v t="1.20130426141258.2509"><vh>TestIntersection</vh></v>
 </v>
-<v t="1.20130426141258.2510" a="O"><vh>@clean test_kernel.py</vh></v>
+<v t="1.20130426141258.2510"><vh>@clean test_kernel.py</vh></v>
 <v t="1.20130426141258.2577"><vh>@clean __init__.py</vh></v>
 <v t="1.20130426141258.2578" a="E"><vh>@path Kernel</vh>
 <v t="1.20130426141258.2579"><vh>@clean binarytree.py</vh>
@@ -2966,9 +2966,6 @@ from Interface.pycadapp             import PyCadApp
 #
 # This is only needed for Python v2 but is harmless for Python v3.
 #
-
-
-
 
 @language python
 @tabwidth -4
@@ -31466,5 +31463,6 @@ vertical: body pane on the botton</t>
 <t tx="leo.20170331153122.1">先用 @auto 代替 @file
 
 存檔後, 再用 @clean 代替  @auto</t>
+<t tx="leo.20170331234345.1"></t>
 </tnodes>
 </leo_file>

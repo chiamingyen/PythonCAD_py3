@@ -10,37 +10,33 @@
 
 
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    _fromUtf8 = lambda s: s
 class Ui_preferences(object):
     def setupUi(self, preference):
-        preference.setObjectName(_fromUtf8("preference"))
+        preference.setObjectName("preference")
         preference.setWindowModality(QtCore.Qt.ApplicationModal)
         preference.resize(305, 234)
-        self.verticalLayout = QtGui.QVBoxLayout(preference)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout()
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.verticalLayout = QtWidgets.QVBoxLayout(preference)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.verticalLayout.addLayout(self.verticalLayout_2)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
-        self.buttonBox = QtGui.QDialogButtonBox(preference)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        self.buttonBox = QtWidgets.QDialogButtonBox(preference)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(preference)
         QtCore.QMetaObject.connectSlotsByName(preference)
     def retranslateUi(self, preference):
-        preference.setWindowTitle(QtGui.QApplication.translate("preference", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
+        preference.setWindowTitle(QtCore.QCoreApplication.translate("preference", "Preferences", None))
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
-    preference = QtGui.QDialog()
+    app = QtWidgets.QApplication(sys.argv)
+    preference = QtWidgets.QDialog()
     ui = Ui_preference()
     ui.setupUi(preference)
     preference.show()

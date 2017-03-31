@@ -31,17 +31,18 @@
 
 
 import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info <(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
 
-from PyQt4                              import QtCore, QtGui
+from PyQt5                              import QtCore, QtGui,  QtWidgets
 
 from Kernel.initsetting                 import MAIN_LAYER
 from Kernel.layer                       import Layer
 from Kernel.exception                   import PythonCadWarning
-class LayerItem(QtGui.QTreeWidgetItem):
+class LayerItem(QtWidgets.QTreeWidgetItem):
     """
         Single item
     """
@@ -58,9 +59,9 @@ class LayerItem(QtGui.QTreeWidgetItem):
         """
         self.setExpanded(True)
         if activate:
-            self.setBackgroundColor(0, QtCore.Qt.lightGray)
+            self.setBackground(0, QtCore.Qt.lightGray)
         else:
-            self.setBackgroundColor(0, QtCore.Qt.white)
+            self.setBackground(0, QtCore.Qt.white)
     def setVisible(self, activate):        
         if activate:
             self.setText(1, "Visible")    
@@ -78,7 +79,7 @@ class LayerItem(QtGui.QTreeWidgetItem):
             Get the id of the layer
         """
         return self._id
-class LayerTreeObject(QtGui.QTreeWidget):
+class LayerTreeObject(QtWidgets.QTreeWidget):
     """
         Python
         CAD Layer tree Structure
@@ -96,7 +97,7 @@ class LayerTreeObject(QtGui.QTreeWidget):
         self.setSortingEnabled(True)
         self.populateStructure()
     def itemDoubleClicked(self, qTreeWidgetItem ,column):
-        return QtGui.QTreeWidget.itemDoubleClicked(self, qTreeWidgetItem, column)   
+        return QtWidgets.QTreeWidget.itemDoubleClicked(self, qTreeWidgetItem, column)   
     #
     # Manage event
     #
@@ -134,14 +135,14 @@ class LayerTreeObject(QtGui.QTreeWidget):
         """
             context menu event remapped
         """
-        contexMenu=QtGui.QMenu(self)
+        contexMenu=QtWidgets.QMenu(self)
         # Create Actions
-        addAction=QtGui.QAction("Add Child", self, triggered=self._addChild)
-        removeAction=QtGui.QAction("Remove", self, triggered=self._remove)
-        renameAction=QtGui.QAction("Rename", self, triggered=self._rename)
-        hideAction=QtGui.QAction("Hide", self, triggered=self._hide)
-        showAction=QtGui.QAction("Show", self, triggered=self._show)
-        setCurrentAction=QtGui.QAction("Set Current", self, triggered=self._setCurrent)
+        addAction=QtWidgets.QAction("Add Child", self, triggered=self._addChild)
+        removeAction=QtWidgets.QAction("Remove", self, triggered=self._remove)
+        renameAction=QtWidgets.QAction("Rename", self, triggered=self._rename)
+        hideAction=QtWidgets.QAction("Hide", self, triggered=self._hide)
+        showAction=QtWidgets.QAction("Show", self, triggered=self._show)
+        setCurrentAction=QtWidgets.QAction("Set Current", self, triggered=self._setCurrent)
         #TODO : propertyAction=QtGui.QAction("Property", self, triggered=self._property)
         #
         contexMenu.addAction(addAction)
@@ -158,7 +159,7 @@ class LayerTreeObject(QtGui.QTreeWidget):
         """
             Add a child layer
         """
-        text, ok = QtGui.QInputDialog.getText(self, 'Input Dialog', 
+        text, ok = QtWidgets.QInputDialog.getText(self, 'Input Dialog', 
                                                 'Enter Layer Name :')
         if ok:
             layerName=text
@@ -178,7 +179,7 @@ class LayerTreeObject(QtGui.QTreeWidget):
         """
             rename the current layer
         """   
-        text, ok = QtGui.QInputDialog.getText(self, 'Input Dialog', 
+        text, ok = QtWidgets.QInputDialog.getText(self, 'Input Dialog', 
                                                 'Enter Layer Name :')
         if ok:
             layerId=self.currentIterfaceTreeObject.id  
@@ -191,10 +192,10 @@ class LayerTreeObject(QtGui.QTreeWidget):
             layerId=self.currentIterfaceTreeObject.id  
             self._document.getTreeLayer.Hide(layerId)
         except PythonCadWarning as e:
-            QtGui.QMessageBox.information(self, 
+            QtWidgets.QMessageBox.information(self, 
                                                 "PythonCad -Warning", 
                                                 str(e) , 
-                                                QtGui.QMessageBox.Ok)
+                                                QtWidgets.QMessageBox.Ok)
     def _show(self):
         """
             Show the selected layer
@@ -203,10 +204,10 @@ class LayerTreeObject(QtGui.QTreeWidget):
             layerId=self.currentIterfaceTreeObject.id 
             self._document.getTreeLayer.Hide(layerId, False) 
         except PythonCadWarning as e:
-            QtGui.QMessageBox.information(self, 
+            QtWidgets.QMessageBox.information(self, 
                                                 "PythonCad -Warning", 
                                                 str(e) , 
-                                                QtGui.QMessageBox.Ok)
+                                                QtWidgets.QMessageBox.Ok)
     def _setCurrent(self):
         """
             set the current layer

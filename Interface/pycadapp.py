@@ -27,7 +27,7 @@
 
 
 
-from PyQt4 import QtGui
+from PyQt5 import QtGui, QtWidgets
 class PyCadApp(object):
     '''
     PyCadApp contain static interface functions to the kernel application object.
@@ -97,8 +97,8 @@ class PyCadApp(object):
         '''
         Shows an critical message dialog
         '''
-        dlg = QtGui.QMessageBox()
+        dlg = QtWidgets.QMessageBox()
         dlg.setText(text)
-        dlg.setIcon(QtGui.QMessageBox.Critical)
+        dlg.setIcon(QtWidgets.QMessageBox.Critical)
         dlg.exec_()
         return

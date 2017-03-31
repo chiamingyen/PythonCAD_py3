@@ -23,7 +23,7 @@
 
 
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 from Interface.Entity.base import *
 class Arc(BaseEntity):
     """

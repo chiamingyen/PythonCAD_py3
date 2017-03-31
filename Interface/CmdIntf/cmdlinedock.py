@@ -5,10 +5,10 @@
 
 
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from Interface.CmdIntf.functionhandler import FunctionHandler
 from Kernel.pycadevent import PyCadEvent
-class CmdLineDock(QtGui.QDockWidget):
+class CmdLineDock(QtWidgets.QDockWidget):
     '''
         A dockable window containing a edit line object.
         The edit line is used to enter commands or expressions.
@@ -24,23 +24,23 @@ class CmdLineDock(QtGui.QDockWidget):
         self._remainderIndex=0
         # only dock at the bottom or top
         self.setAllowedAreas(QtCore.Qt.BottomDockWidgetArea | QtCore.Qt.TopDockWidgetArea)
-        self.dockWidgetContents = QtGui.QWidget()
+        self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Ignored)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.dockWidgetContents.sizePolicy().hasHeightForWidth())
         self.dockWidgetContents.setSizePolicy(sizePolicy)
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         
         self.textEditOutput=PyCadTextView(self.dockWidgetContents)
         
         self.verticalLayout_2.addWidget(self.textEditOutput)
-        self.__edit_ctrl = QtGui.QLineEdit(self, returnPressed=self._returnPressed)
+        self.__edit_ctrl = QtWidgets.QLineEdit(self, returnPressed=self._returnPressed)
         self.__edit_ctrl.keyPressEvent=self._keyPress
         
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textEditOutput.sizePolicy().hasHeightForWidth())
@@ -86,7 +86,7 @@ class CmdLineDock(QtGui.QDockWidget):
                 self.__edit_ctrl.clear()
                 self.__edit_ctrl.setText(self._remainder[self._remainderIndex])
         else:
-            QtGui.QLineEdit.keyPressEvent(self.__edit_ctrl, keyEvent)
+            QtWidgets.QLineEdit.keyPressEvent(self.__edit_ctrl, keyEvent)
     def evaluate(self, expression):
         '''
         Let the function handler evaluate the expression.
@@ -108,7 +108,7 @@ class CmdLineDock(QtGui.QDockWidget):
             Print message in to the message windows
         """
         self.textEditOutput.printMsg(msg)
-class PyCadTextView(QtGui.QTextEdit):
+class PyCadTextView(QtWidgets.QTextEdit):
     """
         this class represent the text view that pyCad use for rendering the output
     """
@@ -119,7 +119,7 @@ class PyCadTextView(QtGui.QTextEdit):
         self.ensureCursorVisible()
     def contextMenuEvent(self, event):
         menu = self.createStandardContextMenu(event.pos());
-        clearAction=QtGui.QAction("Clear", self, triggered=self.clear)
+        clearAction=QtWidgets.QAction("Clear", self, triggered=self.clear)
         menu.addAction(clearAction);
         menu.exec_(event.globalPos())
         del(menu)

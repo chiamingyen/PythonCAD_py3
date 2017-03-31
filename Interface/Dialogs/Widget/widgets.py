@@ -1,11 +1,11 @@
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 IdRole = QtCore.Qt.UserRole
-class BaseContainer(QtGui.QHBoxLayout):
+class BaseContainer(QtWidgets.QHBoxLayout):
     def __init__(self, parent=None, label="baseInfo"):
         super(BaseContainer, self).__init__(parent)
-        label=QtGui.QLabel(label)
+        label=QtWidgets.QLabel(label)
         self.addWidget(label)
         self.activeValue=None
         self._changed=False
@@ -32,10 +32,10 @@ class PyCadQColor(BaseContainer):
         super(PyCadQColor, self).__init__(parent=parent, label=label)
         r, g, b=oldValue
         self.activeValue=oldValue
-        self.pushButton=QtGui.QPushButton()
+        self.pushButton=QtWidgets.QPushButton()
         self.pushButton.clicked.connect(self.click)
-        frameStyle = QtGui.QFrame.Sunken | QtGui.QFrame.Panel
-        self.colorLabel = QtGui.QLabel()
+        frameStyle = QtWidgets.QFrame.Sunken | QtWidgets.QFrame.Panel
+        self.colorLabel = QtWidgets.QLabel()
         self.colorLabel.setFrameStyle(frameStyle)
         sColor=QtGui.QColor.fromRgb(r, g, b)
         self.colorLabel.setText(sColor.name())
@@ -46,7 +46,7 @@ class PyCadQColor(BaseContainer):
     def click(self):
         r, g, b=self.activeValue
         sColor=QtGui.QColor.fromRgb(r, g, b)
-        color = QtGui.QColorDialog.getColor(sColor, parent=None)
+        color = QtWidgets.QColorDialog.getColor(sColor, parent=None)
         if color.isValid(): 
             self.colorLabel.setText(color.name())
             self.colorLabel.setPalette(QtGui.QPalette(color))
@@ -61,7 +61,7 @@ class PyCadQLineType(BaseContainer):
         super(PyCadQLineType, self).__init__(parent=parent, label=label)
         self.activeValue=oldValue
         #define Active combo box
-        self.penStyleComboBox = QtGui.QComboBox()
+        self.penStyleComboBox = QtWidgets.QComboBox()
         self.penStyleComboBox.addItem("Solid", QtCore.Qt.SolidLine)
         self.penStyleComboBox.addItem("Dash", QtCore.Qt.DashLine)
         self.penStyleComboBox.addItem("Dot", QtCore.Qt.DotLine)
@@ -70,7 +70,7 @@ class PyCadQLineType(BaseContainer):
         itemindex=self.penStyleComboBox.findData(oldValue)
         self.penStyleComboBox.setCurrentIndex(itemindex)
         #define label
-        penStyleLabel = QtGui.QLabel("")
+        penStyleLabel = QtWidgets.QLabel("")
         penStyleLabel.setBuddy(self.penStyleComboBox)
         
         self.addWidget(penStyleLabel)
@@ -88,7 +88,7 @@ class PyCadQDouble(BaseContainer):
     def __init__(self, parent=None, oldValue='0.0', label="Double"):
         super(PyCadQDouble, self).__init__(parent, label)
         self.activeValue=oldValue
-        self.penWidthSpinBox = QtGui.QSpinBox()
+        self.penWidthSpinBox = QtWidgets.QSpinBox()
         self.penWidthSpinBox.setRange(0, 20)
         self.penWidthSpinBox.setValue(int(oldValue))
         self.penWidthSpinBox.setSpecialValueText("0 (cosmetic pen)")

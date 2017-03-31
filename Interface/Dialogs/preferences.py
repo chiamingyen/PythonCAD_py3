@@ -25,8 +25,8 @@ Created on 24/apr/2012
 '''
 
 
-from PyQt4.QtGui    import QDialog,QAbstractItemView
-from PyQt4.QtCore   import pyqtSignature
+from PyQt5.QtWidgets import    QDialog, QAbstractItemView
+#from PyQt5.QtCore   import pyqtSignature
 
 from .Ui_preferences    import Ui_preferences
 
@@ -40,13 +40,13 @@ class Preferences(QDialog, Ui_preferences):
     def __init__(self, parent = None, entity=None):
         QDialog.__init__(self, parent)
         self.setupUi(self)
-    @pyqtSignature("")
+    #@pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
             implements the accept button
         """
         self.close()
-    @pyqtSignature("")
+    #@pyqtSignature("")
     def on_buttonBox_rejected(self):
         """
             implements the accept button

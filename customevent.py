@@ -1,5 +1,5 @@
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 from Kernel.document     import *
 from Kernel.exception    import *
 from Kernel.GeoEntity.point         import Point
@@ -40,7 +40,7 @@ class testCmdLine(object):
         """
             add custom event at the user interface
         """
-        QtCore.QObject.connect(self.dialog.ImputCmd, QtCore.SIGNAL("returnPressed()"),self.imputCommand)
+        self.dialog.ImputCmd.returnPressed.connect(self.imputCommand)
         #QtCore.QObject.connect(self.dialog.uiTextEditor, QtCore.SIGNAL("textChanged()"),self.imputCommand)
         #QtCore.QObject.connect(self.uiTextEditor, QtCore.SIGNAL("textChanged()"), self.uiTextEditor.update)
     def imputCommand(self):
@@ -503,7 +503,7 @@ class EasyTest(BaseCommand):
         self.outputMsg("*********** End   Test ******************")    
     def MassiveDelete(self):
         try:
-            import time 
+            import time
             startTime=time.clock()
             newDoc=self.__pyCadApplication.ActiveDocument
             newDoc.startMassiveCreation()

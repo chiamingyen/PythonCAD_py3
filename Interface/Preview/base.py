@@ -29,13 +29,13 @@
 
 import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.exception       import *
 from Kernel.GeoEntity.point import Point as GeoPoint
 from Kernel.GeoUtil.geolib  import Vector
 from Kernel.initsetting     import PYTHONCAD_COLOR, PYTHONCAD_PREVIEW_COLOR, MOUSE_GRAPH_DIMENSION
-class PreviewBase(QtGui.QGraphicsItem):
+class PreviewBase(QtWidgets.QGraphicsItem):
     showShape=False # This Flag is used for debug porpoise
     showBBox=False  # This Flag is used for debug porpoise
     shapeSize=MOUSE_GRAPH_DIMENSION

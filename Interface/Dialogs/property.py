@@ -31,8 +31,8 @@
 
 
 
-from PyQt4.QtGui    import QDialog,QAbstractItemView,QMenu,QAction
-from PyQt4.QtCore   import pyqtSignature
+from PyQt5.QtWidgets import    QDialog, QAbstractItemView, QMenu, QAction
+#from PyQt5.QtCore   import pyqtSignature
 
 from .Ui_property    import Ui_Dialog
 
@@ -99,7 +99,7 @@ class Property(QDialog, Ui_Dialog):
             update the custom property
         """ 
         self._properties = dict(self.customProperty.model().arraydata)
-    @pyqtSignature("")
+    #@pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
             implements the accept button
@@ -107,7 +107,7 @@ class Property(QDialog, Ui_Dialog):
         self.uppdateCustomProperty()
         self._isOk=True
         self.close()
-    @pyqtSignature("")
+    #@pyqtSignature("")
     def on_buttonBox_rejected(self):
         """
             implements the accept button

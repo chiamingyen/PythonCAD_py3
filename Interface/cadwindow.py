@@ -31,7 +31,7 @@
 import os
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtPrintSupport, QtWidgets
 
 from . import cadwindow_rc
 
@@ -53,10 +53,10 @@ from Kernel.initsetting             import * #SNAP_POINT_ARRAY, ACTIVE_SNAP_POIN
 
 
 from Interface.DrawingHelper.polarguides import getPolarMenu
-class CadWindowMdi(QtGui.QMainWindow):
+class CadWindowMdi(QtWidgets.QMainWindow):
     def __init__(self):
         super(CadWindowMdi, self).__init__()
-        self.mdiArea = QtGui.QMdiArea()
+        self.mdiArea = QtWidgets.QMdiArea()
         self.mdiArea.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.mdiArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.setCentralWidget(self.mdiArea)
@@ -117,14 +117,14 @@ class CadWindowMdi(QtGui.QMainWindow):
 
         #Force Direction
         self.forceDirectionStatus=statusButton('SForceDir.png', 'Orthogonal Mode [right click will in the future set increment constrain angle]')
-        self.connect(self.forceDirectionStatus, QtCore.SIGNAL('clicked()'), self.setForceDirection)
+        self.forceDirectionStatus.clicked.connect(self.setForceDirection)
         self.forceDirectionStatus.setMenu(getPolarMenu())
         self.statusBar().addPermanentWidget(self.forceDirectionStatus)
 
 
         #Snap
         self.SnapStatus=statusButton('SSnap.png', 'Snap [right click displays snap list]\n for future implementation it should be a checkist')
-        self.connect(self.SnapStatus, QtCore.SIGNAL('clicked()'), self.setSnapStatus)
+        self.SnapStatus.clicked.connect(self.setSnapStatus)
         self.SnapStatus.setMenu(self.__cmd_intf.Category.getMenu(6))
         self.SnapStatus.setChecked(True)
         self.statusBar().addPermanentWidget(self.SnapStatus)
@@ -132,13 +132,13 @@ class CadWindowMdi(QtGui.QMainWindow):
 
         #Grid
         self.GridStatus=statusButton('SGrid.png', 'Grid Mode [not available yet]')
-        self.connect(self.GridStatus, QtCore.SIGNAL('clicked()'), self.setGrid)
+        self.GridStatus.clicked.connect(self.setGrid)
         self.statusBar().addPermanentWidget(self.GridStatus)
 
         #------------------------------------------------------------------------------------Set coordinates label on statusbar (updated by idocumet)
-        self.coordLabel=QtGui.QLabel("x=0.000\ny=0.000")
+        self.coordLabel=QtWidgets.QLabel("x=0.000\ny=0.000")
         self.coordLabel.setAlignment(QtCore.Qt.AlignVCenter)
-        self.coordLabel.setFrameStyle(QtGui.QFrame.Panel | QtGui.QFrame.Sunken)
+        self.coordLabel.setFrameStyle(QtWidgets.QFrame.Panel | QtWidgets.QFrame.Sunken)
         self.coordLabel.setMinimumWidth(80)
         self.coordLabel.setMaximumHeight(20)
         self.coordLabel.setFont(QtGui.QFont("Sans", 6))
@@ -415,7 +415,7 @@ class CadWindowMdi(QtGui.QMainWindow):
             Open an existing drawing PDR or DXF
         '''
         # ask the user to select an existing drawing
-        drawing = str(QtGui.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)"))
+        drawing = str(QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)"))[0]
         # open a document and load the drawing
         if len(drawing)>0:
             self.lastDirectory=os.path.split(drawing)[0]
@@ -436,7 +436,7 @@ class CadWindowMdi(QtGui.QMainWindow):
         '''
             Import existing drawing in current drawing (some issues with PyQt4.7)
         '''
-        drawing = QtGui.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");
+        drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");[0]
         # open a document and load the drawing
         if len(drawing)>0:
             self.lastDirectory=os.path.split(drawing)[0]
@@ -460,15 +460,15 @@ class CadWindowMdi(QtGui.QMainWindow):
                 self.view.fit()
         return
     def _onSaveAsDrawing(self):
-        drawing = QtGui.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)");
+        drawing = QtWidgets.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)");[0]
         if len(drawing)>0:
             self.__application.saveAs(drawing)
     def _onPrint(self):
 #       printer.setPaperSize(QPrinter.A4);
         self.scene.clearSelection()
-        printer=QtGui.QPrinter()
-        printDialog=QtGui.QPrintDialog(printer)
-        if (printDialog.exec_() == QtGui.QDialog.Accepted):
+        printer=QtPrintSupport.QPrinter()
+        printDialog=QtPrintSupport.QPrintDialog(printer)
+        if (printDialog.exec_() == QtWidgets.QDialog.Accepted):
             painter=QtGui.QPainter()
             painter.begin(printer)
             painter.setRenderHint(QtGui.QPainter.Antialiasing);
@@ -559,7 +559,7 @@ class CadWindowMdi(QtGui.QMainWindow):
     def preferences(self):
         p=Preferences(self)
         #TODO: Fill up preferences
-        if (p.exec_() == QtGui.QDialog.Accepted):
+        if (p.exec_() == QtWidgets.QDialog.Accepted):
             #TODO: save Preferences
             pass
     #---------------------------ON COMMANDS in MODIFY
@@ -701,8 +701,8 @@ class CadWindowMdi(QtGui.QMainWindow):
 #-----------------------ON COMMANDS in ABOUT
 
     def _onAbout(self):
-        QtGui.QMessageBox.about(self, "About PythonCAD",
-                """<b>PythonCAD</b> is a CAD package written, surprisingly enough, in Python using the PyQt4 interface.<p>
+        QtWidgets.QMessageBox.about(self, "About PythonCAD",
+                """<b>PythonCAD</b> is a CAD package written, surprisingly enough, in Python using the PyQt5 interface.<p>
                    The PythonCAD project aims to produce a scriptable, open-source,
                    easy to use CAD package for any Python/PyQt supported Platforms
                    <p>
@@ -762,9 +762,9 @@ class CadWindowMdi(QtGui.QMainWindow):
         '''
             Shows an critical message dialog
         '''
-        dlg = QtGui.QMessageBox()
+        dlg = QtWidgets.QMessageBox()
         dlg.setText(text)
-        dlg.setIcon(QtGui.QMessageBox.Critical)
+        dlg.setIcon(QtWidgets.QMessageBox.Critical)
         dlg.exec_()
         return
     # ########################################## SETTINGS STORAGE
@@ -822,9 +822,9 @@ class CadWindowMdi(QtGui.QMainWindow):
         return None
     def switchLayoutDirection(self):
         if self.layoutDirection() == QtCore.Qt.LeftToRight:
-            QtGui.qApp.setLayoutDirection(QtCore.Qt.RightToLeft)
+            QtWidgets.QApplication.setLayoutDirection(QtCore.Qt.RightToLeft)
         else:
-            QtGui.qApp.setLayoutDirection(QtCore.Qt.LeftToRight)
+            QtWidgets.QApplication.setLayoutDirection(QtCore.Qt.LeftToRight)
     def setActiveSubWindow(self, window):
         if window:
             self.mdiArea.setActiveSubWindow(window)
@@ -883,7 +883,7 @@ class CadWindowMdi(QtGui.QMainWindow):
 # ##########################################################
 # ##########################################################
 
-class statusButton(QtGui.QToolButton):
+class statusButton(QtWidgets.QToolButton):
     def __init__(self, icon=None,  tooltip=None):
         super(statusButton, self).__init__()
         self.setCheckable(True)

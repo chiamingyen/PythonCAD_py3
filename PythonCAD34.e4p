@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project PythonCAD34 -->
-<!-- Saved: 2017-03-31, 23:16:52 -->
+<!-- Saved: 2017-04-01, 01:36:08 -->
 <!-- Copyright (C) 2017 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -150,8 +150,6 @@
     <Source>pythoncad_qt.py</Source>
     <Source>refs/simgeo.py</Source>
     <Source>refs/test_simgeo.py</Source>
-    <Source>test_application.py</Source>
-    <Source>test_kernel.py</Source>
     <Source>test_sympy.py</Source>
   </Sources>
   <Forms>
