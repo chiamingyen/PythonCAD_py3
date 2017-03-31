@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3749: * @file distance2point.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -29,24 +26,15 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3750: ** <<declarations>> (distance2point)
 import math
 
 from Kernel.exception                  import *
 from Kernel.Command.basecommand        import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3751: ** class Distance2Point
 class Distance2Point(BaseCommand):
     """
         This class rappresent the distance 2 point command
     """
-    #@+others
-    #@+node:1.20130426141258.3752: *3* __init__
     def __init__(self, document, iDocument):
         BaseCommand.__init__(self, document)
         self.iDocuemnt=iDocument
@@ -54,13 +42,9 @@ class Distance2Point(BaseCommand):
         self.defaultValue=[None, None]
         self.message=["Give Me the first Point", 
                         "Give Me the second Point"]
-    #@+node:1.20130426141258.3753: *3* applyCommand
     def applyCommand(self):
         if len(self.value)<1:
             raise PyCadWrongImputData("Wrong number of imput parameter")
         leng=self.value[0].dist(self.value[1])
         msg="Lenght: "+ str(leng)
         self.iDocuemnt.popUpInfo(msg)
-    #@-others
-#@-others
-#@-leo

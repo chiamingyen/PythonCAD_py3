@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!-- eric project file for project PythonCAD34 -->
+<!-- Saved: 2017-03-31, 23:16:52 -->
+<!-- Copyright (C) 2017 ,  -->
+<Project version="5.1">
+  <Language>en_US</Language>
+  <Hash>9aea1fae6be3137ef56884ba18a6e4cda872cd27</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>Qt4</ProjectType>
+  <Version>0.1</Version>
+  <Author></Author>
+  <Email></Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>Generic/Kernel/Command/__init__.py</Source>
+    <Source>Generic/Kernel/Command/arccommand.py</Source>
+    <Source>Generic/Kernel/Command/basecommand.py</Source>
+    <Source>Generic/Kernel/Command/bisectorcommand.py</Source>
+    <Source>Generic/Kernel/Command/ccirclecommand.py</Source>
+    <Source>Generic/Kernel/Command/chamfercommand.py</Source>
+    <Source>Generic/Kernel/Command/circlecommand.py</Source>
+    <Source>Generic/Kernel/Command/clinecommand.py</Source>
+    <Source>Generic/Kernel/Command/copycommand.py</Source>
+    <Source>Generic/Kernel/Command/deletecommand.py</Source>
+    <Source>Generic/Kernel/Command/dimensioncommand.py</Source>
+    <Source>Generic/Kernel/Command/ellipsecommand.py</Source>
+    <Source>Generic/Kernel/Command/filletcommand.py</Source>
+    <Source>Generic/Kernel/Command/mirrorcommand.py</Source>
+    <Source>Generic/Kernel/Command/movecommand.py</Source>
+    <Source>Generic/Kernel/Command/pointcommand.py</Source>
+    <Source>Generic/Kernel/Command/polygoncommand.py</Source>
+    <Source>Generic/Kernel/Command/polylinecommand.py</Source>
+    <Source>Generic/Kernel/Command/propertycommand.py</Source>
+    <Source>Generic/Kernel/Command/rectanglecommand.py</Source>
+    <Source>Generic/Kernel/Command/rotatecommand.py</Source>
+    <Source>Generic/Kernel/Command/segmentcommand.py</Source>
+    <Source>Generic/Kernel/Command/textcommand.py</Source>
+    <Source>Generic/Kernel/Command/trimcommand.py</Source>
+    <Source>Generic/Kernel/Db/__init__.py</Source>
+    <Source>Generic/Kernel/Db/basedb.py</Source>
+    <Source>Generic/Kernel/Db/entitydb.py</Source>
+    <Source>Generic/Kernel/Db/pycadobject.py</Source>
+    <Source>Generic/Kernel/Db/relationdb.py</Source>
+    <Source>Generic/Kernel/Db/undodb.py</Source>
+    <Source>Generic/Kernel/ExternalFormat/Dxf/__init__.py</Source>
+    <Source>Generic/Kernel/ExternalFormat/Dxf/dxf.py</Source>
+    <Source>Generic/Kernel/ExternalFormat/__init__.py</Source>
+    <Source>Generic/Kernel/ExternalFormat/externalformat.py</Source>
+    <Source>Generic/Kernel/GeoComposedEntity/__init__.py</Source>
+    <Source>Generic/Kernel/GeoComposedEntity/bisector.py</Source>
+    <Source>Generic/Kernel/GeoComposedEntity/chamfer.py</Source>
+    <Source>Generic/Kernel/GeoComposedEntity/fillet.py</Source>
+    <Source>Generic/Kernel/GeoComposedEntity/objoint.py</Source>
+    <Source>Generic/Kernel/GeoEntity/__init__.py</Source>
+    <Source>Generic/Kernel/GeoEntity/arc.py</Source>
+    <Source>Generic/Kernel/GeoEntity/ccircle.py</Source>
+    <Source>Generic/Kernel/GeoEntity/cline.py</Source>
+    <Source>Generic/Kernel/GeoEntity/dimension.py</Source>
+    <Source>Generic/Kernel/GeoEntity/ellipse.py</Source>
+    <Source>Generic/Kernel/GeoEntity/entityutil.py</Source>
+    <Source>Generic/Kernel/GeoEntity/geometricalentity.py</Source>
+    <Source>Generic/Kernel/GeoEntity/hatch.py</Source>
+    <Source>Generic/Kernel/GeoEntity/nurbs.py</Source>
+    <Source>Generic/Kernel/GeoEntity/point.py</Source>
+    <Source>Generic/Kernel/GeoEntity/polyline.py</Source>
+    <Source>Generic/Kernel/GeoEntity/segment.py</Source>
+    <Source>Generic/Kernel/GeoEntity/style.py</Source>
+    <Source>Generic/Kernel/GeoEntity/text.py</Source>
+    <Source>Generic/Kernel/GeoUtil/__init__.py</Source>
+    <Source>Generic/Kernel/GeoUtil/geolib.py</Source>
+    <Source>Generic/Kernel/GeoUtil/intersection.py</Source>
+    <Source>Generic/Kernel/GeoUtil/rotate.py</Source>
+    <Source>Generic/Kernel/GeoUtil/tangent.py</Source>
+    <Source>Generic/Kernel/GeoUtil/tolerance.py</Source>
+    <Source>Generic/Kernel/GeoUtil/util.py</Source>
+    <Source>Generic/Kernel/__init__.py</Source>
+    <Source>Generic/Kernel/binarytree.py</Source>
+    <Source>Generic/Kernel/composedentity.py</Source>
+    <Source>Generic/Kernel/document.py</Source>
+    <Source>Generic/Kernel/entity.py</Source>
+    <Source>Generic/Kernel/exception.py</Source>
+    <Source>Generic/Kernel/initsetting.py</Source>
+    <Source>Generic/Kernel/layer.py</Source>
+    <Source>Generic/Kernel/layertree.py</Source>
+    <Source>Generic/Kernel/pycadevent.py</Source>
+    <Source>Generic/Kernel/pycadtransaction.py</Source>
+    <Source>Generic/Kernel/settings.py</Source>
+    <Source>Generic/Kernel/unitparser.py</Source>
+    <Source>Generic/__init__.py</Source>
+    <Source>Generic/application.py</Source>
+    <Source>Generic/application_test.py</Source>
+    <Source>Generic/test_kernel.py</Source>
+    <Source>Interface/CmdIntf/__init__.py</Source>
+    <Source>Interface/CmdIntf/cmdaction.py</Source>
+    <Source>Interface/CmdIntf/cmdcategory.py</Source>
+    <Source>Interface/CmdIntf/cmdintf.py</Source>
+    <Source>Interface/CmdIntf/cmdlinedock.py</Source>
+    <Source>Interface/CmdIntf/functionhandler.py</Source>
+    <Source>Interface/Command/__init__.py</Source>
+    <Source>Interface/Command/distance2point.py</Source>
+    <Source>Interface/Command/icommand.py</Source>
+    <Source>Interface/Dialogs/Ui_preferences.py</Source>
+    <Source>Interface/Dialogs/Ui_property.py</Source>
+    <Source>Interface/Dialogs/Widget/__init__.py</Source>
+    <Source>Interface/Dialogs/Widget/widgets.py</Source>
+    <Source>Interface/Dialogs/__init__.py</Source>
+    <Source>Interface/Dialogs/dataModel.py</Source>
+    <Source>Interface/Dialogs/preferences.py</Source>
+    <Source>Interface/Dialogs/property.py</Source>
+    <Source>Interface/DrawingHelper/__init__.py</Source>
+    <Source>Interface/DrawingHelper/evaluator.py</Source>
+    <Source>Interface/DrawingHelper/polarguides.py</Source>
+    <Source>Interface/DrawingHelper/snap.py</Source>
+    <Source>Interface/Entity/__init__.py</Source>
+    <Source>Interface/Entity/actionhandler.py</Source>
+    <Source>Interface/Entity/arc.py</Source>
+    <Source>Interface/Entity/arrowitem.py</Source>
+    <Source>Interface/Entity/base.py</Source>
+    <Source>Interface/Entity/dimension.py</Source>
+    <Source>Interface/Entity/dinamicentryobject.py</Source>
+    <Source>Interface/Entity/ellipse.py</Source>
+    <Source>Interface/Entity/point.py</Source>
+    <Source>Interface/Entity/polyline.py</Source>
+    <Source>Interface/Entity/segment.py</Source>
+    <Source>Interface/Entity/text.py</Source>
+    <Source>Interface/LayerIntf/__init__.py</Source>
+    <Source>Interface/LayerIntf/layerdock.py</Source>
+    <Source>Interface/LayerIntf/layertreeobject.py</Source>
+    <Source>Interface/Preview/__init__.py</Source>
+    <Source>Interface/Preview/arc.py</Source>
+    <Source>Interface/Preview/base.py</Source>
+    <Source>Interface/Preview/ellipse.py</Source>
+    <Source>Interface/Preview/factory.py</Source>
+    <Source>Interface/Preview/point.py</Source>
+    <Source>Interface/Preview/polygon.py</Source>
+    <Source>Interface/Preview/polyline.py</Source>
+    <Source>Interface/Preview/rectangle.py</Source>
+    <Source>Interface/Preview/segment.py</Source>
+    <Source>Interface/__init__.py</Source>
+    <Source>Interface/cadinitsetting.py</Source>
+    <Source>Interface/cadscene.py</Source>
+    <Source>Interface/cadview.py</Source>
+    <Source>Interface/cadwindow.py</Source>
+    <Source>Interface/cadwindow_rc.py</Source>
+    <Source>Interface/idocument.py</Source>
+    <Source>Interface/pycadapp.py</Source>
+    <Source>__init__.py</Source>
+    <Source>customevent.py</Source>
+    <Source>pythoncad_qt.py</Source>
+    <Source>refs/simgeo.py</Source>
+    <Source>refs/test_simgeo.py</Source>
+    <Source>test_application.py</Source>
+    <Source>test_kernel.py</Source>
+    <Source>test_sympy.py</Source>
+  </Sources>
+  <Forms>
+    <Form>Interface/Dialogs/preferences.ui</Form>
+    <Form>Interface/Dialogs/property.ui</Form>
+  </Forms>
+  <Translations/>
+  <Resources>
+    <Resource>Interface/cadwindow.qrc</Resource>
+  </Resources>
+  <Interfaces/>
+  <Others/>
+  <MainScript>pythoncad_qt.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+  </FiletypeAssociations>
+</Project>

@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3652: * @file cadwindow_rc.py
 # -*- coding: utf-8 -*-
 
 # Resource object code
@@ -10,11 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3653: ** <<declarations>> (cadwindow_rc)
 from PyQt4 import QtCore
 
 qt_resource_data = b"\
@@ -460,14 +454,8 @@ qt_resource_struct = b"\
 \x00\x00\x00\x2a\x00\x00\x00\x00\x00\x01\x00\x00\x06\xc8\
 \x00\x00\x00\x3e\x00\x00\x00\x00\x00\x01\x00\x00\x0a\x9d\
 "
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3654: ** qInitResources
 def qInitResources():
     QtCore.qRegisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
-#@+node:1.20130426141258.3655: ** qCleanupResources
 def qCleanupResources():
     QtCore.qUnregisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
-#@-others
 qInitResources()
-#@-leo

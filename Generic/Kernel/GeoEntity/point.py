@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3334: * @file point.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005 Art Haas
 # Copyright (c) 2009,2010 Matteo Boscolo
@@ -27,24 +25,15 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3335: ** <<declarations>> (point)
 import math
 
 from Kernel.GeoEntity.geometricalentity  import *
 from Kernel.GeoUtil.util                 import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3336: ** class Point
 class Point(GeometricalEntity):
     """
         A 2-D point Class.
     """
-    #@+others
-    #@+node:1.20130426141258.3337: *3* __init__
     def __init__(self, x, y=None):
         """
             Initialize a Point.
@@ -69,17 +58,13 @@ class Point(GeometricalEntity):
             raise SyntaxError("Invalid call to Point().")
         self.__x = _x
         self.__y = _y
-    #@+node:1.20130426141258.3338: *3* getPoint
     def getPoint(self):
         return self
-    #@+node:1.20130426141258.3339: *3* __str__
     def __str__(self):
         return "Point : (%g,%g)" % (self.__x, self.__y)
-    #@+node:1.20130426141258.3340: *3* info
     @property
     def info(self):
         return "Point : (%g,%g)" % (self.__x, self.__y)
-    #@+node:1.20130426141258.3341: *3* __sub__
     def __sub__(self, p):
         """
             Return the separation between two points.
@@ -90,7 +75,6 @@ class Point(GeometricalEntity):
             raise TypeError("Invalid type for Point subtraction: " + repr(type(p)))
         _px, _py = p.getCoords()
         return math.hypot((self.__x - _px), (self.__y - _py))
-    #@+node:1.20130426141258.3342: *3* __eq__
     def __eq__(self, obj):
         """
             Compare a Point to either another Point or a tuple for equality.
@@ -106,7 +90,6 @@ class Point(GeometricalEntity):
         if abs(self.__x - _x) < 1e-10 and abs(self.__y - _y) < 1e-10:
             return True
         return False
-    #@+node:1.20130426141258.3343: *3* __ne__
     def __ne__(self, obj):
         """
             Compare a Point to either another Point or a tuple for inequality.
@@ -122,7 +105,6 @@ class Point(GeometricalEntity):
         if abs(self.__x - _x) < 1e-10 and abs(self.__y - _y) < 1e-10:
             return False
         return True
-    #@+node:1.20130426141258.3344: *3* __add__
     def __add__(self,obj):
         """
             Add two Point
@@ -135,27 +117,23 @@ class Point(GeometricalEntity):
         else:
             x,y = obj.getCoords()
         return Point(self.__x+x, self.__y+y)
-    #@+node:1.20130426141258.3345: *3* getConstructionElements
     def getConstructionElements(self):
         """
             Get the construction element of entity..
         """
         return {"POINT_0":self.__x, "POINT_1":self.__y}
-    #@+node:1.20130426141258.3346: *3* setConstructionElements
     def setConstructionElements(self, p1, p2):
         """
             Set the construction element of entity..
         """
         self__x=p1
         self__y=p2
-    #@+node:1.20130426141258.3347: *3* getx
     def getx(self):
         """
             Return the x-coordinate of a Point.
             getx()
         """
         return self.__x
-    #@+node:1.20130426141258.3348: *3* setx
     def setx(self, val):
         """
             Set the x-coordinate of a Point
@@ -166,7 +144,6 @@ class Point(GeometricalEntity):
         _x = self.__x
         if abs(_x - _v) > 1e-10:
             self.__x = _v
-    #@+node:1.20130426141258.3349: *3* gety
     x = property(getx, setx, None, "x-coordinate value")
 
     def gety(self):
@@ -174,7 +151,6 @@ class Point(GeometricalEntity):
             Return the y-coordinate of a Point.
         """
         return self.__y
-    #@+node:1.20130426141258.3350: *3* sety
     def sety(self, val):
         """
             Set the y-coordinate of a Point
@@ -184,7 +160,6 @@ class Point(GeometricalEntity):
         _y = self.__y
         if abs(_y - _v) > 1e-10:
             self.__y = _v
-    #@+node:1.20130426141258.3351: *3* getCoords
     y = property(gety, sety, None, "y-coordinate value")
 
     def getCoords(self):
@@ -192,7 +167,6 @@ class Point(GeometricalEntity):
             Return the x and y Point coordinates in a tuple.
         """
         return self.__x, self.__y
-    #@+node:1.20130426141258.3352: *3* setCoords
     def setCoords(self, x, y):
         """
             Set both the coordinates of a Point.
@@ -205,13 +179,11 @@ class Point(GeometricalEntity):
         if abs(_sx - _x) > 1e-10 or abs(_sy - _y) > 1e-10:
             self.__x = _x
             self.__y = _y
-    #@+node:1.20130426141258.3353: *3* clone
     def clone(self):
         """
             Create an identical copy of a Point.
         """
         return Point(self.__x, self.__y)
-    #@+node:1.20130426141258.3354: *3* inRegion
     def inRegion(self, xmin, ymin, xmax, ymax, fully=True):
         """
             Returns True if the Point is within the bounding values.
@@ -235,7 +207,6 @@ class Point(GeometricalEntity):
                     (_x > _xmax) or
                     (_y < _ymin) or
                     (_y > _ymax))
-    #@+node:1.20130426141258.3355: *3* dist
     def dist(self,obj):
         """
            Get The Distance From 2 Points
@@ -250,13 +221,11 @@ class Point(GeometricalEntity):
         xDist=x-self.__x
         yDist=y-self.__y
         return math.sqrt(pow(xDist,2)+pow(yDist,2))
-    #@+node:1.20130426141258.3356: *3* getSympy
     def getSympy(self):
         """
             get the sympy object
         """
         return geoSympy.Point(mainSympy.Rational(str(self.__x)), mainSympy.Rational(str(self.__y)))
-    #@+node:1.20130426141258.3357: *3* setFromSympy
     def setFromSympy(self, sympyPoint):
         """
             update the points cord from a sympyobject
@@ -264,7 +233,6 @@ class Point(GeometricalEntity):
         # Yen modified from sympyPoint[0] to .x and [1] to .y
         self.__x=float(sympyPoint.x)
         self.__y=float(sympyPoint.y)
-    #@+node:1.20130426141258.3358: *3* move
     def move(self,fromPoint, toPoint):
         """
             perform the move operation
@@ -274,7 +242,6 @@ class Point(GeometricalEntity):
         p=self+v.point
         self.__x=p.x
         self.__y=p.y
-    #@+node:1.20130426141258.3359: *3* rotate
     def rotate(self, rotationPoint, angle):
         """
             this method must be defined for rotation
@@ -286,7 +253,6 @@ class Point(GeometricalEntity):
         p=rotationPoint+v.point    
         self.__x=p.x
         self.__y=p.y
-    #@+node:1.20130426141258.3360: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -301,6 +267,3 @@ class Point(GeometricalEntity):
         vCenter=Vector(self, centerMirror )
         p=centerMirror+vCenter.point
         self.__x, self.__y=p.getCoords()
-    #@-others
-#@-others
-#@-leo

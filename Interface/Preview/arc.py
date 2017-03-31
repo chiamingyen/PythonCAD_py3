@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4107: * @file arc.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -28,11 +25,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4108: ** <<declarations>> (arc)
 import math
 from PyQt4 import QtCore, QtGui
 from Interface.Preview.base         import PreviewBase
@@ -41,18 +34,12 @@ from Kernel.entity                  import Point
 from Kernel.exception               import *
 from Kernel.GeoEntity.point         import Point as GeoPoint
 from Kernel.GeoUtil.geolib  import Vector
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4109: ** class PreviewArc
 #TODO+: find a good way to retrive the geometry staff from a item in Interface.Entity.arc ..
 #extend it for all the preview entity
 
 class PreviewArc(PreviewBase):
-    #@+others
-    #@+node:1.20130426141258.4110: *3* __init__
     def __init__(self,command):
         super(PreviewArc, self).__init__(command)
-    #@+node:1.20130426141258.4111: *3* canDraw
     @property
     def canDraw(self):
         if self.value[0]!=None:
@@ -67,21 +54,18 @@ class PreviewArc(PreviewBase):
             self.spanAngle  =  (self.value[3]*180/math.pi)*16 
             return True       
         return False
-    #@+node:1.20130426141258.4112: *3* drawGeometry
     def drawGeometry(self, painter,option,widget):
         """
             Overloading of the paint method
         """
         if self.canDraw:
             Arc.__dict__['drawGeometry'](self, painter,option,widget)
-    #@+node:1.20130426141258.4113: *3* drawShape
     def drawShape(self, painterPath):
         """
             overloading of the shape method
         """
         if self.canDraw:
             Arc.__dict__['drawShape'](self, painterPath)
-    #@+node:1.20130426141258.4114: *3* updatePreview
     def updatePreview(self,  position, distance, kernelCommand):
         """
             update the data at the preview item
@@ -108,6 +92,3 @@ class PreviewArc(PreviewBase):
         except:
             print("updatePreview: Exception not managed")
             return
-    #@-others
-#@-others
-#@-leo

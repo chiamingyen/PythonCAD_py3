@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4140: * @file factory.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -28,11 +25,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4141: ** <<declarations>> (factory)
 from Kernel.Command.pointcommand        import PointCommand
 from Kernel.Command.segmentcommand      import SegmentCommand
 from Kernel.Command.arccommand          import ArcCommand
@@ -45,9 +38,6 @@ from Kernel.Command.polygoncommand      import PolygonCommand
 from Interface.Preview.point        import PreviewPoint
 from Interface.Preview.segment      import PreviewSegment
 from Interface.Preview.arc          import PreviewArc
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4142: ** getPreviewObject
 #from Interface.Preview.rectangle    import QtRectangleItem
 #from Interface.Preview.ellipse      import QtEllipseItem
 #from Interface.Preview.polyline     import QtPolylineItem
@@ -70,5 +60,3 @@ def getPreviewObject(command):
 #        return QtPolygonItem(command)
     else:
         return None
-#@-others
-#@-leo

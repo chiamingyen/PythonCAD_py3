@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2477: * @file application.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -29,11 +26,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2478: ** <<declarations>> (application)
 import sys
 import os
 import shutil
@@ -45,15 +38,10 @@ from Kernel.pycadevent          import PyCadEvent
 from Kernel.exception           import *
 from Kernel.document            import *
 from Kernel.Command             import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2479: ** class Application
 class Application(object):
     """
         this class provide the real pythoncad api interface ..
     """
-    #@+others
-    #@+node:1.20130426141258.2480: *3* __init__
     def __init__(self, **args):
         userDirectory=os.getenv('USERPROFILE') or os.getenv('HOME')
         pyUserDir=os.path.join(userDirectory, "PythonCAD")
@@ -78,7 +66,6 @@ class Application(object):
             self.__ActiveDocument=None
         # Fire the Application inizialization
         self.startUpEvent(self)
-    #@+node:1.20130426141258.2481: *3* getRecentFiles
     @property
     def getRecentFiles(self):
         """
@@ -98,7 +85,6 @@ class Application(object):
             objSettings.setVariable("RECENT_FILE_ARRAY",[] )
             self.updateApplicationSetting(objSettings)
         return []
-    #@+node:1.20130426141258.2482: *3* addRecentFiles
     def addRecentFiles(self,fPath):
 #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
 #                                                                   S-PM 110427
@@ -150,7 +136,6 @@ class Application(object):
 
         rgO.setVariable("RECENT_FILE_ARRAY", rgL)   #--update current settings
         self.updateApplicationSetting(rgO)
-    #@+node:1.20130426141258.2483: *3* getCommand
     #addRecentFiles>
 
 
@@ -166,13 +151,11 @@ class Application(object):
             return cmdIstance
         else:
             raise PyCadWrongCommand("")
-    #@+node:1.20130426141258.2484: *3* getCommandList
     def getCommandList(self):
         """
             get the list of all the command
         """
         return list(self.__applicationCommand.keys())
-    #@+node:1.20130426141258.2485: *3* newDocument
     def newDocument(self, fileName=None):
         """
             Create a new document empty document in the application
@@ -184,7 +167,6 @@ class Application(object):
         self.ActiveDocument=self.__Documents[fileName]              #   Set Active the document
         self.addRecentFiles(fileName)
         return self.__Documents[fileName]
-    #@+node:1.20130426141258.2486: *3* openDocument
     def openDocument(self, fileName):
         """
             open a saved document
@@ -196,7 +178,6 @@ class Application(object):
         self.afterOpenDocumentEvent(self, self.__Documents[fileName])   #   Fire the open document event
         self.ActiveDocument=self.__Documents[fileName]                  #   Set Active the document
         return self.__Documents[fileName]
-    #@+node:1.20130426141258.2487: *3* saveAs
     def saveAs(self, newFileName):
         """
             seve the current document to the new position
@@ -212,7 +193,6 @@ class Application(object):
                 shutil.copy2(oldFileName,newFileName)
                 return self.openDocument(newFileName)
         raise EntityMissing("No document open in the application unable to perform the saveAs comand")
-    #@+node:1.20130426141258.2488: *3* closeDocument
     def closeDocument(self,dFile):
 #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
 #                                                                   S-PM 110427
@@ -242,7 +222,6 @@ class Application(object):
         #>
 
         self.afterCloseDocumentEvent(self)          #final house-keeping
-    #@+node:1.20130426141258.2489: *3* ActiveDocument
     #closeDocument>
 
 
@@ -252,7 +231,6 @@ class Application(object):
             get The active Document
         """
         return self.__ActiveDocument
-    #@+node:1.20130426141258.2490: *3* ActiveDocument
     @ActiveDocument.setter
     def ActiveDocument(self, document):
         """
@@ -266,13 +244,11 @@ class Application(object):
         else:
             self.__ActiveDocument=document
         self.activeteDocumentEvent(self, self.__ActiveDocument)
-    #@+node:1.20130426141258.2491: *3* getDocuments
     def getDocuments(self):
         """
             get the Docuemnts Collection
         """
         return self.__Documents
-    #@+node:1.20130426141258.2492: *3* getApplicationStyleList
     #
     # manage application style
     #
@@ -281,25 +257,21 @@ class Application(object):
             Get the application styles
         """
         return self.kernel.getDBStyles()
-    #@+node:1.20130426141258.2493: *3* getApplicationStyle
     def getApplicationStyle(self, id=None, name=None):
         """
             retrive a style from the application
         """
         return self.kernel.getStyle(id, name)
-    #@+node:1.20130426141258.2494: *3* setApplicationStyle
     def setApplicationStyle(self, style):
         """
             add style to the application
         """
         self.kernel.saveEntity(style)
-    #@+node:1.20130426141258.2495: *3* deleteApplicationStyle
     def deleteApplicationStyle(self, styleID):
         """
             delete the application style
         """
         self.kernel.deleteEntity(styleID)
-    #@+node:1.20130426141258.2496: *3* getApplicationSetting
     #
     # Manage the application settings
     #
@@ -308,7 +280,6 @@ class Application(object):
             return the setting object from the application
         """
         return self.kernel.getDbSettingsObject()
-    #@+node:1.20130426141258.2497: *3* updateApplicationSetting
     def updateApplicationSetting(self, settingObj):
         """
             update the application settingObj
@@ -316,8 +287,6 @@ class Application(object):
         #apObj=self.kernel.getDbSettingsObject()
         #apObj.setConstructionElement(settingObj)
         self.kernel.saveEntity(settingObj)
-    #@-others
-#@-others
 if __name__=='__main__':
     from . import application_test  as test
     app= Application()
@@ -327,4 +296,3 @@ if __name__=='__main__':
     #print len(segments)
     #test.TestSympy()
     test.TestIntersection()
-#@-leo

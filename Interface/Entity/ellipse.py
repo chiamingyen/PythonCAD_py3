@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4043: * @file ellipse.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -24,18 +22,9 @@
 #
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4044: ** <<declarations>> (ellipse)
 from Interface.Entity.base import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4045: ** class Ellipse
 class Ellipse(BaseEntity):
-    #@+others
-    #@+node:1.20130426141258.4046: *3* __init__
     def __init__(self, entity):
         super(Ellipse, self).__init__(entity)
         geoEnt=self.geoItem
@@ -46,7 +35,6 @@ class Ellipse(BaseEntity):
         self.setPos(QtCore.QPointF(self.xc, self.yc))
         self.rotate(0.0)
         return
-    #@+node:1.20130426141258.4047: *3* drawShape
     def drawShape(self, painterPath):    
         """
             called from the shape method 
@@ -54,13 +42,9 @@ class Ellipse(BaseEntity):
         w2=self.w/2.0
         h2=self.h/2.0
         painterPath.addEllipse(-w2,-h2,self.w,self.h )     
-    #@+node:1.20130426141258.4048: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             called from the paint method
         """
         #   Create Ellipse
         painter.drawEllipse(self.boundingRect())
-    #@-others
-#@-others
-#@-leo

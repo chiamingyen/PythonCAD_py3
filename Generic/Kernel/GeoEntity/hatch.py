@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3293: * @file hatch.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005 Art Haas
 # Copyright (c) 2010,2011 Matteo Boscolo
@@ -26,11 +24,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3294: ** <<declarations>> (hatch)
 import math
 
 from Kernel.GeoEntity.point                import Point
@@ -41,9 +35,6 @@ from Kernel.GeoEntity.arc import Arc
 from Kernel.layer import Layer
 from Kernel.GeoUtil import *
 from Kernel.GeoEntity.geometricalentity    import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3295: ** class Path
 class Path(GeometricalEntity):
     """
         The class for maintaining a list of objects defining a hatch border.
@@ -56,8 +47,6 @@ class Path(GeometricalEntity):
         in the Path the connections between the objects lead back to the
         starting point.
     """
-    #@+others
-    #@+node:1.20130426141258.3296: *3* __init__
     def __init__(self, objs):
         """
             Initialize a Path.
@@ -92,16 +81,13 @@ class Path(GeometricalEntity):
             self.__objs = objs[:]
         else:
             raise ValueError("Array List mast be a closef path")
-    #@+node:1.20130426141258.3297: *3* __len__
     def __len__(self):
         return len(self.__objs)
-    #@+node:1.20130426141258.3298: *3* __str__
     def __str__(self):
         print("Element Path are: [")
         for _obj in self.__objs:
             print(str(_obj))
         print("]")
-    #@+node:1.20130426141258.3299: *3* isCircular
     def isCircular(self):
         """
             Test if the Path is a Circle or closed Arc.
@@ -110,14 +96,12 @@ class Path(GeometricalEntity):
             if isistance(self.__objs,(arc.Arc,circle.Circle)):
                 return True
         return False
-    #@+node:1.20130426141258.3300: *3* getPath
     def getPath(self):
         """
             Return the objects defining the Path.
             This method returns a list of objects.
         """
         return self.__objs[:]
-    #@+node:1.20130426141258.3301: *3* inPath
     def inPath(self, x, y):
         """
             Test if a coordinate pair are inside a Path.
@@ -191,8 +175,6 @@ class Path(GeometricalEntity):
                 if _count % 2: # need to test if point is in an arc ...
                     _inside = True
         return _inside
-    #@-others
-#@+node:1.20130426141258.3302: ** class HatchRegion
 class HatchRegion(object):
     """The class defining a hatched area.
 
@@ -201,8 +183,6 @@ the external boundary of the hatching, and a list of zero
 or more Paths defining any areas inside the enclosing Path
 that are not hatched.
     """
-    #@+others
-    #@+node:1.20130426141258.3303: *3* __init__
     def __init__(self, extpath, voids=[]):
         """
             Initialize a HatchRegion.
@@ -224,26 +204,21 @@ that are not hatched.
                 raise ValueError("Void area defined as external: " + repr(_void))
         self.__ext_path = extpath
         self.__voids = voids[:]
-    #@+node:1.20130426141258.3304: *3* getExternalPath
     def getExternalPath(self):
         """
             Return the external Path for the HatchRegion.
         """
         return self.__ext_path
-    #@+node:1.20130426141258.3305: *3* hasVoids
     def hasVoids(self):
         """
             Test if the HatchRegion has any internal non-hatched areas.
         """
         return len(self.__voids) > 0
-    #@+node:1.20130426141258.3306: *3* getVoids
     def getVoids(self):
         """
             Get any internal areas in the HatchRegion.
         """
         return self.__voids[:]
-    #@-others
-#@+node:1.20130426141258.3307: ** _seg_seg_touch
 def _seg_seg_touch(sega, segb):
     _touch = False
     _pa1, _pa2 = sega.getEndpoints()
@@ -251,7 +226,6 @@ def _seg_seg_touch(sega, segb):
     if _pa1 is _pb1 or _pa1 is _pb2 or _pa2 is _pb1 or _pa2 is _pb2:
         _touch = True
     return _touch
-#@+node:1.20130426141258.3308: ** _seg_arc_touch
 def _seg_arc_touch(seg, a):
     _touch = False
     _p1, _p2 = seg.getEndpoints()
@@ -259,7 +233,6 @@ def _seg_arc_touch(seg, a):
     if _p1 == _ep1 or _p1 == _ep2 or _p2 == _ep1 or _p2 == _ep2:
         _touch = True
     return _touch
-#@+node:1.20130426141258.3309: ** _arc_arc_touch
 def _arc_arc_touch(arca, arcb):
     _touch = False
     _aep1, _aep2 = arca.getEndpoints()
@@ -267,14 +240,12 @@ def _arc_arc_touch(arca, arcb):
     if _aep1 == _bep1 or _aep1 == _bep2 or _aep2 == _bep1 or _aep2 == _bep2:
         _touch = True
     return _touch
-#@+node:1.20130426141258.3310: ** _seg_joint_touch
 def _seg_joint_touch(seg, joint):
     _touch = False
     _s1, _s2 = joint.getSegments()
     if _s1 is seg or _s2 is seg:
         _touch = True
     return _touch
-#@+node:1.20130426141258.3311: ** _old_validate_path
 def _old_validate_path(objlist):
     """
         Test if the objects in the objlist make a closed path.
@@ -330,7 +301,6 @@ def _old_validate_path(objlist):
     if _startpt == _nextpt:
         _valid = True
     return _valid
-#@+node:1.20130426141258.3312: ** _can_touch
 def _can_touch(obja, objb):
     _touch = False
     if isinstance(obja, segment.Segment):
@@ -349,7 +319,6 @@ def _can_touch(obja, objb):
         if isinstance(objb, segment.Segment):
             _touch = _seg_joint_touch(objb, obja)
     return _touch
-#@+node:1.20130426141258.3313: ** _validate_path
 def _validate_path(lyr, objlist):
     """
         Test if the objects in the objlist make a closed path.
@@ -371,7 +340,6 @@ def _validate_path(lyr, objlist):
     if _valid:
         _valid = _can_touch(objlist[0], objlist[-1])
     return _valid
-#@+node:1.20130426141258.3314: ** point_boundaries
 def point_boundaries(plist):
     _xmin = None
     _xmax = None
@@ -396,7 +364,6 @@ def point_boundaries(plist):
                 if _y > _ymax:
                     _ymax = _y
     return (_xmin, _ymin, _xmax, _ymax)
-#@+node:1.20130426141258.3315: ** point_in_path
 def point_in_path(path):
     hits = 0
     for seg in path:
@@ -411,14 +378,12 @@ def point_in_path(path):
             # continue
         hits = 1 - hits
     return hits
-#@+node:1.20130426141258.3316: ** draw_path
 def draw_path(path):
     if len(path):
         print("path: [")
         for seg in path:
             print(seg)
         print("]")
-#@+node:1.20130426141258.3317: ** make_paths
 def make_paths(pt, seg, sdict):
     paths = []
     print("initial segment: " + str(seg))
@@ -467,7 +432,6 @@ def make_paths(pt, seg, sdict):
                         # print "new_path:"
                         draw_path(path)
                         paths.append(path)
-#@+node:1.20130426141258.3318: ** check_clist
 def check_clist(ct, clist):
     xct, yct = ct.getCenter().getCoords()
     rct = ct.getRadius()
@@ -493,7 +457,6 @@ def check_clist(ct, clist):
         if not add_flag:
             break
     return add_flag
-#@+node:1.20130426141258.3319: ** get_contained_circles
 def get_contained_circles(l, c):
     clist = []
     xc, yc = c.getCenter().getCoords()
@@ -508,7 +471,6 @@ def get_contained_circles(l, c):
             if(check_clist(_cir, clist)):
                 clist.append(_cir)
     return clist
-#@+node:1.20130426141258.3320: ** make_hatch_area
 def make_hatch_area(lyr, x, y):
     _x = util.get_float(x)
     _y = util.get_float(y)
@@ -655,7 +617,6 @@ def make_hatch_area(lyr, x, y):
             else:
                 print("invalid path")
         _routes[_obj] = _objpaths
-#@+node:1.20130426141258.3321: ** _make_paths
 def _make_paths(pathdict, maxlen, tail, path):
     _paths = []
     _pathlen = len(path)
@@ -679,7 +640,6 @@ def _make_paths(pathdict, maxlen, tail, path):
             else:
                 pass
     return _paths
-#@+node:1.20130426141258.3322: ** hatchtests
 hpx = 3.0
 hpy = 4.0
 
@@ -707,7 +667,5 @@ def hatchtests():
     c1 = circle.Circle(p5, 1)
     l1.addObject(c1)
     # find_hatched_area(l1, hpx, hpy)
-#@-others
 if __name__ == '__main__':
     hatchtests()
-#@-leo

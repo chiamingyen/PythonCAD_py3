@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4056: * @file polyline.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -25,26 +23,16 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4057: ** <<declarations>> (polyline)
 from Interface.Entity.base import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4058: ** class Polyline
 class Polyline(BaseEntity):
     """
         this class define the polyline object 
     """
-    #@+others
-    #@+node:1.20130426141258.4059: *3* __init__
     def __init__(self, entity):
         super(Polyline, self).__init__(entity)
         self.qtPoints=self.getQtPointF()
         return
-    #@+node:1.20130426141258.4060: *3* getQtPointF
     def getQtPointF(self):
         qtPoints=[]
         geoPolyline=self.geoItem
@@ -53,7 +41,6 @@ class Polyline(BaseEntity):
             qtPointf=QtCore.QPointF(x, y*-1.0 )
             qtPoints.append(qtPointf)
         return qtPoints
-    #@+node:1.20130426141258.4061: *3* drawShape
     def drawShape(self, painterPath):    
         """
             overloading of the shape method 
@@ -61,7 +48,6 @@ class Polyline(BaseEntity):
         painterPath.moveTo(self.qtPoints[0])
         for i in range(1,len(self.qtPoints)):
             painterPath.lineTo(self.qtPoints[i])    
-    #@+node:1.20130426141258.4062: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             overloading of the paint method
@@ -70,6 +56,3 @@ class Polyline(BaseEntity):
         pol=QtGui.QPolygonF(self.qtPoints)
         painter.drawPolyline(pol)
         #painter.drawRect(self.boundingRect())
-    #@-others
-#@-others
-#@-leo

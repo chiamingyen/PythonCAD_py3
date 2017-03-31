@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3476: * @file tangent.py
 #
 # Copyright (c) 2003, 2004 Art Haas
 #
@@ -27,11 +25,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3477: ** <<declarations>> (tangent)
 import math
 
 from Kernel.GeoEntity.cline import CLine
@@ -44,9 +38,6 @@ from Kernel.exception import *
 
 _dtr = math.pi/180.0
 _piover2 = math.pi/2.0
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3478: ** _get_two_point_projection
 def _get_two_point_projection(x1, y1, x2, y2, x, y):
     """
         project a point to a segment 
@@ -57,7 +48,6 @@ def _get_two_point_projection(x1, y1, x2, y2, x, y):
     _px = x1 + _r * (x2 - x1)
     _py = y1 + _r * (y2 - y1)
     return _px, _py
-#@+node:1.20130426141258.3479: ** _get_angled_projection
 def _get_angled_projection(angle, yint, x, y):
     """
         find the projection point of point (x, y) on a line
@@ -68,7 +58,6 @@ def _get_angled_projection(angle, yint, x, y):
     _x2 = _x1 + math.cos(angle)
     _y2 = _y1 + math.sin(angle)
     return _get_two_point_projection(_x1, _y1, _x2, _y2, x, y)
-#@+node:1.20130426141258.3480: ** _two_line_tangent
 def _two_line_tangent(x1, y1, x2, y2, x3, y3, x4, y4, x, y):
     """
         this function calculates the apprpriate tangent circle
@@ -209,7 +198,6 @@ def _two_line_tangent(x1, y1, x2, y2, x3, y3, x4, y4, x, y):
     _px, _py = _get_two_point_projection(x1, y1, x2, y2, _cx, _cy)
     _radius = math.hypot((_px - _cx), (_py - _cy))
     return _cx, _cy, _radius
-#@+node:1.20130426141258.3481: ** _gen_cline_ccircle_tangent
 def _gen_cline_ccircle_tangent(radius, hy, x):
     #
     # center of ccircle : (0,0)
@@ -249,7 +237,6 @@ def _gen_cline_ccircle_tangent(radius, hy, x):
     _cy = _num/_den
     _radius = abs(_cy - hy)
     return _cx, _cy, _radius
-#@+node:1.20130426141258.3482: ** _cl_cl_tangent
 #
 # two-point construction line
 #
@@ -262,7 +249,6 @@ def _cl_cl_tangent(cl1, cl2, x, y):
     _x3, _y3 = _p3.getCoords()
     _x4, _y4 = _p4.getCoords()
     return _two_line_tangent(_x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4, x, y)
-#@+node:1.20130426141258.3483: ** _cl_cc_tangent
 def _cl_cc_tangent(cl, cc, x, y):
     _p1, _p2 = cl.getKeypoints()
     _x1, _y1 = _p1.getCoords()
@@ -324,7 +310,6 @@ def _cl_cc_tangent(cl, cc, x, y):
     _cy = (-(_tcx * _sine) + (_tcy * _cosine)) + _ccy
     # print "cx: %g; cy %g" % (_cx, _cy)
     return _cx, _cy, _tcrad
-#@+node:1.20130426141258.3484: ** calc_tangent_circle
 def calc_tangent_circle(obja, objb, x, y):
     _x = x
     if not isinstance(_x, float):
@@ -345,7 +330,6 @@ def calc_tangent_circle(obja, objb, x, y):
             raise NotImplementedError("We must define the ccircle ccircle tangent")
             # CCircle/CCircle tangent circles to do later ...
     return _tandata
-#@+node:1.20130426141258.3485: ** _calc_values
 #
 # calculate the possible tangent lines between two circles
 #
@@ -362,7 +346,6 @@ def _calc_values(ax, ay, bx, by, cx, cy):
     _sep = abs(_s) * math.sqrt(_den)
     # print "sep: %g" % _sep
     # return _r, _s, _sep
-#@+node:1.20130426141258.3486: ** _calc_tangent_triangle
 def _calc_tangent_triangle(r1, r2, sep, ip):
     _sine = r1/abs(ip)
     # print "sin: %g" % _sine
@@ -402,7 +385,6 @@ def _calc_tangent_triangle(r1, r2, sep, ip):
     # print "dist: %g" % _dist
     assert abs(_dist - r2) < 1e-10, "Invalid tangent point for circle 2"
     return _tx1, _ty1, _tx2, _ty2
-#@+node:1.20130426141258.3487: ** calc_two_circle_tangents
 def calc_two_circle_tangents(r1, r2, sep):
     # print "in calc_two_circle_tangents() ..."
     _r1 = r1
@@ -524,5 +506,3 @@ def calc_two_circle_tangents(r1, r2, sep):
                         # _calc_values(_tx2, -_ty2, _tx1, -_ty1, _sep, 0.0)
                         # _calc_values(_tx2, -_ty2, _tx1, -_ty1, 0.0, 0.0)
     return _tangents
-#@-others
-#@-leo

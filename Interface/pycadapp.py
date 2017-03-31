@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3678: * @file pycadapp.py
 #
 # Copyright (c) 2010 Matteo Boscolo, Gertwin Groen
 #
@@ -28,15 +26,8 @@
 #sip.setapi('QString', 2)
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3679: ** <<declarations>> (pycadapp)
 from PyQt4 import QtGui
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3680: ** class PyCadApp
 class PyCadApp(object):
     '''
     PyCadApp contain static interface functions to the kernel application object.
@@ -48,8 +39,6 @@ class PyCadApp(object):
     __cad_window = None
     
     
-    #@+others
-    #@+node:1.20130426141258.3681: *3* CadWindow
     @staticmethod
     def CadWindow():
         '''
@@ -57,7 +46,6 @@ class PyCadApp(object):
         The main window is an instance of the CadWindow object.
         '''
         return PyCadApp.__cad_window
-    #@+node:1.20130426141258.3682: *3* SetCadWindow
     @staticmethod
     def SetCadWindow(cad_window):
         '''
@@ -65,21 +53,18 @@ class PyCadApp(object):
         The main window is an instance of the CadWindow object.
         '''
         PyCadApp.__cad_window = cad_window
-    #@+node:1.20130426141258.3683: *3* Application
     @staticmethod
     def Application():
         '''
         Gets the application object from the kernel.
         '''
         return PyCadApp.__application
-    #@+node:1.20130426141258.3684: *3* SetApplication
     @staticmethod
     def SetApplication(application):
         '''
         Sets the application object from the kernel.
         '''
         PyCadApp.__application = application
-    #@+node:1.20130426141258.3685: *3* ActiveDocument
     @staticmethod
     def ActiveDocument():
         '''
@@ -88,7 +73,6 @@ class PyCadApp(object):
         if not PyCadApp.__application is None:
             return PyCadApp.__application.ActiveDocument
         return None
-    #@+node:1.20130426141258.3686: *3* CreateNewDocument
     @staticmethod
     def CreateNewDocument():
         '''
@@ -98,7 +82,6 @@ class PyCadApp(object):
             PyCadApp.__application.newDocument()
             return PyCadApp.__application.ActiveDocument
         return None
-    #@+node:1.20130426141258.3687: *3* OpenDocument
     @staticmethod
     def OpenDocument(filename):
         '''
@@ -109,7 +92,6 @@ class PyCadApp(object):
             # return the opened, current active document
             return PyCadApp.ActiveDocument()
         return None
-    #@+node:1.20130426141258.3688: *3* critical
     @staticmethod
     def critical(text):
         '''
@@ -120,6 +102,3 @@ class PyCadApp(object):
         dlg.setIcon(QtGui.QMessageBox.Critical)
         dlg.exec_()
         return
-    #@-others
-#@-others
-#@-leo

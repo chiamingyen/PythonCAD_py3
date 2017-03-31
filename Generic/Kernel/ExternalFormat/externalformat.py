@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3042: * @file externalformat.py
 #
 # Copyright (c) 2009,2010 Matteo Boscolo
 #
@@ -22,32 +20,22 @@
 #
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3043: ** <<declarations>> (externalformat)
 import os.path
 #
 from Kernel.ExternalFormat.Dxf.dxf import Dxf
 from Kernel.exception import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3044: ** class ExtFormat
 #
 class ExtFormat(object):
     """
         This class provide base class for hendly different drawing format in pythoncad
     """
-    #@+others
-    #@+node:1.20130426141258.3045: *3* __init__
     def __init__(self,kernel):
         """
             Default Constructor
         """
         self.__kernel=kernel
         self.__errorList=[]
-    #@+node:1.20130426141258.3046: *3* openFile
     def openFile(self,fileName):
         """
            Open a generic file
@@ -61,7 +49,6 @@ class ExtFormat(object):
                 raise DxfReport("Dxf report have to be shown some error/warning in import dxf")
         else:
             raise  DxfUnsupportedFormat("Format %s not supported"%str(exte))
-    #@+node:1.20130426141258.3047: *3* saveFile
     def saveFile(self,fileName):
         """
             save the current file in a non pythoncad Format
@@ -70,12 +57,8 @@ class ExtFormat(object):
         if( exte.upper()==".dxf".upper()):
             dxf=Dxf(self.__kernel,fileName)
             dxf.exportEntitis()
-    #@+node:1.20130426141258.3048: *3* getErrorList
     def getErrorList(self):
         """
             get the error warning generated
         """
         return self.__errorList
-    #@-others
-#@-others
-#@-leo

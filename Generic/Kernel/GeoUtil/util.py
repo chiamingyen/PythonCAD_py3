@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3498: * @file util.py
 #
 # Copyright (c) 2002, 2003, 2004 Art Haas
 #
@@ -25,11 +23,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3499: ** <<declarations>> (util)
 import random
 import string 
 
@@ -37,9 +31,6 @@ from math import fmod, pi
 import types
 
 from Kernel.GeoUtil.tolerance       import TOL
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3500: ** get_float
 def get_float(val):
     _v = val
     if not isinstance(_v, float):
@@ -47,7 +38,6 @@ def get_float(val):
             raise TypeError("Invalid non-numeric type: " + repr(type(_v)))
         _v = float(val)
     return _v
-#@+node:1.20130426141258.3501: ** test_boolean
 def test_boolean(val):
     if hasattr(types, 'BooleanType'):
         if not isinstance(val, bool):
@@ -55,7 +45,6 @@ def test_boolean(val):
     else:
         if val is not True and val is not False:
             raise TypeError("Invalid non-boolean type: " + repr(type(val)))
-#@+node:1.20130426141258.3502: ** tuple_to_two_floats
 def tuple_to_two_floats(t):
     if not isinstance(t, tuple):
         raise TypeError("Argument must be a tuple: " + repr(type(t)))
@@ -65,7 +54,6 @@ def tuple_to_two_floats(t):
     _x = get_float(_obj1)
     _y = get_float(_obj2)
     return _x, _y
-#@+node:1.20130426141258.3503: ** tuple_to_three_floats
 def tuple_to_three_floats(t):
     if not isinstance(t, tuple):
         raise TypeError("Argument must be a tuple: " + repr(type(t)))
@@ -76,7 +64,6 @@ def tuple_to_three_floats(t):
     _y = get_float(_obj2)
     _z = get_float(_obj3)
     return _x, _y, _z
-#@+node:1.20130426141258.3504: ** make_angle
 def make_angle(angle):
     """
         Return an angle value such that -pi/2 <= angle <= pi/2.
@@ -105,7 +92,6 @@ def make_angle(angle):
             else:
                 _angle = _fa
     return _angle
-#@+node:1.20130426141258.3505: ** make_c_angle
 def make_c_angle(angle):
     """
         Return an angle value such that 0 <= angle <= 360.
@@ -117,7 +103,6 @@ def make_c_angle(angle):
     elif _a > 360.0:
         _a = fmod(_a, 360.0)
     return _a
-#@+node:1.20130426141258.3506: ** make_c_angle_rad
 def make_c_angle_rad(angle):
     """
         return the angle from 0 to 2*pi
@@ -125,7 +110,6 @@ def make_c_angle_rad(angle):
     while angle>pi*2:
         angle=angle-pi*2
     return angle
-#@+node:1.20130426141258.3507: ** make_coords
 def make_coords(x, y):
     """Check and convert x/y values to float values.
 
@@ -136,7 +120,6 @@ This routine is used to ensure the values are float values.
     _x = get_float(x)
     _y = get_float(y)
     return _x, _y
-#@+node:1.20130426141258.3508: ** make_region
 def make_region(xmin, ymin, xmax, ymax):
     """Return a validated region defined by (xmin, ymin) to (xmax, ymax).
 
@@ -154,7 +137,6 @@ that xmin < xmax and ymin < ymax.
     if _ymax < _ymin:
         raise ValueError("Invalid values: ymax < ymin")
     return _xmin, _ymin, _xmax, _ymax
-#@+node:1.20130426141258.3509: ** degrees
 def degrees(value):
     """Convert a value from radians to degrees.
 
@@ -165,7 +147,6 @@ the value isn't scaled from -360.0 <= angle <= 360.0
     """
     _value = get_float(value)
     return fmod(_value, 360.0)
-#@+node:1.20130426141258.3510: ** radians
 def radians(value):
     """
         Convert a value from degrees to radians.
@@ -174,7 +155,6 @@ def radians(value):
     """
     _value = get_float(value)
     return fmod(_value, (2.0 * pi))
-#@+node:1.20130426141258.3511: ** map_coords
 #
 # map x/y coordinates to a (x1, y1)->(x2, y2) segment
 #
@@ -208,7 +188,6 @@ map_coords(x, y, x1, y1, x2, y2[, tol])
     if abs(_px - _x) < _t and abs(_py - _y) < _t:
         return _px, _py
     return None
-#@+node:1.20130426141258.3512: ** in_region
 #
 # test if line segments are visible within a rectangular region
 #
@@ -282,7 +261,6 @@ in_region(x1, y1, x2, y2, xmin, ymin, xmax, ymax)
         if 0.0 < _r < 1.0:
             return True
     return False
-#@+node:1.20130426141258.3513: ** to_unicode
 def to_unicode(obj, encoding='utf-8'):
     """
         Transform a string in a different format Default utf-8
@@ -292,7 +270,6 @@ def to_unicode(obj, encoding='utf-8'):
             obj =obj.replace('\x00', '').decode(encoding, 'ignore').encode(encoding)
         return obj
     raise TypeError("Invalid object type : " + repr(type(obj)))
-#@+node:1.20130426141258.3514: ** getRandomString
 def getRandomString(lengh=None):
     """
         get a random name 
@@ -302,7 +279,6 @@ def getRandomString(lengh=None):
         lengh=10
     d = [random.choice(string.letters) for x in range(lengh)]
     return "".join(d)
-#@+node:1.20130426141258.3515: ** getSegmentNearestPoint
 def getSegmentNearestPoint(segment, p):
     """
         get the segment nearest end point
@@ -316,7 +292,6 @@ def getSegmentNearestPoint(segment, p):
         return ps2
     else:
         return ps1
-#@+node:1.20130426141258.3516: ** updateSegment
 def updateSegment(objSegment,objPoint, objInterPoint):
         """
             Return a segment with trimed to the intersection point
@@ -344,7 +319,6 @@ def updateSegment(objSegment,objPoint, objInterPoint):
         else:
             arg={"SEGMENT_0":objInterPoint,"SEGMENT_1":_p2}
             return Segment(arg)
-#@+node:1.20130426141258.3517: ** getIdPoint
 def getIdPoint(value):
     """
         imput must be 10@0,0
@@ -352,5 +326,3 @@ def getIdPoint(value):
     """
     id, p=value.split('@')
     return id, p
-#@-others
-#@-leo

@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3699: * @file cmdcategory.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006, 2007 Art Haas
 # Copyright (c) 2009, 2010 Matteo Boscolo, Gertwin Groen
@@ -25,17 +23,11 @@
 
 
 
-#@@language python
-#@@tabwidth -4
-#@+others
-#@+node:1.20130426141258.3700: ** class CmdCategory
 class CmdCategory(object):
     '''
     Defines all possible categories for the user input interface
     A category represents a menu or a tool-bar.
     '''
-    #@+others
-    #@+node:1.20130426141258.3701: *3* __init__
     def __init__(self, main_window):
         '''
         Create category attributes from a string.
@@ -60,7 +52,6 @@ class CmdCategory(object):
             # set attribute for category
             setattr(self, category, number)
         return
-    #@+node:1.20130426141258.3702: *3* getMenu
     def getMenu(self, number):
         '''
         Gets an menu from the list.
@@ -69,11 +60,9 @@ class CmdCategory(object):
         if number in self.__menus:
             return self.__menus[number]
         return None
-    #@+node:1.20130426141258.3703: *3* getToolbarList
     @property
     def getToolbarList(self):
         return self.__toolbars
-    #@+node:1.20130426141258.3704: *3* getToolbar
     def getToolbar(self, number):
         '''
         Gets an tool-bar from the list.
@@ -82,6 +71,3 @@ class CmdCategory(object):
         if number in self.__toolbars:
             return self.__toolbars[number]
         return None
-    #@-others
-#@-others
-#@-leo

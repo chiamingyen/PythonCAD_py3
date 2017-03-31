@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3153: * @file arc.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 # Copyright (c) 2009,2010 Matteo Boscolo
@@ -28,11 +26,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3154: ** <<declarations>> (arc)
 import math
 
 from Kernel.GeoEntity.point                import Point
@@ -47,9 +41,6 @@ _rtd = 180.0/math.pi
 
 pi_2=math.pi*2.0
 pi2=math.pi/2.0
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3155: ** class Arc
 class Arc(GeometricalEntity):
     """
         A class for Arcs.
@@ -61,8 +52,6 @@ class Arc(GeometricalEntity):
 
         An Arc has the following methods:
     """
-    #@+others
-    #@+node:1.20130426141258.3156: *3* __init__
     def __init__(self,kw):
         """
             Initialize a Arc/Circle.
@@ -88,17 +77,14 @@ class Arc(GeometricalEntity):
         
         #self.startAngle = self.startAngle
         #self.endAngle= self.endAngle
-    #@+node:1.20130426141258.3157: *3* isCircle
     def isCircle(self):
         """
             return if the arc isa circle
         """
         return self.__isCircle
-    #@+node:1.20130426141258.3158: *3* info
     @property
     def info(self):
         return "Arc: Center: %s, Radius:%s ,StartAngle: %s,EndAngle: %s"%(str(self.center), str(self.radius), str(self.startAngle), str(self.endAngle))
-    #@+node:1.20130426141258.3159: *3* __eq__
     def __eq__(self, obj):
         """
             Compare a Arc to another for equality.
@@ -111,7 +97,6 @@ class Arc(GeometricalEntity):
                 (abs(self.radius - obj.radius) < 1e-10) and
                 (abs(self.startAngle - obj.startAngle) < 1e-10) and
                 (abs(self.endAngle - obj.endAngle) < 1e-10))
-    #@+node:1.20130426141258.3160: *3* __ne__
     def __ne__(self, obj):
         """
             Compare a Arc to another for inequality.
@@ -124,13 +109,11 @@ class Arc(GeometricalEntity):
                 (abs(self.radius - obj.radius) > 1e-10) or
                 (abs(self.startAngle - obj.startAngle) > 1e-10) or
                 (abs(self.endAngle - obj.endAngle) > 1e-10))                   
-    #@+node:1.20130426141258.3161: *3* getCenter
     def getCenter(self):
         """
             Return the center Point of the Arc.
         """
         return self['ARC_0']
-    #@+node:1.20130426141258.3162: *3* setCenter
     def setCenter(self, point):
         """
             Set the center Point of the Arc.
@@ -138,7 +121,6 @@ class Arc(GeometricalEntity):
         if not isinstance(point, self.arguments['ARC_0'] ):
             raise TypeError("Wrong argument type Need a Point")
         self['ARC_0']=point
-    #@+node:1.20130426141258.3163: *3* getRadius
     center = property(getCenter, setCenter, None, "Arc center")
 
     def getRadius(self):
@@ -146,7 +128,6 @@ class Arc(GeometricalEntity):
             Return the radius of the the Arc.
         """
         return self['ARC_1']
-    #@+node:1.20130426141258.3164: *3* setRadius
     def setRadius(self, radius):
         """
             Set the radius of the Arc.
@@ -156,7 +137,6 @@ class Arc(GeometricalEntity):
         if not _r > 0.0:
             raise ValueError("Invalid radius: %g" % _r)
         self['ARC_1']=_r
-    #@+node:1.20130426141258.3165: *3* getStartAngle
     radius = property(getRadius, setRadius, None, "Arc radius")
 
     def getStartAngle(self):
@@ -164,14 +144,12 @@ class Arc(GeometricalEntity):
             Return the startAngle for the Arc.
         """
         return self['ARC_2']
-    #@+node:1.20130426141258.3166: *3* setStartAngle
     def setStartAngle(self, angle):
         """
             Set the startAngle for the Arc.
             The argument angle should be a float.
         """
         self['ARC_2'] = angle
-    #@+node:1.20130426141258.3167: *3* getEndAngle
     startAngle = property(getStartAngle, setStartAngle, None,
                            "Start angle for the Arc.")
 
@@ -180,14 +158,12 @@ class Arc(GeometricalEntity):
             Return the endAngle for the Arc.
         """
         return self['ARC_3']
-    #@+node:1.20130426141258.3168: *3* setEndAngle
     def setEndAngle(self, angle):
         """
             Set the endAngle for the Arc.
             The argument angle should be a float.
         """
         self['ARC_3'] = angle
-    #@+node:1.20130426141258.3169: *3* getAngle
     endAngle = property(getEndAngle, setEndAngle, None,
                          "End angle for the Arc.")
 
@@ -202,7 +178,6 @@ class Arc(GeometricalEntity):
         else:
             _angle = pi_2 - self.startAngle + self.endAngle
         return _angle
-    #@+node:1.20130426141258.3170: *3* throughAngle
     def throughAngle(self, angle):
         """
             Return True if an arc passes through some angle
@@ -223,7 +198,6 @@ class Arc(GeometricalEntity):
                 if _angle > _ea or _angle < _sa:
                     _val = False
         return _val
-    #@+node:1.20130426141258.3171: *3* getEndpoints
     def getEndpoints(self):
         """
             Return where the two endpoints for the arc-segment lie.
@@ -241,20 +215,17 @@ class Arc(GeometricalEntity):
         _eax = _cx + _r * math.cos(_ea )
         _eay = _cy + _r * math.sin(_ea )
         return Point(_sax, _say), Point(_eax, _eay)
-    #@+node:1.20130426141258.3172: *3* length
     def length(self):
         """
             Return the length of the Arc.
         """
         
         return self.radius*self.getAngle()
-    #@+node:1.20130426141258.3173: *3* area
     def area(self):
         """
             Return the area enclosed by the Arc.
         """
         return pow(self.radius, 2) * (self.getAngle()/2)
-    #@+node:1.20130426141258.3174: *3* getProjection
     def getProjection(self,fromPoint):
         """
             get Projection of the point x,y on the arc
@@ -268,7 +239,6 @@ class Arc(GeometricalEntity):
             return pj1 # ######################## adding return value for pj2
         else:
             return None
-    #@+node:1.20130426141258.3175: *3* GetTangentPoint
     def GetTangentPoint(self,x,y,outx,outy):
         """
             Get the tangent from an axternal point
@@ -316,7 +286,6 @@ class Arc(GeometricalEntity):
             return posPoint.getCoords()
         else:
             return negPoint.getCoords()
-    #@+node:1.20130426141258.3176: *3* GetRadiusPointFromExt
     def GetRadiusPointFromExt(self,x,y):
         """
             get The intersecrion point from the line(x,y,cx,cy) and the circle
@@ -333,7 +302,6 @@ class Arc(GeometricalEntity):
         newPoint=magVector.point()
         intPoint=Point(outPoint+newPoint)
         return intPoint.getCoords()
-    #@+node:1.20130426141258.3177: *3* inRegion
     def inRegion(self, xmin, ymin, xmax, ymax, fully=False):
         """
             Return whether or not an Arc exists within a region.
@@ -424,7 +392,6 @@ class Arc(GeometricalEntity):
                 if _aymax < _ymin:
                     return False
         return _val
-    #@+node:1.20130426141258.3178: *3* getBounds
     def getBounds(self):
         _ep1, _ep2 = self.getEndpoints()
         _xc, _yc = self.center.getCoords()
@@ -442,33 +409,28 @@ class Arc(GeometricalEntity):
         if self.throughAngle(270.0):
             _ymin = _yc - _r
         return _xmin, _ymin, _xmax, _ymax
-    #@+node:1.20130426141258.3179: *3* clone
     def clone(self):
         """
             Create an identical copy of a Arc
             clone()
         """
         return Arc(self.getConstructionElements())
-    #@+node:1.20130426141258.3180: *3* getSympy
     def getSympy(self):
         """
             get the sympy object in this case a circle
         """
         _cp=self.center.getSympy()
         return geoSympy.Circle(_cp, mainSympy.Rational(str(self.radius)))
-    #@+node:1.20130426141258.3181: *3* setFromSympy
     def setFromSympy(self, sympyCircle):    
         """
             update the points cord from a sympyobject only avaiable for circle
         """
         self.center.setFromSympy(sympyCircle.center)
         self.radius=float(sympyCircle.radius)
-    #@+node:1.20130426141258.3182: *3* __str__
     def __str__(self):
         msg="Arc\Circle: Center %s , Radius %s , StartAngle=%s, EndAngle=%s"%(
             str(self.center), str(self.radius), str(self.startAngle), str(self.endAngle))
         return msg
-    #@+node:1.20130426141258.3183: *3* test_angle
     def test_angle(self,s, e, a):
         """
             Returns if an angle lies between the start and end angle of an arc.
@@ -483,14 +445,12 @@ class Arc(GeometricalEntity):
             (s <= a <= e)):
             _val = True
         return _val
-    #@+node:1.20130426141258.3184: *3* rotate
     def rotate(self, rotationPoint, angle):
         """
             rotate the arc
         """
         self.startAngle+=angle
         self.center.rotate(rotationPoint, angle)
-    #@+node:1.20130426141258.3185: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -504,7 +464,6 @@ class Arc(GeometricalEntity):
         vEnd=Vector( endPoint, endMirror)
         newStart=endMirror+vEnd.point
         self.startAngle=Vector(self.center, newStart).absAng
-    #@+node:1.20130426141258.3186: *3* getQuadrant
     def getQuadrant(self):
         """
             Return the circle intersection with the line x,y passing through the
@@ -516,6 +475,3 @@ class Arc(GeometricalEntity):
         p3=Point(x, y-self.radius)
         p4=Point(x+self.radius, y)
         return [p1, p2, p3, p4]
-    #@-others
-#@-others
-#@-leo

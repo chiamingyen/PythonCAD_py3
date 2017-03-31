@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3270: * @file entityutil.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -24,11 +22,7 @@
 #
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3271: ** <<declarations>> (entityutil)
 import math
 
 import sympy            as mainSympy
@@ -38,9 +32,6 @@ from Kernel.GeoEntity.point        import Point
 from Kernel.GeoEntity.segment      import Segment
 from Kernel.GeoEntity.arc          import Arc
 from Kernel.GeoEntity.ellipse      import Ellipse
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3272: ** getEntityEntity
 #    "Ray",
 #    "Line",
 #    "Triangle",
@@ -77,5 +68,3 @@ def getEntityEntity(sympyEntity):
         return e
     else:
         raise "not supported entity"
-#@-others
-#@-leo

@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3013: * @file relationdb.py
 #encoding: utf-8
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -26,24 +24,15 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3014: ** <<declarations>> (relationdb)
 import pickle as pickle
 
 from Kernel.entity          import Entity
 from Kernel.Db.basedb       import BaseDb
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3015: ** class RelationDb
 class RelationDb(BaseDb):
     """
         this class provide the besic operation for the relation
     """
-    #@+others
-    #@+node:1.20130426141258.3016: *3* __init__
     def __init__(self,dbConnection=None):
         BaseDb.__init__(self)
         if dbConnection is None:
@@ -60,7 +49,6 @@ class RelationDb(BaseDb):
                     "pycad_child_id" INTEGER
                     )"""
             self.makeUpdateInsert(_sqlCreation)
-    #@+node:1.20130426141258.3017: *3* saveRelation
     def saveRelation(self,parentEntObj,childEntObj):
         """
             This method save the Relation in the db
@@ -76,7 +64,6 @@ class RelationDb(BaseDb):
                     str(_parentEntityId),
                     str(_childEntityId))
         self.makeUpdateInsert(_sqlInsert)
-    #@+node:1.20130426141258.3018: *3* getChildrenIds
     def getChildrenIds(self,entityParentId):
         """
             Get the children id of a relation
@@ -91,7 +78,6 @@ class RelationDb(BaseDb):
             for _row in _dbEntRow:
                 _outObj.append(_row[0])
         return _outObj
-    #@+node:1.20130426141258.3019: *3* getAllChildrenType
     def getAllChildrenType(self, parent, childrenType=None):
         """
             get all the children entity of type childrenType
@@ -138,7 +124,6 @@ class RelationDb(BaseDb):
             _outObj.append(_objEnt)
 
         return _outObj
-    #@+node:1.20130426141258.3020: *3* getParentEnt
     def getParentEnt(self,entity):
         """
             get the parent entity
@@ -174,7 +159,6 @@ class RelationDb(BaseDb):
             _objEnt.updateBBox()
             return _objEnt
         return None
-    #@+node:1.20130426141258.3021: *3* deleteFromParent
     def deleteFromParent(self,entityObj):
         """
             Delete the entity from db
@@ -183,7 +167,6 @@ class RelationDb(BaseDb):
         _sqlDelete="""DELETE FROM pycadrel
             WHERE pycad_parent_id='%s'"""%str(_entityId)
         self.makeUpdateInsert(_sqlDelete)
-    #@+node:1.20130426141258.3022: *3* deleteFromChild
     def deleteFromChild(self,entityObj):
         """
             Delete the entity from db
@@ -192,7 +175,6 @@ class RelationDb(BaseDb):
         _sqlDelete="""DELETE FROM pycadrel
             WHERE pycad_child_id='%s'"""%str(_entityId)
         self.makeUpdateInsert(_sqlDelete)
-    #@+node:1.20130426141258.3023: *3* deleteRelation
     def deleteRelation(self,entityObjParent,entityObjChild):
         """
             delete the relation from parent and child
@@ -202,7 +184,6 @@ class RelationDb(BaseDb):
         _sqlDelete="""DELETE FROM pycadrel
             WHERE pycad_parent_id='%s' and pycad_child_id='%s'and """%(str(_parentId),str(_childId))
         self.makeUpdateInsert(_sqlDelete)
-    #@+node:1.20130426141258.3024: *3* relationExsist
     def relationExsist(self, parentId, childId):
         """
             check if the given parent child id exsist or not
@@ -213,10 +194,7 @@ class RelationDb(BaseDb):
                     """%(str(parentId),str(childId))
         res=self.fetchOneRow(_sqlSelect)
         return res
-    #@-others
-#@-others
 """
     TODO TEST deleteFromChild
     TODO TEST deleteRelation
 """
-#@-leo

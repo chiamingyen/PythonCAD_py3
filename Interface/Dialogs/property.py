@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3819: * @file property.py
 #
 # Copyright (c) 2010,2011 Matteo Boscolo
 #
@@ -32,11 +30,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3820: ** <<declarations>> (property)
 from PyQt4.QtGui    import QDialog,QAbstractItemView,QMenu,QAction
 from PyQt4.QtCore   import pyqtSignature
 
@@ -44,17 +38,12 @@ from .Ui_property    import Ui_Dialog
 
 from Interface.cadinitsetting import *
 from Interface.Dialogs.dataModel import populateTable
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3821: ** class Property
 class Property(QDialog, Ui_Dialog):
     """
         this class define the entity property dialog
         it automaticaly retrive the style property 
         and show it in the form
     """
-    #@+others
-    #@+node:1.20130426141258.3822: *3* __init__
     def __init__(self, parent = None, entity=None):
         QDialog.__init__(self, parent)
         self.setupUi(self)
@@ -71,14 +60,12 @@ class Property(QDialog, Ui_Dialog):
                 self.propertyConteiner.addLayout(self.containers[propName])
         self.populateCustomProperty(entity)
         self.exec_()
-    #@+node:1.20130426141258.3823: *3* populateCustomProperty
     def populateCustomProperty(self,entity):
         """
             populate the dialog with the custom property
         """
         tableObject=[[k,v] for k,v in list(entity[0]._entity.properties.items())]
         populateTable(self.customProperty,tableObject,['Name','Value'])
-    #@+node:1.20130426141258.3824: *3* customPropertyContextMenuEvent
     def customPropertyContextMenuEvent(self,event):
         contexMenu=QMenu(self)
         #
@@ -94,13 +81,11 @@ class Property(QDialog, Ui_Dialog):
         #
         contexMenu.exec_(event.globalPos())
         del(contexMenu)       
-    #@+node:1.20130426141258.3825: *3* _newCustomProperty
     def _newCustomProperty(self):
         """
             Open an empty ParameterUi
         """
         self.customProperty.model().addNewRow()
-    #@+node:1.20130426141258.3826: *3* _delCustomProperty
     def _delCustomProperty(self):
         """
             Edit the selected parameter values
@@ -109,13 +94,11 @@ class Property(QDialog, Ui_Dialog):
         if len(rows)>0:
             row=rows[0]
             self.customProperty.model().removeRow(row.row())
-    #@+node:1.20130426141258.3827: *3* uppdateCustomProperty
     def uppdateCustomProperty(self):
         """
             update the custom property
         """ 
         self._properties = dict(self.customProperty.model().arraydata)
-    #@+node:1.20130426141258.3828: *3* on_buttonBox_accepted
     @pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
@@ -124,7 +107,6 @@ class Property(QDialog, Ui_Dialog):
         self.uppdateCustomProperty()
         self._isOk=True
         self.close()
-    #@+node:1.20130426141258.3829: *3* on_buttonBox_rejected
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
         """
@@ -132,14 +114,12 @@ class Property(QDialog, Ui_Dialog):
         """
         self._isOk=False
         self.close()
-    #@+node:1.20130426141258.3830: *3* changed
     @property 
     def changed(self):
         """
             tells if the object is changed
         """
         return self._isOk
-    #@+node:1.20130426141258.3831: *3* value
     @property
     def value(self):
         exitVal={}
@@ -152,6 +132,3 @@ class Property(QDialog, Ui_Dialog):
         if len(self._properties)>0:
             exitVal['property']=self._properties
         return exitVal
-    #@-others
-#@-others
-#@-leo

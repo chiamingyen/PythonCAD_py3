@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2603: * @file document.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -30,11 +27,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2604: ** <<declarations>> (document)
 import os
 import sys
 import pickle as pickle
@@ -80,17 +73,12 @@ LEVELS = {'PyCad_Debug':    logging.DEBUG,
 #   Set the debug level
 level = LEVELS.get('PyCad_Warning', logging.NOTSET)
 logging.basicConfig(level=level)
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2605: ** class Document
 #
 class Document(BaseDb):
     """
         This class provide basic operation on the pycad db database
         dbPath: is the path the database if None look in the some directory.
     """
-    #@+others
-    #@+node:1.20130426141258.2606: *3* __init__
     def __init__(self,dbPath=None):
         """
             init of the kernel
@@ -133,13 +121,11 @@ class Document(BaseDb):
         except StructuralError:
             raise StructuralError('Unable to create LayerTree structure')
         self.__logger.debug('Done inizialization')
-    #@+node:1.20130426141258.2607: *3* addPropertie
     def addPropertie(self,name,value):
         """
             add a properties to the object
         """
         self.__property[name]=value
-    #@+node:1.20130426141258.2608: *3* getPropertie
     def getPropertie(self,name):
         """
             get the properties with a given name
@@ -147,14 +133,12 @@ class Document(BaseDb):
         if name in self.__property:
             return self.__property[name]
         raise EntityMissing("No entity with name %s"%str(name))
-    #@+node:1.20130426141258.2609: *3* properties
     @property
     def properties(self):
         """
             get all the properties from the entity
         """
         return self.__property
-    #@+node:1.20130426141258.2610: *3* getMainStyle
     def getMainStyle(self):
         """
             get all the db styles
@@ -171,7 +155,6 @@ class Document(BaseDb):
         else:
             style=Style({"STYLE_0":"Main"})
             return self.saveEntity(style)
-    #@+node:1.20130426141258.2611: *3* getDbSettingsObject
     def getDbSettingsObject(self):
         """
             get the pythoncad settings object
@@ -189,7 +172,6 @@ class Document(BaseDb):
                         _settingsObjs=_setts[i]
                         break
         return _settingsObjs
-    #@+node:1.20130426141258.2612: *3* startMassiveCreation
     def startMassiveCreation(self):
         """
             suspend the undo for write operation
@@ -197,7 +179,6 @@ class Document(BaseDb):
         self.__logger.debug('startMassiveCreation')
         self.__bulkCommit=True
         self.__bulkUndoIndex=self.__UndoDb.getNewUndo()
-    #@+node:1.20130426141258.2613: *3* stopMassiveCreation
     def stopMassiveCreation(self):
         """
             Reactive the undo trace
@@ -206,14 +187,12 @@ class Document(BaseDb):
         self.__bulkCommit=False
         self.__bulkUndoIndex=-1
         self.performCommit()
-    #@+node:1.20130426141258.2614: *3* getEntity
     def getEntity(self,entId):
         """
             get the entity from a given id
         """
         self.__logger.debug('getEntity')
         return self.__EntityDb.getEntityEntityId(entId)
-    #@+node:1.20130426141258.2615: *3* getEntityFromType
     def getEntityFromType(self,entityType):
         """
             get all the entity from a specifie type
@@ -226,13 +205,11 @@ class Document(BaseDb):
             return self.__EntityDb.getEntityFromTypeArray(entityType)
         else:
             return self.__EntityDb.getEntityFromType(entityType)
-    #@+node:1.20130426141258.2616: *3* getAllDrawingEntity
     def getAllDrawingEntity(self):
         """
             get all drawing entity from the db
         """
         return self.__EntityDb.getEntityFromTypeArray([DRAWIN_ENTITY[key] for key in list(DRAWIN_ENTITY.keys())])
-    #@+node:1.20130426141258.2617: *3* getEntInDbTableFormat
     def getEntInDbTableFormat(self, visible=1, entityType='ALL', entityTypeArray=None):
         """
             return a db table of the entity
@@ -243,26 +220,22 @@ class Document(BaseDb):
             Remarks if entityTypeArray is not None entityType is ignored
         """
         return self.__EntityDb.getMultiFilteredEntity(visible,entityType , entityTypeArray)
-    #@+node:1.20130426141258.2618: *3* convertToGeometricalEntity
     def convertToGeometricalEntity(self, entity):
         """
             Convert an entity into a geometrical entity
         """
         return entity.toGeometricalEntity()
-    #@+node:1.20130426141258.2619: *3* haveDrawingEntitys
     def haveDrawingEntitys(self):
         """
             check if the drawing have some data in it
         """
         return self.__EntityDb.haveDrwEntitys([DRAWIN_ENTITY[key] for key in list(DRAWIN_ENTITY.keys())])
-    #@+node:1.20130426141258.2620: *3* saveSympyEnt
     def saveSympyEnt(self, sympyEnt):
         """
             save the sympy entity
         """
         ent=getEntityEntity(sympyEnt)
         self.saveEntity(ent)
-    #@+node:1.20130426141258.2621: *3* saveEntity
     def saveEntity(self,entity):
         """
             save the entity into the database
@@ -300,7 +273,6 @@ class Document(BaseDb):
         except:
             msg="Unexpected error: %s "%str(sys.exc_info()[0])
             raise (StructuralError(msg))
-    #@+node:1.20130426141258.2622: *3* _saveComposedEntity
     def _saveComposedEntity(self, entity):
         """
             save all the geometrical entity composed
@@ -318,7 +290,6 @@ class Document(BaseDb):
         for c in relComp:
             self.__RelationDb.saveRelation(_obj,c)
         return _obj
-    #@+node:1.20130426141258.2623: *3* _saveGeometricalEntity
     def _saveGeometricalEntity(self, entity):
         """
             save all the geometrical entity
@@ -330,7 +301,6 @@ class Document(BaseDb):
         else:
             _obj=self._saveDrwEnt(entity)
         return _obj
-    #@+node:1.20130426141258.2624: *3* _saveDrwEnt
     def _saveDrwEnt(self,entity):
         """
             Save a PythonCad drawing entity
@@ -342,14 +312,12 @@ class Document(BaseDb):
         _obj=self._saveDbEnt(entityType,_cElements)
         self.__RelationDb.saveRelation(self.__LayerTree.getActiveLater(),_obj)
         return _obj
-    #@+node:1.20130426141258.2625: *3* getNewId
     def getNewId(self):
         """
             get a new id
         """
         self.__entId+=1
         return self.__entId
-    #@+node:1.20130426141258.2626: *3* _getCelements
     def _getCelements(self, entity):
         """
             get an array of construction elements
@@ -360,7 +328,6 @@ class Document(BaseDb):
                 entityType=DRAWIN_ENTITY[t]
                 break
         return entity.getConstructionElements(), entityType
-    #@+node:1.20130426141258.2627: *3* _saveSettings
     def _saveSettings(self,settingsObj):
         """
             save the settings object
@@ -370,7 +337,6 @@ class Document(BaseDb):
         _cElements={}
         _cElements['SETTINGS']=settingsObj
         return self._saveDbEnt('SETTINGS',_cElements)
-    #@+node:1.20130426141258.2628: *3* _saveStyle
     def _saveStyle(self, styleObject):
         """
             save the style object
@@ -385,7 +351,6 @@ class Document(BaseDb):
         self.saveEntityEvent(self,_newDbEnt)
         self.showEntEvent(self,_newDbEnt)
         return _newDbEnt
-    #@+node:1.20130426141258.2629: *3* _saveLayer
     def _saveLayer(self,layerObj):
         """
             save the layer object
@@ -395,13 +360,11 @@ class Document(BaseDb):
         _cElements={}
         _cElements['LAYER']=layerObj
         return self._saveDbEnt('LAYER',_cElements)
-    #@+node:1.20130426141258.2630: *3* _savePyCadEnt
     def _savePyCadEnt(self, entity):
         """
             save the entity in the database
         """
         return self._saveDbEnt(entity=entity)
-    #@+node:1.20130426141258.2631: *3* _saveDbEnt
     def _saveDbEnt(self,entType=None,constructorElements=None, entity=None):
         """
             save the DbEnt to db
@@ -424,13 +387,11 @@ class Document(BaseDb):
         else:
             self.showEntEvent(self,_newDbEnt)
         return _newDbEnt
-    #@+node:1.20130426141258.2632: *3* entityExsist
     def entityExsist(self, id):
         """
             check id the entity exsist in the database
         """
         return self.__EntityDb.exsisting(id)
-    #@+node:1.20130426141258.2633: *3* getStyle
     def getStyle(self, id=None, name=None):
         """
             get the style object
@@ -448,7 +409,6 @@ class Document(BaseDb):
                 if stlName==name:
                    return sto
         raise EntityMissing("Miss entity style in db id: <%s> name : <%s>"%(str(id), str(name)))
-    #@+node:1.20130426141258.2634: *3* getActiveStyle
     def getActiveStyle(self):
         """
             Get the current style
@@ -459,7 +419,6 @@ class Document(BaseDb):
             self.setActiveStyle(0) # In this case get the first style
 
         return self.__activeStyleObj
-    #@+node:1.20130426141258.2635: *3* setActiveStyle
     def setActiveStyle(self, id=None, name=None):
         """
             set the current style
@@ -471,14 +430,12 @@ class Document(BaseDb):
         if styleObject==None:
             raise EntityMissing("Unable to retive the Style object")
         self.__activeStyleObj=styleObject
-    #@+node:1.20130426141258.2636: *3* getStyleList
     def getStyleList(self):
         """
             get all the style from the db
         """
         self.__logger.debug('getStyleList')
         return self.getEntityFromType('STYLE')
-    #@+node:1.20130426141258.2637: *3* unDo
     activeStyle=property(getActiveStyle,setActiveStyle)
 
     def unDo(self):
@@ -493,7 +450,6 @@ class Document(BaseDb):
             self.undoRedoEvent(self, None)
         except UndoDb:
             raise UndoDb("Generical problem to perform undo")
-    #@+node:1.20130426141258.2638: *3* reDo
     def reDo(self):
         """
             perform a redo operation
@@ -506,7 +462,6 @@ class Document(BaseDb):
             self.undoRedoEvent(self, None)
         except UndoDb:
             raise UndoDb("Generical problem to perform reDo")
-    #@+node:1.20130426141258.2639: *3* clearUnDoHistory
     def clearUnDoHistory(self):
         """
             perform a clear history operation
@@ -517,7 +472,6 @@ class Document(BaseDb):
         #self.__UndoDb.clearUndoTable()
         #compact all the entity
         #self.__EntityDb.compactByUndo()
-    #@+node:1.20130426141258.2640: *3* release
     def release(self):
         """
             release the current drawing
@@ -543,7 +497,6 @@ class Document(BaseDb):
             print("Unable to perform the release operation")
         finally:
             self.stopMassiveCreation()
-    #@+node:1.20130426141258.2641: *3* deleteEntity
     def deleteEntity(self,entityId):
         """
             Delete the entity from the database
@@ -553,7 +506,6 @@ class Document(BaseDb):
         entity.delete()
         self.saveEntity(entity)
         self.deleteEntityEvent(self,entity)
-    #@+node:1.20130426141258.2642: *3* massiveDelete
     def massiveDelete(self, entityIds):
         """
             perform a massive delete more then one entity
@@ -572,21 +524,18 @@ class Document(BaseDb):
         finally:
             self.massiveDeleteEvent(self, _delEnity)
             self.stopMassiveCreation()
-    #@+node:1.20130426141258.2643: *3* hideEntity
     def hideEntity(self, entity=None, entityId=None):
         """
             Hide an entity
         """
         self._hide(entity, entityId, 0)
         self.hideEntEvent(self, entity) # Event
-    #@+node:1.20130426141258.2644: *3* unHideEntity
     def unHideEntity(self, entity=None, entityId=None):
         """
             Unhide an entity
         """
         self._hide(entity, entityId, 1)
         self.showEntEvent(self, entity) #Event
-    #@+node:1.20130426141258.2645: *3* _hide
     def _hide(self,entity=None, entityId=None,  visible=0):
         """
             make the hide/unhide of an entity
@@ -601,7 +550,6 @@ class Document(BaseDb):
         if activeEnt.visible!=visible:
             activeEnt.visible=visible
             self.saveEntity(activeEnt)
-    #@+node:1.20130426141258.2646: *3* importExternalFormat
     def importExternalFormat(self, fileName):
         """
             This method allow you to import a file from an external format
@@ -617,7 +565,6 @@ class Document(BaseDb):
             self.__logger.error('UnsupportedFormat')
             _err={'object':extFormat, 'error':DxfUnsupportedFormat}
             self.handledErrorEvent(_err)
-    #@+node:1.20130426141258.2647: *3* exportExternalFormat
     def exportExternalFormat(self, fileName):
         """
             This method allow you to export a file to an external format\
@@ -633,31 +580,24 @@ class Document(BaseDb):
             self.__logger.error('UnsupportedFormat')
             _err={'object':extFormat, 'error':DxfUnsupportedFormat}
             self.handledErrorEvent(self,_err)#todo : test it not sure it works
-    #@+node:1.20130426141258.2648: *3* getTreeLayer
     @property
     def getTreeLayer(self):
         """
             Retrive the layer tree object
         """
         return self.__LayerTree
-    #@+node:1.20130426141258.2649: *3* getAllChildrenType
     def getAllChildrenType(self, parentObject, childrenType):
         """
             Get all the entity children from an pyCadDb object
         """
         return self.__RelationDb.getAllChildrenType(parentObject, childrenType)
-    #@+node:1.20130426141258.2650: *3* getRelatioObject
     def getRelatioObject(self):
         """
             getRelationObject
         """
         return self.__RelationDb
-    #@+node:1.20130426141258.2651: *3* getName
     def getName(self):
         """
             get the name of the active document
         """
         return self.dbPath
-    #@-others
-#@-others
-#@-leo

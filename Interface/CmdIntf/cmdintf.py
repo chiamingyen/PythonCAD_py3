@@ -1,10 +1,4 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3705: * @file cmdintf.py
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3706: ** <<declarations>> (cmdintf)
 import os
 import sys
 
@@ -17,9 +11,6 @@ from PyQt4 import QtCore, QtGui
 from Interface.CmdIntf.cmdcategory  import CmdCategory
 from Interface.CmdIntf.cmdaction    import CmdAction
 from Interface.CmdIntf.cmdlinedock  import CmdLineDock
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3707: ** class CmdIntf
 class CmdIntf(object):
     '''
     Future implementation:
@@ -27,8 +18,6 @@ class CmdIntf(object):
     Current implementation:
         Create static menu, toolbars and palettes.
     '''
-    #@+others
-    #@+node:1.20130426141258.3708: *3* __init__
     def __init__(self, parent):
         # parent is the main_window object
         self.__main_window = parent
@@ -42,7 +31,6 @@ class CmdIntf(object):
         self.__icon_dir = os.path.join(os.getcwd(), 'icons')
         #add custom event
         return
-    #@+node:1.20130426141258.3709: *3* commandLine
     #-------- properties -----------#
     @property
     def commandLine(self):
@@ -50,21 +38,18 @@ class CmdIntf(object):
             Get the command line dock window
         """
         return self.__edit_ctrl
-    #@+node:1.20130426141258.3710: *3* FunctionHandler
     @property
     def FunctionHandler(self):
         """
             Get the function handler object
         """
         return self.__edit_ctrl.FunctionHandler
-    #@+node:1.20130426141258.3711: *3* Category
     @property 
     def Category(self):
         """
             Get the category enumerator object
         """
         return self.__category   
-    #@+node:1.20130426141258.3712: *3* _actionHandler
     #-------- properties -----------#
     @QtCore.pyqtSlot(str)
     def _actionHandler(self, expression):
@@ -78,7 +63,6 @@ class CmdIntf(object):
             # command is found, evaluate it
             self.__edit_ctrl.FunctionHandler.evaluate(expression)
         return
-    #@+node:1.20130426141258.3713: *3* _getIcon
     def _getIcon(self, cmd):
         '''
         Create an QIcon object based on the command name.
@@ -93,7 +77,6 @@ class CmdIntf(object):
             return icon
         # icon not found, don't use an icon, return None
         return None
-    #@+node:1.20130426141258.3714: *3* registerCommand
     def registerCommand(self, category_enum, cmd, text=None, callback=None):
         '''
         Register a command with it's call-back in the command table.
@@ -137,7 +120,6 @@ class CmdIntf(object):
             if (not toolbar is None) and (not icon is None):
                 toolbar.addAction(action)
         return
-    #@+node:1.20130426141258.3715: *3* evaluate
     def evaluate(self, expression):
         '''
         Looks up the expression from the command table.
@@ -147,39 +129,33 @@ class CmdIntf(object):
         '''    
         self.__edit_ctrl.FunctionHandler.evaluate(expression)
         return
-    #@+node:1.20130426141258.3716: *3* evaluateInnerCommand
     def evaluateInnerCommand(self, kernelCommand, selectedItems):
         '''
             evaluate a kernel command
         '''
         self.__edit_ctrl.FunctionHandler.evaluateInnerCommand(kernelCommand, selectedItems)
-    #@+node:1.20130426141258.3717: *3* evaluateMouseImput
     def evaluateMouseImput(self,view,event):
         '''
             get imput from viewport
         '''
         self.__edit_ctrl.FunctionHandler.evaluateMouseImput(event)
-    #@+node:1.20130426141258.3718: *3* resetCommand
     def resetCommand(self):
         """
             reset the active command 
         """
         self.__edit_ctrl.FunctionHandler.resetCommand()
-    #@+node:1.20130426141258.3719: *3* hideAction
     def hideAction(self, name):
         """
             hide the name action
         """
         if name in self.__actions:
             self.__actions[name].hide()
-    #@+node:1.20130426141258.3720: *3* showAction
     def showAction(self, name):
         """
             show the name action
         """
         if name in self.__actions:
             self.__actions[name].show()
-    #@+node:1.20130426141258.3721: *3* setVisible
     def setVisible(self, name, value):
         """
             set the action name to visible value
@@ -189,13 +165,9 @@ class CmdIntf(object):
                 self.__actions[name].show()
             else:
                 self.__actions[name].hide()
-    #@+node:1.20130426141258.3722: *3* updateText
     def updateText(self, name, text):
         """
             update the label text
         """
         if name in self.__actions:
             self.__actions[name].setText(text)
-    #@-others
-#@-others
-#@-leo

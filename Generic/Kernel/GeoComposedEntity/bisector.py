@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3088: * @file bisector.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -25,23 +23,14 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3089: ** <<declarations>> (bisector)
 from Kernel.GeoComposedEntity.objoint import *
 from Kernel.GeoUtil.geolib import Vector
 import math
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3090: ** class Bisector
 class Bisector(ObjectJoint):
     """
         A Bisector class 
     """
-    #@+others
-    #@+node:1.20130426141258.3091: *3* __init__
     def __init__(self, kw):
         """
             "OBJECTJOINT_0" obj1             :(Segment ,ACLine,Arc,CCircle)
@@ -57,7 +46,6 @@ class Bisector(ObjectJoint):
         if not kw["OBJECTJOINT_5"]:
             self["OBJECTJOINT_5"]=self.getDefaultLeng()
         self._UpdateBisector()
-    #@+node:1.20130426141258.3092: *3* _UpdateBisector
     def _UpdateBisector(self):
         """
             Update the segment base on the imput value
@@ -92,32 +80,27 @@ class Bisector(ObjectJoint):
         newPoint=self.intersection[0]+bisecVector.point
         arg={"SEGMENT_0":self.intersection[0], "SEGMENT_1":newPoint}
         self.bisector=Segment(arg)
-    #@+node:1.20130426141258.3093: *3* lengh
     @property
     def lengh(self):
         """
             Second object of the bisector
         """
         return self['OBJECTJOINT_5']
-    #@+node:1.20130426141258.3094: *3* lengh
     @lengh.setter
     def lengh(self, value):
         if value:
             self['OBJECTJOINT_5'] = value
         else:
             self.getDefaultLeng()
-    #@+node:1.20130426141258.3095: *3* bisector
     @property
     def bisector(self):
         """
             Bisector segment object
         """
         return self.__bisector
-    #@+node:1.20130426141258.3096: *3* bisector
     @bisector.setter
     def bisector(self, value):
         self.__bisector=value
-    #@+node:1.20130426141258.3097: *3* getDefaultLeng
     def getDefaultLeng(self):
         """
             get the default bisector lengh
@@ -128,7 +111,6 @@ class Bisector(ObjectJoint):
         import sympy.geometry   as geoSympy
         t=geoSympy.Triangle(pp1,pp1,ppi)
         return float(t.bisectors[ppi].length)
-    #@+node:1.20130426141258.3098: *3* clone
     def clone(self):
         """
             Clone the Chamfer .. 
@@ -141,12 +123,8 @@ class Bisector(ObjectJoint):
                     self.pointClick1, 
                     self.pointClick2)
         return newChamfer
-    #@+node:1.20130426141258.3099: *3* getReletedComponent
     def getReletedComponent(self):
         """
             return the element to be written in the db and used for renderin
         """
         return self.bisector
-    #@-others
-#@-others
-#@-leo

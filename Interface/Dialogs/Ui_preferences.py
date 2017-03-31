@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3832: * @file Ui_preferences.py
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'D:\OmniaSolutions\Programming\EclipseWorkSpace\PythonCad\PythonCAD\Interface\Dialogs\preferencies.ui'
@@ -11,23 +9,14 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3833: ** <<declarations>> (Ui_preferences)
 from PyQt4 import QtCore, QtGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3834: ** class Ui_preferences
 class Ui_preferences(object):
-    #@+others
-    #@+node:1.20130426141258.3835: *3* setupUi
     def setupUi(self, preference):
         preference.setObjectName(_fromUtf8("preference"))
         preference.setWindowModality(QtCore.Qt.ApplicationModal)
@@ -46,11 +35,8 @@ class Ui_preferences(object):
 
         self.retranslateUi(preference)
         QtCore.QMetaObject.connectSlotsByName(preference)
-    #@+node:1.20130426141258.3836: *3* retranslateUi
     def retranslateUi(self, preference):
         preference.setWindowTitle(QtGui.QApplication.translate("preference", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
-    #@-others
-#@-others
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
@@ -59,4 +45,3 @@ if __name__ == "__main__":
     ui.setupUi(preference)
     preference.show()
     sys.exit(app.exec_())
-#@-leo

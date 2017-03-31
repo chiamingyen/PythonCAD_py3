@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3793: * @file dataModel.py
 ##############################################################################
 #
 #    OmniaSolutions, Your own solutions
@@ -25,22 +23,13 @@ Created on 23/apr/2012
 @author: mboscolo
 '''
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3794: ** <<declarations>> (dataModel)
 from  PyQt4.QtCore    import *
 from  PyQt4.QtGui     import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3795: ** class DataModel
 class DataModel(QAbstractTableModel): 
     """
         abstract model for manage values
     """
-    #@+others
-    #@+node:1.20130426141258.3796: *3* __init__
     def __init__(self, datain, headerdata, parent=None, *args): 
         QAbstractTableModel.__init__(self, parent, *args) 
         self.arraydata = datain
@@ -50,13 +39,11 @@ class DataModel(QAbstractTableModel):
         flags.append(Qt.ItemIsSelectable)
         flags.append(Qt.ItemIsEnabled)
         self._flags=flags
-    #@+node:1.20130426141258.3797: *3* rowCount
     def rowCount(self,objParent): 
         """
             row count
         """
         return len(self.arraydata) 
-    #@+node:1.20130426141258.3798: *3* addNewRow
     def addNewRow(self):
         """
             add a new empty row to the abstract model
@@ -66,14 +53,12 @@ class DataModel(QAbstractTableModel):
         for i in range(1,len(self.headerdata)):
             newRow.append('')
         self.insertRow(self.rowCount(None)+1,[newRow]) 
-    #@+node:1.20130426141258.3799: *3* insertRow
     def insertRow(self, pos, row):
         """
             insert row
         """
         self.insertRows(pos, 1, row)
         self.emit(SIGNAL('layoutChanged()'))
-    #@+node:1.20130426141258.3800: *3* insertRows
     def insertRows(self, pos, count, rows):
         """
             insert rows
@@ -84,14 +69,12 @@ class DataModel(QAbstractTableModel):
         self.endInsertRows()
         self.emit(SIGNAL('layoutChanged()'))
         return True
-    #@+node:1.20130426141258.3801: *3* removeRow
     def removeRow(self, pos):
         """
             remove row
         """
         self.removeRows(pos, 1)
         return True
-    #@+node:1.20130426141258.3802: *3* removeRows
     def removeRows(self, row=-1, count=0, parent=QModelIndex()):
         """
             remove rows
@@ -105,7 +88,6 @@ class DataModel(QAbstractTableModel):
         self.endRemoveRows()
         self.emit(SIGNAL('layoutChanged()'))
         return True
-    #@+node:1.20130426141258.3803: *3* columnCount
     def columnCount(self, parent): 
         """
             return the column count
@@ -113,29 +95,24 @@ class DataModel(QAbstractTableModel):
         if len(self.arraydata)>0:
             return len(self.arraydata[0])
         return 0 
-    #@+node:1.20130426141258.3804: *3* _rule
     def _rule(self,index):
         """
             this class must be overloaded in order to control the background color
         """
         return False
-    #@+node:1.20130426141258.3805: *3* backgroudIndex
     def backgroudIndex(self,index):
         if self._rule(index):
             self.setData(index, Qt.QColor(Qt.red), Qt.BackgroundColorRole)
-    #@+node:1.20130426141258.3806: *3* data
     def data(self, index, role): 
         if not index.isValid(): 
             return QVariant() 
         elif role != Qt.DisplayRole: 
             return QVariant() 
         return QVariant(self.arraydata[index.row()][index.column()])
-    #@+node:1.20130426141258.3807: *3* headerData
     def headerData(self, col, orientation, role):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
             return QVariant(self.headerdata[col])
         return QVariant()
-    #@+node:1.20130426141258.3808: *3* flags
     def flags(self, index):
         """
             set the flag for the data model
@@ -147,24 +124,19 @@ class DataModel(QAbstractTableModel):
         #flags |= QtCore.Qt.ItemIsDragEnabled
         #flags |= QtCore.Qt.ItemIsDropEnabled
         return flags
-    #@+node:1.20130426141258.3809: *3* enableRowEdit
     def enableRowEdit(self,index):
         """
             
         """
         pass
-    #@+node:1.20130426141258.3810: *3* setData
     def setData(self, index, value, role=Qt.EditRole):
         row = index.row()
         col = index.column()
         self.arraydata[row][col] = str(value.toString())
         self.emit(SIGNAL('dataChanged()'))
         return True
-    #@+node:1.20130426141258.3811: *3* getRowData
     def getRowData(self,index):
         return self.arraydata[index.row()]
-    #@-others
-#@+node:1.20130426141258.3812: ** populateTable
 def populateTable(refTable,tableObject,header,backGroundFunction=False):
     """
         Create the table elements
@@ -196,5 +168,3 @@ def populateTable(refTable,tableObject,header,backGroundFunction=False):
     refTable.setEditTriggers(QAbstractItemView.DoubleClicked)
     refTable.setSelectionBehavior(QAbstractItemView.SelectRows)
     refTable.setSelectionMode(QAbstractItemView.ExtendedSelection) 
-#@-others
-#@-leo

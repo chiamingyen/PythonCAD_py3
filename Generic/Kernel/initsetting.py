@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2724: * @file initsetting.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -32,11 +29,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2725: ** <<declarations>> (initsetting)
 from Kernel.Command                     import *
 from Kernel.Command.segmentcommand      import SegmentCommand
 from Kernel.Command.circlecommand       import CircleCommand
@@ -337,12 +330,8 @@ PYTHONCAD_STYLE_DEFAULT_VALUE=[(0, 0, 0),
                                 '10',
                                 'left'
                                 'sw']
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2726: ** getDefaultStyle
 def getDefaultStyle():
     return dict(list(zip(PYTHONCAD_STYLE_ATTRIBUTES,PYTHONCAD_STYLE_DEFAULT_VALUE)))
-#@-others
 #
 # Snap init settings
 #
@@ -634,4 +623,3 @@ cgcol = {
 #descripe the text position refered to the point clicked
 TEXT_POSITION=['n','ne', 'e', 'se', 's', 'sw', 'w','nw', 'c']
 MOUSE_GRAPH_DIMENSION=6
-#@-leo

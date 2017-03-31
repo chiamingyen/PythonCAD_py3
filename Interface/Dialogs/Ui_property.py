@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3837: * @file Ui_property.py
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'D:\OmniaSolutions\Programming\EclipseWorkSpace\PythonCad\PythonCAD\Interface\Dialogs\property.ui'
@@ -11,23 +9,14 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3838: ** <<declarations>> (Ui_property)
 from PyQt4 import QtCore, QtGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3839: ** class Ui_Dialog
 class Ui_Dialog(object):
-    #@+others
-    #@+node:1.20130426141258.3840: *3* setupUi
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(254, 279)
@@ -62,13 +51,10 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-    #@+node:1.20130426141258.3841: *3* retranslateUi
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Geometrical Attributes", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Custom Property", None, QtGui.QApplication.UnicodeUTF8))
-    #@-others
-#@-others
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
@@ -77,4 +63,3 @@ if __name__ == "__main__":
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
-#@-leo

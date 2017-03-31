@@ -1,10 +1,4 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2498: * @file application_test.py
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2499: ** <<declarations>> (application_test)
 import sympy            as mainSympy
 import sympy.geometry   as geoSympy
 
@@ -15,9 +9,6 @@ from Kernel.GeoEntity.ellipse       import Ellipse
 from Kernel.GeoEntity.cline         import CLine
 
 from Kernel.GeoUtil.intersection    import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2500: ** testSympySegment
 def testSympySegment():
     print("++ Sympy Segment ++")
     p1=Point(0, 1)
@@ -32,7 +23,6 @@ def testSympySegment():
     seg1.setFromSympy(symSeg)
     print("Segment ", seg1)
     print("-- Sympy Segment --")
-#@+node:1.20130426141258.2501: ** testSympyCline
 def testSympyCline():
     print("++ Sympy CLine ++")
     p1=Point(0, 1)
@@ -47,7 +37,6 @@ def testSympyCline():
     seg1.setFromSympy(symSeg)
     print("CLine ", seg1)
     print("-- Sympy CLine --")
-#@+node:1.20130426141258.2502: ** testSympyCircle
 def testSympyCircle():
     print("++ Sympy Arc ++")
     p1=Point(0, 1)
@@ -59,7 +48,6 @@ def testSympyCircle():
     arc.setFromSympy(sympCircel)
     print("Pythonca Arc ", arc)
     print("-- Sympy Arc --")
-#@+node:1.20130426141258.2503: ** testSympyEllipse
 def testSympyEllipse():
     print("++ Sympy Ellipse ++")
     p1=Point(0, 1)
@@ -71,13 +59,11 @@ def testSympyEllipse():
     eli.setFromSympy(sympEli1)
     print("Pythonca Ellipse ", eli)
     print("-- Sympy Ellipse --")
-#@+node:1.20130426141258.2504: ** TestSympy
 def TestSympy():
     testSympySegment()
     testSympyCline()
     testSympyCircle()
     testSympyEllipse()
-#@+node:1.20130426141258.2505: ** segment_segmet
 #*****************************************************************
 #Test Intersection
 #*****************************************************************
@@ -94,7 +80,6 @@ def segment_segmet():
 
     print(find_intersections(seg1, seg2))
     print("-- segment_segmet --")
-#@+node:1.20130426141258.2506: ** segment_cline
 def segment_cline():
     print("++ segment_cline ++")
     p1=Point(0,0)
@@ -108,7 +93,6 @@ def segment_cline():
 
     print(find_intersections(seg1, seg2))
     print("-- segment_cline --")
-#@+node:1.20130426141258.2507: ** segment_circle
 def segment_circle():
     print("++ segment_circle ++")
     p1=Point(0, 0)
@@ -120,7 +104,6 @@ def segment_circle():
     seg1=CLine(arg)
     print(find_intersections(arc, seg1))
     print("-- segment_circle --")
-#@+node:1.20130426141258.2508: ** segment_ellipse
 def segment_ellipse():
     print("++ segment_ellipse ++")
     p1=Point(0, 0)
@@ -132,13 +115,11 @@ def segment_ellipse():
     seg1=CLine(arg)
     print(find_intersections(eli, seg1))
     print("-- segment_ellipse --")
-#@+node:1.20130426141258.2509: ** TestIntersection
 def TestIntersection():
     segment_segmet()
     segment_cline()
     segment_circle()
     segment_ellipse()
-#@-others
 from application import Application
 
 a=Application()
@@ -155,4 +136,3 @@ TestIntersection()
 
 doc=a.openDocument(a.getRecentFiles[0])
 a.saveAs(r"C:\temp\test.dxf")
-#@-leo

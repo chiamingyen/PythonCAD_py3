@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2778: * @file unitparser.py
 #
 # Copyright (c) 2010 Matteo Boscolo
 #
@@ -24,15 +22,8 @@
 #
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2779: ** <<declarations>> (unitparser)
 from sympy.physics                  import units as u
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2780: ** convertAngle
 def convertAngle(value):
     """
         convert a angle in simpy units syntax into a rad float
@@ -48,14 +39,12 @@ def convertAngle(value):
             print("Wrong formatting string")
     finally:
         return retVal
-#@+node:1.20130426141258.2781: ** sympyConvertAngle
 def sympyConvertAngle(value):
     retVal=None
     value='retVal='+value
     exec(value)
     retVal=retVal/u.rad
     return float(retVal)
-#@+node:1.20130426141258.2782: ** convertLengh
 def convertLengh(value):
     """
         convert a lengh in simpy units syntax into a mm float
@@ -72,17 +61,14 @@ def convertLengh(value):
             print("Wrong formatting string")
     finally:
         return retVal
-#@+node:1.20130426141258.2783: ** sympyConvertLeng
 def sympyConvertLeng(value):
     retVal=None
     value='retVal='+value
     exec(value)
     retVal=retVal/u.mm
     return float(retVal.n())
-#@-others
 if __name__ == '__main__':
     print(convertLengh('10*u.m+3.5*u.cm+10*u.ft'))
     print(convertAngle('10'))
     print(convertAngle('90*u.deg'))
     print(sympyConvertAngle('10*u.rad+10*u.deg'))
-#@-leo

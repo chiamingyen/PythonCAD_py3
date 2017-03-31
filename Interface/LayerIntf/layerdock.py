@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4077: * @file layerdock.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -34,11 +31,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4078: ** <<declarations>> (layerdock)
 import sys
 #if sys.version_info <(2, 7):
 #    import sip
@@ -51,16 +44,11 @@ from PyQt4  import QtCore, QtGui
 from Interface.pycadapp                         import PyCadApp
 
 from Interface.LayerIntf.layertreeobject        import LayerTreeObject
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4079: ** class LayerDock
 class LayerDock(QtGui.QDockWidget):
     '''
         A dock able window containing a layer list object.
         The layer list contains all visible layers.
     '''
-    #@+others
-    #@+node:1.20130426141258.4080: *3* __init__
     def __init__(self, parent, document):
         '''
         Creates an edit line in which commands or expressions are evaluated.
@@ -73,7 +61,6 @@ class LayerDock(QtGui.QDockWidget):
         #self.setWidget(self.__layer_ctrl)
         self._layerModel=LayerTreeObject(self, document)
         self.setWidget(self._layerModel)
-    #@+node:1.20130426141258.4081: *3* ShowAllLayers
     def ShowAllLayers(self):
         '''
             Show all layers from the kernel in the control
@@ -81,12 +68,8 @@ class LayerDock(QtGui.QDockWidget):
         if self._layerTreeObject:
             self._populateLayerCtrl(self.__layer_ctrl.invisibleRootItem(), layer_tree)
         return
-    #@+node:1.20130426141258.4082: *3* RefreshStructure
     def RefreshStructure(self):
         """
             refresh the tree view
         """
         self._layerModel.updateTreeStructure(None)
-    #@-others
-#@-others
-#@-leo

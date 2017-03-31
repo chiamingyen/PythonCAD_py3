@@ -1,29 +1,18 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3723: * @file cmdlinedock.py
 # This is only needed for Python v2 but is harmless for Python v3.
 #import sip
 #sip.setapi('QString', 2)
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3724: ** <<declarations>> (cmdlinedock)
 from PyQt4 import QtCore, QtGui
 from Interface.CmdIntf.functionhandler import FunctionHandler
 from Kernel.pycadevent import PyCadEvent
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3725: ** class CmdLineDock
 class CmdLineDock(QtGui.QDockWidget):
     '''
         A dockable window containing a edit line object.
         The edit line is used to enter commands or expressions.
     '''
-    #@+others
-    #@+node:1.20130426141258.3726: *3* __init__
     def __init__(self, title, parent):
         '''
             Creates an edit line in which commands or expressions are evaluated.
@@ -64,7 +53,6 @@ class CmdLineDock(QtGui.QDockWidget):
         self.evaluatePressed=PyCadEvent()
         
         self.setObjectName("CmdLineDock") #this is needed for remember toolbar position in cadwindow.writesettings(savestate)
-    #@+node:1.20130426141258.3727: *3* FunctionHandler
     #-------- properties -----------#
     @property
     def FunctionHandler(self):
@@ -72,7 +60,6 @@ class CmdLineDock(QtGui.QDockWidget):
             Get the function handle object
         """
         return self.__function_handler
-    #@+node:1.20130426141258.3728: *3* _returnPressed
     #-------- functions -----------#
 
     def _returnPressed(self):
@@ -83,7 +70,6 @@ class CmdLineDock(QtGui.QDockWidget):
         self._remainder.append(expression)
         self._remainderIndex=len(self._remainder)
         self.evaluate(expression)
-    #@+node:1.20130426141258.3729: *3* _keyPress
     def _keyPress(self, keyEvent):
         """
             keyPressEvent
@@ -101,7 +87,6 @@ class CmdLineDock(QtGui.QDockWidget):
                 self.__edit_ctrl.setText(self._remainder[self._remainderIndex])
         else:
             QtGui.QLineEdit.keyPressEvent(self.__edit_ctrl, keyEvent)
-    #@+node:1.20130426141258.3730: *3* evaluate
     def evaluate(self, expression):
         '''
         Let the function handler evaluate the expression.
@@ -112,53 +97,41 @@ class CmdLineDock(QtGui.QDockWidget):
         result = self.__function_handler.evaluate(expression)
         self.evaluatePressed(expression) # fire event 
         return result
-    #@+node:1.20130426141258.3731: *3* setFocus
     def setFocus(self, scene, event):
         """
             set the focus into the text imput
         """
         self.__edit_ctrl.clear()
         self.__edit_ctrl.setFocus()
-    #@+node:1.20130426141258.3732: *3* printMsg
     def printMsg(self, msg):
         """
             Print message in to the message windows
         """
         self.textEditOutput.printMsg(msg)
-    #@-others
-#@+node:1.20130426141258.3733: ** class PyCadTextView
 class PyCadTextView(QtGui.QTextEdit):
     """
         this class represent the text view that pyCad use for rendering the output
     """
-    #@+others
-    #@+node:1.20130426141258.3734: *3* __init__
     def __init__(self, parent):
         super(PyCadTextView, self).__init__(parent)
         self.setObjectName("textEditOutput") 
         self.setReadOnly(True) 
         self.ensureCursorVisible()
-    #@+node:1.20130426141258.3735: *3* contextMenuEvent
     def contextMenuEvent(self, event):
         menu = self.createStandardContextMenu(event.pos());
         clearAction=QtGui.QAction("Clear", self, triggered=self.clear)
         menu.addAction(clearAction);
         menu.exec_(event.globalPos())
         del(menu)
-    #@+node:1.20130426141258.3736: *3* printMsg
     def printMsg(self, msg):
         """
             print a message withouth formatting in the last row
         """
         self.append(str(msg))
         self.scrollToBottom()
-    #@+node:1.20130426141258.3737: *3* scrollToBottom
     def scrollToBottom(self):    
         """
             scroll the qttext to the end
         """
         sb = self.verticalScrollBar()
         sb.setValue(sb.maximum())
-    #@-others
-#@-others
-#@-leo

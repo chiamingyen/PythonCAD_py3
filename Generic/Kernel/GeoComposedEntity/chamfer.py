@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3100: * @file chamfer.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -27,21 +25,12 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3101: ** <<declarations>> (chamfer)
 from Kernel.GeoComposedEntity.objoint import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3102: ** class Chamfer
 class Chamfer(ObjectJoint):
     """
         A Chamfer class 
     """
-    #@+others
-    #@+node:1.20130426141258.3103: *3* __init__
     def __init__(self, kw):
         """
             obj1, obj2, distance1, distance2, pointClick1=None, pointClick2=None
@@ -61,14 +50,12 @@ class Chamfer(ObjectJoint):
             if dis<0.0:
                 raise StructuralError("Distance parameter must be greater then 0")
         self.segment=self._UpdateChamferSegment()
-    #@+node:1.20130426141258.3104: *3* setConstructionElements
     def setConstructionElements(self, kw):    
         """
             set the construction elements
         """
         for k in kw:
             self[k]=kw[k]
-    #@+node:1.20130426141258.3105: *3* _UpdateChamferSegment
     def _UpdateChamferSegment(self):           
         """
             Recompute the Chamfer segment
@@ -83,7 +70,6 @@ class Chamfer(ObjectJoint):
         arg={"SEGMENT_0":pc1, "SEGMENT_1":pc2}
         seg=Segment(arg)
         return seg
-    #@+node:1.20130426141258.3106: *3* _updateSegment
     def _updateSegment(self, obj,distance,  clickPoint=None):
         """
             recalculate the segment for the chamfer
@@ -122,7 +108,6 @@ class Chamfer(ObjectJoint):
             ePoint=ip+v.point
             arg={"SEGMENT_0":ePoint, "SEGMENT_1":stPoint}
             return Segment(arg), ePoint
-    #@+node:1.20130426141258.3107: *3* getConstructionElements
     def getConstructionElements(self):
         """
             retutn the construction element of the object
@@ -135,7 +120,6 @@ class Chamfer(ObjectJoint):
                     self.pointClick2
                     )
         return outElement
-    #@+node:1.20130426141258.3108: *3* getLength
     def getLength(self):
         """
             Return the Chamfer length.
@@ -144,7 +128,6 @@ class Chamfer(ObjectJoint):
             return self.__segment.length()
         else:
             return 0.0
-    #@+node:1.20130426141258.3109: *3* setDistance1
     def setDistance1(self, distance):
         """
             change the value of the distance1
@@ -153,13 +136,11 @@ class Chamfer(ObjectJoint):
             raise StructuralError("Distance could be greater then 0")
         self["OBJECTJOINT_5"]=distance
         self._UpdateChamferSegment()
-    #@+node:1.20130426141258.3110: *3* getDistance1
     def getDistance1(self):
         """
             return the distance from intersection point to chanfer start
         """
         return self["OBJECTJOINT_5"]
-    #@+node:1.20130426141258.3111: *3* setDistance2
     def setDistance2(self, distance):
         """
             change the value of the distance1
@@ -168,13 +149,11 @@ class Chamfer(ObjectJoint):
             raise StructuralError("Distance could be greater then 0")
         self["OBJECTJOINT_6"]=distance
         self._UpdateChamferSegment()
-    #@+node:1.20130426141258.3112: *3* getDistance2
     def getDistance2(self):
         """
             return the distance from intersection point to chanfer start
         """
         return self["OBJECTJOINT_6"]
-    #@+node:1.20130426141258.3113: *3* clone
     distance1=property(getDistance1, setDistance1, None, "set the first distance") 
     distance2=property(getDistance2, setDistance2, None, "set the second distance") 
 
@@ -191,12 +170,8 @@ class Chamfer(ObjectJoint):
                     self.pointClick1, 
                     self.pointClick2)
         return newChamfer
-    #@+node:1.20130426141258.3114: *3* getReletedComponent
     def getReletedComponent(self):
         """
             return the element to be written in the db and used for renderin
         """
         return self.obj1 , self.obj2 ,self.segment
-    #@-others
-#@-others
-#@-leo

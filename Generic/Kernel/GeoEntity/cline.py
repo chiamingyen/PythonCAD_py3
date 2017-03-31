@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3209: * @file cline.py
 #
 # Copyright (c) 2002, 2003, 2004, 2005, 2006 Art Haas
 #
@@ -29,11 +27,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3210: ** <<declarations>> (cline)
 import math
 
 
@@ -42,15 +36,10 @@ from Kernel.GeoUtil.tolerance              import *
 from Kernel.GeoUtil.util                   import *
 from Kernel.GeoEntity.point                import Point
 from Kernel.GeoUtil.geolib                 import Vector
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3211: ** class CLine
 class CLine(GeometricalEntity):
     """
         A class for single point construction lines From Two points.
     """
-    #@+others
-    #@+node:1.20130426141258.3212: *3* __init__
     def __init__(self, kw):
         """
             Initialize an CLine object.
@@ -60,49 +49,39 @@ class CLine(GeometricalEntity):
         """
         argDescription={"CLINE_0":Point, "CLINE_1":Point}
         GeometricalEntity.__init__(self,kw, argDescription)
-    #@+node:1.20130426141258.3213: *3* __str__
     def __str__(self):
         return "Construction line through point %s at %s " % (self.p1, self.p2)   
-    #@+node:1.20130426141258.3214: *3* info
     @property
     def info(self):
         return "CLine: %s, %s"%(str(self.p1), str(self.p2))
-    #@+node:1.20130426141258.3215: *3* rotate
     def rotate(self, rotationPoint, angle):
         """
             rotate the acline for a given angle
         """    
         self.p1=GeometricalEntity.rotate(self, rotationPoint,self.p1, angle )
         self.p2=GeometricalEntity.rotate(self, rotationPoint,self.p2, angle )
-    #@+node:1.20130426141258.3216: *3* isVertical
     def isVertical(self):
         x1, y1=self.p1.getCoords()
         x2, y2=self.p1.getCoords()
         return abs(y1 - y2) < 1e-10
-    #@+node:1.20130426141258.3217: *3* isHorizontal
     def isHorizontal(self):
         x1, y1=self.p1.getCoords()
         x2, y2=self.p1.getCoords()
         return abs(x1 - x2) < 1e-10
-    #@+node:1.20130426141258.3218: *3* getP1
     def getP1(self):
         return self['CLINE_0']
-    #@+node:1.20130426141258.3219: *3* setP1
     def setP1(self, p):
         if not isinstance(p, Point):
             raise TypeError("Unexpected type for point: " + repr(type(p)))
         self['CLINE_0']=p
-    #@+node:1.20130426141258.3220: *3* getP2
     p1=property(getP1, setP1, None, "Set the location of the first point of the line")
 
     def getP2(self):
         return self['CLINE_1']
-    #@+node:1.20130426141258.3221: *3* setP2
     def setP2(self, p):
         if not isinstance(p, Point):
             raise TypeError("Unexpected type for point: " + repr(type(p)))
         self['CLINE_1']=p
-    #@+node:1.20130426141258.3222: *3* getKeypoints
     p2=property(getP2, setP2, None, "Set the location of the first point of the line")
 
     def getKeypoints(self):
@@ -110,19 +89,16 @@ class CLine(GeometricalEntity):
             Return the 2 construction point 
         """
         return p1, p2
-    #@+node:1.20130426141258.3223: *3* getAngle
     def getAngle(self):
         """
             get the getAngle 
         """
         return float(mainSympy.atan(getSympy.slope))
-    #@+node:1.20130426141258.3224: *3* clone
     def clone(self):
         """
             Create an identical copy of an CLine.
         """
         return CLine(self)
-    #@+node:1.20130426141258.3225: *3* getSympy
     def getSympy(self):
         """
             get the sympy object
@@ -130,21 +106,18 @@ class CLine(GeometricalEntity):
         _sp1=self.p1.getSympy()
         _sp2=self.p2.getSympy()
         return geoSympy.Line(_sp1, _sp2)
-    #@+node:1.20130426141258.3226: *3* setFromSympy
     def setFromSympy(self, sympySegment):    
         """
             update the points cord from a sympyobject
         """
         self.p1.setFromSympy(sympySegment.p1)
         self.p2.setFromSympy(sympySegment.p2)
-    #@+node:1.20130426141258.3227: *3* vector
     @property
     def vector(self):
         """
             Get The vector of the CLine
         """
         return Vector(self.p1, self.p2)
-    #@+node:1.20130426141258.3228: *3* mirror
     def mirror(self, mirrorRef):
         """
             perform the mirror of the line
@@ -155,8 +128,6 @@ class CLine(GeometricalEntity):
         #
         self.p1.mirror(mirrorRef)
         self.p2.mirror(mirrorRef)
-    #@-others
-#@+node:1.20130426141258.3229: ** intersect_region
 def intersect_region(acl, xmin, ymin, xmax, ymax):
     if not isinstance(acl, CLine):
         raise TypeError("Argument not an CLine: " + repr(type(acl)))
@@ -233,5 +204,3 @@ def intersect_region(acl, xmin, ymin, xmax, ymax):
                     _x2 = _xt
                     _y2 = _ymax
     return _x1, _y1, _x2, _y2
-#@-others
-#@-leo

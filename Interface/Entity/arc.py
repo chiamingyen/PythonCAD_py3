@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3991: * @file arc.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -24,22 +22,13 @@
 #
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3992: ** <<declarations>> (arc)
 from PyQt4 import QtCore, QtGui
 from Interface.Entity.base import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3993: ** class Arc
 class Arc(BaseEntity):
     """
         this class define the arcQT object 
     """
-    #@+others
-    #@+node:1.20130426141258.3994: *3* __init__
     def __init__(self, entity):
         super(Arc, self).__init__(entity)
         geoEnt=self.geoItem  # get the geometry from kernel
@@ -56,7 +45,6 @@ class Arc(BaseEntity):
         self.startAngle=(startAngle*180/math.pi)*16
         self.spanAngle=(spanAngle*180/math.pi)*16-self.startAngle
         return
-    #@+node:1.20130426141258.3995: *3* drawShape
     def drawShape(self, painterPath):    
         """
             extending of the shape method 
@@ -69,7 +57,6 @@ class Arc(BaseEntity):
         painterPath.moveTo(self.xc, self.yc*-1.0)
         painterPath.arcTo(qRect,self.startAngle,self.spanAngle) 
         return
-    #@+node:1.20130426141258.3996: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             extending of the paint method
@@ -80,6 +67,3 @@ class Arc(BaseEntity):
                              self.h,
                              self.h)
         painter.drawArc(qRect,self.startAngle,  self.spanAngle)
-    #@-others
-#@-others
-#@-leo

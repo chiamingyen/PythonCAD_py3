@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4115: * @file base.py
-#@@first
 
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -29,11 +26,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4116: ** <<declarations>> (base)
 import math
 
 from PyQt4 import QtCore, QtGui
@@ -42,15 +35,10 @@ from Kernel.exception       import *
 from Kernel.GeoEntity.point import Point as GeoPoint
 from Kernel.GeoUtil.geolib  import Vector
 from Kernel.initsetting     import PYTHONCAD_COLOR, PYTHONCAD_PREVIEW_COLOR, MOUSE_GRAPH_DIMENSION
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4117: ** class PreviewBase
 class PreviewBase(QtGui.QGraphicsItem):
     showShape=False # This Flag is used for debug porpoise
     showBBox=False  # This Flag is used for debug porpoise
     shapeSize=MOUSE_GRAPH_DIMENSION
-    #@+others
-    #@+node:1.20130426141258.4118: *3* __init__
     def __init__(self, command):
         super(PreviewBase, self).__init__()
         self.updateColor()
@@ -58,14 +46,12 @@ class PreviewBase(QtGui.QGraphicsItem):
         for dValue in command.defaultValue:
             val=self.revertToQTObject(dValue)
             self.value.append(val)
-    #@+node:1.20130426141258.4119: *3* updateColor
     def updateColor(self):
         """
             update the preview color
         """
         r, g, b=PYTHONCAD_PREVIEW_COLOR
         self.color = QtGui.QColor.fromRgb(r, g, b)
-    #@+node:1.20130426141258.4120: *3* updatePreview
     def updatePreview(self,  position, distance, kernelCommand):
         """
             update the data at the preview item
@@ -91,7 +77,6 @@ class PreviewBase(QtGui.QGraphicsItem):
         except:
             print("updatePreview: Exception not managed")
             return
-    #@+node:1.20130426141258.4121: *3* paint
     def paint(self, painter,option,widget):
         """
             overloading of the paint method
@@ -108,7 +93,6 @@ class PreviewBase(QtGui.QGraphicsItem):
 
         self.drawGeometry(painter,option,widget)
         return
-    #@+node:1.20130426141258.4122: *3* convertToQTObject
     def convertToQTObject(self, value):
         """
             convert the input value in a proper value
@@ -121,7 +105,6 @@ class PreviewBase(QtGui.QGraphicsItem):
             return QtCore.QPointF(value.x, value.y)
         else:
             return value
-    #@+node:1.20130426141258.4123: *3* revertToQTObject
     def revertToQTObject(self, value):
         """
             convert the input value in a proper value GeoObject -> qtObject
@@ -134,7 +117,6 @@ class PreviewBase(QtGui.QGraphicsItem):
             return QtCore.QPointF(value.x, value.y*-1.0)
         else:
             return value
-    #@+node:1.20130426141258.4124: *3* shape
     def shape(self):
         """
             overloading of the shape method
@@ -145,15 +127,10 @@ class PreviewBase(QtGui.QGraphicsItem):
         painterStrock.setWidth(10)
         painterStrockPath=painterStrock.createStroke(PainterPath)
         return painterStrockPath
-    #@+node:1.20130426141258.4125: *3* drawShape
     def drawShape(self, path):
         pass
-    #@+node:1.20130426141258.4126: *3* boundingRect
     def boundingRect(self):
         """
             overloading of the qt bounding rectangle
         """
         return self.shape().boundingRect()
-    #@-others
-#@-others
-#@-leo

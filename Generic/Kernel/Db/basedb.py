@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.2950: * @file basedb.py
 #encoding: utf-8
 #
 # Copyright (c) 2010 Matteo Boscolo
@@ -26,31 +24,21 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.2951: ** <<declarations>> (basedb)
 import os
 import sys
 import tempfile
 import sqlite3 as sql
 
 from Kernel.exception import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.2952: ** class BaseDb
 class BaseDb(object):
     """
         this class provide base db operation
     """
     commit=True
-    #@+others
-    #@+node:1.20130426141258.2953: *3* __init__
     def __init__(self):
         self.__dbConnection=None
         self.dbPath=None
-    #@+node:1.20130426141258.2954: *3* createConnection
     def createConnection(self,dbPath=None):
         """
             create the connection with the database
@@ -61,7 +49,6 @@ class BaseDb(object):
             f.close()
         self.__dbConnection = sql.connect(str(dbPath))
         self.dbPath=dbPath
-    #@+node:1.20130426141258.2955: *3* setConnection
     def setConnection(self,dbConnection):
         """
             set the connection with the database
@@ -70,13 +57,11 @@ class BaseDb(object):
             # Todo fire a warning
             self.__dbConnection.close()
         self.__dbConnection=dbConnection
-    #@+node:1.20130426141258.2956: *3* getConnection
     def getConnection(self):
         """
             Get The active connection
         """
         return self.__dbConnection
-    #@+node:1.20130426141258.2957: *3* makeSelect
     def makeSelect(self,statment):
         """
             perform a select operation
@@ -93,7 +78,6 @@ class BaseDb(object):
             raise StructuralError
         #_cursor.close()
         return _rows
-    #@+node:1.20130426141258.2958: *3* fetchOneRow
     def fetchOneRow(self,sqlSelect, tupleArgs=None):
         """
             get the first row of the select
@@ -116,7 +100,6 @@ class BaseDb(object):
         if _row is None or _row[0] is None:
             return None
         return _row[0]
-    #@+node:1.20130426141258.2959: *3* makeUpdateInsert
     def makeUpdateInsert(self,statment, tupleArgs=None):
         """
             make an update Inster operation
@@ -139,27 +122,23 @@ class BaseDb(object):
             for s in sys.exc_info():
                 print("Generic Error: %s"%str(s))
             raise KeyError
-    #@+node:1.20130426141258.2960: *3* close
     def close(self):
         """
             close the database connection
         """
         self.__dbConnection.close()
-    #@+node:1.20130426141258.2961: *3* suspendCommit
     def suspendCommit(self):
         """
             suspend the commit in the update\insert
         """
         #self.__commit=False
         BaseDb.commit=False
-    #@+node:1.20130426141258.2962: *3* reactiveCommit
     def reactiveCommit(self):
         """
             reactive the commit in the update\insert
         """
         #self.__commit=True
         BaseDb.commit=True
-    #@+node:1.20130426141258.2963: *3* performCommit
     def performCommit(self):
         """
             perform a commit
@@ -168,6 +147,3 @@ class BaseDb(object):
             self.__dbConnection.commit()
         except:
             print("Error on commit")
-    #@-others
-#@-others
-#@-leo

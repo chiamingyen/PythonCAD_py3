@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.4049: * @file point.py
 #
 # Copyright (c) ,2010 Matteo Boscolo
 #
@@ -25,36 +23,24 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.4050: ** <<declarations>> (point)
 from Interface.Entity.base import *
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.4051: ** class Point
 class Point(BaseEntity):
     """
         this class define the arcQT object
     """
-    #@+others
-    #@+node:1.20130426141258.4052: *3* __init__
     def __init__(self, entity):
         super(Point, self).__init__(entity)
         self.xc,self.yc= self.geoItem.getCoords()
         self.yc=(-1.0*self.yc)
         return
-    #@+node:1.20130426141258.4053: *3* boundingRect
     def boundingRect(self):
         return QtCore.QRectF(self.xc-self.shapeSize/2,self.yc-self.shapeSize/2 ,self.shapeSize ,self.shapeSize)
-    #@+node:1.20130426141258.4054: *3* drawShape
     def drawShape(self, painterPath):
         """
             overloading of the shape method
         """
         painterPath.addRect(self.boundingRect())
-    #@+node:1.20130426141258.4055: *3* drawGeometry
     def drawGeometry(self, painter, option, widget):
         """
             overloading of the paint method
@@ -63,6 +49,3 @@ class Point(BaseEntity):
         p=QtCore.QPoint(self.xc, self.yc)
         painter.drawRect(self.boundingRect())
         painter.drawPoint(p)
-    #@-others
-#@-others
-#@-leo

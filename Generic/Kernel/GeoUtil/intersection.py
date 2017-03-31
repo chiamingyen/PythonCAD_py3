@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3447: * @file intersection.py
 #
 # Copyright (c) 2002, 2003, 2006 Art Haas
 #
@@ -29,11 +27,7 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3448: ** <<declarations>> (intersection)
 import math
 
 from Kernel.GeoEntity.point       import Point
@@ -53,9 +47,6 @@ _rtd = 180.0/math.pi
 
 _zero = 0.0 - 1e-10
 _one = 1.0 + 1e-10
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3449: ** denom
 #
 # the following functions are used to calculate the
 # intersection of two line segments
@@ -77,7 +68,6 @@ def denom(p1, p2, p3, p4):
     _p3x, _p3y = p3.getCoords()
     _p4x, _p4y = p4.getCoords()
     return ((_p2x - _p1x)*(_p4y - _p3y)) - ((_p2y - _p1y)*(_p4x - _p3x))
-#@+node:1.20130426141258.3450: ** rnum
 def rnum(p1, p2, p3, p4):
     if not isinstance(p1, Point):
         raise TypeError("Invalid argument to rnum(): " + repr(type(p1)))
@@ -92,7 +82,6 @@ def rnum(p1, p2, p3, p4):
     _p3x, _p3y = p3.getCoords()
     _p4x, _p4y = p4.getCoords()
     return ((_p1y - _p3y)*(_p4x - _p3x)) - ((_p1x - _p3x)*(_p4y - _p3y))
-#@+node:1.20130426141258.3451: ** snum
 def snum(p1, p2, p3, p4):
     if not isinstance(p1, Point):
         raise TypeError("Invalid argument to snum(): " + repr(type(p1)))
@@ -107,7 +96,6 @@ def snum(p1, p2, p3, p4):
     _p3x, _p3y = p3.getCoords()
     _p4x, _p4y = p4.getCoords()
     return ((_p1y - _p3y)*(_p2x - _p1x)) - ((_p1x - _p3x)*(_p2y - _p1y))
-#@+node:1.20130426141258.3452: ** _null_intfunc
 #
 # intersection functions
 #
@@ -116,10 +104,8 @@ def _null_intfunc(ipts, obja, objb):
     print("invoked _null_intfunc()")
     print("obja: " + repr(obja))
     print("objb: " + repr(objb))
-#@+node:1.20130426141258.3453: ** _non_intersecting
 def _non_intersecting(ipts, obja, objb):
     pass
-#@+node:1.20130426141258.3454: ** _sympy_intersection
 #
 # Ellipse intersection function
 #
@@ -139,7 +125,6 @@ def _sympy_intersection(ipts, obj1, obj2):
             #ipts.append((float(p[0]),float(p[1])))
             ipts.append((float(p.x),float(p.y)))
     #print("Intersection",ipts)
-#@+node:1.20130426141258.3455: ** _pol_obj_intersection
 def _pol_obj_intersection(ipts, pol, obj):
     """
         calculate the intersection beteen polyline and a generic object
@@ -150,7 +135,6 @@ def _pol_obj_intersection(ipts, pol, obj):
         if len(tempIpts)>0:
             ipts=tempIpts
             break
-#@+node:1.20130426141258.3456: ** _pol_pol_intersection
 def _pol_pol_intersection(ipts, pol1, pol2):
     """
         found an intersection between polyline and other object
@@ -164,7 +148,6 @@ def _pol_pol_intersection(ipts, pol1, pol2):
                     if len(tempIpts)>0:
                         ipts=tempIpts
                         break
-#@+node:1.20130426141258.3457: ** find_intersections
 def find_intersections(obja, objb):
     """
         Find intersection points
@@ -186,7 +169,6 @@ def find_intersections(obja, objb):
             except:
                 print("find_intersections: problem with sympy intersection",obja,objb)
     return _ipts
-#@+node:1.20130426141258.3458: ** findSegmentExtendedIntersection
 def findSegmentExtendedIntersection(obja, objb):
     """
         Extend the segment intersection on a cline intersection
@@ -201,12 +183,9 @@ def findSegmentExtendedIntersection(obja, objb):
         arg={"CLINE_0":p1, "CLINE_1":p2}
         objb=CLine(arg)
     return find_intersections(obja, objb)
-#@+node:1.20130426141258.3459: ** findSegmentExtendedIntersectionPoint
 def findSegmentExtendedIntersectionPoint(obja, objb):
     """
         xtend the segment intersection on a cline intersection
         Return a [Point,Point,..]
     """
     return [Point(x, y) for x, y in findSegmentExtendedIntersection(obja, objb)]
-#@-others
-#@-leo

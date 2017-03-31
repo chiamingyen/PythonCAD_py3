@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project PythonCAD34 -->
+<!-- Saved: 2017-03-31, 23:18:17 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{a4b68a9b-6d4a-498b-90e8-2263db269a1d}">
+    <Summary>TODO: MAKE A GLOBAL VARIABLE TO SET THIS VALUE</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/Command/trimcommand.py</Filename>
+      <Linenumber>108</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{2b6c50d8-1b6c-4a1e-93e8-449a7de5b994}">
+    <Summary>TODO: to be tested</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/Db/entitydb.py</Filename>
+      <Linenumber>252</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{f95d7622-670e-4b18-ae82-0405d9647d8a}">
+    <Summary>TODO: To be tested</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/Db/relationdb.py</Filename>
+      <Linenumber>130</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{cbe62fe4-b1bd-49b4-a7ca-88caab8a2542}">
+    <Summary>TODO: must be implemented</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/ExternalFormat/Dxf/dxf.py</Filename>
+      <Linenumber>605</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{16beee8b-e75d-4ed8-aec5-3454d3bb0f7f}">
+    <Summary>TODO: manage logger self.__logger.debug('getEntLayerDb')</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/layertree.py</Filename>
+      <Linenumber>117</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b4b97050-301e-47b9-aaab-2dd07280642d}">
+    <Summary>TODO: Optimaze this loop with the build in type [...] if possible</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Generic/Kernel/layertree.py</Filename>
+      <Linenumber>119</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b5077f38-9b38-4665-9766-9ae815d56e30}">
+    <Summary>TODO: perform a back operation to the command</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/Command/icommand.py</Filename>
+      <Linenumber>171</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{2e64dc9c-7fc7-4dee-8bff-0d7717c0fdf4}">
+    <Summary>TODO: perform a forward operation to the command</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/Command/icommand.py</Filename>
+      <Linenumber>174</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{4eafdb29-f4dc-481a-9f98-ead452f43b26}">
+    <Summary>TODO: here it will be nice to have a sort of control for chosing one entity</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/Command/icommand.py</Filename>
+      <Linenumber>235</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{63a6ff26-8259-4d74-822a-2e67a573a2df}">
+    <Summary>TODO: this should be used when checklist of snap will be enabled</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/DrawingHelper/snap.py</Filename>
+      <Linenumber>71</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{a0a0870e-0122-49ca-993f-bf6ffeb784aa}">
+    <Summary>TODO: getSnapTangentPoint</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/DrawingHelper/snap.py</Filename>
+      <Linenumber>130</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{2b9fc8af-e119-44db-9463-7061d9dc1e0f}">
+    <Summary>TODO: Actually disable because the line with is not very nice</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/Entity/base.py</Filename>
+      <Linenumber>57</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b126f544-366c-4986-980c-bcef188b0888}">
+    <Summary>TODO: if the item is in the border the centerOn will not work propely</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/cadview.py</Filename>
+      <Linenumber>86</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="0" uid="{1013e277-88c1-41d4-be3b-85051147cf56}">
+    <Summary>FIXME: if in the command line we insert file_1 or file_2</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>449</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b971d55a-e624-4338-8eaf-9f20864326e5}">
+    <Summary>TODO: Fill up preferences</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>561</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{2ad71ef2-4e13-49d5-8391-40b462e419a6}">
+    <Summary>TODO: save Preferences</Summary>
+    <Description></Description>
+    <Created>2017-03-31, 23:17:41</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>563</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>

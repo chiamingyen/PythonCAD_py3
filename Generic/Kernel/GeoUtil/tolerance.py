@@ -1,5 +1,3 @@
-#@+leo-ver=5-thin
-#@+node:1.20130426141258.3488: * @file tolerance.py
 #
 # Copyright (c) 2002, 2003 Art Haas
 # Copyright (c) 2010 Matteo Boscolo
@@ -29,15 +27,8 @@
 
 
 
-#@@language python
-#@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:1.20130426141258.3489: ** <<declarations>> (tolerance)
 TOL = 1e-10
-#@-<<declarations>>
-#@+others
-#@+node:1.20130426141258.3490: ** class TolObject
 class TolObject(object):
     """A class for maintaining a tolerance value.
 
@@ -51,8 +42,6 @@ getTolerance(): return the current tolerance
 setTolerance(t): set the new tolerance
 
     """
-    #@+others
-    #@+node:1.20130426141258.3491: *3* __init__
     def __init__(self, t=None):
         """Initialize a TolObject.
 
@@ -70,7 +59,6 @@ if the function is called without arguments.
         if tol < 0.0:
             raise ValueError("Tolerance must be greater than 0: " + repr(tol))
         self.__tolerance = tol
-    #@+node:1.20130426141258.3492: *3* setTolerance
     def setTolerance(self, t=None):
         """Set the tolerance value.
 
@@ -91,7 +79,6 @@ This function returns the old tolerance value.
             raise ValueError("Tolerance must be greater than 0: " + repr(tol))
         self.__tolerance = tol
         return old_tol
-    #@+node:1.20130426141258.3493: *3* getTolerance
     def getTolerance(self):
         """Get the tolerance value.
 
@@ -100,9 +87,7 @@ getTolerance()
 Return the current tolerance.
         """
         return self.__tolerance
-    #@-others
     tolerance = property(getTolerance, setTolerance, None, "Tolerance value")
-#@+node:1.20130426141258.3494: ** class StaticTolObject
 class StaticTolObject(object):
     """A class for maintaining a tolerance value.
 
@@ -122,8 +107,6 @@ will share the same tolerance value.
 
     __tolerance = TOL
     
-    #@+others
-    #@+node:1.20130426141258.3495: *3* setTolerance
     def setTolerance(cls, t=None):
         """Set the tolerance value.
 
@@ -143,7 +126,6 @@ This function returns the old tolerance value.
             raise ValueError("Tolerance must be greater than 0: " + repr(_t))
         cls.__tolerance = _t
         return old_tol
-    #@+node:1.20130426141258.3496: *3* getTolerance
     setTolerance = classmethod(setTolerance)
 
     def getTolerance(cls):
@@ -152,9 +134,7 @@ This function returns the old tolerance value.
 Return the current tolerance.
         """
         return cls.__tolerance
-    #@-others
     getTolerance = classmethod(getTolerance)
-#@+node:1.20130426141258.3497: ** toltest
 def toltest(tol):
     """Test that a tolerance value is valid.
 
@@ -168,5 +148,3 @@ The argument "tol" should be a float.
     if _t < TOL:
         raise ValueError("Invalid tolerance: %g" % _t)
     return _t
-#@-others
-#@-leo
