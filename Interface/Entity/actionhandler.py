@@ -83,9 +83,9 @@ class PositionHandler(QtWidgets.QGraphicsItem):
     """
     def __init__(self, position=None ):
         super(PositionHandler, self).__init__()
-        self.setAcceptsHoverEvents(True)
+        self.setAcceptHoverEvents(True)
         self.circle=CirclePosition(self, QtCore.QPointF(5,5))
-        self.circle.setAcceptsHoverEvents(False)
+        self.circle.setAcceptHoverEvents(False)
         self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
         self.circle.setAcceptDrops(False)
         self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
@@ -191,7 +191,7 @@ class ActionHandler(QtWidgets.QGraphicsItem):
         if position!=None:
             self.setPos(position)
         self.position=position
-        self.setAcceptsHoverEvents(True)
+        self.setAcceptHoverEvents(True)
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, True)
     def _fireApply(self):   
         print("ActionHandler apply") 
@@ -211,7 +211,7 @@ class ActionHandler(QtWidgets.QGraphicsItem):
 class ArcAngle(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None , position=None ):
         super(ArcAngle, self).__init__(parent)
-        self.setAcceptsHoverEvents(True)                        #Fire over events
+        self.setAcceptHoverEvents(True)                        #Fire over events
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
         if position!=None:
@@ -301,7 +301,7 @@ class ContextMenu(QtWidgets.QMenu):
 class CirclePosition(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None , position=None ):
         super(CirclePosition, self).__init__(parent)
-        self.setAcceptsHoverEvents(True)                        #Fire over events
+        self.setAcceptHoverEvents(True)                        #Fire over events
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
@@ -370,7 +370,7 @@ class CirclePosition(QtWidgets.QGraphicsItem):
 class ArrowItem(QtWidgets.QGraphicsItem):
     def __init__(self,parent=None, position=None, rotation=None , arrowColor=None):
         super(ArrowItem, self).__init__(parent)
-        self.setAcceptsHoverEvents(True)                        #Fire over events
+        self.setAcceptHoverEvents(True)                        #Fire over events
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         self.setAcceptDrops(True)
         self.arrowColor=QtGui.QPen(QtGui.QColor(79, 106, 25))

@@ -42,7 +42,7 @@ class BaseEntity(QtWidgets.QGraphicsItem):
     showBBox=False  #This Flag is used for debug porpoise
     def __init__(self, entity):
         super(BaseEntity, self).__init__()
-        self.setAcceptsHoverEvents(True)                        #Fire over events
+        self.setAcceptHoverEvents(True)                        #Fire over events
         self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
         #Get the geometry
         self._entity=entity

@@ -160,17 +160,18 @@ class CadScene(QtWidgets.QGraphicsScene):
                         self.endMark.move(ps.getx(), ps.gety()*-1.0)
                 else:
                     self.hideSnapMarks()
-            qtItem=self.itemAt(event.scenePos())
-            self.activeICommand.updateMouseEvent(ps, qtItem)
+            #qtItem=[self.itemAt(scenePos)] # old
+            qtItem = [self.itemAt(scenePos, QtGui.QTransform())]
+            self.activeICommand.updateMauseEvent(ps, qtItem)
         super(CadScene, self).mouseMoveEvent(event)
         return
-        
     def mousePressEvent(self, event):
         if event.button()==QtCore.Qt.MidButton:
             self.isInPan=True
             self.firePan(True, event.scenePos())
         if not self.isInPan:
-            qtItem=self.itemAt(event.scenePos())
+            #qtItem=self.itemAt(event.scenePos())
+            qtItem = self.itemAt(event.scenePos(), QtGui.QTransform())
             if qtItem:
                 qtItem.setSelected(True)
                 self.updateSelected()

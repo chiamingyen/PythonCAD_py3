@@ -135,4 +135,4 @@ TestSympy()
 TestIntersection()
 
 doc=a.openDocument(a.getRecentFiles[0])
-a.saveAs(r"C:\temp\test.dxf")
+a.saveAs(r"C:\tmp\test.dxf")

@@ -75,7 +75,7 @@ class CadView(QtWidgets.QGraphicsView):
             if not qRect:
                 qRect=bound
             else:
-                qRect=qRect.unite(bound)
+                qRect=qRect.united(bound)
         if qRect:
             self.zoomWindows(qRect)
             self.updateShape()
@@ -105,7 +105,8 @@ class CadView(QtWidgets.QGraphicsView):
         """
             update the item shape tickness
         """
-        matrixScaleFactor=self.matrix().m11()
+        #matrixScaleFactor=self.matrix().m11() # old
+        matrixScaleFactor = self.transform().m11()
         if matrixScaleFactor<0.001:
             matrixScaleFactor=0.001
         val=(1.0/matrixScaleFactor)*10

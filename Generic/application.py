@@ -30,6 +30,7 @@
 import sys
 import os
 import shutil
+from PyQt5 import QtCore
 #
 if __name__=="__main__":
     sys.path.append(os.path.join(os.getcwd(), 'Kernel'))
@@ -164,7 +165,7 @@ class Application(object):
         fileName=newDoc.dbPath
         self.__Documents[fileName]=newDoc
         self.afterOpenDocumentEvent(self, self.__Documents[fileName])   #   Fire the open document event
-        self.ActiveDocument=self.__Documents[fileName]              #   Set Active the document
+        self.ActiveDocument=self.__Documents[fileName]      #   Set Active the document
         self.addRecentFiles(fileName)
         return self.__Documents[fileName]
     def openDocument(self, fileName):
@@ -178,50 +179,67 @@ class Application(object):
         self.afterOpenDocumentEvent(self, self.__Documents[fileName])   #   Fire the open document event
         self.ActiveDocument=self.__Documents[fileName]                  #   Set Active the document
         return self.__Documents[fileName]
+
     def saveAs(self, newFileName):
         """
             seve the current document to the new position
         """
+        '''
+        # for debug
+        oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
+        print("newFileName:", newFileName)
+        print()
+        print("old FileName:", oldFileName)
+        return ""
+        '''
         if self.__ActiveDocument:
-            (name, extension)=os.path.splitext(str(newFileName))
+            (name, extension)=os.path.splitext(str(newFileName[0]))
             if extension.upper()=='.DXF':
-                self.__ActiveDocument.exportExternalFormat(newFileName)
+                self.__ActiveDocument.exportExternalFormat(newFileName[0])
                 return self.__ActiveDocument
             else:
-                oldFileName=self.__ActiveDocument.getName()
+                #oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
+                #print("oldFileName is:", oldFileName)
+                #s = s.replace("\\", "\\\\")
+                oldFileName = self.__ActiveDocument.getName()
+                print("oldFileName is:", oldFileName)
+                print("newFileName:", newFileName)
+                # 讓檔案無法儲存的原因為無法 close oldFileName
                 self.closeDocument(oldFileName)
-                shutil.copy2(oldFileName,newFileName)
-                return self.openDocument(newFileName)
+                shutil.copy2(oldFileName, newFileName[0])
+                return self.openDocument(newFileName[0])
         raise EntityMissing("No document open in the application unable to perform the saveAs comand")
-    def closeDocument(self,dFile):
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-#                                                                   S-PM 110427
-#Method to "Close" the named drawing file.
-#--Rq-local
-# __Documents   dictionary of currently opened drawing files
-#               (was misspelled: "__Docuemnts")
-#--Rq
-# dFile         drawing file to close
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-        "Close current document"    #standard "Documentation String"
+    def closeDocument(self, dFile):
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #                                                                   S-PM 110427
+    # Method to "Close" the named drawing file.
+    # --Rq-local
+    #  __Documents   dictionary of currently opened drawing files
+    #                (was misspelled: "__Docuemnts")
+    # --Rq
+    #  dFile         drawing file to close
+    # -- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
 
-        self.beforeCloseDocumentEvent(self,dFile)   #initial house-keeping
+    #"Close current document"    #standard "Documentation String"
+
+        self.beforeCloseDocumentEvent(self, dFile)   #initial house-keeping
 
         if dFile in self.__Documents: #<-file to Close is there:
             self.__Documents[dFile].close()
             del(self.__Documents[dFile])    #delete from dictionary
             #--check dictionary for possible next active document
             for keyDoc in self.__Documents: #<-dictionary is not empty:
-                self.ActiveDocument=self.__Documents[keyDoc]    #pick next
+                self.ActiveDocument = self.__Documents[keyDoc]    #pick next
                 break
             else:   #=-dictionary is empty:
-                self.ActiveDocument=None  #set no active document
+                self.ActiveDocument = None  #set no active document
             #>
         else:   #=-file to Close is NOT there:
             raise IOError("Unable to close the file:  %s"%str(dFile))
         #>
 
         self.afterCloseDocumentEvent(self)          #final house-keeping
+
     #closeDocument>
 
 
@@ -244,6 +262,7 @@ class Application(object):
         else:
             self.__ActiveDocument=document
         self.activeteDocumentEvent(self, self.__ActiveDocument)
+        print("document.dbPath is:", document.dbPath)
     def getDocuments(self):
         """
             get the Docuemnts Collection

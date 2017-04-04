@@ -46,6 +46,7 @@ class ICommand(object):
         this class provide base command operation
     """
     #self.scene.snappingPoint.activeSnap=SNAP_POINT_ARRAY["LIST"]  # Define the active snap system
+    activeSnap = SNAP_POINT_ARRAY["LIST"]
     drawPreview=True                    # Enable the preview system
     automaticApply=True                 # Apply the command at the last insert value
     #restartCommandOption=False         # moved to Interface.cadinitsetting  > RESTART_COMMAND_OPTION
@@ -108,6 +109,7 @@ class ICommand(object):
         if correct!=None:
             snap=self.scene.snappingPoint.getSnapPoint(point,self.getEntity(point))
             snap=self.correctPositionForcedDirection(snap, self._scene.forceDirection)
+            
         else:
             snap=point
             
@@ -199,7 +201,7 @@ class ICommand(object):
         """
             apply the command
         """
-        self.scene.hideSnapMarks()
+        #self.scene.hideSnapMarks()
         try:
             self.kernelCommand.applyCommand()
             if RESTART_COMMAND_OPTION and self.kernelCommand.autorestart:

@@ -13,18 +13,25 @@
 <v t="leo.20170331152739.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="leo.20170331152739.3"><vh>@string initial_split_orientation = horizontal</vh></v>
 </v>
-<v t="leo.20170331234345.1"><vh>準備改為 PyQt5</vh></v>
-<v t="1.20130426141258.2394"><vh>PythonCAD 程式碼</vh>
+<v t="leo.20170331234345.1"><vh>準備改為 PyQt5</vh>
+<v t="leo.20170402112029.1"><vh>進度</vh></v>
+<v t="leo.20170403085042.1"><vh>bugs</vh></v>
+<v t="leo.20170402122413.1"><vh>PySide 可能會是選項</vh></v>
+</v>
+<v t="1.20130426141258.2394" a="E"><vh>PythonCAD 程式碼</vh>
 <v t="leo.20170331153122.1"><vh>從 @file 過渡到 @clean</vh></v>
+<v t="leo.20170402113716.1"><vh>PyQt4 轉為 PyQt5</vh></v>
+<v t="leo.20170402114140.1"><vh>差異註記</vh></v>
+<v t="leo.20170404160530.1"><vh>除錯過程</vh></v>
 <v t="amd_yen.20130426011410.8908"><vh>參考資料</vh>
 <v t="amd_yen.20130426011410.8909"><vh>Pyeuclid</vh></v>
 <v t="amd_yen.20130426011410.8910"><vh>@edit refs/simgeo.py</vh></v>
 <v t="amd_yen.20130426011410.8911"><vh>@edit refs/test_simgeo.py</vh></v>
 <v t="amd_yen.20130426011410.8912"><vh>@url Pythonwildmagic</vh></v>
 </v>
-<v t="1.20130426141258.2396"><vh>@clean customevent.py</vh>
+<v t="1.20130426141258.2396" a="E"><vh>@clean customevent.py</vh>
 <v t="1.20130426141258.2397"><vh>&lt;&lt;declarations&gt;&gt; (customevent)</vh></v>
-<v t="1.20130426141258.2398"><vh>class testCmdLine</vh>
+<v t="1.20130426141258.2398" a="E"><vh>class testCmdLine</vh>
 <v t="1.20130426141258.2399"><vh>__init__</vh></v>
 <v t="1.20130426141258.2400"><vh>_inizializeCommand</vh></v>
 <v t="1.20130426141258.2401"><vh>_addCustomEvent</vh></v>
@@ -49,15 +56,15 @@
 <v t="1.20130426141258.2417"><vh>__init__</vh></v>
 <v t="1.20130426141258.2418"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2419"><vh>class GetActiveDoc</vh>
+<v t="1.20130426141258.2419" a="E"><vh>class GetActiveDoc</vh>
 <v t="1.20130426141258.2420"><vh>__init__</vh></v>
 <v t="1.20130426141258.2421"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2422"><vh>class SetActiveDoc</vh>
+<v t="1.20130426141258.2422" a="E"><vh>class SetActiveDoc</vh>
 <v t="1.20130426141258.2423"><vh>__init__</vh></v>
 <v t="1.20130426141258.2424"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2425"><vh>class GetDocuments</vh>
+<v t="1.20130426141258.2425" a="E"><vh>class GetDocuments</vh>
 <v t="1.20130426141258.2426"><vh>__init__</vh></v>
 <v t="1.20130426141258.2427"><vh>applyCommand</vh></v>
 <v t="1.20130426141258.2428"><vh>showDocuments</vh></v>
@@ -83,7 +90,7 @@
 <v t="1.20130426141258.2443"><vh>__next__</vh></v>
 <v t="1.20130426141258.2444"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2445"><vh>class TestKernel</vh>
+<v t="1.20130426141258.2445" a="E"><vh>class TestKernel</vh>
 <v t="1.20130426141258.2446"><vh>__init__</vh></v>
 <v t="1.20130426141258.2447"><vh>__next__</vh></v>
 <v t="1.20130426141258.2448"><vh>applyCommand</vh></v>
@@ -120,9 +127,9 @@
 </v>
 <v t="1.20130426141258.2475"><vh>@clean __init__.py</vh></v>
 <v t="1.20130426141258.2476" a="E"><vh>@path Generic</vh>
-<v t="1.20130426141258.2477"><vh>@clean application.py</vh>
+<v t="1.20130426141258.2477" a="E"><vh>@clean application.py</vh>
 <v t="1.20130426141258.2478"><vh>&lt;&lt;declarations&gt;&gt; (application)</vh></v>
-<v t="1.20130426141258.2479"><vh>class Application</vh>
+<v t="1.20130426141258.2479" a="E"><vh>class Application</vh>
 <v t="1.20130426141258.2480"><vh>__init__</vh></v>
 <v t="1.20130426141258.2481"><vh>getRecentFiles</vh></v>
 <v t="1.20130426141258.2482"><vh>addRecentFiles</vh></v>
@@ -189,9 +196,9 @@
 <v t="1.20130426141258.2602"><vh>setConstructionElement</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2603"><vh>@clean document.py</vh>
+<v t="1.20130426141258.2603" a="E"><vh>@clean document.py</vh>
 <v t="1.20130426141258.2604"><vh>&lt;&lt;declarations&gt;&gt; (document)</vh></v>
-<v t="1.20130426141258.2605"><vh>class Document</vh>
+<v t="1.20130426141258.2605" a="E"><vh>class Document</vh>
 <v t="1.20130426141258.2606"><vh>__init__</vh></v>
 <v t="1.20130426141258.2607"><vh>addPropertie</vh></v>
 <v t="1.20130426141258.2608"><vh>getPropertie</vh></v>
@@ -252,7 +259,7 @@
 <v t="1.20130426141258.2661"><vh>toGeometricalEntity</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2662"><vh>@clean exception.py</vh>
+<v t="1.20130426141258.2662" a="E"><vh>@clean exception.py</vh>
 <v t="1.20130426141258.2663"><vh>class EntityMissing</vh>
 <v t="1.20130426141258.2664"><vh>__init__</vh></v>
 <v t="1.20130426141258.2665"><vh>__str__</vh></v>
@@ -309,11 +316,11 @@
 <v t="1.20130426141258.2703"><vh>__init__</vh></v>
 <v t="1.20130426141258.2704"><vh>__str__</vh></v>
 </v>
-<v t="1.20130426141258.2705"><vh>class PyCadWrongCommand</vh>
+<v t="1.20130426141258.2705" a="E"><vh>class PyCadWrongCommand</vh>
 <v t="1.20130426141258.2706"><vh>__init__</vh></v>
 <v t="1.20130426141258.2707"><vh>__str__</vh></v>
 </v>
-<v t="1.20130426141258.2708"><vh>class PyCadWrongImputData</vh>
+<v t="1.20130426141258.2708" a="E"><vh>class PyCadWrongImputData</vh>
 <v t="1.20130426141258.2709"><vh>__init__</vh></v>
 <v t="1.20130426141258.2710"><vh>__str__</vh></v>
 </v>
@@ -370,8 +377,8 @@
 <v t="1.20130426141258.2756"><vh>hideLayerEntity</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2757"><vh>@clean pycadevent.py</vh>
-<v t="1.20130426141258.2758"><vh>class PyCadEvent</vh>
+<v t="1.20130426141258.2757" a="E"><vh>@clean pycadevent.py</vh>
+<v t="1.20130426141258.2758" a="E"><vh>class PyCadEvent</vh>
 <v t="1.20130426141258.2759"><vh>__init__</vh></v>
 <v t="1.20130426141258.2760"><vh>handle</vh></v>
 <v t="1.20130426141258.2761"><vh>unhandle</vh></v>
@@ -720,7 +727,7 @@
 </v>
 <v t="1.20130426141258.3040"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.3041"><vh>@path ExternalFormat</vh>
+<v t="1.20130426141258.3041" a="E"><vh>@path ExternalFormat</vh>
 <v t="1.20130426141258.3042"><vh>@clean externalformat.py</vh>
 <v t="1.20130426141258.3043"><vh>&lt;&lt;declarations&gt;&gt; (externalformat)</vh></v>
 <v t="1.20130426141258.3044"><vh>class ExtFormat</vh>
@@ -731,12 +738,12 @@
 </v>
 </v>
 <v t="1.20130426141258.3049"><vh>@clean __init__.py</vh></v>
-<v t="1.20130426141258.3050"><vh>@path Dxf</vh>
-<v t="1.20130426141258.3051"><vh>@clean dxf.py</vh>
+<v t="1.20130426141258.3050" a="E"><vh>@path Dxf</vh>
+<v t="1.20130426141258.3051" a="E"><vh>@clean dxf.py</vh>
 <v t="1.20130426141258.3052"><vh>&lt;&lt;declarations&gt;&gt; (dxf)</vh></v>
 <v t="1.20130426141258.3053"><vh>ChangeColor</vh></v>
 <v t="1.20130426141258.3054"><vh>changeColorFromDxf</vh></v>
-<v t="1.20130426141258.3055"><vh>class DrawingFile</vh>
+<v t="1.20130426141258.3055" a="E"><vh>class DrawingFile</vh>
 <v t="1.20130426141258.3056"><vh>__init__</vh></v>
 <v t="1.20130426141258.3057"><vh>readAsci</vh></v>
 <v t="1.20130426141258.3058"><vh>createAsci</vh></v>
@@ -1255,7 +1262,7 @@
 </v>
 </v>
 </v>
-<v t="1.20130426141258.3519"><vh>@path Interface</vh>
+<v t="1.20130426141258.3519" a="E"><vh>@path Interface</vh>
 <v t="1.20130426141258.3520"><vh>@clean cadinitsetting.py</vh>
 <v t="1.20130426141258.3521"><vh>&lt;&lt;declarations&gt;&gt; (cadinitsetting)</vh></v>
 </v>
@@ -1314,9 +1321,9 @@
 <v t="1.20130426141258.3572"><vh>updateShape</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3573"><vh>@clean cadwindow.py</vh>
+<v t="1.20130426141258.3573" a="E"><vh>@clean cadwindow.py</vh>
 <v t="1.20130426141258.3574"><vh>&lt;&lt;declarations&gt;&gt; (cadwindow)</vh></v>
-<v t="1.20130426141258.3575"><vh>class CadWindowMdi</vh>
+<v t="1.20130426141258.3575" a="E"><vh>class CadWindowMdi</vh>
 <v t="1.20130426141258.3576"><vh>__init__</vh></v>
 <v t="1.20130426141258.3577"><vh>scene</vh></v>
 <v t="1.20130426141258.3578"><vh>view</vh></v>
@@ -1425,9 +1432,9 @@
 <v t="1.20130426141258.3677"><vh>keyShortcut</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3678"><vh>@clean pycadapp.py</vh>
+<v t="1.20130426141258.3678" a="E"><vh>@clean pycadapp.py</vh>
 <v t="1.20130426141258.3679"><vh>&lt;&lt;declarations&gt;&gt; (pycadapp)</vh></v>
-<v t="1.20130426141258.3680"><vh>class PyCadApp</vh>
+<v t="1.20130426141258.3680" a="E"><vh>class PyCadApp</vh>
 <v t="1.20130426141258.3681"><vh>CadWindow</vh></v>
 <v t="1.20130426141258.3682"><vh>SetCadWindow</vh></v>
 <v t="1.20130426141258.3683"><vh>Application</vh></v>
@@ -2043,7 +2050,7 @@
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.2397">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.2397">from PyQt5 import QtCore
 from Kernel.document     import *
 from Kernel.exception    import *
 from Kernel.GeoEntity.point         import Point
@@ -2089,7 +2096,7 @@ from Interface.pycadapp             import PyCadApp
     """
         add custom event at the user interface
     """
-    QtCore.QObject.connect(self.dialog.ImputCmd, QtCore.SIGNAL("returnPressed()"),self.imputCommand)
+    self.dialog.ImputCmd.returnPressed.connect(self.imputCommand)
     #QtCore.QObject.connect(self.dialog.uiTextEditor, QtCore.SIGNAL("textChanged()"),self.imputCommand)
     #QtCore.QObject.connect(self.uiTextEditor, QtCore.SIGNAL("textChanged()"), self.uiTextEditor.update)
 </t>
@@ -2622,7 +2629,7 @@ from Interface.pycadapp             import PyCadApp
 </t>
 <t tx="1.20130426141258.2458">def MassiveDelete(self):
     try:
-        import time 
+        import time
         startTime=time.clock()
         newDoc=self.__pyCadApplication.ActiveDocument
         newDoc.startMassiveCreation()
@@ -2987,7 +2994,7 @@ if __name__ == '__main__':
 #        pass
     
 #
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 # 
 import os
 import sqlite3 as sqlite
@@ -3002,11 +3009,11 @@ from Interface.cadwindow    import CadWindowMdi
 <t tx="1.20130426141258.2472">#
 def getPythonCAD():
 
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     # splashscreen
     splashPath=os.path.join(os.getcwd(), 'icons', 'splashScreen1.png')
     splash_pix = QtGui.QPixmap(splashPath)
-    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     splash.show()
     
@@ -3085,6 +3092,7 @@ if __name__=='__main__':
 <t tx="1.20130426141258.2478">import sys
 import os
 import shutil
+from PyQt5 import QtCore
 #
 if __name__=="__main__":
     sys.path.append(os.path.join(os.getcwd(), 'Kernel'))
@@ -3227,7 +3235,7 @@ def getCommand(self,commandType):
     fileName=newDoc.dbPath
     self.__Documents[fileName]=newDoc
     self.afterOpenDocumentEvent(self, self.__Documents[fileName])   #   Fire the open document event
-    self.ActiveDocument=self.__Documents[fileName]              #   Set Active the document
+    self.ActiveDocument=self.__Documents[fileName]      #   Set Active the document
     self.addRecentFiles(fileName)
     return self.__Documents[fileName]
 </t>
@@ -3242,52 +3250,69 @@ def getCommand(self,commandType):
     self.afterOpenDocumentEvent(self, self.__Documents[fileName])   #   Fire the open document event
     self.ActiveDocument=self.__Documents[fileName]                  #   Set Active the document
     return self.__Documents[fileName]
+
 </t>
 <t tx="1.20130426141258.2487">def saveAs(self, newFileName):
     """
         seve the current document to the new position
     """
+    '''
+    # for debug
+    oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
+    print("newFileName:", newFileName)
+    print()
+    print("old FileName:", oldFileName)
+    return ""
+    '''
     if self.__ActiveDocument:
-        (name, extension)=os.path.splitext(str(newFileName))
+        (name, extension)=os.path.splitext(str(newFileName[0]))
         if extension.upper()=='.DXF':
-            self.__ActiveDocument.exportExternalFormat(newFileName)
+            self.__ActiveDocument.exportExternalFormat(newFileName[0])
             return self.__ActiveDocument
         else:
-            oldFileName=self.__ActiveDocument.getName()
+            #oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
+            #print("oldFileName is:", oldFileName)
+            #s = s.replace("\\", "\\\\")
+            oldFileName = self.__ActiveDocument.getName()
+            print("oldFileName is:", oldFileName)
+            print("newFileName:", newFileName)
+            # 讓檔案無法儲存的原因為無法 close oldFileName
             self.closeDocument(oldFileName)
-            shutil.copy2(oldFileName,newFileName)
-            return self.openDocument(newFileName)
+            shutil.copy2(oldFileName, newFileName[0])
+            return self.openDocument(newFileName[0])
     raise EntityMissing("No document open in the application unable to perform the saveAs comand")
 </t>
-<t tx="1.20130426141258.2488">def closeDocument(self,dFile):
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-\\-4.#                                                                   S-PM 110427
-\\-4.#Method to "Close" the named drawing file.
-\\-4.#--Rq-local
-\\-4.# __Documents   dictionary of currently opened drawing files
-\\-4.#               (was misspelled: "__Docuemnts")
-\\-4.#--Rq
-\\-4.# dFile         drawing file to close
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-    "Close current document"    #standard "Documentation String"
+<t tx="1.20130426141258.2488">def closeDocument(self, dFile):
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#                                                                   S-PM 110427
+# Method to "Close" the named drawing file.
+# --Rq-local
+#  __Documents   dictionary of currently opened drawing files
+#                (was misspelled: "__Docuemnts")
+# --Rq
+#  dFile         drawing file to close
+# -- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
 
-    self.beforeCloseDocumentEvent(self,dFile)   #initial house-keeping
+#"Close current document"    #standard "Documentation String"
+
+    self.beforeCloseDocumentEvent(self, dFile)   #initial house-keeping
 
     if dFile in self.__Documents: #&lt;-file to Close is there:
         self.__Documents[dFile].close()
         del(self.__Documents[dFile])    #delete from dictionary
         #--check dictionary for possible next active document
         for keyDoc in self.__Documents: #&lt;-dictionary is not empty:
-            self.ActiveDocument=self.__Documents[keyDoc]    #pick next
+            self.ActiveDocument = self.__Documents[keyDoc]    #pick next
             break
         else:   #=-dictionary is empty:
-            self.ActiveDocument=None  #set no active document
+            self.ActiveDocument = None  #set no active document
         #&gt;
     else:   #=-file to Close is NOT there:
         raise IOError("Unable to close the file:  %s"%str(dFile))
     #&gt;
 
     self.afterCloseDocumentEvent(self)          #final house-keeping
+
 </t>
 <t tx="1.20130426141258.2489">#closeDocument&gt;
 
@@ -3312,6 +3337,7 @@ def ActiveDocument(self, document):
     else:
         self.__ActiveDocument=document
     self.activeteDocumentEvent(self, self.__ActiveDocument)
+    print("document.dbPath is:", document.dbPath)
 </t>
 <t tx="1.20130426141258.2491">def getDocuments(self):
     """
@@ -3383,7 +3409,7 @@ TestSympy()
 TestIntersection()
 
 doc=a.openDocument(a.getRecentFiles[0])
-a.saveAs(r"C:\temp\test.dxf")
+a.saveAs(r"C:\tmp\test.dxf")
 </t>
 <t tx="1.20130426141258.2499">import sympy            as mainSympy
 import sympy.geometry   as geoSympy
@@ -21513,7 +21539,7 @@ from Interface.Dialogs.Widget.widgets import PyCadQLineType
 from Interface.Dialogs.Widget.widgets import PyCadQDouble
 from Interface.Dialogs.Widget.widgets import PyCadQFont
 
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 
 from Interface.Command.distance2point import Distance2Point
 
@@ -21602,7 +21628,7 @@ PYTHONCAD_STYLE_DESCRIPTION={'entity_color':'Color',
 </t>
 <t tx="1.20130426141258.3523">import math, time
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Generic.application import Application
 
@@ -21626,7 +21652,7 @@ from Kernel.GeoEntity.point         import Point
 from Kernel.exception               import *
 from Kernel.entity                  import Entity
 </t>
-<t tx="1.20130426141258.3524">class CadScene(QtGui.QGraphicsScene):
+<t tx="1.20130426141258.3524">class CadScene(QtWidgets.QGraphicsScene):
     @others
 </t>
 <t tx="1.20130426141258.3525">def __init__(self, document, parent=None):
@@ -21745,7 +21771,8 @@ def mouseMoveEvent(self, event):
                     self.endMark.move(ps.getx(), ps.gety()*-1.0)
             else:
                 self.hideSnapMarks()
-        qtItem=[self.itemAt(scenePos)]
+        #qtItem=[self.itemAt(scenePos)] # old
+        qtItem = [self.itemAt(scenePos, QtGui.QTransform())]
         self.activeICommand.updateMauseEvent(ps, qtItem)
     super(CadScene, self).mouseMoveEvent(event)
     return
@@ -21755,7 +21782,8 @@ def mouseMoveEvent(self, event):
         self.isInPan=True
         self.firePan(True, event.scenePos())
     if not self.isInPan:
-        qtItem=self.itemAt(event.scenePos())
+        #qtItem=self.itemAt(event.scenePos())
+        qtItem = self.itemAt(event.scenePos(), QtGui.QTransform())
         if qtItem:
             qtItem.setSelected(True)
             self.updateSelected()
@@ -21809,13 +21837,13 @@ def mouseMoveEvent(self, event):
     def property():
         self.fireKeyShortcut('PROPERTY')
 
-    contexMenu=QtGui.QMenu()
+    contexMenu=QtWidgets.QMenu()
     # Create Actions
     removeAction=contexMenu.addAction("Delete")
-    QtCore.QObject.connect(removeAction, QtCore.SIGNAL('triggered()'), delete)
+    removeAction.triggered.connect(delete)
 
     propertyAction=contexMenu.addAction("Property")
-    QtCore.QObject.connect(propertyAction, QtCore.SIGNAL('triggered()'), property)
+    propertyAction.triggered.connect(property)
     contexMenu.exec_(event.screenPos())
     del(contexMenu)
 </t>
@@ -21846,7 +21874,7 @@ def mouseMoveEvent(self, event):
     if event.button()==QtCore.Qt.MidButton:
         self.fireZoomFit()
     else:
-        return QtGui.QGraphicsScene.mouseDoubleClickEvent(self, event)
+        return QtWidgets.QGraphicsScene.mouseDoubleClickEvent(self, event)
 </t>
 <t tx="1.20130426141258.3540">def cancelCommand(self):
     """
@@ -22071,20 +22099,20 @@ def keyPressEvent(self, event):
 @others
 </t>
 <t tx="1.20130426141258.3561">import math
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Interface.Entity.base import *
 from Interface.Preview.base import *
 </t>
-<t tx="1.20130426141258.3562">class CadView(QtGui.QGraphicsView):
+<t tx="1.20130426141258.3562">class CadView(QtWidgets.QGraphicsView):
     @others
 </t>
 <t tx="1.20130426141258.3563">def __init__(self, scene, parent=None):
     super(CadView, self).__init__(scene, parent)
     self.scaleFactor=1
     self.controlPress=False
-    self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
-    self.setResizeAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
+    self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
+    self.setResizeAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
 
     #handle mouse midbutton pan and zoom
     scene.fireZoomFit+=self.fit
@@ -22094,11 +22122,11 @@ from Interface.Preview.base import *
 <t tx="1.20130426141258.3564">def Pan(self, panActive, eventPoint):
 
     if panActive==True:
-        self.setDragMode(QtGui.QGraphicsView.ScrollHandDrag)
+        self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
         self.firstPanPoint=eventPoint
     elif panActive==False:
         self.firstPanPoint=None
-        self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
+        self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
     else:
         if self.controlPress==False:
             c=QtCore.QPoint((self.width()/2-10), (self.height()/2-10))
@@ -22115,7 +22143,7 @@ from Interface.Preview.base import *
     pOnView=event.pos()
     pOnScene=self.mapToScene(pOnView)
     #old command
-    self.scaleFactor=math.pow(2.0,event.delta() / 240.0)
+    self.scaleFactor=math.pow(2.0,event.angleDelta().y() / 240.0)
     self.scaleView(self.scaleFactor)
 \\-4.#       self.updateShape()  &lt;&lt;&lt;prova
 
@@ -22135,13 +22163,13 @@ from Interface.Preview.base import *
     if event.key()==QtCore.Qt.Key_Control:
         self.controlPress=True
         self.scene().isInPan=True
-        self.setDragMode(QtGui.QGraphicsView.ScrollHandDrag)
+        self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
     super(CadView, self).keyPressEvent(event)
 </t>
 <t tx="1.20130426141258.3567">def keyReleaseEvent(self, event):
     self.controlPress=False
     self.scene().isInPan=False
-    self.setDragMode(QtGui.QGraphicsView.RubberBandDrag)
+    self.setDragMode(QtWidgets.QGraphicsView.RubberBandDrag)
     super(CadView, self).keyReleaseEvent(event)
 </t>
 <t tx="1.20130426141258.3568">def fit(self):
@@ -22154,7 +22182,7 @@ from Interface.Preview.base import *
         if not qRect:
             qRect=bound
         else:
-            qRect=qRect.unite(bound)
+            qRect=qRect.united(bound)
     if qRect:
         self.zoomWindows(qRect)
         self.updateShape()
@@ -22188,7 +22216,8 @@ from Interface.Preview.base import *
     """
         update the item shape tickness
     """
-    matrixScaleFactor=self.matrix().m11()
+    #matrixScaleFactor=self.matrix().m11() # old
+    matrixScaleFactor = self.transform().m11()
     if matrixScaleFactor&lt;0.001:
         matrixScaleFactor=0.001
     val=(1.0/matrixScaleFactor)*10
@@ -22233,7 +22262,7 @@ from Interface.Preview.base import *
 <t tx="1.20130426141258.3574">import os
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtPrintSupport, QtWidgets
 
 from . import cadwindow_rc
 
@@ -22256,12 +22285,12 @@ from Kernel.initsetting             import * #SNAP_POINT_ARRAY, ACTIVE_SNAP_POIN
 
 from Interface.DrawingHelper.polarguides import getPolarMenu
 </t>
-<t tx="1.20130426141258.3575">class CadWindowMdi(QtGui.QMainWindow):
+<t tx="1.20130426141258.3575">class CadWindowMdi(QtWidgets.QMainWindow):
     @others
 </t>
 <t tx="1.20130426141258.3576">def __init__(self):
     super(CadWindowMdi, self).__init__()
-    self.mdiArea = QtGui.QMdiArea()
+    self.mdiArea = QtWidgets.QMdiArea()
     self.mdiArea.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
     self.mdiArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
     self.setCentralWidget(self.mdiArea)
@@ -22327,14 +22356,14 @@ def _createStatusBar(self):
 
     #Force Direction
     self.forceDirectionStatus=statusButton('SForceDir.png', 'Orthogonal Mode [right click will in the future set increment constrain angle]')
-    self.connect(self.forceDirectionStatus, QtCore.SIGNAL('clicked()'), self.setForceDirection)
+    self.forceDirectionStatus.clicked.connect(self.setForceDirection)
     self.forceDirectionStatus.setMenu(getPolarMenu())
     self.statusBar().addPermanentWidget(self.forceDirectionStatus)
 
 
     #Snap
     self.SnapStatus=statusButton('SSnap.png', 'Snap [right click displays snap list]\n for future implementation it should be a checkist')
-    self.connect(self.SnapStatus, QtCore.SIGNAL('clicked()'), self.setSnapStatus)
+    self.SnapStatus.clicked.connect(self.setSnapStatus)
     self.SnapStatus.setMenu(self.__cmd_intf.Category.getMenu(6))
     self.SnapStatus.setChecked(True)
     self.statusBar().addPermanentWidget(self.SnapStatus)
@@ -22342,13 +22371,13 @@ def _createStatusBar(self):
 
     #Grid
     self.GridStatus=statusButton('SGrid.png', 'Grid Mode [not available yet]')
-    self.connect(self.GridStatus, QtCore.SIGNAL('clicked()'), self.setGrid)
+    self.GridStatus.clicked.connect(self.setGrid)
     self.statusBar().addPermanentWidget(self.GridStatus)
 
     #------------------------------------------------------------------------------------Set coordinates label on statusbar (updated by idocumet)
-    self.coordLabel=QtGui.QLabel("x=0.000\ny=0.000")
+    self.coordLabel=QtWidgets.QLabel("x=0.000\ny=0.000")
     self.coordLabel.setAlignment(QtCore.Qt.AlignVCenter)
-    self.coordLabel.setFrameStyle(QtGui.QFrame.Panel | QtGui.QFrame.Sunken)
+    self.coordLabel.setFrameStyle(QtWidgets.QFrame.Panel | QtWidgets.QFrame.Sunken)
     self.coordLabel.setMinimumWidth(80)
     self.coordLabel.setMaximumHeight(20)
     self.coordLabel.setFont(QtGui.QFont("Sans", 6))
@@ -22621,6 +22650,7 @@ def _registerCommands(self):
     """
         get only the name of the filePath
     """
+    # 正確取得 stripped file name
     return QtCore.QFileInfo(fullFileName).fileName()
 </t>
 <t tx="1.20130426141258.3595"># ##########################################              ON COMMANDS
@@ -22640,8 +22670,10 @@ def _onNewDrawing(self):
         Open an existing drawing PDR or DXF
     '''
     # ask the user to select an existing drawing
-    drawing = str(QtGui.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)"))
+    # 可以正確打開檔案
+    drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0]
     # open a document and load the drawing
+    print("drawing is:", drawing)
     if len(drawing)&gt;0:
         self.lastDirectory=os.path.split(drawing)[0]
         (name, extension)=os.path.splitext(drawing)
@@ -22662,7 +22694,7 @@ def _onNewDrawing(self):
     '''
         Import existing drawing in current drawing (some issues with PyQt4.7)
     '''
-    drawing = QtGui.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");
+    drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");[0]
     # open a document and load the drawing
     if len(drawing)&gt;0:
         self.lastDirectory=os.path.split(drawing)[0]
@@ -22688,16 +22720,16 @@ def _onNewDrawing(self):
     return
 </t>
 <t tx="1.20130426141258.3599">def _onSaveAsDrawing(self):
-    drawing = QtGui.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)");
+    drawing = QtWidgets.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)")[0]
     if len(drawing)&gt;0:
         self.__application.saveAs(drawing)
 </t>
 <t tx="1.20130426141258.3600">def _onPrint(self):
 \\-4.#       printer.setPaperSize(QPrinter.A4);
     self.scene.clearSelection()
-    printer=QtGui.QPrinter()
-    printDialog=QtGui.QPrintDialog(printer)
-    if (printDialog.exec_() == QtGui.QDialog.Accepted):
+    printer=QtPrintSupport.QPrinter()
+    printDialog=QtPrintSupport.QPrintDialog(printer)
+    if (printDialog.exec_() == QtWidgets.QDialog.Accepted):
         painter=QtGui.QPainter()
         painter.begin(printer)
         painter.setRenderHint(QtGui.QPainter.Antialiasing);
@@ -22806,7 +22838,7 @@ def _onUndo(self):
 <t tx="1.20130426141258.3618">def preferences(self):
     p=Preferences(self)
     #TODO: Fill up preferences
-    if (p.exec_() == QtGui.QDialog.Accepted):
+    if (p.exec_() == QtWidgets.QDialog.Accepted):
         #TODO: save Preferences
         pass
 </t>
@@ -22962,8 +22994,8 @@ def _onCascade(self):   #&lt;-(by: S-PM 110524)
 \\-4.#-----------------------ON COMMANDS in ABOUT
 
 def _onAbout(self):
-    QtGui.QMessageBox.about(self, "About PythonCAD",
-            """&lt;b&gt;PythonCAD&lt;/b&gt; is a CAD package written, surprisingly enough, in Python using the PyQt4 interface.&lt;p&gt;
+    QtWidgets.QMessageBox.about(self, "About PythonCAD",
+            """&lt;b&gt;PythonCAD&lt;/b&gt; is a CAD package written, surprisingly enough, in Python using the PyQt5 interface.&lt;p&gt;
                The PythonCAD project aims to produce a scriptable, open-source,
                easy to use CAD package for any Python/PyQt supported Platforms
                &lt;p&gt;
@@ -23027,9 +23059,9 @@ def critical(text):
     '''
         Shows an critical message dialog
     '''
-    dlg = QtGui.QMessageBox()
+    dlg = QtWidgets.QMessageBox()
     dlg.setText(text)
-    dlg.setIcon(QtGui.QMessageBox.Critical)
+    dlg.setIcon(QtWidgets.QMessageBox.Critical)
     dlg.exec_()
     return
 </t>
@@ -23091,9 +23123,9 @@ def activeMdiChild(self):
 </t>
 <t tx="1.20130426141258.3640">def switchLayoutDirection(self):
     if self.layoutDirection() == QtCore.Qt.LeftToRight:
-        QtGui.qApp.setLayoutDirection(QtCore.Qt.RightToLeft)
+        QtWidgets.QApplication.setLayoutDirection(QtCore.Qt.RightToLeft)
     else:
-        QtGui.qApp.setLayoutDirection(QtCore.Qt.LeftToRight)
+        QtWidgets.QApplication.setLayoutDirection(QtCore.Qt.LeftToRight)
 </t>
 <t tx="1.20130426141258.3641">def setActiveSubWindow(self, window):
     if window:
@@ -23160,7 +23192,7 @@ def plotFromSympy(self, objects):
 # ##########################################################
 # ##########################################################
 
-class statusButton(QtGui.QToolButton):
+class statusButton(QtWidgets.QToolButton):
     @others
 </t>
 <t tx="1.20130426141258.3649">def __init__(self, icon=None,  tooltip=None):
@@ -23198,7 +23230,7 @@ class statusButton(QtGui.QToolButton):
 @others
 qInitResources()
 </t>
-<t tx="1.20130426141258.3653">from PyQt4 import QtCore
+<t tx="1.20130426141258.3653">from PyQt5 import QtCore
 
 qt_resource_data = b"\
 \x00\x00\x06\xc4\
@@ -23656,13 +23688,13 @@ qt_resource_struct = b"\
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3657">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3657">from PyQt5 import QtCore, QtGui, QtWidgets
 from Generic.Kernel.document import *
 from Interface.LayerIntf.layerdock  import LayerDock
 from Interface.cadscene             import CadScene
 from Interface.cadview              import CadView
 </t>
-<t tx="1.20130426141258.3658">class IDocument(QtGui.QMdiSubWindow):
+<t tx="1.20130426141258.3658">class IDocument(QtWidgets.QMdiSubWindow):
     sequenceNumber = 1
     @others
 </t>
@@ -23682,7 +23714,7 @@ from Interface.cadview              import CadView
     self.__cmdInf.commandLine.evaluatePressed+=self.scene.textInput
     self.__view = CadView(self._scene, self)
     # the graphics view is the main/central component
-    innerWindows = QtGui.QMainWindow()
+    innerWindows = QtWidgets.QMainWindow()
     innerWindows.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.__layer_dock)
     innerWindows.setCentralWidget(self.__view)
     self.setWidget(innerWindows)
@@ -23767,14 +23799,14 @@ def fileName(self):
     """
         popUp a warning mesage
     """
-    ret = QtGui.QMessageBox.warning(self,"Warning",  msg)
+    ret = QtWidgets.QMessageBox.warning(self,"Warning",  msg)
     return
 </t>
 <t tx="1.20130426141258.3673">def popUpInfo(self, msg):
     """
         popUp a Info mesage
     """
-    ret = QtGui.QMessageBox.information(self,"Information",  msg)
+    ret = QtWidgets.QMessageBox.information(self,"Information",  msg)
     return
 </t>
 <t tx="1.20130426141258.3674">def _errorEvent(self, err):
@@ -23783,8 +23815,8 @@ def fileName(self):
         the err is a dictionary like the one below
         _err={'object':, 'error':}
     """
-    msgBox=QtGui.QMessageBox(self)
-    msgBox.setIcon(QtGui.QMessageBox.Critical)
+    msgBox=QtWidgets.QMessageBox(self)
+    msgBox.setIcon(QtWidgets.QMessageBox.Critical)
     msg="Error came from object %s"%(str(err['error']))
     dmsg=msg
     for _e in err['object'].getErrorList():
@@ -23847,7 +23879,7 @@ def setStatusbarCoords(self, x, y, status):
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3679">from PyQt4 import QtGui
+<t tx="1.20130426141258.3679">from PyQt5 import QtGui, QtWidgets
 </t>
 <t tx="1.20130426141258.3680">class PyCadApp(object):
     '''
@@ -23916,20 +23948,24 @@ def OpenDocument(filename):
     '''
     Open an existing document.
     '''
+    print("filename is:", filename)
+    return None
+    '''
     if not PyCadApp.__application is None:
         PyCadApp.__application.openDocument(filename)
         # return the opened, current active document
         return PyCadApp.ActiveDocument()
     return None
+    '''
 </t>
 <t tx="1.20130426141258.3688">@staticmethod
 def critical(text):
     '''
     Shows an critical message dialog
     '''
-    dlg = QtGui.QMessageBox()
+    dlg = QtWidgets.QMessageBox()
     dlg.setText(text)
-    dlg.setIcon(QtGui.QMessageBox.Critical)
+    dlg.setIcon(QtWidgets.QMessageBox.Critical)
     dlg.exec_()
     return
 </t>
@@ -23963,9 +23999,9 @@ Created on May 12, 2010
 #import sip
 #sip.setapi('QString', 2)
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 </t>
-<t tx="1.20130426141258.3693">class CmdAction(QtGui.QAction):
+<t tx="1.20130426141258.3693">class CmdAction(QtWidgets.QAction):
     '''
     Derived action class to hold a command name.
     The FunctionHandler class handles signals emitted by this class.
@@ -24113,7 +24149,7 @@ import sys
 #import sip
 #sip.setapi('QString', 2)
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui
 
 from Interface.CmdIntf.cmdcategory  import CmdCategory
 from Interface.CmdIntf.cmdaction    import CmdAction
@@ -24308,11 +24344,11 @@ def _actionHandler(self, expression):
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3724">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3724">from PyQt5 import QtCore, QtGui, QtWidgets
 from Interface.CmdIntf.functionhandler import FunctionHandler
 from Kernel.pycadevent import PyCadEvent
 </t>
-<t tx="1.20130426141258.3725">class CmdLineDock(QtGui.QDockWidget):
+<t tx="1.20130426141258.3725">class CmdLineDock(QtWidgets.QDockWidget):
     '''
         A dockable window containing a edit line object.
         The edit line is used to enter commands or expressions.
@@ -24330,23 +24366,23 @@ from Kernel.pycadevent import PyCadEvent
     self._remainderIndex=0
     # only dock at the bottom or top
     self.setAllowedAreas(QtCore.Qt.BottomDockWidgetArea | QtCore.Qt.TopDockWidgetArea)
-    self.dockWidgetContents = QtGui.QWidget()
+    self.dockWidgetContents = QtWidgets.QWidget()
     self.dockWidgetContents.setObjectName("dockWidgetContents")
-    sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Ignored)
+    sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Ignored)
     sizePolicy.setHorizontalStretch(0)
     sizePolicy.setVerticalStretch(0)
     sizePolicy.setHeightForWidth(self.dockWidgetContents.sizePolicy().hasHeightForWidth())
     self.dockWidgetContents.setSizePolicy(sizePolicy)
-    self.verticalLayout_2 = QtGui.QVBoxLayout(self.dockWidgetContents)
+    self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
     self.verticalLayout_2.setObjectName("verticalLayout_2")
     
     self.textEditOutput=PyCadTextView(self.dockWidgetContents)
     
     self.verticalLayout_2.addWidget(self.textEditOutput)
-    self.__edit_ctrl = QtGui.QLineEdit(self, returnPressed=self._returnPressed)
+    self.__edit_ctrl = QtWidgets.QLineEdit(self, returnPressed=self._returnPressed)
     self.__edit_ctrl.keyPressEvent=self._keyPress
     
-    sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+    sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
     sizePolicy.setHorizontalStretch(0)
     sizePolicy.setVerticalStretch(0)
     sizePolicy.setHeightForWidth(self.textEditOutput.sizePolicy().hasHeightForWidth())
@@ -24395,7 +24431,7 @@ def _returnPressed(self):
             self.__edit_ctrl.clear()
             self.__edit_ctrl.setText(self._remainder[self._remainderIndex])
     else:
-        QtGui.QLineEdit.keyPressEvent(self.__edit_ctrl, keyEvent)
+        QtWidgets.QLineEdit.keyPressEvent(self.__edit_ctrl, keyEvent)
 </t>
 <t tx="1.20130426141258.3730">def evaluate(self, expression):
     '''
@@ -24421,7 +24457,7 @@ def _returnPressed(self):
     """
     self.textEditOutput.printMsg(msg)
 </t>
-<t tx="1.20130426141258.3733">class PyCadTextView(QtGui.QTextEdit):
+<t tx="1.20130426141258.3733">class PyCadTextView(QtWidgets.QTextEdit):
     """
         this class represent the text view that pyCad use for rendering the output
     """
@@ -24435,7 +24471,7 @@ def _returnPressed(self):
 </t>
 <t tx="1.20130426141258.3735">def contextMenuEvent(self, event):
     menu = self.createStandardContextMenu(event.pos());
-    clearAction=QtGui.QAction("Clear", self, triggered=self.clear)
+    clearAction=QtWidgets.QAction("Clear", self, triggered=self.clear)
     menu.addAction(clearAction);
     menu.exec_(event.globalPos())
     del(menu)
@@ -24717,6 +24753,7 @@ from Interface.DrawingHelper.snap   import *
         this class provide base command operation
     """
     #self.scene.snappingPoint.activeSnap=SNAP_POINT_ARRAY["LIST"]  # Define the active snap system
+    activeSnap = SNAP_POINT_ARRAY["LIST"]
     drawPreview=True                    # Enable the preview system
     automaticApply=True                 # Apply the command at the last insert value
     @others
@@ -24787,6 +24824,7 @@ def index(self):
     if correct!=None:
         snap=self.scene.snappingPoint.getSnapPoint(point,self.getEntity(point))
         snap=self.correctPositionForcedDirection(snap, self._scene.forceDirection)
+        
     else:
         snap=point
         
@@ -24881,7 +24919,7 @@ def index(self):
     """
         apply the command
     """
-    self.scene.hideSnapMarks()
+    #self.scene.hideSnapMarks()
     try:
         self.kernelCommand.applyCommand()
         if RESTART_COMMAND_OPTION and self.kernelCommand.autorestart:
@@ -25245,13 +25283,17 @@ Created on 23/apr/2012
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3794">from  PyQt4.QtCore    import *
-from  PyQt4.QtGui     import *
+<t tx="1.20130426141258.3794">from  PyQt5.QtCore    import *
+from PyQt5.QtWidgets import *
+from  PyQt5.QtGui     import *
 </t>
 <t tx="1.20130426141258.3795">class DataModel(QAbstractTableModel): 
     """
         abstract model for manage values
     """
+    layoutChanged = pyqtSignal()
+    dataChanged = pyqtSignal()
+
     @others
 </t>
 <t tx="1.20130426141258.3796">def __init__(self, datain, headerdata, parent=None, *args): 
@@ -25285,7 +25327,7 @@ from  PyQt4.QtGui     import *
         insert row
     """
     self.insertRows(pos, 1, row)
-    self.emit(SIGNAL('layoutChanged()'))
+    self.layoutChanged.emit()
 </t>
 <t tx="1.20130426141258.3800">def insertRows(self, pos, count, rows):
     """
@@ -25295,7 +25337,7 @@ from  PyQt4.QtGui     import *
     for row in rows:
         self.arraydata.append(row)
     self.endInsertRows()
-    self.emit(SIGNAL('layoutChanged()'))
+    self.layoutChanged.emit()
     return True
 </t>
 <t tx="1.20130426141258.3801">def removeRow(self, pos):
@@ -25316,7 +25358,7 @@ from  PyQt4.QtGui     import *
         self.beginRemoveRows(QModelIndex(), row, row + count - 1)
         del self.arraydata[row:row + count]
     self.endRemoveRows()
-    self.emit(SIGNAL('layoutChanged()'))
+    self.layoutChanged.emit()
     return True
 </t>
 <t tx="1.20130426141258.3803">def columnCount(self, parent): 
@@ -25371,7 +25413,7 @@ from  PyQt4.QtGui     import *
     row = index.row()
     col = index.column()
     self.arraydata[row][col] = str(value.toString())
-    self.emit(SIGNAL('dataChanged()'))
+    self.dataChanged.emit()
     return True
 </t>
 <t tx="1.20130426141258.3811">def getRowData(self,index):
@@ -25441,8 +25483,8 @@ Created on 24/apr/2012
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3814">from PyQt4.QtGui    import QDialog,QAbstractItemView
-from PyQt4.QtCore   import pyqtSignature
+<t tx="1.20130426141258.3814">from PyQt5.QtWidgets import    QDialog, QAbstractItemView
+#from PyQt5.QtCore   import pyqtSignature
 
 from .Ui_preferences    import Ui_preferences
 
@@ -25460,14 +25502,14 @@ from Interface.cadinitsetting import *
     QDialog.__init__(self, parent)
     self.setupUi(self)
 </t>
-<t tx="1.20130426141258.3817">@pyqtSignature("")
+<t tx="1.20130426141258.3817">#@pyqtSignature("")
 def on_buttonBox_accepted(self):
     """
         implements the accept button
     """
     self.close()
 </t>
-<t tx="1.20130426141258.3818">@pyqtSignature("")
+<t tx="1.20130426141258.3818">#@pyqtSignature("")
 def on_buttonBox_rejected(self):
     """
         implements the accept button
@@ -25512,8 +25554,8 @@ def on_buttonBox_rejected(self):
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3820">from PyQt4.QtGui    import QDialog,QAbstractItemView,QMenu,QAction
-from PyQt4.QtCore   import pyqtSignature
+<t tx="1.20130426141258.3820">from PyQt5.QtWidgets import    QDialog, QAbstractItemView, QMenu, QAction
+#from PyQt5.QtCore   import pyqtSignature
 
 from .Ui_property    import Ui_Dialog
 
@@ -25589,7 +25631,7 @@ from Interface.Dialogs.dataModel import populateTable
     """ 
     self._properties = dict(self.customProperty.model().arraydata)
 </t>
-<t tx="1.20130426141258.3828">@pyqtSignature("")
+<t tx="1.20130426141258.3828">#@pyqtSignature("")
 def on_buttonBox_accepted(self):
     """
         implements the accept button
@@ -25598,7 +25640,7 @@ def on_buttonBox_accepted(self):
     self._isOk=True
     self.close()
 </t>
-<t tx="1.20130426141258.3829">@pyqtSignature("")
+<t tx="1.20130426141258.3829">#@pyqtSignature("")
 def on_buttonBox_rejected(self):
     """
         implements the accept button
@@ -25644,44 +25686,40 @@ def value(self):
 @others
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
-    preference = QtGui.QDialog()
+    app = QtWidgets.QApplication(sys.argv)
+    preference = QtWidgets.QDialog()
     ui = Ui_preference()
     ui.setupUi(preference)
     preference.show()
     sys.exit(app.exec_())
 </t>
-<t tx="1.20130426141258.3833">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3833">from PyQt5 import QtCore, QtGui, QtWidgets
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    _fromUtf8 = lambda s: s
 </t>
 <t tx="1.20130426141258.3834">class Ui_preferences(object):
     @others
 </t>
 <t tx="1.20130426141258.3835">def setupUi(self, preference):
-    preference.setObjectName(_fromUtf8("preference"))
+    preference.setObjectName("preference")
     preference.setWindowModality(QtCore.Qt.ApplicationModal)
     preference.resize(305, 234)
-    self.verticalLayout = QtGui.QVBoxLayout(preference)
-    self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-    self.verticalLayout_2 = QtGui.QVBoxLayout()
-    self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+    self.verticalLayout = QtWidgets.QVBoxLayout(preference)
+    self.verticalLayout.setObjectName("verticalLayout")
+    self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+    self.verticalLayout_2.setObjectName("verticalLayout_2")
     self.verticalLayout.addLayout(self.verticalLayout_2)
-    spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+    spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
     self.verticalLayout.addItem(spacerItem)
-    self.buttonBox = QtGui.QDialogButtonBox(preference)
-    self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-    self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+    self.buttonBox = QtWidgets.QDialogButtonBox(preference)
+    self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+    self.buttonBox.setObjectName("buttonBox")
     self.verticalLayout.addWidget(self.buttonBox)
 
     self.retranslateUi(preference)
     QtCore.QMetaObject.connectSlotsByName(preference)
 </t>
 <t tx="1.20130426141258.3836">def retranslateUi(self, preference):
-    preference.setWindowTitle(QtGui.QApplication.translate("preference", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
+    preference.setWindowTitle(QtCore.QCoreApplication.translate("preference", "Preferences", None))
 </t>
 <t tx="1.20130426141258.3837"># -*- coding: utf-8 -*-
 
@@ -25701,52 +25739,48 @@ except AttributeError:
 @others
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
-    Dialog = QtGui.QDialog()
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
     ui = Ui_Dialog()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
 </t>
-<t tx="1.20130426141258.3838">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3838">from PyQt5 import QtCore, QtGui, QtWidgets
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    _fromUtf8 = lambda s: s
 </t>
 <t tx="1.20130426141258.3839">class Ui_Dialog(object):
     @others
 </t>
 <t tx="1.20130426141258.3840">def setupUi(self, Dialog):
-    Dialog.setObjectName(_fromUtf8("Dialog"))
+    Dialog.setObjectName("Dialog")
     Dialog.resize(254, 279)
-    self.verticalLayout_2 = QtGui.QVBoxLayout(Dialog)
-    self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-    self.tabWidget = QtGui.QTabWidget(Dialog)
-    self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
-    self.tab = QtGui.QWidget()
-    self.tab.setObjectName(_fromUtf8("tab"))
-    self.verticalLayout = QtGui.QVBoxLayout(self.tab)
-    self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-    self.propertyConteiner = QtGui.QVBoxLayout()
-    self.propertyConteiner.setObjectName(_fromUtf8("propertyConteiner"))
+    self.verticalLayout_2 = QtWidgets.QVBoxLayout(Dialog)
+    self.verticalLayout_2.setObjectName("verticalLayout_2")
+    self.tabWidget = QtWidgets.QTabWidget(Dialog)
+    self.tabWidget.setObjectName("tabWidget")
+    self.tab = QtWidgets.QWidget()
+    self.tab.setObjectName("tab")
+    self.verticalLayout = QtWidgets.QVBoxLayout(self.tab)
+    self.verticalLayout.setObjectName("verticalLayout")
+    self.propertyConteiner = QtWidgets.QVBoxLayout()
+    self.propertyConteiner.setObjectName("propertyConteiner")
     self.verticalLayout.addLayout(self.propertyConteiner)
-    spacerItem = QtGui.QSpacerItem(20, 178, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+    spacerItem = QtWidgets.QSpacerItem(20, 178, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
     self.verticalLayout.addItem(spacerItem)
-    self.tabWidget.addTab(self.tab, _fromUtf8(""))
-    self.tab_2 = QtGui.QWidget()
-    self.tab_2.setObjectName(_fromUtf8("tab_2"))
-    self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_2)
-    self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-    self.customProperty = QtGui.QTableView(self.tab_2)
-    self.customProperty.setObjectName(_fromUtf8("customProperty"))
+    self.tabWidget.addTab(self.tab, "")
+    self.tab_2 = QtWidgets.QWidget()
+    self.tab_2.setObjectName("tab_2")
+    self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.tab_2)
+    self.verticalLayout_3.setObjectName("verticalLayout_3")
+    self.customProperty = QtWidgets.QTableView(self.tab_2)
+    self.customProperty.setObjectName("customProperty")
     self.verticalLayout_3.addWidget(self.customProperty)
-    self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
+    self.tabWidget.addTab(self.tab_2, "")
     self.verticalLayout_2.addWidget(self.tabWidget)
-    self.buttonBox = QtGui.QDialogButtonBox(Dialog)
-    self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-    self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+    self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+    self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+    self.buttonBox.setObjectName("buttonBox")
     self.verticalLayout_2.addWidget(self.buttonBox)
 
     self.retranslateUi(Dialog)
@@ -25754,9 +25788,9 @@ except AttributeError:
     QtCore.QMetaObject.connectSlotsByName(Dialog)
 </t>
 <t tx="1.20130426141258.3841">def retranslateUi(self, Dialog):
-    Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
-    self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Geometrical Attributes", None, QtGui.QApplication.UnicodeUTF8))
-    self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Custom Property", None, QtGui.QApplication.UnicodeUTF8))
+    Dialog.setWindowTitle(QtCore.QCoreApplication.translate("Dialog", "Dialog", None))
+    self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtCore.QCoreApplication.translate("Dialog", "Geometrical Attributes", None))
+    self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtCore.QCoreApplication.translate("Dialog", "Custom Property", None))
 </t>
 <t tx="1.20130426141258.3842"></t>
 <t tx="1.20130426141258.3843"></t>
@@ -25766,16 +25800,16 @@ except AttributeError:
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3845">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3845">from PyQt5 import QtCore, QtGui, QtWidgets
 
 IdRole = QtCore.Qt.UserRole
 </t>
-<t tx="1.20130426141258.3846">class BaseContainer(QtGui.QHBoxLayout):
+<t tx="1.20130426141258.3846">class BaseContainer(QtWidgets.QHBoxLayout):
     @others
 </t>
 <t tx="1.20130426141258.3847">def __init__(self, parent=None, label="baseInfo"):
     super(BaseContainer, self).__init__(parent)
-    label=QtGui.QLabel(label)
+    label=QtWidgets.QLabel(label)
     self.addWidget(label)
     self.activeValue=None
     self._changed=False
@@ -25808,10 +25842,10 @@ def changed(self, value):
     super(PyCadQColor, self).__init__(parent=parent, label=label)
     r, g, b=oldValue
     self.activeValue=oldValue
-    self.pushButton=QtGui.QPushButton()
+    self.pushButton=QtWidgets.QPushButton()
     self.pushButton.clicked.connect(self.click)
-    frameStyle = QtGui.QFrame.Sunken | QtGui.QFrame.Panel
-    self.colorLabel = QtGui.QLabel()
+    frameStyle = QtWidgets.QFrame.Sunken | QtWidgets.QFrame.Panel
+    self.colorLabel = QtWidgets.QLabel()
     self.colorLabel.setFrameStyle(frameStyle)
     sColor=QtGui.QColor.fromRgb(r, g, b)
     self.colorLabel.setText(sColor.name())
@@ -25823,7 +25857,7 @@ def changed(self, value):
 <t tx="1.20130426141258.3853">def click(self):
     r, g, b=self.activeValue
     sColor=QtGui.QColor.fromRgb(r, g, b)
-    color = QtGui.QColorDialog.getColor(sColor, parent=None)
+    color = QtWidgets.QColorDialog.getColor(sColor, parent=None)
     if color.isValid(): 
         self.colorLabel.setText(color.name())
         self.colorLabel.setPalette(QtGui.QPalette(color))
@@ -25841,7 +25875,7 @@ def changed(self, value):
     super(PyCadQLineType, self).__init__(parent=parent, label=label)
     self.activeValue=oldValue
     #define Active combo box
-    self.penStyleComboBox = QtGui.QComboBox()
+    self.penStyleComboBox = QtWidgets.QComboBox()
     self.penStyleComboBox.addItem("Solid", QtCore.Qt.SolidLine)
     self.penStyleComboBox.addItem("Dash", QtCore.Qt.DashLine)
     self.penStyleComboBox.addItem("Dot", QtCore.Qt.DotLine)
@@ -25850,7 +25884,7 @@ def changed(self, value):
     itemindex=self.penStyleComboBox.findData(oldValue)
     self.penStyleComboBox.setCurrentIndex(itemindex)
     #define label
-    penStyleLabel = QtGui.QLabel("")
+    penStyleLabel = QtWidgets.QLabel("")
     penStyleLabel.setBuddy(self.penStyleComboBox)
     
     self.addWidget(penStyleLabel)
@@ -25872,7 +25906,7 @@ def changed(self, value):
 <t tx="1.20130426141258.3858">def __init__(self, parent=None, oldValue='0.0', label="Double"):
     super(PyCadQDouble, self).__init__(parent, label)
     self.activeValue=oldValue
-    self.penWidthSpinBox = QtGui.QSpinBox()
+    self.penWidthSpinBox = QtWidgets.QSpinBox()
     self.penWidthSpinBox.setRange(0, 20)
     self.penWidthSpinBox.setValue(int(oldValue))
     self.penWidthSpinBox.setSpecialValueText("0 (cosmetic pen)")
@@ -26011,17 +26045,17 @@ RESERVED_WORK=['self._print', 'self._error', 'self._ok','self._cadApplication','
 </t>
 <t tx="1.20130426141258.3872">import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 </t>
 <t tx="1.20130426141258.3873">def getPolarMenu():
     '''
     returns a menu to operate with guide objects STILL TO BE IMPLEMENTED
     '''
-    menu=QtGui.QMenu()
+    menu=QtWidgets.QMenu()
     
     return menu
 </t>
-<t tx="1.20130426141258.3874">class GuideHandler(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3874">class GuideHandler(QtWidgets.QGraphicsItem):
     '''
     This class provide management of a guide Handler to be instanced by the scene
     on startup, and to be placed by iCommand when a point is succesfully added to a command
@@ -26118,7 +26152,7 @@ from PyQt4 import QtCore, QtGui
 <t tx="1.20130426141258.3887">def paint(self, painte, option, widget):
     return
 </t>
-<t tx="1.20130426141258.3888">class Guide(QtGui.QGraphicsLineItem):
+<t tx="1.20130426141258.3888">class Guide(QtWidgets.QGraphicsLineItem):
     '''
     This class provide a guide object and it's management
     it's added to the GuideHandler object
@@ -26129,9 +26163,9 @@ from PyQt4 import QtCore, QtGui
     super(Guide, self).__init__(parent)
     self.handler=parent
     #Flags
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
-    self.setFlag(QtGui.QGraphicsItem.ItemIgnoresTransformations, True)
-    self.setAcceptsHoverEvents(True)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIgnoresTransformations, True)
+    self.setAcceptHoverEvents(True)
     #Events
     
     self.a=parent.a+a
@@ -26219,7 +26253,7 @@ from PyQt4 import QtCore, QtGui
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3897">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3897">from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.initsetting             import SNAP_POINT_ARRAY, ACTIVE_SNAP_POINT, ACTIVE_SNAP_LIST
 from Kernel.GeoEntity.point         import Point
@@ -26424,13 +26458,13 @@ from Interface.Entity.base          import BaseEntity
                         returnVal=p
     return returnVal
 </t>
-<t tx="1.20130426141258.3908">class SnapMark(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3908">class SnapMark(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.3909">def __init__(self):
     super(SnapMark, self).__init__()
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
-    self.setFlag(QtGui.QGraphicsItem.ItemIgnoresTransformations, True)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIgnoresTransformations, True)
     self.hide()
 </t>
 <t tx="1.20130426141258.3910">def collidesWithItem(self,other,mode):
@@ -26514,7 +26548,7 @@ from Interface.Entity.base          import BaseEntity
 </t>
 <t tx="1.20130426141258.3922">import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.pycadevent              import PyCadEvent
 </t>
@@ -26575,7 +26609,7 @@ def norm(self):
     """
     return math.sqrt(pow(self.X,2)+pow(self.Y,2))
 </t>
-<t tx="1.20130426141258.3930">class PositionHandler(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3930">class PositionHandler(QtWidgets.QGraphicsItem):
     """
         this class provide a custom object for easily moving entity into
         PythonCAD
@@ -26584,12 +26618,12 @@ def norm(self):
 </t>
 <t tx="1.20130426141258.3931">def __init__(self, position=None ):
     super(PositionHandler, self).__init__()
-    self.setAcceptsHoverEvents(True)
+    self.setAcceptHoverEvents(True)
     self.circle=CirclePosition(self, QtCore.QPointF(5,5))
-    self.circle.setAcceptsHoverEvents(False)
-    self.circle.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, False)
+    self.circle.setAcceptHoverEvents(False)
+    self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, False)
     self.circle.setAcceptDrops(False)
-    self.circle.setFlag(QtGui.QGraphicsItem.ItemIsMovable, False)
+    self.circle.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
     self.ActionHandler=ActionHandler(self, QtCore.QPointF(0,0))
     self.ActionHandler.fireApply+=self._fireApply
     self.customAction=PyCadEvent()
@@ -26675,7 +26709,7 @@ def deltaPos(self):
     """
     return self.circle.scenePos()-self.ActionHandler.scenePos()
 </t>
-<t tx="1.20130426141258.3943">class ActionHandler(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3943">class ActionHandler(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.3944">def __init__(self,parent=None, position=None ):
@@ -26706,8 +26740,8 @@ def deltaPos(self):
     if position!=None:
         self.setPos(position)
     self.position=position
-    self.setAcceptsHoverEvents(True)
-    self.setFlag(QtGui.QGraphicsItem.ItemIsMovable, True)
+    self.setAcceptHoverEvents(True)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, True)
 </t>
 <t tx="1.20130426141258.3945">def _fireApply(self):   
     print("ActionHandler apply") 
@@ -26728,13 +26762,13 @@ def deltaPos(self):
     """
     self.parentItem().paint(painter,option,widget)
 </t>
-<t tx="1.20130426141258.3949">class ArcAngle(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3949">class ArcAngle(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.3950">def __init__(self,parent=None , position=None ):
     super(ArcAngle, self).__init__(parent)
-    self.setAcceptsHoverEvents(True)                        #Fire over events
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+    self.setAcceptHoverEvents(True)                        #Fire over events
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
     self.setAcceptDrops(True)
     if position!=None:
         self.setPos(position)
@@ -26809,41 +26843,41 @@ def deltaPos(self):
         r=self.parentItem().rotation()
         self.setRotation(float(text)+r)
         return
-    QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+    QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
 </t>
 <t tx="1.20130426141258.3961">def _apply(self, event):
     self.fireApply()
 </t>
-<t tx="1.20130426141258.3962">class ContextMenu(QtGui.QMenu):
+<t tx="1.20130426141258.3962">class ContextMenu(QtWidgets.QMenu):
     @others
 </t>
 <t tx="1.20130426141258.3963">def __init__(self, keyPressFunction=None, confermationFunction=None):
     super(ContextMenu, self).__init__()
     #set action QLineEdit
     if keyPressFunction!= None:
-        self.qle=QtGui.QLineEdit()
+        self.qle=QtWidgets.QLineEdit()
         self.qle.keyPressEvent=keyPressFunction
-        wac=QtGui.QWidgetAction(self)
+        wac=QtWidgets.QWidgetAction(self)
         wac.setDefaultWidget(self.qle)
         dummyAction=self.addAction(wac)
     #set apply action 
     if confermationFunction!=None:
-        self.label=QtGui.QLabel()
+        self.label=QtWidgets.QLabel()
         self.label.setText("Apply")
         self.label.mouseReleaseEvent=confermationFunction
-        wac1=QtGui.QWidgetAction(self)
+        wac1=QtWidgets.QWidgetAction(self)
         wac1.setDefaultWidget(self.label)
         dummyAction=self.addAction(wac1);
 </t>
-<t tx="1.20130426141258.3964">class CirclePosition(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3964">class CirclePosition(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.3965">def __init__(self,parent=None , position=None ):
     super(CirclePosition, self).__init__(parent)
-    self.setAcceptsHoverEvents(True)                        #Fire over events
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+    self.setAcceptHoverEvents(True)                        #Fire over events
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
     self.setAcceptDrops(True)
-    self.setFlag(QtGui.QGraphicsItem.ItemIsMovable, False)
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsMovable, False)
     if position!=None:
         self.setPos(position)
     self.customAction=PyCadEvent()
@@ -26913,18 +26947,18 @@ def deltaPos(self):
         p=QtCore.QPointF(float(x), float(y))
         self.parentItem().setPos(p)
         return
-    QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+    QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
 </t>
 <t tx="1.20130426141258.3976">def _apply(self, event):
     self.fireApply()
 </t>
-<t tx="1.20130426141258.3977">class ArrowItem(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3977">class ArrowItem(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.3978">def __init__(self,parent=None, position=None, rotation=None , arrowColor=None):
     super(ArrowItem, self).__init__(parent)
-    self.setAcceptsHoverEvents(True)                        #Fire over events
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+    self.setAcceptHoverEvents(True)                        #Fire over events
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
     self.setAcceptDrops(True)
     self.arrowColor=QtGui.QPen(QtGui.QColor(79, 106, 25))
     self._angle=0
@@ -27012,7 +27046,7 @@ def deltaPos(self):
         text=self.menu.qle.text()
         self.setDistance(float(text))
         return
-    QtGui.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
+    QtWidgets.QLineEdit.keyPressEvent(self.menu.qle, keyEvent)   
 </t>
 <t tx="1.20130426141258.3990">def _apply(self, event):
     print("ArrowItem apply")
@@ -27048,7 +27082,7 @@ def deltaPos(self):
 &lt;&lt;declarations&gt;&gt;
 @others
 </t>
-<t tx="1.20130426141258.3992">from PyQt4 import QtCore, QtGui
+<t tx="1.20130426141258.3992">from PyQt5 import QtCore
 from Interface.Entity.base import *
 </t>
 <t tx="1.20130426141258.3993">class Arc(BaseEntity):
@@ -27119,9 +27153,9 @@ from Interface.Entity.base import *
 @others
 </t>
 <t tx="1.20130426141258.3998">import math
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 </t>
-<t tx="1.20130426141258.3999">class ArrowItem(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.3999">class ArrowItem(QtWidgets.QGraphicsItem):
     @others
 </t>
 <t tx="1.20130426141258.4000">def definePath(self):
@@ -27184,19 +27218,20 @@ from PyQt4 import QtCore, QtGui
 @others
 </t>
 <t tx="1.20130426141258.4004">import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info &lt;(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
 
 import math
-from PyQt4  import QtCore, QtGui
+from PyQt5  import QtCore, QtGui,  QtWidgets
 
 from Kernel.initsetting         import PYTHONCAD_HIGLITGT_COLOR, PYTHONCAD_COLOR, MOUSE_GRAPH_DIMENSION
 
 from Kernel.GeoEntity.point     import Point
 </t>
-<t tx="1.20130426141258.4005">class BaseEntity(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.4005">class BaseEntity(QtWidgets.QGraphicsItem):
     shapeSize=MOUSE_GRAPH_DIMENSION
     showShape=False #This Flag is used for debug porpoise
     showBBox=False  #This Flag is used for debug porpoise
@@ -27204,8 +27239,8 @@ from Kernel.GeoEntity.point     import Point
 </t>
 <t tx="1.20130426141258.4006">def __init__(self, entity):
     super(BaseEntity, self).__init__()
-    self.setAcceptsHoverEvents(True)                        #Fire over events
-    self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+    self.setAcceptHoverEvents(True)                        #Fire over events
+    self.setFlag(QtWidgets.QGraphicsItem.ItemIsSelectable, True)
     #Get the geometry
     self._entity=entity
     self.setToolTip(str(self.toolTipMessage))
@@ -27270,10 +27305,10 @@ def toolTipMessage(self):
     return
 </t>
 <t tx="1.20130426141258.4014">def itemChange(self, change, value):
-    if change == QtGui.QGraphicsItem.ItemSelectedChange:
+    if change == QtWidgets.QGraphicsItem.ItemSelectedChange:
         #self.setColor(value==1)
         self.update(self.boundingRect())
-    return QtGui.QGraphicsItem.itemChange(self, change, value)
+    return QtWidgets.QGraphicsItem.itemChange(self, change, value)
 </t>
 <t tx="1.20130426141258.4015">def setColor(self, forceHilight=None):
     if forceHilight==None:
@@ -27503,10 +27538,10 @@ from Interface.Entity.base import *
 </t>
 <t tx="1.20130426141258.4035">import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from Kernel.pycadevent          import PyCadEvent
 </t>
-<t tx="1.20130426141258.4036">class DinamicEntryLine(QtGui.QLineEdit):
+<t tx="1.20130426141258.4036">class DinamicEntryLine(QtWidgets.QLineEdit):
     @others
 </t>
 <t tx="1.20130426141258.4037">def __init__(self):
@@ -27890,19 +27925,20 @@ from math import degrees
 @others
 </t>
 <t tx="1.20130426141258.4078">import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info &lt;(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
     
-from PyQt4  import QtCore, QtGui
+from PyQt5  import QtCore, QtGui,  QtWidgets
 
 
 from Interface.pycadapp                         import PyCadApp
 
 from Interface.LayerIntf.layertreeobject        import LayerTreeObject
 </t>
-<t tx="1.20130426141258.4079">class LayerDock(QtGui.QDockWidget):
+<t tx="1.20130426141258.4079">class LayerDock(QtWidgets.QDockWidget):
     '''
         A dock able window containing a layer list object.
         The layer list contains all visible layers.
@@ -27974,18 +28010,19 @@ from Interface.LayerIntf.layertreeobject        import LayerTreeObject
 @others
 </t>
 <t tx="1.20130426141258.4084">import sys
+from PyQt5.QtWidgets import *
 #if sys.version_info &lt;(2, 7):
 #    import sip
 #    sip.setapi('QString', 2)
 #    sip.setapi('QVariant', 2)
 
-from PyQt4                              import QtCore, QtGui
+from PyQt5                              import QtCore, QtGui,  QtWidgets
 
 from Kernel.initsetting                 import MAIN_LAYER
 from Kernel.layer                       import Layer
 from Kernel.exception                   import PythonCadWarning
 </t>
-<t tx="1.20130426141258.4085">class LayerItem(QtGui.QTreeWidgetItem):
+<t tx="1.20130426141258.4085">class LayerItem(QtWidgets.QTreeWidgetItem):
     """
         Single item
     """
@@ -28005,9 +28042,9 @@ from Kernel.exception                   import PythonCadWarning
     """
     self.setExpanded(True)
     if activate:
-        self.setBackgroundColor(0, QtCore.Qt.lightGray)
+        self.setBackground(0, QtCore.Qt.lightGray)
     else:
-        self.setBackgroundColor(0, QtCore.Qt.white)
+        self.setBackground(0, QtCore.Qt.white)
 </t>
 <t tx="1.20130426141258.4088">def setVisible(self, activate):        
     if activate:
@@ -28029,7 +28066,7 @@ def id(self):
     """
     return self._id
 </t>
-<t tx="1.20130426141258.4091">class LayerTreeObject(QtGui.QTreeWidget):
+<t tx="1.20130426141258.4091">class LayerTreeObject(QtWidgets.QTreeWidget):
     """
         Python
         CAD Layer tree Structure
@@ -28050,7 +28087,7 @@ def id(self):
     self.populateStructure()
 </t>
 <t tx="1.20130426141258.4093">def itemDoubleClicked(self, qTreeWidgetItem ,column):
-    return QtGui.QTreeWidget.itemDoubleClicked(self, qTreeWidgetItem, column)   
+    return QtWidgets.QTreeWidget.itemDoubleClicked(self, qTreeWidgetItem, column)   
 </t>
 <t tx="1.20130426141258.4094">#
 # Manage event
@@ -28091,14 +28128,14 @@ def updateTreeStructure(self, layer):
     """
         context menu event remapped
     """
-    contexMenu=QtGui.QMenu(self)
+    contexMenu=QtWidgets.QMenu(self)
     # Create Actions
-    addAction=QtGui.QAction("Add Child", self, triggered=self._addChild)
-    removeAction=QtGui.QAction("Remove", self, triggered=self._remove)
-    renameAction=QtGui.QAction("Rename", self, triggered=self._rename)
-    hideAction=QtGui.QAction("Hide", self, triggered=self._hide)
-    showAction=QtGui.QAction("Show", self, triggered=self._show)
-    setCurrentAction=QtGui.QAction("Set Current", self, triggered=self._setCurrent)
+    addAction=QtWidgets.QAction("Add Child", self, triggered=self._addChild)
+    removeAction=QtWidgets.QAction("Remove", self, triggered=self._remove)
+    renameAction=QtWidgets.QAction("Rename", self, triggered=self._rename)
+    hideAction=QtWidgets.QAction("Hide", self, triggered=self._hide)
+    showAction=QtWidgets.QAction("Show", self, triggered=self._show)
+    setCurrentAction=QtWidgets.QAction("Set Current", self, triggered=self._setCurrent)
     #TODO : propertyAction=QtGui.QAction("Property", self, triggered=self._property)
     #
     contexMenu.addAction(addAction)
@@ -28116,7 +28153,7 @@ def updateTreeStructure(self, layer):
     """
         Add a child layer
     """
-    text, ok = QtGui.QInputDialog.getText(self, 'Input Dialog', 
+    text, ok = QtWidgets.QInputDialog.getText(self, 'Input Dialog', 
                                             'Enter Layer Name :')
     if ok:
         layerName=text
@@ -28138,7 +28175,7 @@ def updateTreeStructure(self, layer):
     """
         rename the current layer
     """   
-    text, ok = QtGui.QInputDialog.getText(self, 'Input Dialog', 
+    text, ok = QtWidgets.QInputDialog.getText(self, 'Input Dialog', 
                                             'Enter Layer Name :')
     if ok:
         layerId=self.currentIterfaceTreeObject.id  
@@ -28152,10 +28189,10 @@ def updateTreeStructure(self, layer):
         layerId=self.currentIterfaceTreeObject.id  
         self._document.getTreeLayer.Hide(layerId)
     except PythonCadWarning as e:
-        QtGui.QMessageBox.information(self, 
+        QtWidgets.QMessageBox.information(self, 
                                             "PythonCad -Warning", 
                                             str(e) , 
-                                            QtGui.QMessageBox.Ok)
+                                            QtWidgets.QMessageBox.Ok)
 </t>
 <t tx="1.20130426141258.4101">def _show(self):
     """
@@ -28165,10 +28202,10 @@ def updateTreeStructure(self, layer):
         layerId=self.currentIterfaceTreeObject.id 
         self._document.getTreeLayer.Hide(layerId, False) 
     except PythonCadWarning as e:
-        QtGui.QMessageBox.information(self, 
+        QtWidgets.QMessageBox.information(self, 
                                             "PythonCad -Warning", 
                                             str(e) , 
-                                            QtGui.QMessageBox.Ok)
+                                            QtWidgets.QMessageBox.Ok)
 </t>
 <t tx="1.20130426141258.4102">def _setCurrent(self):
     """
@@ -28242,7 +28279,7 @@ def currentIterfaceTreeObject(self):
 @others
 </t>
 <t tx="1.20130426141258.4108">import math
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 from Interface.Preview.base         import PreviewBase
 from Interface.Entity.arc           import Arc
 from Kernel.entity                  import Point
@@ -28351,14 +28388,14 @@ def canDraw(self):
 </t>
 <t tx="1.20130426141258.4116">import math
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Kernel.exception       import *
 from Kernel.GeoEntity.point import Point as GeoPoint
 from Kernel.GeoUtil.geolib  import Vector
 from Kernel.initsetting     import PYTHONCAD_COLOR, PYTHONCAD_PREVIEW_COLOR, MOUSE_GRAPH_DIMENSION
 </t>
-<t tx="1.20130426141258.4117">class PreviewBase(QtGui.QGraphicsItem):
+<t tx="1.20130426141258.4117">class PreviewBase(QtWidgets.QGraphicsItem):
     showShape=False # This Flag is used for debug porpoise
     showBBox=False  # This Flag is used for debug porpoise
     shapeSize=MOUSE_GRAPH_DIMENSION
@@ -28673,7 +28710,7 @@ from Interface.Preview.base         import *
 from Kernel.GeoEntity.segment       import Segment as geoSegment
 from Kernel.initsetting             import PYTHONCAD_PREVIEW_COLOR
 #
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore
 </t>
 <t tx="1.20130426141258.4145">class PreviewPoint(PreviewBase):
     """
@@ -31464,5 +31501,67 @@ vertical: body pane on the botton</t>
 
 存檔後, 再用 @clean 代替  @auto</t>
 <t tx="leo.20170331234345.1"></t>
+<t tx="leo.20170402112029.1">在 Eric6 與 Leo Editor 各設定專案
+
+Eric6 專門負責 PyQt5 相關程式設計
+
+Leo Editor 則負責留下開發紀錄並協助 debug</t>
+<t tx="leo.20170402113716.1">PyQt5 與 PyQt4 差異:
+
+.emit() 不再支援
+
+因此
+
+class DataModel 
+
+insertRow
+
+insertRows
+
+removeRows
+
+setData
+
+中有 .emit() 都必須修改
+
+有 Signal 與 Slot 的部分也必須修改
+</t>
+<t tx="leo.20170402114140.1">PyQt4’s old-style signals and slots are not supported. Therefore the following are not implemented in PyQt5:
+
+QObject.connect()
+QObject.emit()
+SIGNAL()
+SLOT()
+
+All methods that had arguments that are usually the results of calls to SIGNAL() or SLOT() are no longer supported. There will always be an equivalent that takes a bound signal or callable respectively.
+
+In addition the following methods have differences:
+
+disconnect() takes no arguments and disconnects all connections to the QObject instance.
+
+其他差異
+
+http://pyqt.sourceforge.net/Docs/PyQt5/pyqt4_differences.html
+</t>
+<t tx="leo.20170402122413.1">http://stackoverflow.com/questions/6888750/pyqt-or-pyside-which-one-to-use</t>
+<t tx="leo.20170403085042.1">anaconda3 lib shutil.py 
+line 249
+
+_isdir: illegal type for path parameter
+
+Gernic 
+
+application.py 中的錯誤</t>
+<t tx="leo.20170404160530.1">存檔案時
+
+_isdir: illegal type for path parameter
+
+與 shutil 導入的存檔案程式段有關
+
+也就是出現在 application.py 中的錯誤
+
+unable to set active the document temp .pdr
+
+</t>
 </tnodes>
 </leo_file>

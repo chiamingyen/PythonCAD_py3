@@ -398,6 +398,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         """
             get only the name of the filePath
         """
+        # 正確取得 stripped file name
         return QtCore.QFileInfo(fullFileName).fileName()
     # ##########################################              ON COMMANDS
     # ##########################################################
@@ -415,8 +416,10 @@ class CadWindowMdi(QtWidgets.QMainWindow):
             Open an existing drawing PDR or DXF
         '''
         # ask the user to select an existing drawing
-        drawing = str(QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)"))[0]
+        # 可以正確打開檔案
+        drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0]
         # open a document and load the drawing
+        print("drawing is:", drawing)
         if len(drawing)>0:
             self.lastDirectory=os.path.split(drawing)[0]
             (name, extension)=os.path.splitext(drawing)
@@ -460,7 +463,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
                 self.view.fit()
         return
     def _onSaveAsDrawing(self):
-        drawing = QtWidgets.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)");[0]
+        drawing = QtWidgets.QFileDialog.getSaveFileName(self, "Save As...", "/home", filter ="Drawings (*.pdr *.dxf)")[0]
         if len(drawing)>0:
             self.__application.saveAs(drawing)
     def _onPrint(self):
