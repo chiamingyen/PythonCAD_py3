@@ -87,15 +87,15 @@ class PyCadApp(object):
         '''
         Open an existing document.
         '''
-        print("filename is:", filename)
-        return None
-        '''
+
         if not PyCadApp.__application is None:
             PyCadApp.__application.openDocument(filename)
             # return the opened, current active document
             return PyCadApp.ActiveDocument()
         return None
-        '''
+
+
+
     @staticmethod
     def critical(text):
         '''

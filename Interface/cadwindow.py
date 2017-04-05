@@ -62,7 +62,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         self.setCentralWidget(self.mdiArea)
         self.mdiArea.subWindowActivated.connect(self.subWindowActivatedEvent)
         self.oldSubWin=None
-#        self.readSettings() #now works for position and size, support for toolbars is still missing(http://www.opendocs.net/pyqt/pyqt4/html/qsettings.html)
+    #        self.readSettings() #now works for position and size, support for toolbars is still missing(http://www.opendocs.net/pyqt/pyqt4/html/qsettings.html)
         self.setWindowTitle("PythonCAD")
         qIcon=self._getIcon('pythoncad')
         if qIcon:
@@ -416,10 +416,10 @@ class CadWindowMdi(QtWidgets.QMainWindow):
             Open an existing drawing PDR or DXF
         '''
         # ask the user to select an existing drawing
-        # 可以正確打開檔案
-        drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0]
+        # 可以正確打開檔案, 與 PyQt4 不同
+        drawing = str(QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0])
         # open a document and load the drawing
-        print("drawing is:", drawing)
+        #print("drawing is:", drawing)
         if len(drawing)>0:
             self.lastDirectory=os.path.split(drawing)[0]
             (name, extension)=os.path.splitext(drawing)
@@ -439,7 +439,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         '''
             Import existing drawing in current drawing (some issues with PyQt4.7)
         '''
-        drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");[0]
+        drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)")[0]
         # open a document and load the drawing
         if len(drawing)>0:
             self.lastDirectory=os.path.split(drawing)[0]
@@ -467,7 +467,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         if len(drawing)>0:
             self.__application.saveAs(drawing)
     def _onPrint(self):
-#       printer.setPaperSize(QPrinter.A4);
+    #       printer.setPaperSize(QPrinter.A4);
         self.scene.clearSelection()
         printer=QtPrintSupport.QPrinter()
         printDialog=QtPrintSupport.QPrintDialog(printer)
@@ -654,8 +654,8 @@ class CadWindowMdi(QtWidgets.QMainWindow):
     def _onCascade(self):   #<-(by: S-PM 110524)
         "on Cascade command"    #standard  "Documentation String"
 
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-#                                                                       Prologue
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #                                                                       Prologue
         def cascadeFit(self):  #<-"Fit" function definition
             #--Register
             rgL=[]      #List
@@ -689,8 +689,8 @@ class CadWindowMdi(QtWidgets.QMainWindow):
             return(rgN)
         #cascadeFit>
 
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-#                                                                       Action
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #                                                                       Action
         #--call "cascade" method, as-is (rudimentary)
         self.mdiArea.cascadeSubWindows()
 
@@ -701,7 +701,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
 
 
 
-#-----------------------ON COMMANDS in ABOUT
+    #-----------------------ON COMMANDS in ABOUT
 
     def _onAbout(self):
         QtWidgets.QMessageBox.about(self, "About PythonCAD",
@@ -715,7 +715,7 @@ class CadWindowMdi(QtWidgets.QMainWindow):
                    <p>
                    <a href="http://pythoncad.sourceforge.net/dokuwiki/doku.php">PythonCAD Wiki Page</a>
                    <p>
-                   註解: 這是一個利用 Leo 編輯器開發的版本.
+                   由 KMOL 改為 Python3 與 PyQt5 版本
                    """)
         return
     # ########################################## CALL COMMAND
@@ -773,9 +773,9 @@ class CadWindowMdi(QtWidgets.QMainWindow):
     # ########################################## SETTINGS STORAGE
     # ##########################################################
     def readSettings(self): 
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-# Method to restore application settings saved at previous session end. 
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
+    # Method to restore application settings saved at previous session end. 
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
         #-create application settings object, platform-independent. 
         # Requires two names: Organization, Application
         # here given as <?>hardcoded values, an example of primitive coding
@@ -798,9 +798,9 @@ class CadWindowMdi(QtWidgets.QMainWindow):
     #readSettings>
 
     def writeSettings(self):
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-# Method to save current settings at the application exit. 
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
+    # Method to save current settings at the application exit. 
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
         #-create application settings object (see: "readSettings") 
         lRg=QtCore.QSettings('PythonCAD','MDI Settings')
 

@@ -23,6 +23,7 @@
 <v t="leo.20170402113716.1"><vh>PyQt4 轉為 PyQt5</vh></v>
 <v t="leo.20170402114140.1"><vh>差異註記</vh></v>
 <v t="leo.20170404160530.1"><vh>除錯過程</vh></v>
+<v t="leo.20170404212238.1"><vh>資料表設計</vh></v>
 <v t="amd_yen.20130426011410.8908"><vh>參考資料</vh>
 <v t="amd_yen.20130426011410.8909"><vh>Pyeuclid</vh></v>
 <v t="amd_yen.20130426011410.8910"><vh>@edit refs/simgeo.py</vh></v>
@@ -44,15 +45,15 @@
 <v t="1.20130426141258.2408"><vh>outputMsg</vh></v>
 </v>
 <v t="1.20130426141258.2409"><vh>printEntity</vh></v>
-<v t="1.20130426141258.2410"><vh>class GetEnts</vh>
+<v t="1.20130426141258.2410" a="E"><vh>class GetEnts</vh>
 <v t="1.20130426141258.2411"><vh>__init__</vh></v>
 <v t="1.20130426141258.2412"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2413"><vh>class UnDo</vh>
+<v t="1.20130426141258.2413" a="E"><vh>class UnDo</vh>
 <v t="1.20130426141258.2414"><vh>__init__</vh></v>
 <v t="1.20130426141258.2415"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2416"><vh>class ReDo</vh>
+<v t="1.20130426141258.2416" a="E"><vh>class ReDo</vh>
 <v t="1.20130426141258.2417"><vh>__init__</vh></v>
 <v t="1.20130426141258.2418"><vh>applyCommand</vh></v>
 </v>
@@ -85,7 +86,7 @@
 <v t="1.20130426141258.2439"><vh>__init__</vh></v>
 <v t="1.20130426141258.2440"><vh>applyCommand</vh></v>
 </v>
-<v t="1.20130426141258.2441"><vh>class PrintHelp</vh>
+<v t="1.20130426141258.2441" a="E"><vh>class PrintHelp</vh>
 <v t="1.20130426141258.2442"><vh>__init__</vh></v>
 <v t="1.20130426141258.2443"><vh>__next__</vh></v>
 <v t="1.20130426141258.2444"><vh>applyCommand</vh></v>
@@ -150,7 +151,7 @@
 <v t="1.20130426141258.2497"><vh>updateApplicationSetting</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2498"><vh>@clean application_test.py</vh>
+<v t="1.20130426141258.2498" a="E"><vh>@clean application_test.py</vh>
 <v t="1.20130426141258.2499"><vh>&lt;&lt;declarations&gt;&gt; (application_test)</vh></v>
 <v t="1.20130426141258.2500"><vh>testSympySegment</vh></v>
 <v t="1.20130426141258.2501"><vh>testSympyCline</vh></v>
@@ -166,8 +167,8 @@
 <v t="1.20130426141258.2510"><vh>@clean test_kernel.py</vh></v>
 <v t="1.20130426141258.2577"><vh>@clean __init__.py</vh></v>
 <v t="1.20130426141258.2578" a="E"><vh>@path Kernel</vh>
-<v t="1.20130426141258.2579"><vh>@clean binarytree.py</vh>
-<v t="1.20130426141258.2580"><vh>class BinaryTree</vh>
+<v t="1.20130426141258.2579" a="E"><vh>@clean binarytree.py</vh>
+<v t="1.20130426141258.2580" a="E"><vh>class BinaryTree</vh>
 <v t="1.20130426141258.2581"><vh>__init__</vh></v>
 <v t="1.20130426141258.2582"><vh>__repr__</vh></v>
 <v t="1.20130426141258.2583"><vh>lookUp</vh></v>
@@ -186,7 +187,7 @@
 </v>
 <v t="1.20130426141258.2594"><vh>testBinaryTree</vh></v>
 </v>
-<v t="1.20130426141258.2595"><vh>@clean composedentity.py</vh>
+<v t="1.20130426141258.2595" a="E"><vh>@clean composedentity.py</vh>
 <v t="1.20130426141258.2596"><vh>&lt;&lt;declarations&gt;&gt; (composedentity)</vh></v>
 <v t="1.20130426141258.2597"><vh>class ComposedEntity</vh>
 <v t="1.20130426141258.2598"><vh>__init__</vh></v>
@@ -259,7 +260,7 @@
 <v t="1.20130426141258.2661"><vh>toGeometricalEntity</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2662" a="E"><vh>@clean exception.py</vh>
+<v t="1.20130426141258.2662"><vh>@clean exception.py</vh>
 <v t="1.20130426141258.2663"><vh>class EntityMissing</vh>
 <v t="1.20130426141258.2664"><vh>__init__</vh></v>
 <v t="1.20130426141258.2665"><vh>__str__</vh></v>
@@ -339,12 +340,12 @@
 <v t="1.20130426141258.2722"><vh>class ExcEntityPoint</vh></v>
 <v t="1.20130426141258.2723"><vh>class ExcDicTuple</vh></v>
 </v>
-<v t="1.20130426141258.2724"><vh>@clean initsetting.py</vh>
+<v t="1.20130426141258.2724" a="E"><vh>@clean initsetting.py</vh>
 <v t="1.20130426141258.2725"><vh>&lt;&lt;declarations&gt;&gt; (initsetting)</vh></v>
 <v t="1.20130426141258.2726"><vh>getDefaultStyle</vh></v>
 </v>
-<v t="1.20130426141258.2727"><vh>@clean layer.py</vh>
-<v t="1.20130426141258.2728"><vh>class Layer</vh>
+<v t="1.20130426141258.2727" a="E"><vh>@clean layer.py</vh>
+<v t="1.20130426141258.2728" a="E"><vh>class Layer</vh>
 <v t="1.20130426141258.2729"><vh>__init__</vh></v>
 <v t="1.20130426141258.2730"><vh>name</vh></v>
 <v t="1.20130426141258.2731"><vh>name</vh></v>
@@ -377,7 +378,7 @@
 <v t="1.20130426141258.2756"><vh>hideLayerEntity</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2757" a="E"><vh>@clean pycadevent.py</vh>
+<v t="1.20130426141258.2757"><vh>@clean pycadevent.py</vh>
 <v t="1.20130426141258.2758" a="E"><vh>class PyCadEvent</vh>
 <v t="1.20130426141258.2759"><vh>__init__</vh></v>
 <v t="1.20130426141258.2760"><vh>handle</vh></v>
@@ -641,7 +642,7 @@
 <v t="1.20130426141258.2963"><vh>performCommit</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2964"><vh>@clean entitydb.py</vh>
+<v t="1.20130426141258.2964" a="E"><vh>@clean entitydb.py</vh>
 <v t="1.20130426141258.2965"><vh>&lt;&lt;declarations&gt;&gt; (entitydb)</vh></v>
 <v t="1.20130426141258.2966"><vh>class EntityDb</vh>
 <v t="1.20130426141258.2967"><vh>__init__</vh></v>
@@ -694,9 +695,9 @@
 <v t="1.20130426141258.3012"><vh>getEntityType</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3013"><vh>@clean relationdb.py</vh>
+<v t="1.20130426141258.3013" a="E"><vh>@clean relationdb.py</vh>
 <v t="1.20130426141258.3014"><vh>&lt;&lt;declarations&gt;&gt; (relationdb)</vh></v>
-<v t="1.20130426141258.3015"><vh>class RelationDb</vh>
+<v t="1.20130426141258.3015" a="E"><vh>class RelationDb</vh>
 <v t="1.20130426141258.3016"><vh>__init__</vh></v>
 <v t="1.20130426141258.3017"><vh>saveRelation</vh></v>
 <v t="1.20130426141258.3018"><vh>getChildrenIds</vh></v>
@@ -708,7 +709,7 @@
 <v t="1.20130426141258.3024"><vh>relationExsist</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3025"><vh>@clean undodb.py</vh>
+<v t="1.20130426141258.3025" a="E"><vh>@clean undodb.py</vh>
 <v t="1.20130426141258.3026"><vh>&lt;&lt;declarations&gt;&gt; (undodb)</vh></v>
 <v t="1.20130426141258.3027"><vh>class UndoDb</vh>
 <v t="1.20130426141258.3028"><vh>__init__</vh></v>
@@ -727,7 +728,7 @@
 </v>
 <v t="1.20130426141258.3040"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.3041" a="E"><vh>@path ExternalFormat</vh>
+<v t="1.20130426141258.3041"><vh>@path ExternalFormat</vh>
 <v t="1.20130426141258.3042"><vh>@clean externalformat.py</vh>
 <v t="1.20130426141258.3043"><vh>&lt;&lt;declarations&gt;&gt; (externalformat)</vh></v>
 <v t="1.20130426141258.3044"><vh>class ExtFormat</vh>
@@ -854,7 +855,7 @@
 </v>
 <v t="1.20130426141258.3151"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.3152"><vh>@path GeoEntity</vh>
+<v t="1.20130426141258.3152" a="E"><vh>@path GeoEntity</vh>
 <v t="1.20130426141258.3153"><vh>@clean arc.py</vh>
 <v t="1.20130426141258.3154"><vh>&lt;&lt;declarations&gt;&gt; (arc)</vh></v>
 <v t="1.20130426141258.3155"><vh>class Arc</vh>
@@ -1132,7 +1133,7 @@
 <v t="1.20130426141258.3404"><vh>mirror</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3405"><vh>@clean style.py</vh>
+<v t="1.20130426141258.3405" a="E"><vh>@clean style.py</vh>
 <v t="1.20130426141258.3406"><vh>&lt;&lt;declarations&gt;&gt; (style)</vh></v>
 <v t="1.20130426141258.3407"><vh>class Style</vh></v>
 </v>
@@ -1158,10 +1159,10 @@
 </v>
 <v t="1.20130426141258.3426"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.3427"><vh>@path GeoUtil</vh>
-<v t="1.20130426141258.3428"><vh>@clean geolib.py</vh>
+<v t="1.20130426141258.3427" a="E"><vh>@path GeoUtil</vh>
+<v t="1.20130426141258.3428" a="E"><vh>@clean geolib.py</vh>
 <v t="1.20130426141258.3429"><vh>&lt;&lt;declarations&gt;&gt; (geolib)</vh></v>
-<v t="1.20130426141258.3430"><vh>class Vector</vh>
+<v t="1.20130426141258.3430" a="E"><vh>class Vector</vh>
 <v t="1.20130426141258.3431"><vh>__init__</vh></v>
 <v t="1.20130426141258.3432"><vh>mag</vh></v>
 <v t="1.20130426141258.3433"><vh>norm</vh></v>
@@ -1263,12 +1264,12 @@
 </v>
 </v>
 <v t="1.20130426141258.3519" a="E"><vh>@path Interface</vh>
-<v t="1.20130426141258.3520"><vh>@clean cadinitsetting.py</vh>
+<v t="1.20130426141258.3520" a="E"><vh>@clean cadinitsetting.py</vh>
 <v t="1.20130426141258.3521"><vh>&lt;&lt;declarations&gt;&gt; (cadinitsetting)</vh></v>
 </v>
-<v t="1.20130426141258.3522"><vh>@clean cadscene.py</vh>
+<v t="1.20130426141258.3522" a="E"><vh>@clean cadscene.py</vh>
 <v t="1.20130426141258.3523"><vh>&lt;&lt;declarations&gt;&gt; (cadscene)</vh></v>
-<v t="1.20130426141258.3524"><vh>class CadScene</vh>
+<v t="1.20130426141258.3524" a="E"><vh>class CadScene</vh>
 <v t="1.20130426141258.3525"><vh>__init__</vh></v>
 <v t="1.20130426141258.3526"><vh>initSnap</vh></v>
 <v t="1.20130426141258.3527"><vh>initGuides</vh></v>
@@ -1306,7 +1307,7 @@
 <v t="1.20130426141258.3559"><vh>updateItemsFromID_2</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3560"><vh>@clean cadview.py</vh>
+<v t="1.20130426141258.3560" a="E"><vh>@clean cadview.py</vh>
 <v t="1.20130426141258.3561"><vh>&lt;&lt;declarations&gt;&gt; (cadview)</vh></v>
 <v t="1.20130426141258.3562"><vh>class CadView</vh>
 <v t="1.20130426141258.3563"><vh>__init__</vh></v>
@@ -1403,7 +1404,7 @@
 <v t="1.20130426141258.3651"><vh>mousePressEvent</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3652"><vh>@clean cadwindow_rc.py</vh>
+<v t="1.20130426141258.3652" a="E"><vh>@clean cadwindow_rc.py</vh>
 <v t="1.20130426141258.3653"><vh>&lt;&lt;declarations&gt;&gt; (cadwindow_rc)</vh></v>
 <v t="1.20130426141258.3654"><vh>qInitResources</vh></v>
 <v t="1.20130426141258.3655"><vh>qCleanupResources</vh></v>
@@ -1942,10 +1943,10 @@
 </v>
 <v t="1.20130426141258.4105"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.4106"><vh>@path Preview</vh>
-<v t="1.20130426141258.4107"><vh>@clean arc.py</vh>
+<v t="1.20130426141258.4106" a="E"><vh>@path Preview</vh>
+<v t="1.20130426141258.4107" a="E"><vh>@clean arc.py</vh>
 <v t="1.20130426141258.4108"><vh>&lt;&lt;declarations&gt;&gt; (arc)</vh></v>
-<v t="1.20130426141258.4109"><vh>class PreviewArc</vh>
+<v t="1.20130426141258.4109" a="E"><vh>class PreviewArc</vh>
 <v t="1.20130426141258.4110"><vh>__init__</vh></v>
 <v t="1.20130426141258.4111"><vh>canDraw</vh></v>
 <v t="1.20130426141258.4112"><vh>drawGeometry</vh></v>
@@ -1986,7 +1987,7 @@
 <v t="1.20130426141258.4141"><vh>&lt;&lt;declarations&gt;&gt; (factory)</vh></v>
 <v t="1.20130426141258.4142"><vh>getPreviewObject</vh></v>
 </v>
-<v t="1.20130426141258.4143"><vh>@clean point.py</vh>
+<v t="1.20130426141258.4143" a="E"><vh>@clean point.py</vh>
 <v t="1.20130426141258.4144"><vh>&lt;&lt;declarations&gt;&gt; (point)</vh></v>
 <v t="1.20130426141258.4145"><vh>class PreviewPoint</vh>
 <v t="1.20130426141258.4146"><vh>__init__</vh></v>
@@ -3025,8 +3026,7 @@ def getPythonCAD():
     return w, app
 </t>
 <t tx="1.20130426141258.2473">#encoding: utf-8
-
-
+# Sympy test for PythonCAD-Python3-PyQt5
 @language python
 @tabwidth -4
 
@@ -3123,9 +3123,10 @@ from Kernel.Command             import *
     self.afterOpenDocumentEvent=PyCadEvent()
     self.beforeCloseDocumentEvent=PyCadEvent()
     self.afterCloseDocumentEvent=PyCadEvent()
-    self.activeteDocumentEvent=PyCadEvent()
+    self.activateDocumentEvent=PyCadEvent()
     # manage Document inizialization
     self.__Documents={}
+    # 除了開檔之外, 其餘 active document 設為 None
     if 'open' in args:
         self.openDocument(args['open'])
     else:
@@ -3154,17 +3155,17 @@ def getRecentFiles(self):
     return []
 </t>
 <t tx="1.20130426141258.2482">def addRecentFiles(self,fPath):
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-\\-4.#                                                                   S-PM 110427
-\\-4.#Method to add the given full file name on top of the "Open history list",
-\\-4.#provided it is different from the one already present on top of the list.
-\\-4.#
-\\-4.#--Req-global
-\\-4.#MAX_RECENT_FILE    local default max. history list length
-\\-4.#
-\\-4.#--Req
-\\-4.#fPath   full file name to add to the list
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#                                                                   S-PM 110427
+#Method to add the given full file name on top of the "Open history list",
+#provided it is different from the one already present on top of the list.
+#
+#--Req-global
+#MAX_RECENT_FILE    local default max. history list length
+#
+#--Req
+#fPath   full file name to add to the list
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
     #--standard "Documentation String"
     """Add a new file name on top of the history list"""
 
@@ -3243,6 +3244,7 @@ def getCommand(self,commandType):
     """
         open a saved document
     """
+    
     self.beforeOpenDocumentEvent(self, fileName)
     if fileName not in self.__Documents:
         self.__Documents[fileName]=Document(fileName)
@@ -3251,36 +3253,30 @@ def getCommand(self,commandType):
     self.ActiveDocument=self.__Documents[fileName]                  #   Set Active the document
     return self.__Documents[fileName]
 
+
 </t>
 <t tx="1.20130426141258.2487">def saveAs(self, newFileName):
     """
         seve the current document to the new position
     """
-    '''
-    # for debug
-    oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
-    print("newFileName:", newFileName)
-    print()
-    print("old FileName:", oldFileName)
-    return ""
-    '''
+
     if self.__ActiveDocument:
-        (name, extension)=os.path.splitext(str(newFileName[0]))
+        (name, extension)=os.path.splitext(str(newFileName))
         if extension.upper()=='.DXF':
-            self.__ActiveDocument.exportExternalFormat(newFileName[0])
+            self.__ActiveDocument.exportExternalFormat(newFileName)
             return self.__ActiveDocument
         else:
-            #oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
-            #print("oldFileName is:", oldFileName)
-            #s = s.replace("\\", "\\\\")
             oldFileName = self.__ActiveDocument.getName()
             print("oldFileName is:", oldFileName)
             print("newFileName:", newFileName)
-            # 讓檔案無法儲存的原因為無法 close oldFileName
+            # 可以正確 close oldFileName
             self.closeDocument(oldFileName)
-            shutil.copy2(oldFileName, newFileName[0])
-            return self.openDocument(newFileName[0])
+            # 在 PyQt5 模式下, 好像沒有正確執行 copy2 ??
+            shutil.copy2(oldFileName, newFileName)
+            #return self.openDocument(newFileName)
+            return self.openDocument(oldFileName)
     raise EntityMissing("No document open in the application unable to perform the saveAs comand")
+
 </t>
 <t tx="1.20130426141258.2488">def closeDocument(self, dFile):
 #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
@@ -3316,7 +3312,7 @@ def getCommand(self,commandType):
 </t>
 <t tx="1.20130426141258.2489">#closeDocument&gt;
 
-
+# 參考: http://www.python-course.eu/python3_properties.php
 @property
 def ActiveDocument(self):
     """
@@ -3330,14 +3326,22 @@ def ActiveDocument(self, document):
         Set the document to active
     """
     if document:
+        print("1- document is:", document)
+        # document 為 Kernel.document.Document 物件
+        #self.__Documents is dictionary
+        print("2- self.__Documents is:", self.__Documents)
+        print("3. document.dbPath is:", document.dbPath)
+        #path = document.dbPath.replace("\\", "\\\\")
+        #print("4. path:", path)
         if document.dbPath in self.__Documents:
             self.__ActiveDocument=self.__Documents[document.dbPath]
         else:
             raise EntityMissing("Unable to set active the document %s"%str(document.dbPath))
     else:
         self.__ActiveDocument=document
-    self.activeteDocumentEvent(self, self.__ActiveDocument)
-    print("document.dbPath is:", document.dbPath)
+    self.activateDocumentEvent(self, self.__ActiveDocument)
+    
+
 </t>
 <t tx="1.20130426141258.2491">def getDocuments(self):
     """
@@ -3572,14 +3576,18 @@ if __name__=='__main__':
     """    
     @others
 </t>
-<t tx="1.20130426141258.2581">def __init__(self):             self.__tree=EmptyNode()
+<t tx="1.20130426141258.2581">def __init__(self):             
+    self.__tree=EmptyNode()
 </t>
-<t tx="1.20130426141258.2582">def __repr__(self):             return repr(self.__tree)
+<t tx="1.20130426141258.2582">def __repr__(self):             
+    return repr(self.__tree)
+def lookUp(self, key):          
+    return self.__tree.lookUp(key)
+def insert(self, key, value):         
+    self.__tree=self.__tree.insert(key, value)
 </t>
-<t tx="1.20130426141258.2583">def lookUp(self, key):          return self.__tree.lookUp(key)
-</t>
-<t tx="1.20130426141258.2584">def insert(self, key, value):   self.__tree=self.__tree.insert(key, value)
-</t>
+<t tx="1.20130426141258.2583"></t>
+<t tx="1.20130426141258.2584"></t>
 <t tx="1.20130426141258.2585">class EmptyNode(object):
     """
         empty Node
@@ -21771,7 +21779,6 @@ def mouseMoveEvent(self, event):
                     self.endMark.move(ps.getx(), ps.gety()*-1.0)
             else:
                 self.hideSnapMarks()
-        #qtItem=[self.itemAt(scenePos)] # old
         qtItem = [self.itemAt(scenePos, QtGui.QTransform())]
         self.activeICommand.updateMauseEvent(ps, qtItem)
     super(CadScene, self).mouseMoveEvent(event)
@@ -21782,7 +21789,6 @@ def mouseMoveEvent(self, event):
         self.isInPan=True
         self.firePan(True, event.scenePos())
     if not self.isInPan:
-        #qtItem=self.itemAt(event.scenePos())
         qtItem = self.itemAt(event.scenePos(), QtGui.QTransform())
         if qtItem:
             qtItem.setSelected(True)
@@ -21909,15 +21915,15 @@ def keyPressEvent(self, event):
         else:
             self.selectionAddMode=True
 
-\\-4.#        elif event.key()==QtCore.Qt.Key_F8:  &lt;&lt;&lt;&lt;this must maybe be implemented in cadwindow
-\\-4.#            if self.forceDirection is None:
-\\-4.#                self.forceDirection=True
-\\-4.#            else:
-\\-4.#                self.forceDirection=None
-\\-4.#            print self.forceDirection
-\\-4.#            self.forceDirection='H'        &lt;&lt;&lt;&lt;&lt;&lt;&lt;H and V are substituted by ortho mode, for future implementations it could be nice if shift pressed locks the direction of the mouse pointer
-\\-4.#        elif event.key()==QtCore.Qt.Key_V:  &lt;&lt;&lt;Ortho mode should be rewritten allowing to enter step angles and snap direction
-\\-4.#            self.forceDirection='V'
+#        elif event.key()==QtCore.Qt.Key_F8:  &lt;&lt;&lt;&lt;this must maybe be implemented in cadwindow
+#            if self.forceDirection is None:
+#                self.forceDirection=True
+#            else:
+#                self.forceDirection=None
+#            print self.forceDirection
+#            self.forceDirection='H'        &lt;&lt;&lt;&lt;&lt;&lt;&lt;H and V are substituted by ortho mode, for future implementations it could be nice if shift pressed locks the direction of the mouse pointer
+#        elif event.key()==QtCore.Qt.Key_V:  &lt;&lt;&lt;Ortho mode should be rewritten allowing to enter step angles and snap direction
+#            self.forceDirection='V'
     elif event.key()==QtCore.Qt.Key_Q: #Maybe we could use TAB
         self.showHandler=True
     else:
@@ -21931,8 +21937,8 @@ def keyPressEvent(self, event):
 </t>
 <t tx="1.20130426141258.3542">def keyReleaseEvent(self, event):
     if event.key()==QtCore.Qt.Key_Shift:
-\\-4.#            if self.activeICommand!=None:
-\\-4.#                if self.activeKernelCommand.activeException()==ExcMultiEntity:
+#            if self.activeICommand!=None:
+#                if self.activeKernelCommand.activeException()==ExcMultiEntity:
         if self.isGuided==True:
             self.isGuideLocked=None
             self.isGuided=None
@@ -22296,7 +22302,7 @@ from Interface.DrawingHelper.polarguides import getPolarMenu
     self.setCentralWidget(self.mdiArea)
     self.mdiArea.subWindowActivated.connect(self.subWindowActivatedEvent)
     self.oldSubWin=None
-\\-4.#        self.readSettings() #now works for position and size, support for toolbars is still missing(http://www.opendocs.net/pyqt/pyqt4/html/qsettings.html)
+#        self.readSettings() #now works for position and size, support for toolbars is still missing(http://www.opendocs.net/pyqt/pyqt4/html/qsettings.html)
     self.setWindowTitle("PythonCAD")
     qIcon=self._getIcon('pythoncad')
     if qIcon:
@@ -22670,10 +22676,10 @@ def _onNewDrawing(self):
         Open an existing drawing PDR or DXF
     '''
     # ask the user to select an existing drawing
-    # 可以正確打開檔案
-    drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0]
+    # 可以正確打開檔案, 與 PyQt4 不同
+    drawing = str(QtWidgets.QFileDialog.getOpenFileName(parent=self,directory=self.lastDirectory,  caption ="Open Drawing", filter ="Drawings (*.pdr *.dxf)")[0])
     # open a document and load the drawing
-    print("drawing is:", drawing)
+    #print("drawing is:", drawing)
     if len(drawing)&gt;0:
         self.lastDirectory=os.path.split(drawing)[0]
         (name, extension)=os.path.splitext(drawing)
@@ -22694,7 +22700,7 @@ def _onNewDrawing(self):
     '''
         Import existing drawing in current drawing (some issues with PyQt4.7)
     '''
-    drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)");[0]
+    drawing = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption="Import Drawing", directory=self.lastDirectory, filter="Dxf (*.dxf)")[0]
     # open a document and load the drawing
     if len(drawing)&gt;0:
         self.lastDirectory=os.path.split(drawing)[0]
@@ -22725,7 +22731,7 @@ def _onNewDrawing(self):
         self.__application.saveAs(drawing)
 </t>
 <t tx="1.20130426141258.3600">def _onPrint(self):
-\\-4.#       printer.setPaperSize(QPrinter.A4);
+#       printer.setPaperSize(QPrinter.A4);
     self.scene.clearSelection()
     printer=QtPrintSupport.QPrinter()
     printDialog=QtPrintSupport.QPrintDialog(printer)
@@ -22943,8 +22949,8 @@ def _onTile(self):   #&lt;-(by: S-PM 110524)
 def _onCascade(self):   #&lt;-(by: S-PM 110524)
     "on Cascade command"    #standard  "Documentation String"
 
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-\\-4.#                                                                       Prologue
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#                                                                       Prologue
     def cascadeFit(self):  #&lt;-"Fit" function definition
         #--Register
         rgL=[]      #List
@@ -22978,8 +22984,8 @@ def _onCascade(self):   #&lt;-(by: S-PM 110524)
         return(rgN)
     #cascadeFit&gt;
 
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-\\-4.#                                                                       Action
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#                                                                       Action
     #--call "cascade" method, as-is (rudimentary)
     self.mdiArea.cascadeSubWindows()
 
@@ -22991,7 +22997,7 @@ def _onCascade(self):   #&lt;-(by: S-PM 110524)
 
 
 
-\\-4.#-----------------------ON COMMANDS in ABOUT
+#-----------------------ON COMMANDS in ABOUT
 
 def _onAbout(self):
     QtWidgets.QMessageBox.about(self, "About PythonCAD",
@@ -23005,7 +23011,7 @@ def _onAbout(self):
                &lt;p&gt;
                &lt;a href="http://pythoncad.sourceforge.net/dokuwiki/doku.php"&gt;PythonCAD Wiki Page&lt;/a&gt;
                &lt;p&gt;
-               註解: 這是一個利用 Leo 編輯器開發的版本.
+               由 KMOL 改為 Python3 與 PyQt5 版本
                """)
     return
 </t>
@@ -23068,9 +23074,9 @@ def critical(text):
 <t tx="1.20130426141258.3637"># ########################################## SETTINGS STORAGE
 # ##########################################################
 def readSettings(self): 
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-\\-4.# Method to restore application settings saved at previous session end. 
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
+# Method to restore application settings saved at previous session end. 
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
     #-create application settings object, platform-independent. 
     # Requires two names: Organization, Application
     # here given as &lt;?&gt;hardcoded values, an example of primitive coding
@@ -23094,9 +23100,9 @@ def readSettings(self):
 <t tx="1.20130426141258.3638">#readSettings&gt;
 
 def writeSettings(self):
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-\\-4.# Method to save current settings at the application exit. 
-\\-4.#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
+# Method to save current settings at the application exit. 
+#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
     #-create application settings object (see: "readSettings") 
     lRg=QtCore.QSettings('PythonCAD','MDI Settings')
 
@@ -23948,15 +23954,15 @@ def OpenDocument(filename):
     '''
     Open an existing document.
     '''
-    print("filename is:", filename)
-    return None
-    '''
+
     if not PyCadApp.__application is None:
         PyCadApp.__application.openDocument(filename)
         # return the opened, current active document
         return PyCadApp.ActiveDocument()
     return None
-    '''
+
+
+
 </t>
 <t tx="1.20130426141258.3688">@staticmethod
 def critical(text):
@@ -31563,5 +31569,34 @@ _isdir: illegal type for path parameter
 unable to set active the document temp .pdr
 
 </t>
+<t tx="leo.20170404212238.1">CREATE TABLE IF NOT EXISTS "pycadundo" (
+                                "pycad_id" INTEGER PRIMARY KEY,
+                                "pycad_incremental_id" INTEGER
+                                );
+                                
+
+CREATE TABLE pycadent(
+                    pycad_object_style TEXT,pycad_bbox_ymax REAL,pycad_bbox_xmax
+ REAL,pycad_property TEXT,pycad_entity_id INTEGER,pycad_undo_visible INTEGER,pyc
+ad_undo_id INTEGER,pycad_object_definition TEXT,pycad_bbox_ymin REAL,pycad_visib
+le INTEGER,pycad_locked INTEGER,pycad_id INTEGER PRIMARY KEY,pycad_bbox_xmin REA
+L,pycad_entity_state TEXT,pycad_object_type TEXT,pycad_index NUMERIC,pycad_secur
+ity_id INTEGER);
+
+
+CREATE TABLE pycadrel(
+                    "pycad_id" INTEGER PRIMARY KEY,
+                    "pycad_parent_id" INTEGER,
+                    "pycad_child_id" INTEGER
+                    );
+
+
+共有 pycadundo, pycadent 與 pycadrel 等三個資料表
+
+其中 pycadundo 為紀錄 undo 次數的資料表
+
+pycadent 為 pycad entity 的資料表
+
+pycadrel 則為 pycad relationship 表示元件從屬關係的資料表</t>
 </tnodes>
 </leo_file>

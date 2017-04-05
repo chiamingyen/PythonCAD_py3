@@ -160,7 +160,6 @@ class CadScene(QtWidgets.QGraphicsScene):
                         self.endMark.move(ps.getx(), ps.gety()*-1.0)
                 else:
                     self.hideSnapMarks()
-            #qtItem=[self.itemAt(scenePos)] # old
             qtItem = [self.itemAt(scenePos, QtGui.QTransform())]
             self.activeICommand.updateMauseEvent(ps, qtItem)
         super(CadScene, self).mouseMoveEvent(event)
@@ -170,7 +169,6 @@ class CadScene(QtWidgets.QGraphicsScene):
             self.isInPan=True
             self.firePan(True, event.scenePos())
         if not self.isInPan:
-            #qtItem=self.itemAt(event.scenePos())
             qtItem = self.itemAt(event.scenePos(), QtGui.QTransform())
             if qtItem:
                 qtItem.setSelected(True)
@@ -289,15 +287,15 @@ class CadScene(QtWidgets.QGraphicsScene):
             else:
                 self.selectionAddMode=True
 
-#        elif event.key()==QtCore.Qt.Key_F8:  <<<<this must maybe be implemented in cadwindow
-#            if self.forceDirection is None:
-#                self.forceDirection=True
-#            else:
-#                self.forceDirection=None
-#            print self.forceDirection
-#            self.forceDirection='H'        <<<<<<<H and V are substituted by ortho mode, for future implementations it could be nice if shift pressed locks the direction of the mouse pointer
-#        elif event.key()==QtCore.Qt.Key_V:  <<<Ortho mode should be rewritten allowing to enter step angles and snap direction
-#            self.forceDirection='V'
+    #        elif event.key()==QtCore.Qt.Key_F8:  <<<<this must maybe be implemented in cadwindow
+    #            if self.forceDirection is None:
+    #                self.forceDirection=True
+    #            else:
+    #                self.forceDirection=None
+    #            print self.forceDirection
+    #            self.forceDirection='H'        <<<<<<<H and V are substituted by ortho mode, for future implementations it could be nice if shift pressed locks the direction of the mouse pointer
+    #        elif event.key()==QtCore.Qt.Key_V:  <<<Ortho mode should be rewritten allowing to enter step angles and snap direction
+    #            self.forceDirection='V'
         elif event.key()==QtCore.Qt.Key_Q: #Maybe we could use TAB
             self.showHandler=True
         else:
@@ -310,8 +308,8 @@ class CadScene(QtWidgets.QGraphicsScene):
         super(CadScene, self).keyPressEvent(event)
     def keyReleaseEvent(self, event):
         if event.key()==QtCore.Qt.Key_Shift:
-#            if self.activeICommand!=None:
-#                if self.activeKernelCommand.activeException()==ExcMultiEntity:
+    #            if self.activeICommand!=None:
+    #                if self.activeKernelCommand.activeException()==ExcMultiEntity:
             if self.isGuided==True:
                 self.isGuideLocked=None
                 self.isGuided=None

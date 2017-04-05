@@ -1,6 +1,5 @@
 #encoding: utf-8
-
-
+# Sympy test for PythonCAD-Python3-PyQt5
 
 from pythoncad_qt import *
 from sympy import *

@@ -2,10 +2,14 @@ class BinaryTree(object):
     """
         generic tree binary structure object
     """    
-    def __init__(self):             self.__tree=EmptyNode()
-    def __repr__(self):             return repr(self.__tree)
-    def lookUp(self, key):          return self.__tree.lookUp(key)
-    def insert(self, key, value):   self.__tree=self.__tree.insert(key, value)
+    def __init__(self):             
+        self.__tree=EmptyNode()
+    def __repr__(self):             
+        return repr(self.__tree)
+    def lookUp(self, key):          
+        return self.__tree.lookUp(key)
+    def insert(self, key, value):         
+        self.__tree=self.__tree.insert(key, value)
 class EmptyNode(object):
     """
         empty Node

@@ -58,9 +58,10 @@ class Application(object):
         self.afterOpenDocumentEvent=PyCadEvent()
         self.beforeCloseDocumentEvent=PyCadEvent()
         self.afterCloseDocumentEvent=PyCadEvent()
-        self.activeteDocumentEvent=PyCadEvent()
+        self.activateDocumentEvent=PyCadEvent()
         # manage Document inizialization
         self.__Documents={}
+        # 除了開檔之外, 其餘 active document 設為 None
         if 'open' in args:
             self.openDocument(args['open'])
         else:
@@ -87,17 +88,17 @@ class Application(object):
             self.updateApplicationSetting(objSettings)
         return []
     def addRecentFiles(self,fPath):
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-#                                                                   S-PM 110427
-#Method to add the given full file name on top of the "Open history list",
-#provided it is different from the one already present on top of the list.
-#
-#--Req-global
-#MAX_RECENT_FILE    local default max. history list length
-#
-#--Req
-#fPath   full file name to add to the list
-#-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
+    #                                                                   S-PM 110427
+    #Method to add the given full file name on top of the "Open history list",
+    #provided it is different from the one already present on top of the list.
+    #
+    #--Req-global
+    #MAX_RECENT_FILE    local default max. history list length
+    #
+    #--Req
+    #fPath   full file name to add to the list
+    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
         #--standard "Documentation String"
         """Add a new file name on top of the history list"""
 
@@ -172,6 +173,7 @@ class Application(object):
         """
             open a saved document
         """
+        
         self.beforeOpenDocumentEvent(self, fileName)
         if fileName not in self.__Documents:
             self.__Documents[fileName]=Document(fileName)
@@ -180,35 +182,29 @@ class Application(object):
         self.ActiveDocument=self.__Documents[fileName]                  #   Set Active the document
         return self.__Documents[fileName]
 
+
     def saveAs(self, newFileName):
         """
             seve the current document to the new position
         """
-        '''
-        # for debug
-        oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
-        print("newFileName:", newFileName)
-        print()
-        print("old FileName:", oldFileName)
-        return ""
-        '''
+
         if self.__ActiveDocument:
-            (name, extension)=os.path.splitext(str(newFileName[0]))
+            (name, extension)=os.path.splitext(str(newFileName))
             if extension.upper()=='.DXF':
-                self.__ActiveDocument.exportExternalFormat(newFileName[0])
+                self.__ActiveDocument.exportExternalFormat(newFileName)
                 return self.__ActiveDocument
             else:
-                #oldFileName=QtCore.QFileInfo(self.__ActiveDocument.getName()).fileName().replace("\\", "\\\\")
-                #print("oldFileName is:", oldFileName)
-                #s = s.replace("\\", "\\\\")
                 oldFileName = self.__ActiveDocument.getName()
                 print("oldFileName is:", oldFileName)
                 print("newFileName:", newFileName)
-                # 讓檔案無法儲存的原因為無法 close oldFileName
+                # 可以正確 close oldFileName
                 self.closeDocument(oldFileName)
-                shutil.copy2(oldFileName, newFileName[0])
-                return self.openDocument(newFileName[0])
+                # 在 PyQt5 模式下, 好像沒有正確執行 copy2 ??
+                shutil.copy2(oldFileName, newFileName)
+                #return self.openDocument(newFileName)
+                return self.openDocument(oldFileName)
         raise EntityMissing("No document open in the application unable to perform the saveAs comand")
+
     def closeDocument(self, dFile):
     #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
     #                                                                   S-PM 110427
@@ -242,7 +238,7 @@ class Application(object):
 
     #closeDocument>
 
-
+    # 參考: http://www.python-course.eu/python3_properties.php
     @property
     def ActiveDocument(self):
         """
@@ -255,14 +251,22 @@ class Application(object):
             Set the document to active
         """
         if document:
+            print("1- document is:", document)
+            # document 為 Kernel.document.Document 物件
+            #self.__Documents is dictionary
+            print("2- self.__Documents is:", self.__Documents)
+            print("3. document.dbPath is:", document.dbPath)
+            #path = document.dbPath.replace("\\", "\\\\")
+            #print("4. path:", path)
             if document.dbPath in self.__Documents:
                 self.__ActiveDocument=self.__Documents[document.dbPath]
             else:
                 raise EntityMissing("Unable to set active the document %s"%str(document.dbPath))
         else:
             self.__ActiveDocument=document
-        self.activeteDocumentEvent(self, self.__ActiveDocument)
-        print("document.dbPath is:", document.dbPath)
+        self.activateDocumentEvent(self, self.__ActiveDocument)
+        
+
     def getDocuments(self):
         """
             get the Docuemnts Collection
