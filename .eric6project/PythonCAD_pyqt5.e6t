@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project PythonCAD_pyqt5 -->
+<!-- Saved: 2017-05-30, 19:55:16 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="0" uid="{842fbc53-f7fa-41e0-a267-4620df8eefe1}">
+    <Summary>FIXME: if in the command line we insert file_1 or file_2</Summary>
+    <Description></Description>
+    <Created>2017-05-30, 19:55:13</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>452</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{4c590933-21ea-4f02-9a52-1887b4369bdf}">
+    <Summary>TODO: Fill up preferences</Summary>
+    <Description></Description>
+    <Created>2017-05-30, 19:55:13</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>564</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6876df11-098b-49d0-b0b0-6a253d81eb27}">
+    <Summary>TODO: save Preferences</Summary>
+    <Description></Description>
+    <Created>2017-05-30, 19:55:13</Created>
+    <Resource>
+      <Filename>Interface/cadwindow.py</Filename>
+      <Linenumber>566</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>

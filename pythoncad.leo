@@ -30,7 +30,8 @@
 <v t="amd_yen.20130426011410.8911"><vh>@edit refs/test_simgeo.py</vh></v>
 <v t="amd_yen.20130426011410.8912"><vh>@url Pythonwildmagic</vh></v>
 </v>
-<v t="1.20130426141258.2396" a="E"><vh>@clean customevent.py</vh>
+<v t="leo.20170406161911.1"><vh>特殊函式名稱</vh></v>
+<v t="1.20130426141258.2396"><vh>@clean customevent.py</vh>
 <v t="1.20130426141258.2397"><vh>&lt;&lt;declarations&gt;&gt; (customevent)</vh></v>
 <v t="1.20130426141258.2398" a="E"><vh>class testCmdLine</vh>
 <v t="1.20130426141258.2399"><vh>__init__</vh></v>
@@ -128,7 +129,7 @@
 </v>
 <v t="1.20130426141258.2475"><vh>@clean __init__.py</vh></v>
 <v t="1.20130426141258.2476" a="E"><vh>@path Generic</vh>
-<v t="1.20130426141258.2477" a="E"><vh>@clean application.py</vh>
+<v t="1.20130426141258.2477"><vh>@clean application.py</vh>
 <v t="1.20130426141258.2478"><vh>&lt;&lt;declarations&gt;&gt; (application)</vh></v>
 <v t="1.20130426141258.2479" a="E"><vh>class Application</vh>
 <v t="1.20130426141258.2480"><vh>__init__</vh></v>
@@ -151,7 +152,7 @@
 <v t="1.20130426141258.2497"><vh>updateApplicationSetting</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2498" a="E"><vh>@clean application_test.py</vh>
+<v t="1.20130426141258.2498"><vh>@clean application_test.py</vh>
 <v t="1.20130426141258.2499"><vh>&lt;&lt;declarations&gt;&gt; (application_test)</vh></v>
 <v t="1.20130426141258.2500"><vh>testSympySegment</vh></v>
 <v t="1.20130426141258.2501"><vh>testSympyCline</vh></v>
@@ -168,7 +169,7 @@
 <v t="1.20130426141258.2577"><vh>@clean __init__.py</vh></v>
 <v t="1.20130426141258.2578" a="E"><vh>@path Kernel</vh>
 <v t="1.20130426141258.2579" a="E"><vh>@clean binarytree.py</vh>
-<v t="1.20130426141258.2580" a="E"><vh>class BinaryTree</vh>
+<v t="1.20130426141258.2580"><vh>class BinaryTree</vh>
 <v t="1.20130426141258.2581"><vh>__init__</vh></v>
 <v t="1.20130426141258.2582"><vh>__repr__</vh></v>
 <v t="1.20130426141258.2583"><vh>lookUp</vh></v>
@@ -199,7 +200,7 @@
 </v>
 <v t="1.20130426141258.2603" a="E"><vh>@clean document.py</vh>
 <v t="1.20130426141258.2604"><vh>&lt;&lt;declarations&gt;&gt; (document)</vh></v>
-<v t="1.20130426141258.2605" a="E"><vh>class Document</vh>
+<v t="1.20130426141258.2605"><vh>class Document</vh>
 <v t="1.20130426141258.2606"><vh>__init__</vh></v>
 <v t="1.20130426141258.2607"><vh>addPropertie</vh></v>
 <v t="1.20130426141258.2608"><vh>getPropertie</vh></v>
@@ -248,7 +249,7 @@
 <v t="1.20130426141258.2651"><vh>getName</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2652"><vh>@clean entity.py</vh>
+<v t="1.20130426141258.2652" a="E"><vh>@clean entity.py</vh>
 <v t="1.20130426141258.2653"><vh>&lt;&lt;declarations&gt;&gt; (entity)</vh></v>
 <v t="1.20130426141258.2654"><vh>class Entity</vh>
 <v t="1.20130426141258.2655"><vh>__init__</vh></v>
@@ -345,7 +346,7 @@
 <v t="1.20130426141258.2726"><vh>getDefaultStyle</vh></v>
 </v>
 <v t="1.20130426141258.2727" a="E"><vh>@clean layer.py</vh>
-<v t="1.20130426141258.2728" a="E"><vh>class Layer</vh>
+<v t="1.20130426141258.2728"><vh>class Layer</vh>
 <v t="1.20130426141258.2729"><vh>__init__</vh></v>
 <v t="1.20130426141258.2730"><vh>name</vh></v>
 <v t="1.20130426141258.2731"><vh>name</vh></v>
@@ -378,7 +379,7 @@
 <v t="1.20130426141258.2756"><vh>hideLayerEntity</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.2757"><vh>@clean pycadevent.py</vh>
+<v t="1.20130426141258.2757" a="E"><vh>@clean pycadevent.py</vh>
 <v t="1.20130426141258.2758" a="E"><vh>class PyCadEvent</vh>
 <v t="1.20130426141258.2759"><vh>__init__</vh></v>
 <v t="1.20130426141258.2760"><vh>handle</vh></v>
@@ -1133,7 +1134,7 @@
 <v t="1.20130426141258.3404"><vh>mirror</vh></v>
 </v>
 </v>
-<v t="1.20130426141258.3405" a="E"><vh>@clean style.py</vh>
+<v t="1.20130426141258.3405"><vh>@clean style.py</vh>
 <v t="1.20130426141258.3406"><vh>&lt;&lt;declarations&gt;&gt; (style)</vh></v>
 <v t="1.20130426141258.3407"><vh>class Style</vh></v>
 </v>
@@ -1159,7 +1160,7 @@
 </v>
 <v t="1.20130426141258.3426"><vh>@clean __init__.py</vh></v>
 </v>
-<v t="1.20130426141258.3427" a="E"><vh>@path GeoUtil</vh>
+<v t="1.20130426141258.3427"><vh>@path GeoUtil</vh>
 <v t="1.20130426141258.3428" a="E"><vh>@clean geolib.py</vh>
 <v t="1.20130426141258.3429"><vh>&lt;&lt;declarations&gt;&gt; (geolib)</vh></v>
 <v t="1.20130426141258.3430" a="E"><vh>class Vector</vh>
@@ -2040,6 +2041,12 @@
 </v>
 <v t="1.20130426141258.4184"><vh>@clean __init__.py</vh></v>
 </v>
+</v>
+</v>
+<v t="leo.20170513211342.1" a="E"><vh>Recovered Nodes</vh>
+<v t="leo.20170513211342.2"><vh>Recovered node "&lt;&lt;declarations&gt;&gt; (pythoncad_qt)" from @clean pythoncad_qt.py</vh>
+<v t="leo.20170513211342.3"><vh>old:&lt;&lt;declarations&gt;&gt; (pythoncad_qt)</vh></v>
+<v t="leo.20170513211342.4"><vh>new:&lt;&lt;declarations&gt;&gt; (pythoncad_qt)</vh></v>
 </v>
 </v>
 </vnodes>
@@ -2993,6 +3000,12 @@ if __name__ == '__main__':
 #        sip.setapi('QVariant', 2)
 #    except:
 #        pass
+
+import os, sys
+
+sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+
     
 #
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -31598,5 +31611,94 @@ CREATE TABLE pycadrel(
 pycadent 為 pycad entity 的資料表
 
 pycadrel 則為 pycad relationship 表示元件從屬關係的資料表</t>
+<t tx="leo.20170406161911.1">the following special forms using leading or trailing underscores are recognized (these can generally be combined with any case convention):
+
+_single_leading_underscore: weak "internal use" indicator. E.g. "from M import *" does not import objects whose name starts with an underscore.
+single_trailing_underscore_: used by convention to avoid conflicts with Python keyword, e.g.
+
+Tkinter.Toplevel(master, class_='ClassName')
+__double_leading_underscore: when naming a class attribute, invokes name mangling (inside class FooBar, __boo becomes _FooBar__boo; see below).
+__double_leading_and_trailing_underscore__: "magic" objects or attributes that live in user-controlled namespaces. E.g. __init__, __import__ or __file__. Never invent such names; only use them as documented.</t>
+<t tx="leo.20170513211342.1"></t>
+<t tx="leo.20170513211342.2">(uncached) 1.20130426141258.2471
+Diff...
+  import sys
+  #if sys.version_info &lt;(2, 7):
+  #    try:
+  #        import sip
+  #        sip.setapi('QString', 2)
+  #        sip.setapi('QVariant', 2)
+  #    except:
+  #        pass
+- 
+- import os, sys
+- 
+- sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+- sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+- 
+      
+  #
+  from PyQt5 import QtCore, QtGui, QtWidgets
+  # 
+  import os
+  import sqlite3 as sqlite
+  #
+  # this is needed for me to use unpickle objects
+  #
+  sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+  sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+  #
+  from Interface.cadwindow    import CadWindowMdi
+</t>
+<t tx="leo.20170513211342.3">import sys
+#if sys.version_info &lt;(2, 7):
+#    try:
+#        import sip
+#        sip.setapi('QString', 2)
+#        sip.setapi('QVariant', 2)
+#    except:
+#        pass
+    
+#
+from PyQt5 import QtCore, QtGui, QtWidgets
+# 
+import os
+import sqlite3 as sqlite
+#
+# this is needed for me to use unpickle objects
+#
+sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+#
+from Interface.cadwindow    import CadWindowMdi
+</t>
+<t tx="leo.20170513211342.4">import sys
+#if sys.version_info &lt;(2, 7):
+#    try:
+#        import sip
+#        sip.setapi('QString', 2)
+#        sip.setapi('QVariant', 2)
+#    except:
+#        pass
+
+import os, sys
+
+sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+
+    
+#
+from PyQt5 import QtCore, QtGui, QtWidgets
+# 
+import os
+import sqlite3 as sqlite
+#
+# this is needed for me to use unpickle objects
+#
+sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+#
+from Interface.cadwindow    import CadWindowMdi
+</t>
 </tnodes>
 </leo_file>

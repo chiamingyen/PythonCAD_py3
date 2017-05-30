@@ -772,48 +772,32 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         return
     # ########################################## SETTINGS STORAGE
     # ##########################################################
-    def readSettings(self): 
-    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-    # Method to restore application settings saved at previous session end. 
-    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-        #-create application settings object, platform-independent. 
-        # Requires two names: Organization, Application
-        # here given as <?>hardcoded values, an example of primitive coding
-        lRg=QtCore.QSettings('PythonCAD','MDI Settings')
-        
-        lRg.beginGroup("CadWindow")        #get this settings group
-        if (bool(lRg.value("maximized",False))): #<-window "maximized": 
+    def readSettings(self):
+        settings = QtCore.QSettings('PythonCAD', 'MDI Settings')
+        settings.beginGroup("CadWindow")
+        max = settings.value("maximized", False)
+        # settings.setValue("size", QtCore.QSize(800, 600))
+        # settings.setValue("pos", QtCore.QPoint(400, 300))
+        if max == True:  # if cadwindow was maximized set it maximized again
             self.showMaximized()
-        else: #<-window not "maximized": use last window parameters 
-            lRg1=lRg.value("size",QtCore.QSize(800,600)).toSize()
-            lRg2=lRg.value("pos",QtCore.QPoint(400,300)).toPoint()
-            self.resize(lRg1)  
-            self.move(lRg2) 
-        #>
-        lRg.endGroup()                     #close the group
-
-        lRg.beginGroup("CadWindowState")   #now this other group
-        self.restoreState(bytearray(lRg.value('State')))
-        lRg.endGroup()                     #close the group
-    #readSettings>
-
-    def writeSettings(self):
-    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=    
-    # Method to save current settings at the application exit. 
-    #-- - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=- - - - -=
-        #-create application settings object (see: "readSettings") 
-        lRg=QtCore.QSettings('PythonCAD','MDI Settings')
-
-        lRg.beginGroup("CadWindow")        #-save this group of settings 
-        lRg.setValue('pos',self.pos())
-        lRg.setValue('size',self.size())
-        lRg.setValue('maximized',self.isMaximized())
-        lRg.endGroup()                     #close
-
-        lRg.beginGroup("CadWindowState")   #-now this other group
-        lRg.setValue("state",self.saveState())
-        lRg.endGroup()                     #close
-    #writeSettings>
+        else:  # else set it to the previous position and size
+            try:
+                self.resize(settings.value("size").toSize()) # self.resize(settings.value("size", QtCore.QSize(800, 600)).toSize())
+                self.move(settings.value("pos").toPoint())   # self.move(settings.value("pos", QtCore.QPoint(400, 300)).toPoint())+
+                #self.resize(settings.value("size", QtCore.QSize(800, 600)))
+                #self.move(settings.value("pos", QtCore.QPoint(400, 300)))
+                #self.resize(settings.value("size"))
+                #self.move(settings.value("pos"))
+            except:    
+                print("Warning: unable to set the previews values")
+        settings.endGroup()
+        
+        settings.beginGroup("CadWindowState")
+        try:
+            self.restoreState(settings.value('State').toByteArray())
+        except:
+            print("Warning: Unable to set state")
+        settings.endGroup()
 
     # ########################################## END SETTINGS STORAGE
     # ##########################################################

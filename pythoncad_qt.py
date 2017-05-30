@@ -13,6 +13,12 @@ import sys
 #        sip.setapi('QVariant', 2)
 #    except:
 #        pass
+
+import os, sys
+
+sys.path.append(os.path.join(os.getcwd(), 'Generic'))
+sys.path.append(os.path.join(os.getcwd(), 'Interface'))
+
     
 #
 from PyQt5 import QtCore, QtGui, QtWidgets
