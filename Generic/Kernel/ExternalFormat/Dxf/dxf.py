@@ -209,15 +209,15 @@ class Dxf(DrawingFile):
         r = e.getRadius()
         sa = e.getStartAngle()
         ea = e.getEndAngle()
-        _c = str(style.getStyleProp('entity_color'), 'ASCII')
+        _c = style.getStyleProp('entity_color')
         _c = ChangeColor(_c)
-        dPrint("debug Arc color are %s "%str( _c, 'ASCII'))
+        dPrint("debug Arc color are %s "% _c)
         self.writeLine("  0\nARC\n100\nAcDbCircle\n")
-        self.writeLine(" 62\n" +str(_c, 'ASCII') +"\n")
-        self.writeLine(" 10\n" +str(x1, 'ASCII') +"\n")
-        self.writeLine(" 20\n" +str(y1, 'ASCII') +"\n 30\n0.0\n")
-        self.writeLine(" 40\n" +str(r, 'ASCII') +"\n")
-        self.writeLine(" 50\n" +str(sa, 'ASCII') +"\n 51\n"+str(ea, 'ASCII')+"\n")
+        self.writeLine(" 62\n" +str(_c) +"\n")
+        self.writeLine(" 10\n" +str(x1) +"\n")
+        self.writeLine(" 20\n" +str(y1) +"\n 30\n0.0\n")
+        self.writeLine(" 40\n" +str(r) +"\n")
+        self.writeLine(" 50\n" +str(sa) +"\n 51\n"+str(ea)+"\n")
     def writePolyline(self,e, style):
         """
            Write Polyline to the dxf file

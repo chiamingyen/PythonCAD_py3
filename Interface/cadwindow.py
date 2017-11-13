@@ -184,6 +184,10 @@ class CadWindowMdi(QtWidgets.QMainWindow):
         else:
             self.writeSettings()
             event.accept()
+    
+    def writeSettings(self):
+        settings = QtCore.QSettings('PythonCAD', 'MDI Settings')
+
     def subWindowActivatedEvent(self):
         """
             Sub windows activation

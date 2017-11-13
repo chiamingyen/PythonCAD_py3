@@ -1,25 +1,6 @@
 #!/usr/bin/env python
 
-#
-# This is only needed for Python v2 but is harmless for Python v3.
-#
-
-
-import sys
-#if sys.version_info <(2, 7):
-#    try:
-#        import sip
-#        sip.setapi('QString', 2)
-#        sip.setapi('QVariant', 2)
-#    except:
-#        pass
-
 import os, sys
-
-sys.path.append(os.path.join(os.getcwd(), 'Generic'))
-sys.path.append(os.path.join(os.getcwd(), 'Interface'))
-
-    
 #
 from PyQt5 import QtCore, QtGui, QtWidgets
 # 
